@@ -19,7 +19,7 @@
     4. Delete card
 5. Tags
     1. Create a tag
-    2. Edit a tag
+    2. Read a tag
     3. Update a tag
     4. Delete a tag
     5. Click on tag -> searches for tag -> possibly customizable order

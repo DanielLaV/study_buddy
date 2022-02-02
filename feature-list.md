@@ -35,9 +35,8 @@
     4. Delete a comment
 7. Cool CSS animations for cards
 1. User profile page
-    1. Description
-    2. Location
-    3. Decks `To Study`
+    1. Biography
+    2. Decks `To Study`
 
 
 Brainscapes login: kc@gmail.com // Password1!

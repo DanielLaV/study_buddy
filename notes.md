@@ -15,6 +15,6 @@ Stopped at line 226
 * suggestions for decks to mark as `to study`? or some `explore these decks` section
 
 ### Study button
-
-
+## users can customize styling of deck
+## deck/card images????
 further dx - restart? keep track of progress? of studying

@@ -150,7 +150,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 - [ ] After the user has submitted their changes, they can view the updated card.
 
 ### Deleting a Card
-* As a logged-in user and viewing a card on the `/decks/:deckId/:cardId` page, I can delete a card that I have created.
+* As a logged-in user and viewing a deck that they have created (`/decks/:deckId/`), I can delete a card that I have created.
 * I will only see a `Delete Card` button if I am the user who created the card.
 * When I click the `Delete Card` button, the card will no longer exist.
 * If I try to navigate to the URL of the card that I have deleted, I will get a `404` error.
@@ -159,8 +159,8 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 * After I have successfully deleted a card, I will be redirected to `/decks/:deckId/`.
 
 #### Acceptance Criteria
-- [ ] When a user is viewing a deck that they have created on the `/decks/:deckId/:cardId` page, a `Delete Card` button will be visible.
-- [ ] The user will only see a `Delete Card` button if they are the user who created the card.
+- [ ] When a user is viewing a deck that they have created (`/decks/:deckId/`), a `Delete Card` button will be visible.
+- [ ] The user will only see a `Delete Card` button only if they are the user who created the card.
 - [ ] When the user clicks the `Delete Card` button, the card will be deleted.
 - [ ] If the user tries to navigate to the URL of the card that they have deleted, they will get a `404` error.
 - [ ] A user cannot delete a card they they have not created.
@@ -224,13 +224,16 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 * I will see a `Submit` button for my tags.
 * When I click on the `Submit` button, my tags will appear on the page
 * When I have successfully created tags for the deck, the page will rerender and I can see the tags for that deck.
+* I should not be able to add tags to a deck that another user has created.
 
 #### Acceptance Criteria
 - [ ] When logged-in users are viewing a deck that they have created on the `/decks/:deckId` page, they will see a `Add a Tag` button.
+- [ ] Only the user who has created the deck is authorized to create tags for that deck.
 - [ ] When authorized users click on the `Add a Tag` button, they will see a form in which to enter tags one at a time.
 - [ ] When users enter invalid data on the `Add a Tag` form, the page will inform them of the failed validations.
 - [ ] Users will see a `Submit` button for their tags.
 - [ ] When the user submits their valid tags, the page will rerender and show the tags that they have created.
+
 
 ### Viewing Tags of a Deck
 * As an authenticated user, when I am on a deck's (`/decks/:deckId`) page, I can view all tags of the deck.
@@ -248,6 +251,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 * When I enter invalid data on the `Edit Tags` form, the page will inform me of the failed validations.
 * I will see a `Submit` button for my tags.
 * When I click on the `Submit` button, my updated tags will appear on the page.
+* I will not be able to edit tags on a deck that another user has created.
 
 #### Acceptance Criteria
 - [ ] When logged-in users are viewing a deck on the `/decks/:deckId` page, authorized users will see an `Edit Tags` button.
@@ -261,12 +265,13 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 * As a logged-in user, when I am viewing a deck that I have created on the `/decks/:deckId` page, I can delete any tags that I have added.
 * I will be able to see an interactable `Delete` button next to the tag that I have created.
 * If I click the `Delete` button, my tag will be deleted and will not appear on the page.
-* I will not be able to delete another user's tag.
+* I will not be able to delete tags on a deck that another user has created.
 * I will be able to leave another tag for the same deck without any issues.
 * I will be able to create a tag with the same name as the tag that I have just deleted.
 
 #### Acceptance Criteria
-- [ ] When logged in users are viewing a deck on the `/decks/:deckId` page, they will see an interactable `Delete` button next to tags that they have created.
+- [ ] When logged in users are viewing a deck that they have created on the `/decks/:deckId` page, they will see an interactable `Delete` button next to tags that they have created.
+    - [ ] Only the user who has created the deck will be authorized to delete the tags for that deck.
 - [ ] After pressing the `Delete` button, the tag will disappear.
 - [ ] Only the user who has left the tag will be authorized to delete the tag.
 - [ ] The user will be able to leave another tag for the same deck.
@@ -345,17 +350,17 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 ## User Profile Page
 ### Viewing a User Profile Page
 * As an authenticated user, I can view any user's profile when I navigate to `/users/:userId`.
-* I can see their username, location, and decks that they have marked as `To Study`.
+* I can see their username and decks that they have marked as `To Study`.
 
 #### Acceptance Criteria
 - [ ] Only authenticated users can navigate to `/users/:userId`.
-- [ ] Username, location, and decks that a user has marked as `To Study` will be displayed on `/users/:userId`.
+- [ ] Username and decks that a user has marked as `To Study` will be displayed on `/users/:userId`.
 
 ### Editing a User Profile
 * As an authenticated user, when I am viewing my own profile (`/users/:userId`), I can edit my profile.
     * I will see an `Edit Profile` button.
 * When I click the `Edit Profile` button, a form will appear with prepopulated data that is currently in my profile.
-* I will be able to edit my description and location.
+* I will be able to edit my biography.
 * When I enter invalid data on the `Edit Profile` form, the page will inform me of the failed validations.
 * I will see a `Submit` button for my edited user profile.
 * When I click on the `Submit` button, my edited profile will appear on the `/users/:userId` page.
@@ -364,7 +369,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 #### Acceptance Criteria
 - [ ] When an authenticated user is viewing their own profile (`/users/:userId`), they can edit their profile.
     - [ ] They can see an `Edit Profile` button.
-        - [ ] When they click the `Edit Profile` button, they will see a form where they can edit their description and location. The form will prepopulate with the current profile data.
+        - [ ] When they click the `Edit Profile` button, they will see a form where they can edit their biography. The form will prepopulate with the current profile data.
 - [ ] When they enter invalid data on the `Edit Profile` form, the page will inform them of the failed validations.
 - [ ] They will see a `Submit` button for their edited profile.
 - [ ] When they click on the `Submit` button, the edited profile will appear on the `/users/:userId` page.

@@ -166,6 +166,52 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 - [ ] A user will be able to create a new card with the same name as the card that they have deleted.
 - [ ] Upon successful deletion of a card, the user will be redirected to `/decks/:deckId/`.
 
+## Study Decks
+
+### Marking and Unmarking Decks as `To Study`
+* As an authenticated user, when I am viewing a deck (`/decks/:deckId/`), I can mark any deck as `To Study`.
+    * I can also unmark a deck as `To Study` when I am viewing a deck (`/decks/:deckId/`).
+    * I can re-mark a deck as `To Study` that I had previously unmarked as `To Study`.
+
+#### Acceptance Criteria
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can mark any deck as `To Study`.
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can unmark any deck that they have previously marked as `To Study`.
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can re-mark any deck that they have previously unmarked as `To Study`.
+
+
+### Viewing Decks Marked as `To Study`
+* As an authenticated user, when I am viewing a deck (`/decks/:deckId/`) and I have previously marked that deck as `To Study`, I will see that I have previously marked the deck as `To Study`.
+* As an authenticated user, I will see a `To Study` link on the navigation bar.
+    * When I click that link, I will be routed to `/to-study/:userId`.
+* When I am viewing `/to-study/:userId`, I can see all decks that I have marked as `To Study`.
+    * If I haven't marked any decks as `To Study`, I will see a message that says I have not marked any decks as `To Study`.
+
+#### Acceptance Criteria
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`) that they have previously marked as `To Study`, they will see that they have previously marked the deck as `To Study`.
+- [ ] An authenticated user, will see a `To Study` link on the navigation bar.
+    - [ ] When they click that link, they will be routed to `/to-study/:userId` and all decks that they have marked as `To Study` will be displayed.
+- [ ] If an authenticated user has not marked any decks as `To Study`, when they view `/to-study/:userId`, they will see a message that indicates that they have not marked any decks as `To Study`.
+
+### Studying a Deck
+* As an authenticated user, I will be able to study decks that I have marked as `To Study`.
+* When I am viewing a deck (`/decks/:deckId/`) that I have previously marked as `To Study`, I can click a button that says `Study`.
+* When I click the `Study` button, I will see one card at a time. I will only see the front side of the card. In order to see the answer, I will have to click a `Reveal Answer` button.
+* When I click the `Reveal Answer` button, I can indicate if I got the answer right or not.
+    * If I indicate that I have gotten the answer correct, I will not see the card again in that study instance.
+    * If I indicate that I have gotten the answer wrong, I will see the card again to study it.
+* I can see each card at least once while studying a deck.
+* If I have indicated that I have gotten all answers in a deck correct, the deck will remain marked as `To Study`.
+
+#### Acceptance Criteria
+- [ ] Authenticated users can only study decks that they have marked as `To Study`.
+- [ ] When they are viewing a deck (`/decks/:deckId/`) that they have previously marked as `To Study`, they can click a button that says `Study`.
+- [ ] When they click the `Study` button, they will see one card at a time. They will only see the front side of the card. In order to see the answer, they will have to click a `Reveal Answer` button.
+- [ ] When they click the `Reveal Answer` button, they can indicate if they got the answer right or not.
+    - [ ] If they indicate that they have gotten the answer correct, they will not see the card again in that study instance.
+    - [ ]  If they indicate that they have gotten the answer wrong, they will see the card again to study it.
+- [ ] The user can see each card at least once while studying a deck.
+- [ ] If the user has indicated that they have gotten all answers in a deck correct, the deck will remain marked as `To Study`.
+
 ## Deck Tags
 
 ### Creating a Tag for a Deck
@@ -186,10 +232,12 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 - [ ] When the user submits their tags, the page will rerender and show the tags that they have created.
 
 ### Viewing Tags of a Deck
-* As an aunthenticated user, when I am on a deck's (`/decks/:deckId`) page, I can view all tags of the deck.
+* As an authenticated user, when I am on a deck's (`/decks/:deckId`) page, I can view all tags of the deck.
+    * When I click on a tag, a search results page will appear and all decks with the tag that I clicked on will appear.
 
 #### Acceptance Criteria
 - [ ] When an authenticated user is viewing a deck's (`/decks/:deckId`) page, they can see all tags associated with that deck.
+    - [ ] When an authenticated user is viewing a deck's (`/decks/:deckId`) page and clicks on a tag, the API will conduct a search, and the page will display all tags associated with that deck.
 
 ### Updating Tags of a Deck
 * As an authenticated user, when I am viewing the deck that I have created on the `/decks/:deckId` page, I can edit the tags for that deck.
@@ -223,53 +271,100 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 - [ ] The user will be able to leave another tag for the same deck.
 - [ ] The user will be able to create another tag with the same name as the tag that they have just created.
 
-# - need to do Tags - item 5; study decks from features list (all), search, bonus items
+## Search
 
-
-## Interactivity:  "Cooked" vs. "Will Cook"
-### Assign a Recipe as “Cooked”
-* As a logged in user, I can mark a recipe as “cooked” so that I know that I have tried making this recipe before.
-* When I am viewing a recipe, I will see a `Cooked` button that I can click to indicate that I have cooked the recipe.
-* The `cooked` status will be retained when I visit the `/recipes/:recipeId` page again.
-* I can view all of the recipes that I have marked as "cooked" from my user page (`/users/:userId`) when I am logged in.
-#### Acceptance Criteria
-- [ ] When logged in users are viewing a recipe on the `/recipes/:recipeId` page, they will see a “Cooked” button.
-- [ ] When logged in users click the “Cooked” button it will change color so that whenever they are on the `/recipes/:recipeId` page, that color will indicate they have indicated it as “cooked”.
-
-### Unassign a Recipe as “Cooked”
-* As a logged in user, when I am viewing a recipe on the `/recipes/:recipeId` page, I can unmark a recipe as “cooked” in case I mistakenly marked it as cooked.
-* When I am viewing a recipe, I see a button that indicates “cooked” and I may click it to undo its “cooked” status.
-* If I see that recipe again, the recipe will no longer have a small icon next to it indicating “cooked”.
-* Also, if a recipe currently has the "cooked" status, if I click on "will cook," the recipe will now have the "will cook" status and no longer have the "cooked" status.
-* I can mark the same recipe as "cooked" if I had previously unmarked it as "cooked."
-* Recipes that are no longer marked as "cooked" will disappear from the list of "cooked" recipes on my user page.
+### Performing a Search
+* As an authenticated user, I can see a search bar on the navigation bar.
+    * I can enter a search query, I will be rerouted to `/search-results`. I will see decks, tags, and card contents that match my search query.
+        * I will see the search results grouped by the resource type. For example, all decks that match the search query will appear together, all tags that match the search query will appear together, etc.
 
 #### Acceptance Criteria
-- [ ] When logged in users are viewing a recipe on the `/recipes/:recipeId` page, they will see a “Cooked” button with a color that indicates “cooked”.
-- [ ] When logged in users click the “Cooked” button it will change to the original color so that it is no longer marked as “cooked”.
-- [ ] When users toggle off from from the "Cooked" status, the recipe will no longer appear in their "cooked" collection.
-- [ ] Users can mark the same recipe as "cooked" if they had previously marked and unmarked it as "cooked."
+- [ ] When logged in users are viewing any page, they will see an interactable search bar in the navigation bar.
+- [ ] When the authenticated user enters a search term, they will be  rerouted to `/search-results`, the page will display all decks, tags, and cards that match the search term.
+- [ ] Search results will be grouped by resource type.
 
-### Assign a Recipe as “Will Cook”
-* As a logged in user, when I am viewing a recipe on the `/recipes/:recipeId` page, I can mark a recipe as “will cook” so that I can mark that I would like to try it in the future.
-* When I am viewing a recipe, I will see a `Will Cook` button that I can click to indicate that I want to cook the recipe.
-* The `will cook` status will be retained when I visit the `/recipes/:recipeId` page again.
-* I can view all of the recipes that I have marked as "will cook" from my user page (`/users/:userId`) when I am logged in.
-* Recipes that are no longer marked as "will cook" will disappear from the list of "will cook" recipes on my user page.
+
+# Bonus
+
+## Deck Comments
+
+### Create a Comment
+* As an authenticated user, when I am viewing a deck on the `/decks/:deckId` page, I can leave a comment.
+    * I can see a `Leave a Comment` button.
+        * When I click the `Leave a Comment` button, I will see a form where I can enter a comment for that deck.
+* When I enter invalid data on the `Leave a Comment` form, the page will inform me of the failed validations.
+* I will see a `Submit` button for my comment.
+* When I click on the `Submit` button, my comment will appear on the `/decks/:deckId` page.
 
 #### Acceptance Criteria
-- [ ] When logged in users are viewing a recipe on the `/recipes/:recipeId` page, they will see a “Will Cook” button.
-- [ ] When logged in users click the “Will Cook” button it will change color so that whenever they are on the `/recipes/:recipeId` page, that color will indicate they have indicated it as “Will Cook”.
-- [ ] Logged-in users can view recipes that they have marked as "will cook" when they navigate to their user page (`/users/:userId`).
+- [ ] When an authenticated user is viewing a deck on the `/decks/:deckId` page, they can leave a comment.
+    - [ ] They can see a `Leave a Comment` button.
+        - [ ] When they click the `Leave a Comment` button, they will see a form where they can enter a comment for that deck.
+- [ ] When they enter invalid data on the `Leave a Comment` form, the page will inform them of the failed validations.
+- [ ] They will see a `Submit` button for their comment.
+- [ ] When they click on the `Submit` button, the comment will appear on the `/decks/:deckId` page.
 
-### Unassign a Recipe as “Will Cook”
-* As a logged in user, I can unmark a recipe as “will cook” in case I mistakenly mark something as “will cook” or have cooked a recipe that was previously marked as “will cook”.
-* When I am viewing a recipe, I see a “will cook” button that I can click that is the color indicating it has been clicked before.
-* I can click “will cook” so that it changes to its original unclicked color or I can click the “cooked” button which will also change the “will cook” button to its original unclicked color.
-* I can mark the same recipe as "will cook" if I had previously unmarked it as "will cook."
+### Read All Comments for a Deck
+* As an authenticated user, when I am viewing a deck on the `/decks/:deckId` page, I can view all comments for that deck.
 
-### Acceptance Criteria
-- [ ] When logged in users are viewing a recipe on the `/recipes/:recipeId` page, they will see a “Will Cook” button that is colored to indicate it has been clicked before.
-- [ ] When logged in users click the colored “Will Cook” button it will change color so that whenever they are on the `/recipes/:recipeId` page, that color will the button has not been clicked.
-- [ ] When logged in users click click the "cooked" button on a recipe currently marked as "will cook," the “will cook” button to its original unclicked color.
-- [ ] Logged in users can mark the same recipe as "will cook" if they had previously marked and unmarked it as "will cook."
+#### Acceptance Criteria
+- [ ] When an authenticated user is viewing a deck on the `/decks/:deckId` page, they can view all comments for that deck.
+
+### Edit a Comment
+* As an authenticated user, when I am viewing a deck on the `/decks/:deckId` page, I can edit a comment that I have left.
+    * I can see a `Edit a Comment` button.
+        * When I click the `Edit a Comment` button, I will see a form where I can edit my comment for that deck. The form will prepopulate with the current comment.
+* When I enter invalid data on the `Edit a Comment` form, the page will inform me of the failed validations.
+* I will see a `Submit` button for my edited comment.
+* When I click on the `Submit` button, my edited comment will appear on the `/decks/:deckId` page.
+* I will be unable to edit a comment left by another user.
+
+#### Acceptance Criteria
+- [ ] When an authenticated user is viewing a deck on the `/decks/:deckId` page, they can edit a comment that they have left.
+    - [ ] They can see a `Edit a Comment` button.
+        - [ ] When they click the `Edit a Comment` button, they will see a form where they can edit a comment for that deck. The form will prepopulate with the current comment.
+- [ ] When they enter invalid data on the `Edit a Comment` form, the page will inform them of the failed validations.
+- [ ] They will see a `Submit` button for their edited comment.
+- [ ] When they click on the `Submit` button, the edited comment will appear on the `/decks/:deckId` page.
+- [ ] A user is only authorized to edit a comment that they have made.
+
+### Delete a Comment
+* As an authenticated user, when I am viewing a deck on the `/decks/:deckId` page, I can delete a comment that I have left.
+    * I will be able to see an interactable `Delete` button.
+* If I click the `Delete` button, my comment will be deleted and will not appear on the page.
+* I will not be able to delete another user's comment.
+* I will be able to leave another comment for the same deck without any issues.
+
+#### Acceptance Criteria
+- [ ] When logged in users are viewing a deck on the `/decks/:deckId` page, they will see an interactable `Delete` button for comments that they have created.
+- [ ] After pressing the `Delete` button, the comment will disappear.
+- [ ] Only the user who has left the comment will be authorized to delete the comment.
+- [ ] The user will be able to leave another comment for the same deck.
+
+## User Profile Page
+### Viewing a User Profile Page
+* As an authenticated user, I can view any user's profile when I navigate to `/users/:userId`.
+* I can see their username, description, location, and decks that they have marked as `To Study`.
+
+#### Acceptance Criteria
+- [ ] Only authenticated users can navigate to `/users/:userId`.
+- [ ] Username, description, location, and decks that a user has marked as marked as `To Study` will be displayed on `/users/:userId`.
+
+### Editing a User Profile
+* As an authenticated user, when I am viewing my own profile (`/users/:userId`), I can edit my profile.
+    * I will see an `Edit Profile` button.
+* When I click the `Edit Profile` button, a form will appear with prepopulated data that is currently in my profile.
+* I will be able to edit my description and location.
+* When I enter invalid data on the `Edit Profile` form, the page will inform me of the failed validations.
+* I will see a `Submit` button for my edited user profile.
+* When I click on the `Submit` button, my edited profile will appear on the `/users/:userId` page.
+* I will be unable to edit another user's profile.
+
+#### Acceptance Criteria
+- [ ] When an authenticated user is viewing their own profile (`/users/:userId`), they can edit my profile.
+    - [ ] They can see a `Edit Profile` button.
+        - [ ] When they click the `Edit Profile` button, they will see a form where they can edit their description and location. The form will prepopulate with the current profile data.
+- [ ] When they enter invalid data on the `Edit Profile` form, the page will inform them of the failed validations.
+- [ ] They will see a `Submit` button for their edited profile.
+- [ ] When they click on the `Submit` button, the edited profile will appear on the `/users/:userId` page.
+- [ ] A user is only authorized to edit their own profile.

@@ -10,7 +10,6 @@
     1. study (verb)
         1. can mark card as green check / red x
     2. can mark deck as 'to study'
-        1. once completed, marked as 'studied'
         3. specific to user, displays on user profile page
 3. Cards -- must be part of a deck - CRUD
     1. Create a card
@@ -38,6 +37,7 @@
 1. User profile page
     1. Description
     2. Location
+    3. Decks `To Study`
 
 
 Brainscapes login: kc@gmail.com // Password1!

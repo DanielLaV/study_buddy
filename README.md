@@ -1,11 +1,11 @@
-# Recipeople
+# Study Buddy
 
-<a href="https://recipeople.herokuapp.com/">Live Site</a>  |  <a href="https://github.com/MeiMeiYS/group-9-best-group/wiki"> Project Wiki</a> | <a href="https://github.com/MeiMeiYS/group-9-best-group/issue">Report Bug</a>
+<a href="google.com">Live Site</a>  |  <a href="https://github.com/DanielLaV/study_buddy/wiki"> Project Wiki</a> | <a href="https://github.com/DanielLaV/study_buddy/issue">Report Bug</a>
 
-Recipeople is a website where users can sign up, post recipes, and curate collections of recipes published by other users. This website was designed as a Week 13 midterm project as part of App Academy's 24-week Full Stack Software Engineering Bootcamp.
+Study Buddy is a website where users can create, study, and share decks of cards for studying computer science topics. This website was designed as a Week 20 project as part of App Academy's 24-week Full Stack Software Engineering Bootcamp.
 
 ## Technologies Used
-[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | [Node.js](https://nodejs.org/en/)  | [Express](https://expressjs.com/)   |   [Pug](https://pugjs.org/api/getting-started.html) |   [Sequelize](sequelize.org)   |  [PostgreSQL](https://www.postgresql.org/)   |  [Bcrypt.js](https://www.npmjs.com/package/bcryptjs)
+[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | [Node.js](https://nodejs.org/en/)  | [Flask](https://flask.palletsprojects.com/en/2.0.x/)   |   [Jinja](https://jinja.palletsprojects.com/en/2.11.x/templates/) |   [SQLAlchemy](https://www.sqlalchemy.org/)   |  [PostgreSQL](https://www.postgresql.org/) 
 
 ## Launching Locally
 
@@ -16,7 +16,7 @@ Recipeople is a website where users can sign up, post recipes, and curate collec
 
 1. Clone the project repository
 ```
-   git clone https://github.com/andrewscohen/2020.11.badReads.git
+   git clone https://github.com/DanielLaV/study_buddy.git
 ```
 2. Install dependencies
 ```
@@ -26,9 +26,9 @@ Recipeople is a website where users can sign up, post recipes, and curate collec
 3.  Create a local .env file modeled after the .env.example file in the root directory
 ```
    PORT=8080
-   DB_USERNAME=recipeople_admin
+   DB_USERNAME=demo_user
    DB_PASSWORD=your_unique_password
-   DB_DATABASE=recipeople
+   DB_DATABASE=study_buddy
    DB_HOST=localhost
    SESSION_SECRET=your_session_secret
 ```
@@ -44,38 +44,23 @@ Recipeople is a website where users can sign up, post recipes, and curate collec
     npm start
  ```
 
-## Recipeople In Action
-Full user stories for the initial development phase are available on the [User Stories](https://github.com/MeiMeiYS/group-9-best-group/wiki/User-Stories) section of the project wiki. A feature list for the initial development phase is available on the MVP Feature List section of the project wiki.
+## Study Buddy In Action
+Full user stories for the initial development phase are available on the [User Stories](https://github.com/DanielLaV/study_buddy/wiki/User-Stories-&-Acceptance-Criteria) section of the project wiki. A feature list for the initial development phase is available on the [Feature List](https://github.com/DanielLaV/study_buddy/wiki/Feature-List) section of the project [wiki](https://github.com/DanielLaV/study_buddy/wiki).
 
 ### User Registration and Authentication
-New users can register for an account by entering a unique email address, a username, and a secure password.
+New users can register for an account by entering a unique username, a secure password, and an optional biography.
 
-<div align="center">
-<br/>
-<img src="https://i.ibb.co/7ybwmS4/sample123-register.gif" alt="Explore Recent Recipes" height="300" align="center"/>
-<br/>
-<br/>
-</div>
+## < Add images >
 
 
 Existing users can log in to their account by submitting their credentials via the login form.
 
-<div align="center">
-<br/>
-<img src="https://i.ibb.co/mN1vsht/sample123-login.gif" alt="Explore Recent Recipes" height="300" align="center"/>
-<br/>
-<br/>
-</div>
+## < Add images >
 
 
-Logged in users can select a profile picture, or link a custom image via url
+Logged in users can edit their 
 
-<div align="center">
-<br/>
-<img src="https://i.ibb.co/dc4Pv24/profile-picture-selection.gif" alt="Select Profile Image" height="450" align="center"/>
-<br/>
-<br/>
-</div>
+## < Add images >
 
 Users may log out of their account by clicking the **LOGOUT** button on the sitewide header.
 

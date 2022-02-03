@@ -1,42 +1,61 @@
-# Group 10 - Brainbytes / Big Brain Coding Flashcards / Brainstorm /Braincodes / Brainiac - programming languages / computer stuff / aA curriculum
+# MVP Features List
 
-## Features List
-1. Deck - CRUD
-    1. Create a deck
-    2. Read deck - see all the cards in it?, user page - display all decks for that user
-    3. Update - changing name of deck, deck composition, styling? (background color, font?)
-    4. Delete - delete
-1. Study Decks
-    1. study (verb)
-        1. can mark card as green check / red x
-    2. can mark deck as 'to study'
-        3. specific to user, displays on user profile page
-3. Cards -- must be part of a deck - CRUD
-    1. Create a card
-    2. Read - see front and back of card somehow
-    3. Update - edit card (front and back)
-    4. Delete card
-5. Tags
-    1. Create a tag
-    2. Read a tag
-    3. Update a tag
-    4. Delete a tag
-    5. Click on tag -> searches for tag -> possibly customizable order
-6. Search
-    1. Search for a term in deck name, tag, card content
-        1. Segregate search results by search model
+## 1. New account creation, log in, log out, and demo login
+* Users can sign up, log in, and log out.
+* Users can use a demo log in to try the site.
+* Users can't use access the site without logging in.
+* Authenticated users are directed to the splash page which displays decks made by community members.
+* Logged out users are directed back to the splash page
 
+## 2. Decks
+* Authenticated users can create a deck.
+* Authenticated users can view any deck and view any and all cards in a deck.
+* Authenticated users can view any user's page.
+* Authenticated users can change the name of a deck that they have created.
+* Authenticated users can delete a deck that they have created.
 
-### Bonus:
-1. Comments on decks
-    1. Create a comment
-    2. Read all comments
-    3. Edit comment that you made
-    4. Delete a comment
-7. Cool CSS animations for cards
-1. User profile page
-    1. Biography
-    2. Decks `To Study`
+## 3. `To Study`
+* All authenticated users can mark any deck as `To Study`.
+* If an authenticated user has previously marked a deck as `To Study`, all authenticated users can unmark a deck as `To Study`.
+* Decks that a user has marked as `To Study` will appear on their user page.
 
+## 4. Studying a Deck
+* Authenticated users can study a deck that they have marked as `To Study`.
+* Authenticated users can study a deck:  they will see the front side of one card at a time, click a button to reveal the answer, and mark the card as correct or incorrect.
 
-Brainscapes login: kc@gmail.com // Password1!
+## 5. Cards
+* Authenticated users can create a card and add it to any deck that they have created.
+* Authenticated users can see all the cards in any deck.
+* Authenticated users can edit cards that they have created.
+* Authenticated users can delete cards that they have created.
+
+## 6. Tags
+* Authenticated users can add tags to the decks that they have created.
+* Authenticated users can edit and remove their own tags.
+* Only authenticated users can view tags and decks.
+* Authenticated users will be able to click on tags to trigger a search for all decks containing the specific tag.
+
+## 7. Search
+* Authenticated users will be able to view the search bar within the navigation bar.
+* Authenticated users can enter a search query and view the results of all decks, tags, and cards that match that query.
+
+## 8. Production Readme
+* Brief explanation of what the app is and does.
+* How to start development environment.
+* Technologies used.
+* Link to live site.
+* Link to Wiki docs.
+* Discussion of two features that show off the team's technical abilities.
+* Discussion of both challenges faced and the way the team solved them.
+* Code snippets to highlight the best code.
+
+## 9. Bonus Features
+
+### 9A. Comments on decks
+* Display a list of comments on all decks for authenticated users to view.
+* Authenticated users can create comments and leave them on any deck.
+* Authenticated users can edit and delete comments that they have created.
+
+### 9B. User profile page
+* Display biography and decks "To Study" on user's profile page.
+* Allow users to edit their biography and decks "To Study" from their profile page.

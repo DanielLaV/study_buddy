@@ -1,5 +1,3 @@
-CHANGE `REDIRECT` TO `RE-RENDER`
-
 # User Stories
 
 ## Users
@@ -57,11 +55,11 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 - [ ] When the user is logged in, a button appears in the navigation bar to log out.
 - [ ] When the user clicks this button, the session ends and the user is logged out.
 - [ ] When refreshing the page or traveling to other pages the user remains not logged in.
-- [ ] The logged out user can log back in or log in with a separate account without issue.
+- [ ] The logged-out user can log back in or log in with a separate account without issue.
 
 ### Demo User Enablement
 
-* As an unregistered and unauthorized user who wants to demo Brainscape, I can enter the site via a single-button click on the login and signup form
+* As an unregistered and unauthorized user who wants to demo Study Buddy, I can enter the site via a single-button click on the login and signup form
     * so that I can view features of the website without creating an account.
 
 #### Acceptance Criteria
@@ -126,7 +124,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 * When I am viewing a deck that I have created, in order to create a new card, I can click a button to create a new card and a `Create a New Card` form will appear.
 * When I enter invalid data on the `Create a New Card` form, the page will inform me of the failed validations and repopulate the form with the valid entries
     * so that I can try again without needing to refill every input field.
-* When I enter valid data the card will be shown in my deck.
+* When I enter valid data, the card will be shown in my deck.
 
 #### Acceptance Criteria
 - [ ] When a logged-in user is viewing a deck that they have created, they can click a `Create a New Card` button to add a new card to the deck.
@@ -156,16 +154,16 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 * If I try to navigate to the URL of the card that I have deleted, I will get a `404` error.
 * I will not be able to delete the cards that other users have created.
 * I will be able to create a new card with the same information as the card that I have deleted.
-* After I have successfully deleted a card, I will be redirected to `/decks/:deckId/`.
+* After I have successfully deleted a card, the `/decks/:deckId/` page will re-render.
 
 #### Acceptance Criteria
 - [ ] When a user is viewing a deck that they have created (`/decks/:deckId/`), a `Delete Card` button will be visible.
 - [ ] The user will only see a `Delete Card` button only if they are the user who created the card.
 - [ ] When the user clicks the `Delete Card` button, the card will be deleted.
 - [ ] If the user tries to navigate to the URL of the card that they have deleted, they will get a `404` error.
-- [ ] A user cannot delete a card they they have not created.
+- [ ] A user cannot delete a card that they have not created.
 - [ ] A user will be able to create a new card with the same name as the card that they have deleted.
-- [ ] Upon successful deletion of a card, the user will be redirected to `/decks/:deckId/`.
+- [ ] Upon successful deletion of a card, the `/decks/:deckId/` page will re-render.
 
 ## Study Decks
 
@@ -223,7 +221,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
     * so that I can try again without needing to refill every input field.
 * I will see a `Submit` button for my tags.
 * When I click on the `Submit` button, my tags will appear on the page
-* When I have successfully created tags for the deck, the page will rerender and I can see the tags for that deck.
+* When I have successfully created tags for the deck, the page will re-render and I can see the tags for that deck.
 * I should not be able to add tags to a deck that another user has created.
 
 #### Acceptance Criteria
@@ -232,7 +230,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 - [ ] When authorized users click on the `Add a Tag` button, they will see a form in which to enter tags one at a time.
 - [ ] When users enter invalid data on the `Add a Tag` form, the page will inform them of the failed validations.
 - [ ] Users will see a `Submit` button for their tags.
-- [ ] When the user submits their valid tags, the page will rerender and show the tags that they have created.
+- [ ] When the user submits their valid tags, the page will re-render and show the tags that they have created.
 
 
 ### Viewing Tags of a Deck
@@ -281,7 +279,7 @@ CHANGE `REDIRECT` TO `RE-RENDER`
 
 ### Performing a Search
 * As an authenticated user, I can see a search bar on the navigation bar.
-    * I can enter a search query, I will be rerouted to `/search-results`. I will see decks, tags, and card contents that match my search query.
+    * When I enter a search query, I will be rerouted to `/search-results`. I will see decks, tags, and card contents that match my search query.
         * I will see the search results grouped by the resource type. For example, all decks that match the search query will appear together, all tags that match the search query will appear together, etc.
 
 #### Acceptance Criteria

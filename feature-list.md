@@ -1,21 +1,24 @@
-# Group 10 - Brainbytes / Big Brain Coding Flashcards / Brainstorm /Braincodes / Brainiac - programming languages / computer stuff / aA curriculum
+# Group 10 - Study Buddy
 
 ## Features List
-1. Deck - CRUD
-    1. Create a deck
-    2. Read deck - see all the cards in it?, user page - display all decks for that user
-    3. Update - changing name of deck, deck composition, styling? (background color, font?)
-    4. Delete - delete
-1. Study Decks
-    1. study (verb)
-        1. can mark card as green check / red x
-    2. can mark deck as 'to study'
-        3. specific to user, displays on user profile page
-3. Cards -- must be part of a deck - CRUD
-    1. Create a card
-    2. Read - see front and back of card somehow
-    3. Update - edit card (front and back)
-    4. Delete card
+1. Decks
+    1. Authenticated users can create a deck.
+    2. Authenticated users can view any deck and view any and all cards in a deck.
+    3. Authenticated users can view any user's page.
+    3. Authenticated users can change the name of a deck that they have created.
+    4. Authenticated users can delete a deck that they have created.
+1. `To Study`
+    1. All authenticated users can mark any deck as `To Study`.
+    1. If an authenticated user has previously marked a deck as `To Study`, all authenticated users can unmark a deck as `To Study`.
+    3. Decks that a user has marked as `To Study` will appear on their user page.
+1. Studying a Deck
+    1. Authenticated users can study a deck that they have marked as `To Study`.
+    2. Authenticated users can study a deck:  they will see the front side of one card at a time, click a button to reveal the answer, and mark the card as correct or incorrect.
+3. Cards
+    1. Authenticated users can create a card and add it to any deck that they have created.
+    2. Authenticated users can see all the cards in any deck.
+    3. Authenticated users can edit cards that they have created.
+    4. Authenticated users can delete cards that they have created.
 5. Tags
     1. Create a tag
     2. Read a tag
@@ -33,7 +36,6 @@
     2. Read all comments
     3. Edit comment that you made
     4. Delete a comment
-7. Cool CSS animations for cards
 1. User profile page
     1. Biography
     2. Decks `To Study`

@@ -19,26 +19,25 @@
     2. Authenticated users can see all the cards in any deck.
     3. Authenticated users can edit cards that they have created.
     4. Authenticated users can delete cards that they have created.
-5. Tags
-    1. Create a tag
-    2. Read a tag
-    3. Update a tag
-    4. Delete a tag
-    5. Click on tag -> searches for tag -> possibly customizable order
-6. Search
-    1. Search for a term in deck name, tag, card content
-        1. Segregate search results by search model
+### Tags
+* Authenticated users can add tags to the decks that they have created
+* Authenticated users can edit and remove their own tags
+* Only authenticated users can view tags and decks.
+* Authenticated users will be able to click on tags to trigger a search for all decks containing the specific tag
+
+### Search
+* Authenticated users will be able to view the search bar within the navigation bar
+* Authenticated users can enter a search query and view the results of all decks, tags, and cards that match that query
 
 
 ### Bonus:
-1. Comments on decks
-    1. Create a comment
-    2. Read all comments
-    3. Edit comment that you made
-    4. Delete a comment
-1. User profile page
-    1. Biography
-    2. Decks `To Study`
+## Comments on decks
+* Display a list of comments on all decks for authenticated users to view
+* Allow authenticated users to create, edit, and delete comments on decks
+
+## User profile page
+* Display biography and decks "To Study" on user's profile page
+* Allow users to edit their biography and decks "To Study" from their profile page
 
 
 Brainscapes login: kc@gmail.com // Password1!

@@ -39,5 +39,11 @@
 * Display biography and decks "To Study" on user's profile page
 * Allow users to edit their biography and decks "To Study" from their profile page
 
+### New account creation, log in, log out, and demo login
+* Users can sign up, log in, and log out.
+* Users can use a demo log in to try the site.
+* Users can't use access the site without logging in.
+* Logged in users are directed to their a home page which displays their decks.
+* Logged out users are directed back to the splash page
 
 Brainscapes login: kc@gmail.com // Password1!

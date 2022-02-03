@@ -4,7 +4,7 @@
 * Users can sign up, log in, and log out.
 * Users can use a demo log in to try the site.
 * Users can't use access the site without logging in.
-* Authenticated users are directed to their a home page which displays their decks.
+* Authenticated users are directed to the splash page which displays decks made by community members.
 * Logged out users are directed back to the splash page
 
 ## 2. Decks

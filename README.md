@@ -180,7 +180,7 @@ All frontend routes are covered in detail on the [API Routes section of our proj
 # ADD NEW FEATURES OR delete
 
 ## Contributors
-**Kreston Caldwell-McMurrin** | <a href='https://github.com/krestn'>Github</a></br> | <a href='https://www.linkedin.com/in/krestoncaldwell/'>LinkedIn</a></br>
+**Kreston Caldwell-McMurrin** | <a href='https://github.com/krestn'>Github</a> | <a href='https://www.linkedin.com/in/krestoncaldwell/'>LinkedIn</a></br>
 **Denise Li** | <a href='https://github.com/cat-friend'>Github</a> | <a href='https://www.linkedin.com/in/denise-li-45350320/'>LinkedIn</a></br>
 **Sophia Bui** | <a href='https://github.com/sophiebui'>Github</a> | <a href='https://www.linkedin.com/in/sophia-bui/'>LinkedIn</a></br>
 **Daniel LaVergne** | <a href='https://github.com/DanielLaV'>Github</a> | <a href='https://www.linkedin.com/in/daniel-lavergne-137772206/'>LinkedIn</a>

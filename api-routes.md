@@ -30,9 +30,9 @@ This web app uses the following API routes to dynamically update the page.
     * `PUT /api/tags/:tagId`
     * `DELETE /api/tags/:tagId`
 
-### `To Study`
-* An authenticated user may mark or unmark a deck as `To Study` without causing a refresh.
-    * `POST /api/tostudy/:deckId`
+### `Study List`
+* An authenticated user may add or remove decks to their `Study List` without causing a refresh or redirect.
+    * `POST /api/user-study-deck/:deckId`
 
 ### Studying a Deck
 * When studying a card, an authenticated user may view a card, reveal its answer, and mark it as correct or incorrect without causing a refresh.

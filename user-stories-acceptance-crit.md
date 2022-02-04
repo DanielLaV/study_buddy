@@ -16,7 +16,6 @@
 #### Acceptance Criteria
 
 - [ ] A link appears in the navigation bar to register as a new user (only when not logged in)
-- [ ] A link appears in the navigation bar to register as a new user (only when not logged in)
 - [ ] When an unregistered user clicks on the registration link/button, they are prompted to enter a desired username, email address, and password, and to confirm their password.
 - [ ] If the registration information is invalid, the unregistered user is alerted of the errors in their input(s).
 - [ ] If the registration information is valid, a new user is created and the user is logged in.
@@ -81,14 +80,14 @@
 - [ ] When a user submits the deck, the user will be redirected to `/decks:deckId`, where it can be viewed by other users.
 
 ### Viewing Decks
-* As a logged-in or logged-out user, I can view the most recently posted decks.
-    * I can also view specific decks and the associated cards so that I can decide whether or not to interact with the deck.
-* If I am not the creator of the deck, I will not be able to edit the deck.
+* As an authenticated user, I can view all decks by clicking a button in the navigation bar.
+* If I want to view specific details about a deck, I can click on a deck to be redirected to `/decks/:deckId` to see its title, description, deck composition, and tags.
 
 #### Acceptance Criteria
-- [ ] When any user is on the home page, the user can see the nine most recent decks.
+- [ ] Navigation bar must have a button for viewing all decks (`/decks`)
 - [ ] The user can click on a deck to view its details (title, description, deck composition (including number of cards), tags).
-- [ ] Only the user who created the deck can edit the deck if they are logged in.
+- [ ] Only logged in users can view `/decks`.
+- [ ] Only logged in users can view `/decks/:deckId`.
 
 ### Editing Decks
 * As a logged-in user visiting `/decks/:deckId`, I can edit the decks that I have created
@@ -162,49 +161,51 @@
 
 ## Study Decks
 
-### Marking and Unmarking Decks as `To Study`
-* As an authenticated user, when I am viewing a deck (`/decks/:deckId/`), I can mark any deck as `To Study`.
-    * I can also unmark a deck as `To Study` when I am viewing a deck (`/decks/:deckId/`).
-    * I can re-mark a deck as `To Study` that I had previously unmarked as `To Study`.
+### Adding Decks to or Removing Decks From `Study List`
+* As an authenticated user, when I am viewing a deck (`/decks/:deckId/`), I can add any deck to my `Study List`.
+    * I can remove a deck from my `Study List` when I am viewing a deck (`/decks/:deckId/`).
+    * I can re-add a deck to my `Study List` that I had previously removed from my `Study List`.
 
 #### Acceptance Criteria
-- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can mark any deck as `To Study`.
-- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can unmark any deck that they have previously marked as `To Study`.
-- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can re-mark any deck that they have previously unmarked as `To Study`.
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can add any deck to their `Study List`.
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can remove any deck that they have added to their `Study List`.
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can re-add any deck that they have previously removed from their `Study List`.
 
 
-### Viewing Decks Marked as `To Study`
-* As an authenticated user, when I am viewing a deck (`/decks/:deckId/`) and I have previously marked that deck as `To Study`, I will see that I have previously marked the deck as `To Study`.
-* As an authenticated user, I will see a `To Study` link on the navigation bar.
-    * When I click that link, I will be routed to `/to-study/:userId`.
-* When I am viewing `/to-study/:userId`, I can see all decks that I have marked as `To Study`.
-    * If I have not marked any decks as `To Study`, I will see a message that says I have not marked any decks as `To Study`.
+### Viewing Decks Added To `Study List`
+* As an authenticated user, when I am viewing a deck (`/decks/:deckId/`) and I have previously added that deck to my `Study List`, I will see that I have previously added the deck to my `Study List`.
+* As an authenticated user, I will see a `Study List` link on the navigation bar.
+    * When I click that link, I will be routed to `/user-study-deck/:userId`.
+* When I am viewing `/user-study-deck/:userId`, I can see all decks that I have added to my `Study List`.
+    * If I have not added any decks to my `Study List`, I will see a message that says I have not added any decks to my `Study List`.
 
 #### Acceptance Criteria
-- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`) that they have previously marked as `To Study`, they will see that they have previously marked the deck as `To Study`.
-- [ ] An authenticated user will see a `To Study` link on the navigation bar.
-    - [ ] When they click that link, they will be routed to `/to-study/:userId` and all decks that they have marked as `To Study` will be displayed.
-- [ ] If an authenticated user has not marked any decks as `To Study`, when they view `/to-study/:userId`, they will see a message that indicates that they have not marked any decks as `To Study`.
+- [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`) that they have previously added to their `Study List`, they will see that they have previously added the deck to their `Study List`.
+- [ ] An authenticated user will see a `Study List` link on the navigation bar.
+    - [ ] When they click that link, they will be routed to `/user-study-deck/:userId` and all decks that they have marked as `Study List` will be displayed.
+- [ ] If an authenticated user has not marked any decks as `Study List`, when they view `/user-study-deck/:userId`, they will see a message that indicates that they have not marked any decks as `Study List`.
 
 ### Studying a Deck
-* As an authenticated user, I will be able to study decks that I have marked as `To Study`.
-* When I am viewing a deck (`/decks/:deckId/`) that I have previously marked as `To Study`, I can click a button that says `Study`.
+* As an authenticated user, I will be able to study decks that I have marked as `Study List`.
+* When I am viewing a deck (`/decks/:deckId/`) that I have previously marked as `Study List`, I can click a button that says `Study`.
+* When I am viewing a deck (`/decks/:deckId/`) that I have not previously marked as `Study List`, I can click a button that says `Study`. Clicking the `Study` button will add the deck to my `Study List` and initiate a study session.
 * When I click the `Study` button, I will see one card at a time. I will only see the front side of the card. In order to see the answer, I will have to click a `Reveal Answer` button.
 * When I click the `Reveal Answer` button, I can indicate if I got the answer right or not.
-    * If I indicate that I have gotten the answer correct, I will not see the card again in that study instance.
-    * If I indicate that I have gotten the answer wrong, I will see the card again to study it.
+    * If I indicate that I have gotten the answer correct, the card will change color to indicate that I got the answer correct.
+    * If I indicate that I have gotten the answer wrong, the card will not change color.
 * I can see each card at least once while studying a deck.
-* If I have indicated that I have gotten all answers in a deck correct, the deck will remain marked as `To Study`.
+* If I have indicated that I have gotten all answers in a deck correct, the deck will remain in my `Study List`.
 
 #### Acceptance Criteria
-- [ ] Authenticated users can only study decks that they have marked as `To Study`.
-- [ ] When they are viewing a deck (`/decks/:deckId/`) that they have previously marked as `To Study`, they can click a button that says `Study`.
+- [ ] Authenticated users can study any deck.
+- [ ] When they are viewing a deck (`/decks/:deckId/`) that they have previously added to their `Study List`, they can click a button that says `Study`.
+- [ ] When they are viewing a deck (`/decks/:deckId/`) that they have not previously added to their `Study List`, they can click a button that says `Study`. The deck will be added to their `Study List` and a study session will begin.
 - [ ] When they click the `Study` button, they will see one card at a time. They will only see the front side of the card. In order to see the answer, they will have to click a `Reveal Answer` button.
 - [ ] When they click the `Reveal Answer` button, they can indicate if they got the answer right or wrong.
-    - [ ] If they indicate that they have gotten the answer correct, they will not see the card again in that study instance.
-    - [ ]  If they indicate that they have gotten the answer wrong, they will see the card again to study it.
+    - [ ] If they indicate that they have gotten the answer correct, the card will change color.
+    - [ ] If they indicate that they have gotten the answer wrong, the card will not change color.
 - [ ] The user can see each card at least once while studying a deck.
-- [ ] If the user has indicated that they have gotten all answers in a deck correct, the deck will remain marked as `To Study`.
+- [ ] If the user has indicated that they have gotten all answers in a deck correct, the deck will remain in their `Study List`.
 
 ## Deck Tags
 
@@ -343,11 +344,11 @@
 ## User Profile Page
 ### Viewing a User Profile Page
 * As an authenticated user, I can view any user's profile when I navigate to `/users/:userId`.
-* I can see their username and decks that they have marked as `To Study`.
+* I can see their username and decks that they have added to their `Study List`.
 
 #### Acceptance Criteria
 - [ ] Only authenticated users can navigate to `/users/:userId`.
-- [ ] Username and decks that a user has marked as `To Study` will be displayed on `/users/:userId`.
+- [ ] Username, biography, and decks that a user has added to their `Study List` will be displayed on `/users/:userId`.
 
 ### Editing a User Profile
 * As an authenticated user, when I am viewing my own profile (`/users/:userId`), I can edit my profile.

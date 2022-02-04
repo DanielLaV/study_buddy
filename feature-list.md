@@ -14,13 +14,13 @@
 * Authenticated users can change the name of a deck that they have created.
 * Authenticated users can delete a deck that they have created.
 
-## 3. `To Study`
-* All authenticated users can mark any deck as `To Study`.
-* If an authenticated user has previously marked a deck as `To Study`, all authenticated users can unmark a deck as `To Study`.
-* Decks that a user has marked as `To Study` will appear on their user page.
+## 3. `Study List`
+* All authenticated users can add any deck to their `Study List`.
+* If an authenticated user has previously added a deck to their `Study List`, they can remove the deck from their `Study List`.
+* Decks that a user has added to their `Study List` will appear on their user page.
 
 ## 4. Studying a Deck
-* Authenticated users can study a deck that they have marked as `To Study`.
+* Authenticated users can study a deck that have added to their `Study List`.
 * Authenticated users can study a deck:  they will see the front side of one card at a time, click a button to reveal the answer, and mark the card as correct or incorrect.
 
 ## 5. Cards
@@ -57,5 +57,5 @@
 * Authenticated users can edit and delete comments that they have created.
 
 ### 9B. User profile page
-* Display biography and decks "To Study" on user's profile page.
-* Allow users to edit their biography and decks "To Study" from their profile page.
+* Display biography and decks a user has added to the "Study List" on the user's profile page.
+* Allow users to edit their biography on their user profile page.

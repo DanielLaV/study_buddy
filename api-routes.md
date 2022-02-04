@@ -29,3 +29,17 @@ This web app uses the following API routes to dynamically update the page.
 
 ### `To Study`
 * An authenticated user may mark or unmark a deck as `To Study` without causing a refresh.
+    * `POST /api/tostudy/:deckId`
+
+### Studying a Deck
+* When studying a card, an authenticated user may view a card, reveal its answer, and mark it as correct or incorrect without causing a refresh.
+    * `GET /api/studying/:cardId`
+    * `POST /api/studying/:cardId`
+
+## Bonus Routes
+
+### Deck Comments
+* An authenticated user may create a new comment on any deck without causing a refresh or redirect. They can also edit and delete any comments that they have created without causing a refresh or redirect. When a user creates, edits, or deletes a comment, the page will update dynamically.
+    * `POST /api/comments/:deckId`
+    * `GET /api/comments/:deckId`
+    * `PUT /api/comments/:commentId`

@@ -5,18 +5,18 @@
 ### Sign Up
 
 * As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form.
-  * When I'm on the `/signup` page:
+  * When I'm on the `/` page, I can click a `Sign Up` button and a modal will appear. The signup modal will contain a form:
     * I would like to be able to enter my email, username, and preferred password on a clearly laid out form.
     * I would like the website to log me in upon successful completion of the sign-up form.
       * So that I can seamlessly access the site's functionality
   * When I enter invalid data on the sign-up form:
     * I would like the website to inform me of the validations I failed to pass and repopulate the form with my valid entries (except my password).
-    * So that I can try again without needing to refill forms I entered valid data into.
+        * So that I can try again without needing to refill forms I entered valid data into.
 
 #### Acceptance Criteria
 
-- [ ] A link appears in the navigation to register as a new user (only when not logged in)
-- [ ] A link appears on the login page to register as a new user (only when not logged in)
+- [ ] A link appears in the navigation bar to register as a new user (only when not logged in)
+- [ ] A link appears in the navigation bar to register as a new user (only when not logged in)
 - [ ] When an unregistered user clicks on the registration link/button, they are prompted to enter a desired username, email address, and password, and to confirm their password.
 - [ ] If the registration information is invalid, the unregistered user is alerted of the errors in their input(s).
 - [ ] If the registration information is valid, a new user is created and the user is logged in.
@@ -25,10 +25,8 @@
 ### Log In
 
 * As a registered and unauthorized user, I want to be able to log in to the website via a log-in form.
-  * When I am on the `/login` page:
-    * I would like to be able to enter my email and password on a clearly laid out form.
-    * I would like the website to log me in upon successful completion of the log-in form.
-      * So that I can seamlessly access the site's functionality
+  * When I am on the `/` page, I can click a `Log In` button and a modal will appear. The log in modal will contain a form:
+    * I would like to be able to enter my user credentials on a clearly laid out form.
   * When I enter invalid data on the log-in form:
     * I would like the website to inform me of the validations I failed to pass and repopulate the form with my valid entries (except my password).
       * So that I can try again without needing to refill forms I entered valid data into.
@@ -36,11 +34,8 @@
 #### Acceptance Criteria
 
 - [ ] User can enter their email and password in a log-in form
-- [ ] Upon successful completion of the log-in form, the website would redirect the user to the homepage of the website
+- [ ] Upon successful completion of the log-in form, the modal will disappear, and the authenticated user splash page will render.
 - [ ] When the user enters invalid data on the log-in form, the page will inform the user of the failed validations and repopulate the form with the valid entries (except password), so that the user can try again without needing to refill every input field.
-- [ ] When clicking the add or update information, the page will render a form for the user to update the information.
-- [ ] When a user submits the form, they will be able to view their new profile information without needing to refresh the page.
-- [ ] A user may not update profile features of other users.
 
 ### Log Out
 

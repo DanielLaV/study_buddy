@@ -15,7 +15,7 @@ This page displays a signup form.
 
 ## `/decks`
 ### Decks
-This page displays the all decks and a button for creating a new deck. It also displays the navigation bar with links to navigate through the site.
+This page displays all decks and a button for creating a new deck. It also displays the navigation bar with links to navigate through the site.
 * GET /decks
 * POST /decks
 

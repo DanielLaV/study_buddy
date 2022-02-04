@@ -22,6 +22,9 @@ This web app uses the following API routes to dynamically update the page.
     * `DELETE /api/cards/:cardId`
 
 ### Tags
+* An authenticated user may view all decks that have a specific tag.
+    * `READ /api/tags/:tagId`
+
 * An authenticated user may create new tags on a deck that they have created. They can also edit and delete tags on decks that they have created without causing a refresh/redirect.
     * `POST /api/tags/:tagId`
     * `PUT /api/tags/:tagId`
@@ -33,8 +36,8 @@ This web app uses the following API routes to dynamically update the page.
 
 ### Studying a Deck
 * When studying a card, an authenticated user may view a card, reveal its answer, and mark it as correct or incorrect without causing a refresh.
-    * `GET /api/studying/:cardId`
-    * `POST /api/studying/:cardId`
+    * `GET /api/user-study-card/:id`
+    * `POST /api/user-study-card/:id`
 
 ## Bonus Routes
 

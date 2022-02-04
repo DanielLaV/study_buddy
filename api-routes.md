@@ -32,7 +32,7 @@ This web app uses the following API routes to dynamically update the page.
 
 ### `To Study`
 * An authenticated user may mark or unmark a deck as `To Study` without causing a refresh.
-    * `POST /api/tostudy/:deckId`
+    * `POST /api/user-study-deck/:deckId`
 
 ### Studying a Deck
 * When studying a card, an authenticated user may view a card, reveal its answer, and mark it as correct or incorrect without causing a refresh.

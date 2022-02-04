@@ -1,9 +1,8 @@
 ## `/`
 ### Home page
-If the user has not signed in, this page will display the splash page with login/signup buttons. If the user has signed in, they will be rerouted to their profile page.
+If the user has not signed in, this page will display the splash page unique for unauthenticated users. If the user has signed in, they will be rerouted to their profile page. It also displays the navigation bar with links to navigate through the site.
 * `GET /`
-* `POST /`
-
+* `POST /login`
 
 ## `/decks`
 ### Decks

@@ -172,7 +172,7 @@
 - [ ] When an authenticated user is viewing a deck (`/decks/:deckId/`), they can re-add any deck that they have previously removed from their `Study List`.
 
 
-### Viewing Decks Marked as `Study List`
+### Viewing Decks Added To `Study List`
 * As an authenticated user, when I am viewing a deck (`/decks/:deckId/`) and I have previously added that deck to my `Study List`, I will see that I have previously added the deck to my `Study List`.
 * As an authenticated user, I will see a `Study List` link on the navigation bar.
     * When I click that link, I will be routed to `/user-study-deck/:userId`.

@@ -1,134 +1,186 @@
-# Flask React Project
+# Study Buddy
 
-This is the starter for the Flask React project.
+<a href="google.com">Live Site</a>  |  <a href="https://github.com/DanielLaV/study_buddy/wiki"> Project Wiki</a> | <a href="https://github.com/DanielLaV/study_buddy/issue">Report Bug</a>
 
-## Getting started
+Study Buddy is a website where users can create, study, and share decks of cards for studying computer science topics. This website was designed as a Week 20 project as part of App Academy's 24-week Full Stack Software Engineering Bootcamp.
 
-1. Clone this repository (only this branch)
+## Technologies Used
+[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | [Node.js](https://nodejs.org/en/)  | [Flask](https://flask.palletsprojects.com/en/2.0.x/)   |   [Jinja](https://jinja.palletsprojects.com/en/2.11.x/templates/) |   [SQLAlchemy](https://www.sqlalchemy.org/)   |  [PostgreSQL](https://www.postgresql.org/)
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+## Launching Locally
 
+### Prerequisites
+ - [Node.js 16.13.1](https://nodejs.org/en/)
+
+### Getting Started
+# CHANGE THIS
+
+1. Clone the project repository
+```
+   git clone https://github.com/DanielLaV/study_buddy.git
+```
 2. Install dependencies
+```
+    npm install
+```
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+3.  Create a local .env file modeled after the .env.example file in the root directory
+```
+   PORT=8080
+   DB_USERNAME=demo_user
+   DB_PASSWORD=your_unique_password
+   DB_DATABASE=study_buddy
+   DB_HOST=localhost
+   SESSION_SECRET=your_session_secret
+```
+4. Migrate and seed the database
+ ```
+   npx sequelize-cli db:create
+   npx sequelize-cli db:migrate
+   npx sequelize-cli db:seed:all
+```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+5. Run the project with a starting script
+ ```
+    npm start
+ ```
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## Study Buddy In Action
+Full user stories for the initial development phase are available on the [User Stories](https://github.com/DanielLaV/study_buddy/wiki/User-Stories-&-Acceptance-Criteria) section of the project wiki. A feature list for the initial development phase is available on the [Feature List](https://github.com/DanielLaV/study_buddy/wiki/Feature-List) section of the project [wiki](https://github.com/DanielLaV/study_buddy/wiki).
 
-   ```bash
-   pipenv shell
-   ```
+### User Registration and Authentication
+New users can register for an account by entering a unique username, a secure password, and an optional biography.
 
-   ```bash
-   flask db upgrade
-   ```
+## < Add images >
 
-   ```bash
-   flask seed all
-   ```
 
-   ```bash
-   flask run
-   ```
+Existing users can log in to their account by submitting their credentials via the login form.
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+## < Add images >
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+Logged in users can edit their profile biography
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+## < Add images >
 
-## Deploy to Heroku
+Users may log out of their account by clicking the **LOGOUT** button on the site-wide header.
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
+## < Add images >
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+### Creating and Modifying A Deck
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+Logged-in users can create a new deck with a title and a description.
 
-   ```bash
-   heroku login
-   ```
+## < Add images >
 
-6. Login to the heroku container registry
+When a new deck is added, a new card is created for the deck. All users can view the deck information. Logged in users can add a comment, view the deck, or add the deck to their to-study decks. Deck owners can edit or delete their own decks.
 
-   ```bash
-   heroku container:login
-   ```
+## < Add images >
 
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
+When modifying a deck, an "Edit" form will populate with the deck's current information. A user may add, edit, or delete cards, and can edit the deck title and description. If a user would like to delete the card, or discard their changes, they may do so from the edit form.
 
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
+## < Add images >
 
-9. Release your docker container to heroku
 
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
+### Creating and Modifying A Card
 
-10. set up your database
+Users can create cards in a deck.
 
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
+## < Add images >
 
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
+Users can add and remove cards from their deck.
 
-12. profit
+## < Add images >
 
-### For M1 Mac users
+Users can edit and delete their cards.
 
-(Replaces **Step 8**)
+## < Add images >
 
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
+## < Add images >
 
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
 
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
+### Adding and Removing Decks From Their To-Study Collection
 
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+Users can mark any deck as to-be-studied and it will be added to their to-study collection.  
 
-3. Use docker to push the image to the Heroku container registry:
+Users can remove any deck from their to-study collection.  
 
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+
+
+### Search By Tags
+
+Each deck will have its tags visible. Users can click on the tags to do a search of all decks with that tag.  
+
+## < Add images >
+
+Users can search for a specific tag using the search bar.
+
+## < Add images >
+
+## Technical Implementation
+### Database Design
+The full database schema is available to view [on dbdiagram.io](https://dbdiagram.io/d/61f9be7485022f4ee524eb6f), or as a [list of tables on the Database Schema page](https://github.com/DanielLaV/study_buddy/wiki/Database-Schema) of the wiki.
+
+
+
+### Frontend Routes
+# COME BACK AND FIX LINKS
+All frontend routes are covered in detail on the [Fronted Routes section of our project wiki](https://github.com/DanielLaV/study_buddy/wiki/Frontend-Routes). Frontend routes were designed to enable users access to basic functionality such as registration, authentication, viewing decks, accessing cards, searching by tags, and viewing their profile page where users can manage their decks.
+
+### API Routes
+# COME BACK AND FIX LINKS
+All frontend routes are covered in detail on the [API Routes section of our project wiki](https://github.com/DanielLaV/study_buddy/wiki/API-Documentation). API routes were designed for users to interact with a page without being redirected.
+   </br>
+
+### Developmental Challenges
+
+# FILL ME IN
+
+
+
+````
+  ADD CODE LIKE THIS
+````
+
+
+
+````
+  ADD CODE HERE
+````
+   </br>
+
+
+
+### Improved User Experience
+
+#### **Site-wide Responsiveness**
+
+ - The website is currently functional on all screen sizes, but is
+   styled for screens greater than 900 px in width. New smaller-scale
+   layouts will be implemented so that the user experience on mobile or
+   tablet devices is comparable to the desktop user experience.
+   </br>
+### Improved Maintainability
+
+#### **Normalization of Tag Names**
+
+ - Currently, all tags are stored as rows on a database. If a
+   user types in a new tag for a deck that is not already in
+   the database, a new tag is created. However, the addition of
+   new tags does not currently account for spelling or
+   capitalization variations. For example, JavaScript, Javascript, and JS
+   would all be stored in the database as separate tags. In order
+   to support future functionality, tag names may undergo a
+   pattern-matching normalization process or third-party name API
+   validation to prevent duplicate entries within our database.
+   </br>
+
+### New Features
+
+# ADD NEW FEATURES OR delete
+
+## Contributors
+**Kreston Caldwell-McMurrin** | <a href='https://github.com/krestn'>Github</a></br> | <a href='https://www.linkedin.com/in/krestoncaldwell/'>LinkedIn</a></br>
+**Denise Li** | <a href='https://github.com/cat-friend'>Github</a> | <a href='https://www.linkedin.com/in/denise-li-45350320/'>LinkedIn</a></br>
+**Sophia Bui** | <a href='https://github.com/sophiebui'>Github</a> | <a href='https://www.linkedin.com/in/sophia-bui/'>LinkedIn</a></br>
+**Daniel LaVergne** | <a href='https://github.com/DanielLaV'>Github</a> | <a href='https://www.linkedin.com/in/daniel-lavergne-137772206/'>LinkedIn</a>

@@ -11,9 +11,9 @@ def seed_user_study_cards():
         user_id=2, card_id=3, isCorrect=False)
     marnie_study_card2 = UserStudyCard(
         user_id=2, card_id=4, isCorrect=True)
-    bobbie_study_deck1 = UserStudyCard(
+    bobbie_study_card1 = UserStudyCard(
         user_id=3, card_id=5, isCorrect=True)
-    bobbie_study_deck2 = UserStudyCard(
+    bobbie_study_card2 = UserStudyCard(
         user_id=3, card_id=6, isCorrect=False)
 
 

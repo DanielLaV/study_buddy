@@ -9,7 +9,7 @@ def seed_user_study_decks():
         user_id=1, deck_id=2, toStudy=True)
     marnie_study_deck1 = UserStudyDeck(
         user_id=2, deck_id=3, toStudy=True)
-    marnie_study_decks2 = UserStudyDeck(
+    marnie_study_deck2 = UserStudyDeck(
         user_id=2, deck_id=4, toStudy=True)
     bobbie_study_deck1 = UserStudyDeck(
         user_id=3, deck_id=5, toStudy=True)

@@ -39,10 +39,29 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+          <h1>This is the logged in users profile page</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <ProtectedRoute path='/decks' exact={true} >
+          <h1>This '/decks' page that will display all of the decks</h1>
         </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId' exact={true} >
+          <h1>This is the '/decks/:deckId' page that will display the specifc deck details</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId/:cardId' exact={true} >
+          <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/user-study-deck/:deckId' exact={true} >
+          <h1>This is '/user-study-deck/:deckId' page that will display the user's Study List </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/tags/:tagId' exact={true} >
+          <h1>This is '/tags/:tagId' page that will display the tag search results </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/search-results' exact={true} >
+          <h1>This is '/search-results' page that will display the search results </h1>
+        </ProtectedRoute>
+        <Route>
+            Page Not Found
+        </Route>
       </Switch>
     </BrowserRouter>
   );

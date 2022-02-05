@@ -1,25 +1,25 @@
-from app.models import db, Decks
+from app.models import db, Deck
 
 
 # Adds demo decks, you can add other decks here if you want
 def decks():
-    thunks = Decks(
+    thunks = Deck(
         title='Thunks', description='Taking a look at React thunks', user_id=1)
-    memo = Decks(
+    memo = Deck(
         title='Memoization', description='No one knows what it is', user_id=1)
-    oop = Decks(
+    oop = Deck(
         title='Object Oriented Programming', description='The basics of OOP', user_id=1)
-    react = Decks(
+    react = Deck(
         title='React', description='Proper React Protocol', user_id=2)
-    data_types = Decks(
+    data_types = Deck(
         title='Data Types', description='What data types does JS have?', user_id=2)
-    arrays = Decks(
+    arrays = Deck(
         title='Arrays in JS', description='What is an array?', user_id=2)
-    lists = Decks(
+    lists = Deck(
         title='Lists', description='Why would we change the name of arrays?', user_id=3)
-    sequelize = Decks(
+    sequelize = Deck(
         title='Sequelize', description='The ins and the outs', user_id=3)
-    css = Decks(
+    css = Deck(
         title='Cascading Style Sheets', description='Good luck moving an object', user_id=3)
 
     db.session.add(thunks)

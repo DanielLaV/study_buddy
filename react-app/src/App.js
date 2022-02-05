@@ -39,8 +39,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
           <h1>This is the logged in users profile page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/decks' exact={true} >

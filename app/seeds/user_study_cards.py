@@ -1,31 +1,32 @@
-from app.models import db, UserStudyDeck
+from app.models import db, UserStudyCard
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_user_study_decks():
-    demo_study_deck1 = UserStudyDeck(
-        user_id=1, deck_id=1, toStudy=True)
-    demo_study_deck2 = UserStudyDeck(
-        user_id=1, deck_id=2, toStudy=True)
-    marnie_study_deck1 = UserStudyDeck(
-        user_id=2, deck_id=3, toStudy=True)
-    marnie_study_decks2 = UserStudyDeck(
-        user_id=2, deck_id=4, toStudy=True)
-    bobbie_study_deck1 = UserStudyDeck(
-        user_id=3, deck_id=5, toStudy=True)
-    bobbie_study_deck2 = UserStudyDeck(
-        user_id=3, deck_id=6, toStudy=True)
+def seed_user_study_cards():
+    demo_study_card1 = UserStudyCard(
+        user_id=1, card_id=1, isCorrect=True)
+    demo_study_card2 = UserStudyCard(
+        user_id=1, card_id=2, isCorrect=False)
+    marnie_study_card1 = UserStudyCard(
+        user_id=2, card_id=3, isCorrect=False)
+    marnie_study_card2 = UserStudyCard(
+        user_id=2, card_id=4, isCorrect=True)
+    bobbie_study_deck1 = UserStudyCard(
+        user_id=3, card_id=5, isCorrect=True)
+    bobbie_study_deck2 = UserStudyCard(
+        user_id=3, card_id=6, isCorrect=False)
 
 
 
-    db.session.add(demo_study_deck1)
-    db.session.add(demo_study_deck2)
 
-    db.session.add(marnie_study_deck1)
-    db.session.add(marnie_study_deck2)
+    db.session.add(demo_study_card1)
+    db.session.add(demo_study_card2)
 
-    db.session.add(bobbie_study_deck1)
-    db.session.add(bobbie_study_deck2)
+    db.session.add(marnie_study_card1)
+    db.session.add(marnie_study_card2)
+
+    db.session.add(bobbie_study_card1)
+    db.session.add(bobbie_study_card2)
 
 
     db.session.commit()
@@ -37,5 +38,5 @@ def seed_user_study_decks():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_user_study_decks():
-    db.session.execute('TRUNCATE user_study_decks RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE user_study_cards RESTART IDENTITY CASCADE;')
     db.session.commit()

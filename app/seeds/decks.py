@@ -2,7 +2,7 @@ from app.models import db, Deck
 
 
 # Adds demo decks, you can add other decks here if you want
-def decks():
+def seed_decks():
     thunks = Deck(
         title='Thunks', description='Taking a look at React thunks', user_id=1)
     memo = Deck(

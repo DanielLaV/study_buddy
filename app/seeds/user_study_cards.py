@@ -37,6 +37,6 @@ def seed_user_study_cards():
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
-def undo_user_study_decks():
+def undo_user_study_cards():
     db.session.execute('TRUNCATE user_study_cards RESTART IDENTITY CASCADE;')
     db.session.commit()

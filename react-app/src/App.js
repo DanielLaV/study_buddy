@@ -5,6 +5,7 @@ import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import DecksPage from './components/DecksPage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
           <h1>This is the logged in users profile page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/decks' exact={true} >
-          <h1>This '/decks' page that will display all of the decks</h1>
+          <DecksPage />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId' exact={true} >
           <h1>This is the '/decks/:deckId' page that will display the specifc deck details</h1>

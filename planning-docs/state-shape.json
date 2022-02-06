@@ -8,6 +8,22 @@
          bio: "I am a barry"
       },
    },
+   decks: {
+      1: {
+        id: 1,
+        title: "Redux State",
+        description: "California",
+        user_id: 1,
+        tags: ["Jokes", "Redux"]
+      },
+      2: {
+         id: 2,
+         title: "Python Comprehensions",
+         description: "Lists, Sets, Dictionary, Generator",
+         user_id: 1,
+         tags: ["Python", "Sets"]
+      },
+   },
    decks_created: {
       1: {
          id: 1,

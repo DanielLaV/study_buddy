@@ -1,9 +1,11 @@
-from flask import Blueprint, jsonify, session, request
+from urllib import response
+from flask import Blueprint, jsonify, session, request, make_response
 from app.models import Card, db
 from app.forms import CardForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 card_routes = Blueprint('cards', __name__)
+
 # CUSTOMIZE THESE
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -24,6 +26,17 @@ def main():
     and creates a card. The created card data are returned in JSON format.
     """
     form = CardForm()
+    if form.validate_on_submit():
+        front = form.data['front']
+        back = form.data['back']
+        deck_id = form.data['deck_id']
+        new_card = Card(front=front, back=back, deck_id=deck_id)
+        db.session.add(new_card)
+        db.session.commit()
+        return new_card
+    if form.errors:
+        return form.errors
+
     return "you are in /api/cards!"
 
 @card_routes.route('/<int:id>', methods=['GET', 'PUT', 'POST'])
@@ -37,12 +50,18 @@ def one_card(id):
     one_card = Card.query.get(id)
     form = CardForm()
     if form.validate_on_submit():
+        data = request.get_json()
+        deck_id = data["deck_id"]
         front = form.data['front']
         back = form.data['back']
-    data = request.get_json()
-    print("data", data)
-    print("card", one_card)
-    return "you are in /api/cards/<int:id>!"
+        one_card.front = front
+        one_card.back = back
+        one_card.deck_id = deck_id
+        db.session.add(one_card)
+        db.session.commit()
+    if form.errors:
+        return form.errors
+    return one_card
 
 @card_routes('/<int:id>', methods=['DELETE'])
 def delete_card(id):
@@ -52,3 +71,11 @@ def delete_card(id):
     Return response status 404 if the card wasn't found.
     """
     # use try... except block
+    try:
+        one_card = Card.query.get(id)
+        db.session.delete(one_card)
+        db.session.commit()
+        return # reponse.status is ok, etc
+    except:
+        response = make_response(404, error="Card not found!")
+        return response

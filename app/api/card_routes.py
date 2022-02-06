@@ -22,10 +22,12 @@ def validation_errors_to_error_messages(validation_errors):
 def main():
     """
     For 'GET' requests, this function returns all cards.
-    For 'PUT' requests, this function validates the incoming data from the frontend
+    For 'POST' requests, this function validates the incoming data from the frontend
     and creates a card. The created card data are returned in JSON format.
     """
     form = CardForm()
+    data = request.get_json()
+    deck_id = data["deck_id"]
     if form.validate_on_submit():
         front = form.data['front']
         back = form.data['back']

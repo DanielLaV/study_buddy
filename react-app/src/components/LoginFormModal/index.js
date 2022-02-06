@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import LoginForm from '../auth/LoginForm';
+import LoginForm from './LoginForm';
 import { login } from '../../store/session';
 import { useDispatch } from 'react-redux';
 import './LoginForm.css';
@@ -17,11 +17,11 @@ function LoginFormModal() {
   }
 
   return (
-    <>
+      <>
       <button className='loginButton' onClick={demoLogin}>Demo User</button>
       <button className='loginButton' onClick={() => setShowModal(true)}>Log In</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+          <Modal onClose={() => setShowModal(false)}>
           <LoginForm />
         </Modal>
       )}

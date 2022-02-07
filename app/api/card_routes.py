@@ -63,9 +63,9 @@ def one_card(id):
         db.session.commit()
     if form.errors:
         return form.errors
-    return one_card
+    return {"card": [one_card.to_dict() for card in one_card]}
 
-@card_routes('/<int:id>', methods=['DELETE'])
+@card_routes.route('/<int:id>', methods=['DELETE'])
 def delete_card(id):
     """
     Retrieves a card with id of `:id` then deletes it from the database.

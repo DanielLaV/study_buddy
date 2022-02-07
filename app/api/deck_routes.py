@@ -7,8 +7,9 @@ from flask_login import current_user, login_user, logout_user, login_required
 deck_routes = Blueprint('decks', __name__)
 
 @deck_routes.route('/', methods=['GET'])
-def main():
+def getDecks():
     """
-    insert function description
+    returns all decks for the decks page
     """
-    return "you are in /api/decks!"
+    decks = Deck.query.all()
+    return {"decks": [deck.to_dict() for deck in decks]}

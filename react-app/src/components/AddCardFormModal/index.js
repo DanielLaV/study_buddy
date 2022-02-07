@@ -5,7 +5,6 @@ import AddCardForm from './AddCardForm';
 
 function AddCardFormModal() {
   const [showModal, setShowModal] = useState(false);
-  payload = {}
 
   return (
     <>

@@ -8,22 +8,25 @@ deck_routes = Blueprint('decks', __name__)
 
 # ADD ERROR HANDLING
 
-@deck_routes.route('/', methods=['GET', 'POST'])
+@deck_routes.route('/', methods=['POST', 'GET'])
 def main():
     """
     GET requests return all decks
     POST requests create a new deck in the database
     """
     form = DeckForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
 
     if form.validate_on_submit():
-        title = form.data["title"]
-        description = form.data["description"]
-        user_id = form.data["user_id"]
-        new_deck = Deck(title=title, description=description, user_id=user_id)
+        data = request.get_json()
+        # print('Data', data)
+
+        new_deck = Deck(title=data['title'], description=data['description'], user_id=data['user_id'])
+        # print('='*20, 'New Deck is ', new_deck.to_dict())
         db.session.add(new_deck)
         db.session.commit()
-        return new_deck
+        return new_deck.to_dict()
     if form.errors:
         return form.errors
 

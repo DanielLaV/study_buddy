@@ -20,6 +20,7 @@ function AddDeckForm({setShowModal}) {
             description,
             user_id
         }
+        // console.log('newdeck', newDeck)
         dispatch(deckActions.addDeck(newDeck))
         setShowModal(false);
     };

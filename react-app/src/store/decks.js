@@ -22,18 +22,21 @@ export const addNewDeck = (newDeck) => {
 /* ----- SELECTORS / THUNKS ----- */
 export const getDecks = () => async (dispatch) => {
 
-    const res = await fetch('/api/decks');
+    const res = await fetch('/api/decks/');
     const data = await res.json();
     dispatch(loadDecks(data.decks));
     return res;
 }
 
 export const addDeck = (newDeck) => async (dispatch) => {
-    const res = await fetch(`/api/decks`, {
+    // console.log('About to fetch')
+    const res = await fetch('/api/decks/', {
         method: 'POST',
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newDeck)
     })
     const data = await res.json();
+    // console.log("="*20, 'Data is', data)
     dispatch(addNewDeck(data));
     return res;
 }
@@ -51,6 +54,7 @@ const decksReducer = (state = initialState, action) => {
         }
         case ADD_DECK: {
             let newState = Object.assign({}, state);
+            console.log('NEW DECK PAYLOAD', action.payload);
             newState = {
                 ...newState,
                 [action.payload.id]: action.payload

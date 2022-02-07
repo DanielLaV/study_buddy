@@ -63,7 +63,7 @@ def one_card(id):
         db.session.commit()
     if form.errors:
         return form.errors
-    return one_card
+    return {"card": [one_card.to_dict() for card in one_card]}
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
 def delete_card(id):

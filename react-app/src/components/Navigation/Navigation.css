@@ -20,8 +20,8 @@
   width: auto;
   height: 65px;
   margin: 15px;
-  /* border-style: solid; */
-  /* border-color: #27a9e1; */
+  border-style: solid;
+  border-color: #27a9e1;
   /* border-color: grey; */
 
   /* border-color: Black; */
@@ -33,6 +33,8 @@
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
+  cursor: pointer;
+  transform: scale(1.1); 
 }
 
 @keyframes shake {

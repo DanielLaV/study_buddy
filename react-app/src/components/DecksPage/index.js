@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import * as deckActions from "../../store/decks";
 import { useDispatch, useSelector } from 'react-redux';
 import Deck from './Deck.js';
+import AddDeckFormModal from '../AddDeckModal';
 
 function DecksPage() {
     let decks = useSelector(state => state.decks);
@@ -14,6 +15,7 @@ function DecksPage() {
 
     return (
         <div className='decksPage'>
+            <AddDeckFormModal />
             {decks?.decks?.map(deck => <div key={deck.id}> <Deck deck={deck} /> </div>)}
         </div>
     )

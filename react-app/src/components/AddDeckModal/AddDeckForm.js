@@ -1,14 +1,15 @@
 import './AddDeckForm.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import * as deckActions from '../../store/decks';
 import { useDispatch, useSelector } from 'react-redux';
 
-function AddDeckForm() {
+function AddDeckForm({setShowModal}) {
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session.user.id);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
+
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -20,6 +21,7 @@ function AddDeckForm() {
             user_id
         }
         dispatch(deckActions.addDeck(newDeck))
+        setShowModal(false);
     };
 
     return (

@@ -5,7 +5,6 @@ import EditCardForm from './EditCardForm';
 
 function EditCardFormModal() {
   const [showModal, setShowModal] = useState(false);
-  payload = {}
 
   return (
     <>

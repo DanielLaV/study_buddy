@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function AddCardForm({ payload }) {
-  const { setShowModal } = payload
+  const setShowModal = payload
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
   const [errors, setErrors] = useState([]);
-  const deck_id = useSelector(state => state.decks.id)
+  // const deck_id = useSelector(state => state.decks.id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return <h1>hello!</h1>
+    console.log("hihihi")
+    return null
   };
 
   return (
@@ -43,7 +44,8 @@ function AddCardForm({ payload }) {
         />
         <input
           type="hidden"
-          value={deck_id}
+          // value={deck_id}
+          value={1}
         />
         <button
           type="submit"

@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function EditCardForm({ payload }) {
-  const { setShowModal } = payload
+  const setShowModal = payload
+  const currCard = useSelector(state => state.cards);
   const [front, setFront] = useState(currCard.front);
   const [back, setBack] = useState(currCard.back);
   const [errors, setErrors] = useState([]);
   const deck_id = useSelector(state => state.decks.id);
-  const currCard = useSelector(state => state.cards);
 
   const handleSubmit = (e) => {
     e.preventDefault();

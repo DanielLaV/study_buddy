@@ -48,17 +48,16 @@ const initialState = { };
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_DECKS: {
-            let newState = Object.assign({}, state);
-            newState.decks = action.payload;
+            const newState = Object.assign({}, state);
+            action.payload.forEach((deck) => {
+                newState[deck.id] = deck;
+            })
             return newState;
         }
         case ADD_DECK: {
-            let newState = Object.assign({}, state);
+            const newState = Object.assign({}, state);
             console.log('NEW DECK PAYLOAD', action.payload);
-            newState = {
-                ...newState,
-                [action.payload.id]: action.payload
-            };
+            newState[action.payload.id] = action.payload
             return newState;
         }
         default: {

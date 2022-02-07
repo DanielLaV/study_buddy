@@ -65,19 +65,19 @@ def one_card(id):
         return form.errors
     return one_card
 
-# @card_routes('/<int:id>', methods=['DELETE'])
-# def delete_card(id):
-#     """
-#     Retrieves a card with id of `:id` then deletes it from the database.
-#     Returns response status 200 if the card was deleted.
-#     Return response status 404 if the card wasn't found.
-#     """
-#     # use try... except block
-#     try:
-#         one_card = Card.query.get(id)
-#         db.session.delete(one_card)
-#         db.session.commit()
-#         return # reponse.status is ok, etc
-#     except:
-#         response = make_response(404, error="Card not found!")
-#         return response
+@card_routes.route('/<int:id>', methods=['DELETE'])
+def delete_card(id):
+    """
+    Retrieves a card with id of `:id` then deletes it from the database.
+    Returns response status 200 if the card was deleted.
+    Return response status 404 if the card wasn't found.
+    """
+    # use try... except block
+    try:
+        one_card = Card.query.get(id)
+        db.session.delete(one_card)
+        db.session.commit()
+        return # reponse.status is ok, etc
+    except:
+        response = make_response(404, error="Card not found!")
+        return response

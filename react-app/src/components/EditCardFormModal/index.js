@@ -9,7 +9,7 @@ function EditCardFormModal() {
 
   return (
     <>
-      <NavLink onClick={() => setShowModal(true)} to="#" className=''>Add Card</NavLink>
+      <NavLink onClick={() => setShowModal(true)} to="#" className=''>Edit Card</NavLink>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditCardForm payload={setShowModal}/>

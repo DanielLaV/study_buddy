@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function AddCardForm({ payload }) {
-  const { deck_id } = payload
+  const { setShowModal } = payload
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
   const [errors, setErrors] = useState([]);

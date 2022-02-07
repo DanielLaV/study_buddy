@@ -18,10 +18,10 @@ const deleteOneCard = card => ({
     card
 });
 
-const deleteAllDeckCards = cards => ({
-    type: DELETE_DECK_CARDS,
-    cards
-})
+// const deleteAllDeckCards = cards => ({
+//     type: DELETE_DECK_CARDS,
+//     cards
+// });
 
 export const getDeckCards = (deckId) => async (dispatch) => {
     const response = await fetch(`/api/decks/${deckId}/cards/`, {

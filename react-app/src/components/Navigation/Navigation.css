@@ -1,7 +1,8 @@
 .NavigationBar{
-  background-color: grey;
+  background-color: white;
   top: 0px;
-  height: 170px;
+  left: 0%;
+  height: 120px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -17,7 +18,7 @@
 
 #navLogo{
   width: auto;
-  height: 120px;
+  height: 100px;
   margin: 15px;
 }
 

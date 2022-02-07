@@ -7,6 +7,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Splash from './components/Splash/splash';
 import DecksPage from './components/DecksPage';
+import Footer from './components/Footer/footer';
 import { authenticate } from './store/session';
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
             Page Not Found
         </Route>
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }

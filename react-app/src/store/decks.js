@@ -77,11 +77,11 @@ export const deleteDeck = id => async (dispatch) => {
         if (delDeck.ok) {
             const deck = await currDeck.json();
             dispatch(deleteOneDeck(deck));
-            return deck;
+            return;
         }
-        else return delDeck.json()
+        else return delDeck;
     }
-    else return currDeck.json();
+    else return currDeck;
 }
 
 

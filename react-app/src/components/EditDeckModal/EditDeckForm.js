@@ -1,7 +1,7 @@
 import './EditDeckForm.css';
 import { useState } from 'react';
 import * as deckActions from '../../store/decks';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function EditDeckForm({setShowModal, deck}) {
     const dispatch = useDispatch();
@@ -9,17 +9,25 @@ function EditDeckForm({setShowModal, deck}) {
     const [title, setTitle] = useState(deck.title);
     const [description, setDescription] = useState(deck.description);
     const [errors, setErrors] = useState([]);
+    const user_id = useSelector(state => state.session.user.id);
 
 
     const handleSubmit = async e => {
         e.preventDefault();
 
-
         setErrors([]);
-        console.log("Deck is", deck);
-        dispatch(deckActions.editDeck(deck))
+        const newDeck = {
+            id: deck.id,
+            title,
+            description,
+            user_id
+        }
+
+        // console.log("Deck is", newDeck);
+        dispatch(deckActions.editDeck(newDeck))
         setShowModal(false);
     };
+
 
     return (
         <div className="editDeckForm">

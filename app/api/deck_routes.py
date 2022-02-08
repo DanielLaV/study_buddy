@@ -66,6 +66,7 @@ def single_deck(id):
         print(data, title, description, user_id)
         db.session.add(deck)
         db.session.commit()
+
     if form.errors:
         return form.errors
     return deck.to_dict()
@@ -76,11 +77,12 @@ def delete_deck(id):
     """
     DELETE requests delete the deck from the database
     """
+    print('in delete route')
     try:
         deck = Deck.query.get(id)
         db.session.delete(deck)
         db.session.commit()
-        return
+        return 'Deck deleted'
     except:
         res = make_response(404, error="Deck not found!")
         return res

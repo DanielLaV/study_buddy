@@ -50,11 +50,8 @@ def one_card(id):
     one_card = Card.query.get(id)
     if request.method == 'PUT':
         form = CardForm()
-        print("hello01")
         form.data = request.get_json()
-        print("hello012")
         form['csrf_token'].data = request.cookies['csrf_token']
-        print("hello0123")
         if form.validate_on_submit():
             data = request.get_json()
             deck_id = data["deck_id"]

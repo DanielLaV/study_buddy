@@ -79,7 +79,7 @@ export const getOneCard = (id) => async (dispatch) => {
     });
     const card = await response.json();
     if (response.ok) {
-        dispatch(addOneCard(card));
+        dispatch(addOneCard(card.card));
     }
     return card;
 }
@@ -89,23 +89,25 @@ export const editCard = (payload) => async (dispatch) => {
 
     const card = await response.json();
     if (response.ok) {
-        dispatch(addOneCard(card));
+        dispatch(addOneCard(card.card));
     }
     return card;
 }
 
 
 export const deleteCard = (id) => async (dispatch) => {
-    const currCard = await fetch(`/api/cards/${id}`, {
+    const getCurrCard = await fetch(`/api/cards/${id}`, {
         headers: {
             "Content-Type": "application/json"
         }
     });
+    const currCard = getCurrCard.card
     if (currCard.ok) {
         const delCard = await fetch(`/api/cards/${id}`,
             { method: 'DELETE' });
         if (delCard.ok) {
-            const card = await currCard.json();
+            const response = await currCard.json();
+            const card = response.card
             dispatch(deleteOneCard(card));
             return card;
         }

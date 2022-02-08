@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function EditCardForm({ payload }) {
+  // useParams to get the cardId
   const setShowModal = payload
   const dispatch = useDispatch();
   // const currCard = useSelector(state => state.cards);
-  const currCard = {
-    front: "this is the front",
-    back: "this is the back"
-  }
+  const currCard = useSelector(state => state.cards.id);
   const [front, setFront] = useState(currCard.front);
   const [back, setBack] = useState(currCard.back);
   const [errors, setErrors] = useState([]);
@@ -37,7 +35,8 @@ function EditCardForm({ payload }) {
             setShowModal(false);
           }, 1500);
         }, async (response) => {
-          const data = await response.json();
+          console.log("response", response)
+          const data = response;
           if (data && data.errors) setErrors(data.errors);
         }
       );
@@ -48,6 +47,11 @@ function EditCardForm({ payload }) {
       <h2>
         {success}
       </h2>
+      <h2>Preview</h2>
+      <h3>Front:</h3>
+      <div>{front}</div>
+      <h3>Back:</h3>
+      <div>{back}</div>
       <ul className="error-list">
         {errors.map((error, idx) => (
           <li key={idx} className="errors">{error}</li>

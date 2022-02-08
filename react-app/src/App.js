@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import NavBar from './components/Navigation/NavBar';
+import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import StudyList from './components/StudyList'
 import User from './components/User';
+import Splash from './components/Splash';
 import DecksPage from './components/DecksPage';
+import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -28,8 +30,11 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route exact={true} path='/'>
+          <Splash />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -54,9 +59,10 @@ function App() {
           <h1>This is '/search-results' page that will display the search results </h1>
         </ProtectedRoute>
         <Route>
-            Page Not Found
+          Page Not Found
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

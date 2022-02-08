@@ -10,16 +10,15 @@ function LoginFormModal() {
   const dispatch = useDispatch();
 
   const demoLogin = () => {
-    const credential = 'demo@aa.io';
+    const email = 'demo@aa.io';
     const password = 'password';
-    const user = { credential, password };
-    return dispatch(login(user));
+    return dispatch(login(email, password));
   }
 
   return (
       <>
-      <button className='loginButton' onClick={demoLogin}>Demo User</button>
-      <button className='loginButton' onClick={() => setShowModal(true)}>Log In</button>
+      {/* <button className='demoButton' onClick={demoLogin}>Demo User</button> */}
+      <button className='navButton' onClick={() => setShowModal(true)}>Log In</button>
       {showModal && (
           <Modal onClose={() => setShowModal(false)}>
           <LoginForm setShowModal={setShowModal} />

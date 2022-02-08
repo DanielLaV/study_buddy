@@ -2,6 +2,9 @@
 
 export const LOAD_DECKS = 'LOAD_DECKS';
 export const ADD_DECK = 'ADD_DECK';
+export const EDIT_DECK = 'EDIT_DECK';
+export const DELETE_DECK = 'DELETE_DECK';
+
 
 
 /* ----- ACTIONS ----- */
@@ -12,10 +15,17 @@ export const loadDecks = decks => {
     }
 };
 
-export const addNewDeck = (newDeck) => {
+export const addNewDeck = newDeck => {
     return {
         type: ADD_DECK,
         payload: newDeck
+    }
+}
+
+export const deleteOneDeck = deck => {
+    return {
+        type: DELETE_DECK,
+        payload: deck
     }
 }
 
@@ -41,6 +51,39 @@ export const addDeck = (newDeck) => async (dispatch) => {
     return res;
 }
 
+export const editDeck = deck => async (dispatch) => {
+    // console.log('About to fetch')
+    const res = await fetch(`/api/decks/${deck.id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(deck)
+    })
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(addNewDeck(data));
+    }
+    return data;
+}
+
+export const deleteDeck = id => async (dispatch) => {
+    const currDeck = await fetch(`/api/decks/${id}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    if (currDeck.ok) {
+        const delDeck = await fetch(`/api/decks/${id}`,
+            { method: 'DELETE' });
+        if (delDeck.ok) {
+            const deck = await currDeck.json();
+            dispatch(deleteOneDeck(deck));
+            return;
+        }
+        else return delDeck;
+    }
+    else return currDeck;
+}
+
 
 /* ----- REDUCER ------ */
 const initialState = { };
@@ -58,6 +101,11 @@ const decksReducer = (state = initialState, action) => {
             const newState = Object.assign({}, state);
             console.log('NEW DECK PAYLOAD', action.payload);
             newState[action.payload.id] = action.payload
+            return newState;
+        }
+        case DELETE_DECK: {
+            const newState = Object.assign({}, state);
+            delete newState[action.payload.id];
             return newState;
         }
         default: {

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getStudyDecks } from '../../store/decks_studying';
 import './StudyList.css'
+import DeleteModal from '../DeleteFromStudyListModal';
+
 const StudyList = () => {
 	const dispatch = useDispatch();
 	const { userId } = useParams();
@@ -25,6 +27,7 @@ const StudyList = () => {
                 <div className="study-list-deck">
                     <h2>{title}</h2>
                     <p>{description}</p>
+                    <DeleteModal id={id} />
                 </div>
             </li>
 			))}

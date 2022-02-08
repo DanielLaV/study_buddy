@@ -23,11 +23,10 @@
   margin: 15px;
   padding: 10px;
 
-  border-style: solid;
-  border-color: #27a9e1;
-  /* border-color: grey; */
+  /* border-style: solid; */
+  /* border-color: #27a9e1; */
 
-  /* border-color: Black; */
+  border-color: Black;
 
 }
 

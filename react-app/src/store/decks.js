@@ -72,7 +72,7 @@ export const deleteDeck = id => async (dispatch) => {
         }
     });
     if (currDeck.ok) {
-        const delDeck = await fetch(`/api/cards/${id}`,
+        const delDeck = await fetch(`/api/decks/${id}`,
             { method: 'DELETE' });
         if (delDeck.ok) {
             const deck = await currDeck.json();

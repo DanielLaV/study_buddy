@@ -14,13 +14,13 @@ def study_list(user_id):
 
     return {"study_decks": [study_deck.to_dict() for study_deck in study_decks]}
 
-# @userstudydeck_routes.route('<int:deck_id>', methods=['POST'])
-# @login_required
-# def add_to_study_list(deck_id):
-#     """
-#     POST route to add a deck to the users study list
-#     """
-#     return ''
+@userstudydeck_routes.route('<int:user_id>', methods=['POST'])
+@login_required
+def add_to_study_list(user_id):
+    """
+    POST route to add a deck to the users study list
+    """
+    return 
 
 @userstudydeck_routes.route('<int:deck_id>', methods=['DELETE'])
 @login_required

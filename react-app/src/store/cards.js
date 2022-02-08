@@ -82,17 +82,17 @@ export const getOneCard = (id) => async (dispatch) => {
         dispatch(addOneCard(card.card));
     }
     return card;
-}
-export const editCard = (payload) => async (dispatch) => {
-    const response = await fetch(`/api/cards/${payload.cardId}`,
-        { method: 'PUT', body: JSON.stringify(payload) });
+ }
+// export const editImage = (payload) => async (dispatch) => {
+//     const response = await csrfFetch(`/api/images/${payload.imageId}`,
+//         { method: 'PUT', body: JSON.stringify(payload) });
 
-    const card = await response.json();
-    if (response.ok) {
-        dispatch(addOneCard(card.card));
-    }
-    return card;
-}
+//     const image = await response.json();
+//     if (response.ok) {
+//         dispatch(addOneImage(image));
+//     }
+//     return image;
+// }
 
 
 export const deleteCard = (id) => async (dispatch) => {

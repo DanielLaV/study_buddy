@@ -1,4 +1,5 @@
 const LOAD_STUDY_DECKS = 'LOAD_STUDY_DECKS';
+const ADD_STUDY_DECK = 'ADD_STUDY_DECK'
 const DELETE_STUDY_DECK = 'DELETE_STUDY_DECK';
 
 const loadStudyDecks = (studyDecks) => {
@@ -7,6 +8,13 @@ const loadStudyDecks = (studyDecks) => {
 		studyDecks
 	};
 };
+
+const addStudyDeck = (studyDeck) => {
+    return {
+        type: ADD_STUDY_DECK,
+        studyDeck
+    }
+}
 
 const deleteStudyDeck = (studyDeck) => {
 	return {
@@ -30,6 +38,17 @@ export const getStudyDecks = (userId) => async (dispatch) => {
         return response
     }
 };
+
+export const addOneStudyDeck = (userId) = async (dispatch) => {
+    const response = await fetch(`/api/user-study-decks/${userId}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(studyDeck)
+        })
+        const data = await response.json();
+        dispatch(addStudyDeck(data));
+        return response;
+    }
 
 export const removeStudyDeck = (id) => async (dispatch) => {
 	const response = await fetch(`/api/user-study-decks/${id}`, {
@@ -56,6 +75,11 @@ const studyDecksReducer = (state = initialState, action) => {
 			});
 			return newState;
 		}
+        case ADD_STUDY_DECK: {
+            const newState = Object.assign({}, state);
+            newState[action.studyDeck] = action.studyDeck
+            return newState;
+        }
         case DELETE_STUDY_DECK: {
             const newState = Object.assign({}, state);
             delete newState[action.studyDeck];

@@ -12,13 +12,83 @@ const NavBar = () => {
 
   let sessionLinks;
 
-  if (user) {
+  if (user && window.location.pathname === "/") {
     sessionLinks = (
-      <div className="auth_nav_div">
+      <div>
+        <button className='navButton'>Browse Decks</button>
+        <button className='navButton'>Study List</button>
+        <button className='navButton'>Search...</button>
         <LogoutButton />
       </div>
+
     );
-  } else {
+  }
+
+  else if (user && window.location.pathname === "/decks") {
+    sessionLinks = (
+      <div>
+        <button className='navButton'>"Username"</button>
+        <button className='navButton'>Study List</button>
+        <button className='navButton'>Search...</button>
+        <LogoutButton />
+      </div>
+
+    );
+  }
+
+  else if (user && window.location.pathname === "/user-study-deck/:userId") {
+    sessionLinks = (
+      <div>
+        <button className='navButton'>"Username"</button>
+        <button className='navButton'>Browse Decks</button>
+        <button className='navButton'>Search...</button>
+        <LogoutButton />
+      </div>
+
+    );
+  }
+
+  else if (user && window.location.pathname === "/tags/:tagId") {
+    sessionLinks = (
+      <div>
+        <button className='navButton'>"Username"</button>
+        <button className='navButton'>Study List</button>
+        <button className='navButton'>Browse Decks</button>
+        <button className='navButton'>Search...</button>
+        <LogoutButton />
+      </div>
+
+    );
+  }
+
+  else if (user && window.location.pathname === "/decks/:deckId") {
+    sessionLinks = (
+      <div>
+        <button className='navButton'>"Username"</button>
+        <button className='navButton'>Study List</button>
+        <button className='navButton'>Browse Decks</button>
+        <button className='navButton'>Search...</button>
+        <LogoutButton />
+      </div>
+
+    );
+  }
+
+  else if (user && window.location.pathname === "/decks/:deckId/:cardId") {
+    sessionLinks = (
+      <div>
+        <button className='navButton'>"Username"</button>
+        <button className='navButton'>Study List</button>
+        <button className='navButton'>Browse Decks</button>
+        <button className='navButton'>Search...</button>
+        <LogoutButton />
+      </div>
+
+    );
+  }
+
+
+  else {
     sessionLinks = (
       <ul className="unauthNavLinks">
         <li>

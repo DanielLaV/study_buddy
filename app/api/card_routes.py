@@ -1,7 +1,7 @@
 from urllib import response
 from flask import Blueprint, jsonify, session, request, make_response
 from app.models import Card, db
-from app.forms import CardForm
+from app.forms import CardForm, DeleteCardForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 card_routes = Blueprint('cards', __name__)
@@ -27,6 +27,7 @@ def main():
     """
     form = CardForm()
     form.data = request.get_json()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         front = form.data['front']
         back = form.data['back']
@@ -34,12 +35,11 @@ def main():
         new_card = Card(front=front, back=back, deck_id=deck_id)
         db.session.add(new_card)
         db.session.commit()
-        return new_card
     if form.errors:
-        return form.errors
-    return "you are in /api/cards!"
+        return form.error
+    return {"card": [card.to_dict() for card in one_card]}
 
-@card_routes.route('/<int:id>', methods=['GET', 'PUT', 'POST'])
+@card_routes.route('/<int:id>', methods=['GET', 'PUT'])
 def one_card(id):
     """
     Retrieves a card with id of `:id`. For 'GET' requests, this function returns the card.
@@ -48,21 +48,26 @@ def one_card(id):
     data are returned in JSON format.
     """
     one_card = Card.query.get(id)
-    form = CardForm()
-    form.data = request.get_json()
-    if form.validate_on_submit():
-        data = request.get_json()
-        deck_id = data["deck_id"]
-        front = form.data['front']
-        back = form.data['back']
-        one_card.front = front
-        one_card.back = back
-        one_card.deck_id = deck_id
-        db.session.add(one_card)
-        db.session.commit()
-    if form.errors:
-        return form.errors
-    return {"card": [one_card.to_dict() for card in one_card]}
+    if request.method == 'PUT':
+        form = CardForm()
+        print("hello01")
+        form.data = request.get_json()
+        print("hello012")
+        form['csrf_token'].data = request.cookies['csrf_token']
+        print("hello0123")
+        if form.validate_on_submit():
+            data = request.get_json()
+            deck_id = data["deck_id"]
+            front = form.data['front']
+            back = form.data['back']
+            one_card.front = front
+            one_card.back = back
+            one_card.deck_id = deck_id
+            db.session.add(one_card)
+            db.session.commit()
+        if form.errors:
+            return form.errors
+    return {"card": one_card.to_dict()}
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
 def delete_card(id):
@@ -71,12 +76,16 @@ def delete_card(id):
     Returns response status 200 if the card was deleted.
     Return response status 404 if the card wasn't found.
     """
-    # use try... except block
-    try:
-        one_card = Card.query.get(id)
-        db.session.delete(one_card)
-        db.session.commit()
-        return # reponse.status is ok, etc
-    except:
-        response = make_response(404, error="Card not found!")
-        return response
+    form = DeleteCardForm()
+    form.data = request.get_json()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        try:
+            one_card = Card.query.get(id)
+            db.session.delete(one_card)
+            db.session.commit()
+            return make_response(200, )
+        except:
+            response = make_response(404, error="Card not found!")
+            return response
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -19,10 +19,10 @@ const UserSnacks = () => {
 
 	return (
 		<div>
-			<h1>Made it</h1>
+			<h1 className='study-list-title'>Study List</h1>
             {studyDeckArr.map(({ id, title, description }) => (
-            <li key={id} className="study_decks_list">
-                <div>
+            <li key={id} className="study-list-container">
+                <div className="study-list-deck">
                     <h2>{title}</h2>
                     <p>{description}</p>
                 </div>

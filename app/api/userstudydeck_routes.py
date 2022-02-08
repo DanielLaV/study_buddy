@@ -1,6 +1,7 @@
 from flask import Blueprint
-from app.models import UserStudyDeck, Deck
+from app.models import UserStudyDeck, Deck, db
 from flask_login import login_required
+from sqlalchemy.orm import sessionmaker
 
 userstudydeck_routes = Blueprint('user-study-decks', __name__)
 
@@ -10,9 +11,6 @@ def study_list(userId):
     """
     return all of the user's decks in study list
     """
-    study_decks = Deck.query.join(UserStudyDeck, Deck.id==UserStudyDeck.deck_id)\
-        .add_columns(Deck.id,  UserStudyDeck.deck_id, UserStudyDeck.user_id)\
-        .filter(Deck.id == UserStudyDeck.deck_id)\
-        .filter(UserStudyDeck.user_id == userId).all()
+    study_decks = UserStudyDeck.query.filter(UserStudyDeck.user_id == userId).join(Deck).all()
 
-    return {"study_decks": [study_deck[0].to_dict() for study_deck in study_decks]}
+    return {"study_decks": [study_deck.to_dict() for study_deck in study_decks]}

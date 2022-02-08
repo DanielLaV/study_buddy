@@ -26,8 +26,7 @@ def main():
     and creates a card. The created card data are returned in JSON format.
     """
     form = CardForm()
-    data = request.get_json()
-    deck_id = data["deck_id"]
+    form.data = request.get_json()
     if form.validate_on_submit():
         front = form.data['front']
         back = form.data['back']
@@ -38,7 +37,6 @@ def main():
         return new_card
     if form.errors:
         return form.errors
-
     return "you are in /api/cards!"
 
 @card_routes.route('/<int:id>', methods=['GET', 'PUT', 'POST'])
@@ -51,6 +49,7 @@ def one_card(id):
     """
     one_card = Card.query.get(id)
     form = CardForm()
+    form.data = request.get_json()
     if form.validate_on_submit():
         data = request.get_json()
         deck_id = data["deck_id"]
@@ -63,7 +62,7 @@ def one_card(id):
         db.session.commit()
     if form.errors:
         return form.errors
-    return one_card
+    return {"card": [one_card.to_dict() for card in one_card]}
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
 def delete_card(id):

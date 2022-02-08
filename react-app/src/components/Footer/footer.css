@@ -14,7 +14,6 @@ footer {
   background-color: white;
   position: fixed;
   font-family: Arial, Helvetica, sans-serif;
-  color: grey;
   bottom: 0px;
   left: 0px;
   width: 100%;
@@ -69,11 +68,14 @@ footer {
   font-size: 12px;
   margin-right: 3px;
   text-decoration: none;
+  color: darkslategray;
+
+  
+}
+#footer_names:visited{
+  color: darkslategray;
 }
 
-#footer_names:visited{
-  color:inherit;
-}
 
 #footer_names:hover{
   cursor: pointer;

@@ -25,7 +25,6 @@ const studyDecksReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOAD_STUDY_DECKS: {
 			const newState = Object.assign({}, state);
-            console.log(action.payload.study_decks)
 			action.payload.study_decks.forEach((studyDeck) => {
 				newState[studyDeck.id] = studyDeck.decks
 			});

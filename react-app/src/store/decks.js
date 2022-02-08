@@ -21,9 +21,9 @@ export const addNewDeck = newDeck => {
     }
 }
 
-export const editADeck = deck => {
+export const deleteDeck = deck => {
     return {
-        type: EDIT_DECK,
+        type: DELETE_DECK,
         payload: deck
     }
 }
@@ -52,15 +52,35 @@ export const addDeck = (newDeck) => async (dispatch) => {
 
 export const editDeck = deck => async (dispatch) => {
     // console.log('About to fetch')
-    const res = await fetch('/api/decks/', {
+    const res = await fetch(`/api/decks/${deck.id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(deck)
     })
     const data = await res.json();
-    // console.log("="*20, 'Data is', data)
-    dispatch(editADeck(data));
-    return res;
+    if (res.ok) {
+        dispatch(addNewDeck(data));
+    }
+    return data;
+}
+
+export const deleteDeck = id => async (dispatch) => {
+    const currDeck = await fetch(`/api/decks/${id}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    if (currDeck.ok) {
+        const delDeck = await fetch(`/api/cards/${id}`,
+            { method: 'DELETE' });
+        if (delDeck.ok) {
+            const deck = await currDeck.json();
+            dispatch(deleteDeck(deck));
+            return deck;
+        }
+        else return delDeck.json()
+    }
+    else return currDeck.json();
 }
 
 
@@ -82,9 +102,9 @@ const decksReducer = (state = initialState, action) => {
             newState[action.payload.id] = action.payload
             return newState;
         }
-        case EDIT_DECK: {
+        case DELETE_DECK: {
             const newState = Object.assign({}, state);
-            newState[action.payload.id] = action.payload;
+            delete newState[action.payload.id];
             return newState;
         }
         default: {

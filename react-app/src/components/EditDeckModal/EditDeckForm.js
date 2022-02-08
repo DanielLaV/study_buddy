@@ -3,11 +3,11 @@ import { useState } from 'react';
 import * as deckActions from '../../store/decks';
 import { useDispatch, useSelector } from 'react-redux';
 
-function EditDeckForm({setShowModal}) {
+function EditDeckForm({setShowModal, deck}) {
     const dispatch = useDispatch();
-    const user_id = useSelector(state => state.session.user.id);
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    // const user_id = useSelector(state => state.session.user.id);
+    const [title, setTitle] = useState(deck.title);
+    const [description, setDescription] = useState(deck.description);
     const [errors, setErrors] = useState([]);
 
 
@@ -15,18 +15,12 @@ function EditDeckForm({setShowModal}) {
         e.preventDefault();
         setErrors([]);
 
-        const newDeck = {
-            title,
-            description,
-            user_id
-        }
-        // console.log('newdeck', newDeck)
-        dispatch(deckActions.addDeck(newDeck))
+        dispatch(deckActions.editDeck(deck))
         setShowModal(false);
     };
 
     return (
-        <div className="addDeckForm">
+        <div className="editDeckForm">
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -40,7 +34,6 @@ function EditDeckForm({setShowModal}) {
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                         required
-                        placeholder='Title'
                     />
                 </label>
                 <label className='description'>
@@ -49,13 +42,12 @@ function EditDeckForm({setShowModal}) {
                         type='text'
                         value={description}
                         onChange={e => setDescription(e.target.value)}
-                        placeholder='Description'
                     />
                 </label>
-                <button className='addDeckSubmit'>Add New Deck</button>
+                <button className='addDeckSubmit'>Submit</button>
             </form>
         </div>
     )
 }
 
-export default AddDeckForm;
+export default EditDeckForm;

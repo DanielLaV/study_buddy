@@ -30,3 +30,11 @@ def main():
 
     decks = Deck.query.all()
     return {"decks": [deck.to_dict() for deck in decks]}
+
+
+@deck_routes.route('/', methods=['PUT'])
+def putDeck():
+    """
+    PUT requests edit the deck
+    """
+    form = DeckForm()

@@ -8,6 +8,7 @@ import './EditDeckForm.css';
 function EditDeckFormModal() {
     const [showModal, setShowModal] = useState(false);
 
+// Need to pass the current deck into the EditDeckForm
     return (
         <>
             <button className='editDeckButton' onClick={() => setShowModal(true)}>Edit Deck</button>

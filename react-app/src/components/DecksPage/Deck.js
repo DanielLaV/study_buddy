@@ -7,16 +7,17 @@ function Deck({ deck }) {
 
     const user = useSelector(state => state.session.user.id)
     const isOwner = user === deck.user_id;
-    // console.log(user, deck.user_id, isOwner);
+
 
     return (
         <div className="singleDeck">
             <h2 className='deckTitle'>{deck.title}</h2>
             <p className='deckDesc'>{deck.description}</p>
-            {isOwner && <div className='editDeleteButtons'>
-                <EditDeckFormModal deck={deck} />
-                <DeleteDeckFormModal deck={deck} />
-            </div>}
+            {isOwner &&
+                <div className='editDeleteButtons'>
+                    <EditDeckFormModal deck={deck} />
+                    <DeleteDeckFormModal deck={deck} />
+                </div>}
         </div>
     )
 }

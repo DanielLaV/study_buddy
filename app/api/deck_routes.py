@@ -54,6 +54,7 @@ def single_deck(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        print("="*20, "in the edit backend")
         data = request.get_json()
         title = form.data["title"]
         description = form.data["description"]
@@ -61,11 +62,13 @@ def single_deck(id):
         deck.title = title
         deck.description = description
         deck.user_id = user_id
+        print('DECK IS ', deck.to_dict())
+        print(data, title, description, user_id)
         db.session.add(deck)
         db.session.commit()
     if form.errors:
         return form.errors
-    return deck
+    return deck.to_dict()
 
 
 @deck_routes.route('/<int:id>', methods=['DELETE'])

@@ -1,7 +1,7 @@
 import './EditDeckForm.css';
 import { useState } from 'react';
 import * as deckActions from '../../store/decks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function EditDeckForm({setShowModal, deck}) {
     const dispatch = useDispatch();
@@ -13,8 +13,10 @@ function EditDeckForm({setShowModal, deck}) {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        setErrors([]);
 
+
+        setErrors([]);
+        console.log("Deck is", deck);
         dispatch(deckActions.editDeck(deck))
         setShowModal(false);
     };
@@ -41,7 +43,7 @@ function EditDeckForm({setShowModal, deck}) {
                     <input
                         type='text'
                         value={description}
-                        onChange={e => setDescription(e.target.value)}
+                        onChange={e => {setDescription(e.target.value); console.log(description)}}
                     />
                 </label>
                 <button className='addDeckSubmit'>Submit</button>

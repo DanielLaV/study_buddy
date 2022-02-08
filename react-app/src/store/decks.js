@@ -3,6 +3,7 @@
 export const LOAD_DECKS = 'LOAD_DECKS';
 export const ADD_DECK = 'ADD_DECK';
 export const EDIT_DECK = 'EDIT_DECK';
+export const DELETE_DECK = 'DELETE_DECK';
 
 
 
@@ -21,7 +22,7 @@ export const addNewDeck = newDeck => {
     }
 }
 
-export const deleteDeck = deck => {
+export const deleteOneDeck = deck => {
     return {
         type: DELETE_DECK,
         payload: deck
@@ -75,7 +76,7 @@ export const deleteDeck = id => async (dispatch) => {
             { method: 'DELETE' });
         if (delDeck.ok) {
             const deck = await currDeck.json();
-            dispatch(deleteDeck(deck));
+            dispatch(deleteOneDeck(deck));
             return deck;
         }
         else return delDeck.json()

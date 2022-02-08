@@ -18,9 +18,11 @@ class UserStudyDeck(db.Model, UserMixin):
             'id': self.id,
             'user_id': self.user_id,
             'deck_id': self.deck_id,
-            'toStudy': self.toStudy
+            'toStudy': self.toStudy,
+            'decks': self.deck.to_dict()
         }
 
 
     user = db.relationship("User", back_populates="user_study_deck")
     deck = db.relationship("Deck", back_populates="user_study_deck")
+

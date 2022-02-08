@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+import StudyList from './components/StudyList'
 import User from './components/User';
 import Splash from './components/Splash';
 import DecksPage from './components/DecksPage';
@@ -48,14 +49,16 @@ function App() {
         <ProtectedRoute path='/decks/:deckId/:cardId' exact={true} >
           <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/user-study-deck/:deckId' exact={true} >
-          <h1>This is '/user-study-deck/:deckId' page that will display the user's Study List </h1>
+        <ProtectedRoute path='/user-study-decks/:userId' exact={true} >
+          <StudyList />
         </ProtectedRoute>
         <ProtectedRoute path='/tags/:tagId' exact={true} >
           <h1>This is '/tags/:tagId' page that will display the tag search results </h1>
         </ProtectedRoute>
         <ProtectedRoute path='/search-results' exact={true} >
           <h1>This is '/search-results' page that will display the search results </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/test' exact={true} >
         </ProtectedRoute>
         <Route>
           Page Not Found

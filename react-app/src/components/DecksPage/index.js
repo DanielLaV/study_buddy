@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import * as deckActions from "../../store/decks";
 import { useDispatch, useSelector } from 'react-redux';
 import Deck from './Deck.js';
+import AddDeckFormModal from '../AddDeckModal';
 
 function DecksPage() {
-    let decks = useSelector(state => state.decks);
+    const decks = useSelector(state => Object.values(state.decks));
     const dispatch = useDispatch();
+    // console.log('DECKS', decks.decks)
 
     useEffect(() => {
         dispatch(deckActions.getDecks());
@@ -14,7 +16,8 @@ function DecksPage() {
 
     return (
         <div className='decksPage'>
-            {decks?.decks?.map(deck => <div key={deck.id}> <Deck deck={deck} /> </div>)}
+            <AddDeckFormModal />
+            {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} /> </div>)}
         </div>
     )
 }

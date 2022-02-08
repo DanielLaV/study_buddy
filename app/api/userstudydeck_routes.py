@@ -1,7 +1,7 @@
-from flask import Blueprint
-from app.models import UserStudyDeck, Deck, db
-from flask_login import login_required
-from sqlalchemy.orm import sessionmaker
+from flask import Blueprint, jsonify, session, request
+from app.models import UserStudyDeck, db
+from app.forms import LoginForm, SignUpForm
+from flask_login import current_user, login_user, logout_user, login_required
 
 userstudydeck_routes = Blueprint('user-study-decks', __name__)
 

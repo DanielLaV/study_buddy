@@ -1,0 +1,87 @@
+.splashBackgroundImage{
+  position:fixed;
+  z-index: -1000;
+  height:100vh;
+  width: 100vw;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  filter: grayscale(1);
+
+}
+
+.splashBackgroundBlack{
+  position:fixed;
+  background-color: black;
+  z-index: -1000;
+  height:100vh;
+  width: 100vw;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+
+}
+
+.splashBackgroundContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: 100vh;
+  }
+
+  .logoFont{
+    height: 20vh;
+    margin-top: 30vh;
+  }
+/* 
+  .logoFont:hover{
+    transform: scale(1.1); 
+    cursor: pointer;
+  } */
+
+  .overlay{
+    background: rgba(0, 0, 0, 0.75);
+    position:fixed;
+    z-index: -900;
+    height:100vh;
+    width: 100vw;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+  }
+
+  .splashSlogan{
+    color: white;
+    height:100vh;
+    width: 100vw;
+    position: absolute;
+    top: 60vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+
+  .demoButton{
+
+    position: absolute;
+    top: 70vh;
+    font-size: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* background-color: black;
+    color: white; */
+    /* font-weight: bold; */
+  }
+
+  .demoButton:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+
+  }
+
+html, body {margin: 0; height: 100%; overflow: hidden}

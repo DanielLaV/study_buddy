@@ -53,7 +53,6 @@ function App() {
           <h1>This is '/search-results' page that will display the search results </h1>
         </ProtectedRoute>
         <ProtectedRoute path='/test' exact={true} >
-          <Test />
         </ProtectedRoute>
         <Route>
             Page Not Found

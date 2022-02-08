@@ -6,8 +6,8 @@ function DeleteCardForm({ payload }) {
     const setShowModal = payload;
     const currCard = useSelector(state => state.cards);
     const dispatch = useDispatch();
-    const currUserId = useSelector(state => state.session.userId);
-    const currDeckId = useSelector(state => state.decks.userId);
+    const currUserId = useSelector(state => state.session.user.id);
+    const currDeckId = useSelector(state => state.decks.user_id); // need to change this depending on how data is presented in the store
     const deckId = useSelector(state => state.decks.id);
     const [success, setSuccess] = useState("");
     const [errors, setErrors] = useState([]);
@@ -58,6 +58,7 @@ function DeleteCardForm({ payload }) {
             <button type="submit" className="dark-button">Yes</button>
             <button type="button" onClick={(e) => setShowModal(false)} className="light-button">No</button>
         </form>
+        <h2>{success}</h2>
     </>)
 }
 

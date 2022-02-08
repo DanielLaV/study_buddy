@@ -5,7 +5,6 @@ import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import Test from './components/Test';
 import DecksPage from './components/DecksPage';
 import { authenticate } from './store/session';
 

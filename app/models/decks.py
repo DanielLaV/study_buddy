@@ -17,7 +17,8 @@ class Deck(db.Model, UserMixin):
         return {
             'id': self.id,
             'title': self.title,
-            'description': self.description
+            'description': self.description,
+            'user_id': self.user_id
         }
 
 

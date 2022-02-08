@@ -27,7 +27,7 @@ export const getStudyDecks = (userId) => async (dispatch) => {
 		return data;
 	}
     else {
-        return 'add error handling here'
+        return response
     }
 };
 
@@ -40,6 +40,9 @@ export const removeStudyDeck = (id) => async (dispatch) => {
 		dispatch(deleteStudyDeck(data.id));
 		return null;
 	}
+    else {
+        return response
+    }
 };
 
 const initialState = {};

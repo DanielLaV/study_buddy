@@ -26,17 +26,18 @@ def main():
     form = DeckForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        data = request.get_json()
-        # print('Data', data)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            data = request.get_json()
+            # print('Data', data)
 
-        new_deck = Deck(title=data['title'], description=data['description'], user_id=data['user_id'])
-        # print('='*20, 'New Deck is ', new_deck.to_dict())
-        db.session.add(new_deck)
-        db.session.commit()
-        return new_deck.to_dict()
-    if form.errors:
-        return form.errors
+            new_deck = Deck(title=data['title'], description=data['description'], user_id=data['user_id'])
+            # print('='*20, 'New Deck is ', new_deck.to_dict())
+            db.session.add(new_deck)
+            db.session.commit()
+            return new_deck.to_dict()
+        if form.errors:
+            return form.errors
 
     decks = Deck.query.all()
     return {"decks": [deck.to_dict() for deck in decks]}

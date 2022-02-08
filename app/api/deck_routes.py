@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Deck, db
-from app.forms import LoginForm
-from app.forms.deck_form import DeckForm
+from app.forms import LoginForm, DeckForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 deck_routes = Blueprint('decks', __name__)
@@ -16,7 +15,6 @@ def main():
     """
     form = DeckForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
 
     if form.validate_on_submit():
         data = request.get_json()

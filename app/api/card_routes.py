@@ -1,7 +1,7 @@
 from urllib import response
 from flask import Blueprint, jsonify, session, request, make_response
 from app.models import Card, db
-from app.forms.card_form import CardForm
+from app.forms import CardForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 card_routes = Blueprint('cards', __name__)

@@ -83,15 +83,15 @@ export const getOneCard = (id) => async (dispatch) => {
     }
     return card;
 }
-export const editImage = (payload) => async (dispatch) => {
-    const response = await csrfFetch(`/api/images/${payload.imageId}`,
+export const editCard = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${payload.cardId}`,
         { method: 'PUT', body: JSON.stringify(payload) });
 
-    const image = await response.json();
+    const card = await response.json();
     if (response.ok) {
-        dispatch(addOneImage(image));
+        dispatch(addOneCard(card));
     }
-    return image;
+    return card;
 }
 
 

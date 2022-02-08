@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function EditCardForm({ payload }) {
   const setShowModal = payload
-  const currCard = useSelector(state => state.cards);
+  const dispatch = useDispatch();
+  // const currCard = useSelector(state => state.cards);
+  const currCard = {
+    front: "this is the front",
+    back: "this is the back"
+  }
   const [front, setFront] = useState(currCard.front);
   const [back, setBack] = useState(currCard.back);
   const [errors, setErrors] = useState([]);
   const deck_id = useSelector(state => state.decks.id);
+  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    dispatch(cardActions.getOneCard(1))
+  }, [dispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,14 +26,15 @@ function EditCardForm({ payload }) {
     const payload = {
       front,
       back,
-      deck_id: 1
+      deck_id: 1,
+      cardId: 1
     }
     return dispatch(cardActions.createCard(payload))
       .then(
         () => {
           setSuccess("Success!");
           setTimeout(() => {
-            setShowModal;
+            setShowModal(false);
           }, 1500);
         }, async (response) => {
           const data = await response.json();
@@ -34,6 +45,9 @@ function EditCardForm({ payload }) {
 
   return (
     <div className="card-form">
+      <h2>
+        {success}
+      </h2>
       <ul className="error-list">
         {errors.map((error, idx) => (
           <li key={idx} className="errors">{error}</li>

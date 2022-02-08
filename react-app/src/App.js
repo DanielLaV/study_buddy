@@ -5,6 +5,7 @@ import NavBar from './components/Navigation/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Test from './components/Test';
 import DecksPage from './components/DecksPage';
 import { authenticate } from './store/session';
 
@@ -51,6 +52,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/search-results' exact={true} >
           <h1>This is '/search-results' page that will display the search results </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/test' exact={true} >
+          <Test />
         </ProtectedRoute>
         <Route>
             Page Not Found

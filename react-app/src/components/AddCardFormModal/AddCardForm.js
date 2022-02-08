@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function AddCardForm({ payload }) {
@@ -12,8 +12,23 @@ function AddCardForm({ payload }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    console.log("hihihi")
-    return null
+    const payload = {
+      front,
+      back,
+      deck_id: 1
+    }
+    return dispatch(cardActions.createCard(payload))
+      .then(
+        () => {
+          setSuccess("Success!");
+          setTimeout(() => {
+            setShowModal;
+          }, 1500);
+        }, async (response) => {
+          const data = await response.json();
+          if (data && data.errors) setErrors(data.errors);
+        }
+      );
   };
 
   return (

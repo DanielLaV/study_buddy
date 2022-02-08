@@ -23,50 +23,7 @@ const deleteOneCard = card => ({
 //     cards
 // });
 
-export const getDeckCards = (deckId) => async (dispatch) => {
-    const response = await fetch(`/api/decks/${deckId}/cards/`, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
-    if (response.ok) {
-        const cards = await response.json();
-        dispatch(load(cards));
-        return cards;
-    }
-}
 
-export const getOneCard = (id) => async (dispatch) => {
-    const response = await fetch(`/api/cards/${id}`, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
-    const card = await response.json();
-    if (response.ok) {
-        dispatch(addOneCard(card));
-    }
-    return card;
-}
-
-export const deleteCard = (id) => async (dispatch) => {
-    const currCard = await fetch(`/api/cards/${id}`, {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    });
-    if (currCard.ok) {
-        const delCard = await fetch(`/api/cards/${id}`,
-            { method: 'DELETE' });
-        if (delCard.ok) {
-            const card = await currCard.json();
-            dispatch(deleteOneCard(card));
-            return card;
-        }
-        else return delCard.json();
-    }
-    else return currCard.json();
-}
 
 // export const deleteDeckCards = (deckId) => async (dispatch) => {
 //     const currCards = await fetch(`api/decks/${deckId}/cards`)
@@ -98,6 +55,63 @@ export const createCard = (payload) => async (dispatch) => {
         dispatch(addOneCard(card));
     }
     return card
+}
+
+
+export const getDeckCards = (deckId) => async (dispatch) => {
+    const response = await fetch(`/api/decks/${deckId}/cards/`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    if (response.ok) {
+        const cards = await response.json();
+        dispatch(load(cards));
+        return cards;
+    }
+}
+
+export const getOneCard = (id) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${id}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    const card = await response.json();
+    if (response.ok) {
+        dispatch(addOneCard(card));
+    }
+    return card;
+}
+export const editImage = (payload) => async (dispatch) => {
+    const response = await csrfFetch(`/api/images/${payload.imageId}`,
+        { method: 'PUT', body: JSON.stringify(payload) });
+
+    const image = await response.json();
+    if (response.ok) {
+        dispatch(addOneImage(image));
+    }
+    return image;
+}
+
+
+export const deleteCard = (id) => async (dispatch) => {
+    const currCard = await fetch(`/api/cards/${id}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    if (currCard.ok) {
+        const delCard = await fetch(`/api/cards/${id}`,
+            { method: 'DELETE' });
+        if (delCard.ok) {
+            const card = await currCard.json();
+            dispatch(deleteOneCard(card));
+            return card;
+        }
+        else return delCard.json();
+    }
+    else return currCard.json();
 }
 
 const cardsReducer = (state = {}, action) => {

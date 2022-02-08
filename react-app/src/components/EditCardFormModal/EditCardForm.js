@@ -13,7 +13,23 @@ function EditCardForm({ payload }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return <h1>hello!</h1>
+    const payload = {
+      front,
+      back,
+      deck_id: 1
+    }
+    return dispatch(cardActions.createCard(payload))
+      .then(
+        () => {
+          setSuccess("Success!");
+          setTimeout(() => {
+            setShowModal;
+          }, 1500);
+        }, async (response) => {
+          const data = await response.json();
+          if (data && data.errors) setErrors(data.errors);
+        }
+      );
   };
 
   return (

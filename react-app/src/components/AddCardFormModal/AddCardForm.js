@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as cardActions from "../../store/cards";
 
 function AddCardForm({ payload }) {
+  const dispatch = useDispatch();
   const setShowModal = payload
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
   const [errors, setErrors] = useState([]);
+  const [success, setSuccess] = useState("");
   // const deck_id = useSelector(state => state.decks.id)
 
   const handleSubmit = (e) => {
@@ -22,7 +24,7 @@ function AddCardForm({ payload }) {
         () => {
           setSuccess("Success!");
           setTimeout(() => {
-            setShowModal;
+            setShowModal(false);
           }, 1500);
         }, async (response) => {
           const data = await response.json();
@@ -59,7 +61,8 @@ function AddCardForm({ payload }) {
         />
         <input
           type="hidden"
-          // value={deck_id}
+          id="deck_id"
+          // value={deck_id} grab from store
           value={1}
         />
         <button

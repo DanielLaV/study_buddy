@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getStudyDecks } from '../../store/decks_studying';
 import './StudyList.css'
-const UserSnacks = () => {
+const StudyList = () => {
 	const dispatch = useDispatch();
 	const { userId } = useParams();
     const studyDecks = useSelector(state => state.studyDecks);
@@ -32,4 +32,4 @@ const UserSnacks = () => {
 	);
 };
 
-export default UserSnacks;
+export default StudyList;

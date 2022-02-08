@@ -17,10 +17,8 @@ li {
     border: 3px solid;
     flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
 }
 
-.deckTitle {
-    display: flex;
-    flex-wrap:wrap;
+.study-deck-title {
+    margin: .60em;
 }

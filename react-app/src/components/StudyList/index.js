@@ -25,7 +25,7 @@ const StudyList = () => {
             {studyDeckArr.map(({ id, title, description }) => (
             <li key={id} className="study-list-container">
                 <div className="study-list-deck">
-                    <h2>{title}</h2>
+                    <h2 className='study-deck-title'>{title}</h2>
                     <p>{description}</p>
                     <DeleteModal id={id} />
                 </div>

@@ -27,9 +27,11 @@ const Splash = () => {
         <div className='overlay'></div>
         <img className="splashBackgroundImage" src={backgroundImage} alt="logo"></img>
         {/* <div className="splashBackgroundBlack"></div> */}
-        <img className='logoFont' src={logoFont} ></img>
-        <h2 className='splashSlogan'>ALWAYS HERE FOR YOU</h2>
-        <button className='demoButton' onClick={demoLogin}>DEMO</button>
+        <div className="splashBackgroundMiddle">
+          <img className='logoFont' src={logoFont} ></img>
+          <h2 className='splashSlogan'>ALWAYS HERE FOR YOU</h2>
+          <button className='demoButton' onClick={demoLogin}>DEMO</button>
+        </div>
 
 
 

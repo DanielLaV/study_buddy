@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import "./HomePage.css"
 import Splash from '../Splash'
 import AddDeckModal from '../AddDeckModal/';
+import MyDecksPage from '../MyDecks';
 
 
 
@@ -25,7 +26,9 @@ function HomePage() {
           <div className="decksTitleContainer">
             <h1 className="myDecksTitle">My Decks</h1>
           </div>
-          <div className='decksDisplay'></div>
+          <div className='decksDisplay'>
+            <MyDecksPage/>
+          </div>
           <div className='addDeckButtonContainer'>
             <AddDeckModal />
           </div>

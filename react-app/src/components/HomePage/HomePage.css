@@ -69,6 +69,11 @@ body{
 
 .addDeckButton{
   height: 50%;
+  z-index: 1000;
+  color: white;
+  background-color: black;
+
+
 }
 
 .decksTitleContainer{
@@ -92,7 +97,10 @@ body{
   border-color: black;
   width: 80%;
   height: 70%;
+  
   display: flex;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
 }
 
 .studyList{

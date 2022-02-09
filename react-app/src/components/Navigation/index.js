@@ -18,7 +18,7 @@ const NavBar = () => {
   if (user && window.location.pathname === "/") {
     sessionLinks = (
       <div className="navLinkContainer">
-        <NavLink to='' className='userLink'> {user.username}</NavLink>
+        {/* <NavLink to='' className='userLink'> {user.username}</NavLink> */}
         <NavLink to='' className='navLink'>Browse Decks</NavLink>
         <NavLink to='' className='navLink'>Study List</NavLink>
         <NavLink to='' className='navLink'>Search...</NavLink>

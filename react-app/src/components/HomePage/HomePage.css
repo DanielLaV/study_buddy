@@ -5,6 +5,9 @@ body{
 .homePageContainer{
   display: flex;
   flex-direction: row;
+  height: 79.5vh;
+
+
   /* justify-content: space-between; */
 
 }
@@ -14,39 +17,104 @@ body{
 }
 
 .userName{
-  margin-left: 5px;
+  /* margin-left: 5px; */
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  margin-left: 15px;
+  font-size: 26px;
+  font-weight: bold;
   color: white;
-  background-color: #27A9E1;
-  border-radius: 9px;
-  padding: 6px;
+  margin-bottom: 0px;
+  /* background-color: #27A9E1; */
+  /* padding: 6px; */
   display: inline-block;
 
 }
 
+
+
+
+
+
 .bio{
   color: white;
   margin-top: 0px;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+
 
 }
 
 .Decks{
   margin: 25px;
+  margin-left: 0px;
   width: 40%;
+  border: solid;
+  border-color: grey;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 
 }
+
+.decksTitleContainer{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    height: 20%;
+    /* margin: 25px; */
+  
+  
+}
 .myDecksTitle{
-  color: white
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.decksDisplay{
+  border: solid;
+  border-color: black;
+  width: 80%;
+  height: 70%;
+  display: flex;
 }
 
 .studyList{
   margin: 25px;
+  margin-left: 0px;
+  background-color: white;
   width: 40%;
+  border: solid;
+  border-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.studyListTitleContainer{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  height: 20%;
+  /* margin: 25px; */
+
 
 }
 
 .myStudyListTitle{
-  color: white;
+  /* color: black;
+  font-family: Arial, Helvetica, sans-serif; */
+}
+
+.studyListDisplay{
+  border: solid;
+  border-color: black;
+  width: 80%;
+  height: 70%;
+  display: flex;
+
+
 }

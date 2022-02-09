@@ -10,7 +10,7 @@ function AddDeckFormModal() {
 
     return (
         <>
-            <button className='addDeckButton' onClick={() => setShowModal(true)}>Add new Deck</button>
+            <button className='addDeckButton' onClick={() => setShowModal(true)}>Add Deck</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <AddDeckForm setShowModal={setShowModal} />

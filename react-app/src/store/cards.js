@@ -5,8 +5,9 @@ const DELETE_DECK_CARDS = 'studybuddy/cards/DELETE_DECK_CARDS'
 
 const load = cards => ({
     type: LOAD,
-    cards
+    cards: cards.cards
 });
+
 
 const addOneCard = card => ({
     type: ADD_CARD,
@@ -59,17 +60,29 @@ export const createCard = (payload) => async (dispatch) => {
 
 
 export const getDeckCards = (deckId) => async (dispatch) => {
+    console.log("get deck cards")
     const response = await fetch(`/api/decks/${deckId}/cards/`, {
-        headers: {
-            "Content-Type": "application/json"
-        }
+        headers: { "Content-Type": "application/json" }
     });
+    console.log("response.ok")
+    const cards = await response.json();
     if (response.ok) {
-        const cards = await response.json();
         dispatch(load(cards));
-        return cards;
     }
+    return cards;
 }
+
+export const getCards = () => async (dispatch) => {
+    console.log("get deck cards")
+    const response = await fetch(`/api/cards`);
+    console.log("response.ok")
+    const cards = await response.json();
+    if (response.ok) {
+        dispatch(load(cards));
+    }
+    return cards;
+}
+
 
 export const getOneCard = (id) => async (dispatch) => {
     const response = await fetch(`/api/cards/${id}`, {

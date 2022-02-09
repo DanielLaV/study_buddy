@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
 import { getStudyDecks } from '../../store/decks_studying';
-import './StudyList.css';
 import Deck from '../DecksPage/Deck';
 
 

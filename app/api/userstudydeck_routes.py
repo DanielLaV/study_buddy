@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response
+from flask import Blueprint, request
 from app.models import UserStudyDeck, Deck, db
 from flask_login import login_required, current_user
 
@@ -23,14 +23,9 @@ def study_list(user_id):
     """
     return all of the user's decks in study list
     """
-    print('this is user_id---------------------------------------------------', user_id)
-    print('this is session.user------------------------------------------------', current_user.id)
     if current_user.id == user_id:
         study_decks = UserStudyDeck.query.filter(UserStudyDeck.user_id == user_id).join(Deck).all()
         return {"study_decks": [study_deck.to_dict() for study_deck in study_decks]}
-    else:
-        return 'not today'
-
 
 @userstudydeck_routes.route('<int:user_id>', methods=['POST'])
 @login_required

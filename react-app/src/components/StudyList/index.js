@@ -18,7 +18,6 @@ const StudyList = () => {
         return studyDecks
     })
 
-	console.log(studyDecks);
 	useEffect(() => {
 		dispatch(getStudyDecks(stateUserId))
     }, [ dispatch, stateUserId ]);

@@ -1,5 +1,5 @@
 import { addOneStudyDeck } from "../../store/decks_studying";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function AddToStudyList({deck_id, user_id}) {
     const dispatch = useDispatch();

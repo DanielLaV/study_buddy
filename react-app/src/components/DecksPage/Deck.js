@@ -2,7 +2,7 @@ import './DecksPage.css'
 import { useSelector } from 'react-redux';
 import EditDeckFormModal from '../EditDeckModal';
 import DeleteDeckFormModal from '../DeleteDeckModal';
-import DeleteModal from '../DeleteFromStudyListModal';
+import DeleteFromSLButton from '../DeleteFromStudyListModal';
 import AddToStudyList from '../AddToStudyList'
 
 function Deck({ deck, studyDecks=[] }) {
@@ -16,7 +16,7 @@ function Deck({ deck, studyDecks=[] }) {
             <p className='deckDesc'>{deck.description}</p>
             {!isStudying &&
             <AddToStudyList deck_id={deck.id} user_id={user}/>}
-            {isStudying && <DeleteModal deck_id={deck.id} user_id={user}/>}
+            {isStudying && <DeleteFromSLButton deck_id={deck.id} user_id={user}/>}
             {isOwner &&
             <div className='editDeleteButtons'>
                 <EditDeckFormModal deck={deck} />

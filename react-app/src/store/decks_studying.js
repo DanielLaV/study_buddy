@@ -65,7 +65,6 @@ export const removeStudyDeck = (deck_id, user_id) => async (dispatch) => {
 
     const data = await response.json();
 	if (response.ok) {
-        console.log('this is data', data)
 		dispatch(deleteStudyDeck(data));
 		return null;
 	}
@@ -90,7 +89,6 @@ const studyDecksReducer = (state = {}, action) => {
         }
         case DELETE_STUDY_DECK: {
             const newState = Object.assign({}, state);
-            console.log(action.studyDecks)
             delete newState[action.studyDeck.id];
             return newState;
         }

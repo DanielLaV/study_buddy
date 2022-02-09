@@ -22,7 +22,7 @@ function DecksPage() {
     useEffect(() => {
         dispatch(deckActions.getDecks());
         dispatch(studyDeckActions.getStudyDecks(userId));
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
     return (
         <div className='decksPage'>

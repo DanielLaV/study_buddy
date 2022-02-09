@@ -37,7 +37,7 @@ def main():
         db.session.commit()
     if form.errors:
         return form.error
-    return {"card": [card.to_dict() for card in one_card]}
+    return {"card": new_card.to_dict()}
 
 @card_routes.route('/<int:id>', methods=['GET', 'PUT'])
 def one_card(id):

@@ -19,7 +19,7 @@ const NavBar = () => {
     sessionLinks = (
       <div className="navLinkContainer">
         {/* <NavLink to='' className='userLink'> {user.username}</NavLink> */}
-        <NavLink to='' className='navLink'>Browse Decks</NavLink>
+        <NavLink to='/decks' className='navLink'>Browse Decks</NavLink>
         <NavLink to='' className='navLink'>Study List</NavLink>
         <NavLink to='' className='navLink'>Search...</NavLink>
         <LogoutButton />
@@ -44,7 +44,7 @@ const NavBar = () => {
     sessionLinks = (
       <div className="navLinkContainer">
         <NavLink to='' className='userLink'>{user.username}</NavLink>
-        <NavLink to='' className='navLink'>Browse Decks</NavLink>
+        <NavLink to='/decks' className='navLink'>Browse Decks</NavLink>
         <NavLink to='' className='navLink'>Search...</NavLink>
         <LogoutButton />
       </div>
@@ -57,7 +57,7 @@ const NavBar = () => {
       <div className="navLinkContainer">
         <NavLink to='' className='userLink'>{user.username}</NavLink>
         <NavLink to='' className='navLink'>Study List</NavLink>
-        <NavLink to='' className='navLink'>Browse Decks</NavLink>
+        <NavLink to='/decks' className='navLink'>Browse Decks</NavLink>
         <NavLink to='' className='navLink'>Search...</NavLink>
         <LogoutButton />
       </div>
@@ -70,7 +70,7 @@ const NavBar = () => {
       <div className="navLinkContainer">
         <NavLink to='' className='userLink'>{user.username}</NavLink>
         <NavLink to='' className='navLink'>Study List</NavLink>
-        <NavLink to='' className='navLink'>Browse Decks</NavLink>
+        <NavLink to='/decks' className='navLink'>Browse Decks</NavLink>
         <NavLink to='' className='navLink'>Search...</NavLink>
         <LogoutButton />
       </div>
@@ -83,7 +83,7 @@ const NavBar = () => {
       <div className="navLinkContainer">
         <NavLink to='' className='userLink'>{user.username}</NavLink>
         <NavLink to='' className='navLink'>Study List</NavLink>
-        <NavLink to='' className='navLink'>Browse Decks</NavLink>
+        <NavLink to='/decks' className='navLink'>Browse Decks</NavLink>
         <NavLink to='' className='navLink'>Search...</NavLink>
         <LogoutButton />
       </div>

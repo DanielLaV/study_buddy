@@ -34,8 +34,8 @@ def one_tag(id):
 
     'DELETE' deletes the tag with pk id. Returns a status of 200.
     """
+    form = DeleteTagForm()
     if request.method == 'DELETE':
-        form = DeleteTagForm()
         form.data = request.get_json()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
@@ -47,9 +47,18 @@ def one_tag(id):
             except:
                 response = make_response(404, error="Tag not found!")
                 return response
+        if form.errors:
+            return form.errors
     if request.method == 'GET':
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
+            print("if conditional)")
             tag = Tag.query.get(id)
             decks_with_tag = Tag.query.filter(Tag.name.ilike(tag.name)).join(Deck).all()
+            print("decks_with_tag", decks_with_tag)
             return {"decks": [deck.to_dict() for deck in decks_with_tag]}
+        if form.errors:
+            return form.errors
+        tag = Tag.query.get(id)
+        print(tag.to_dict())
+        return tag.to_dict()

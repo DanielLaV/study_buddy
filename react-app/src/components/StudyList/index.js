@@ -1,37 +1,39 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { getStudyDecks } from '../../store/decks_studying';
-import './StudyList.css'
-import DeleteModal from '../DeleteFromStudyListModal';
+import './StudyList.css';
+import Deck from '../DecksPage/Deck';
+
 
 const StudyList = () => {
 	const dispatch = useDispatch();
-	const { userId } = useParams();
-    const studyDecks = useSelector(state => state.studyDecks);
-    const studyDeckArr = Object.values(studyDecks)
+    const { userId } = useParams()
+	const stateUserId = useSelector((state) => state.session.user.id);
+	const studyArr = useSelector((state) => Object.values(state.studyDecks));
 
-	useEffect(
-        () => {
-            dispatch(getStudyDecks(userId));
-		},
-		[ dispatch, userId ]
-        );
+    let studyDecks = []
+    studyArr.forEach((studyDeck) => {
+        studyDecks.push(studyDeck.id)
+        return studyDecks
+    })
 
+	useEffect(() => {
+		dispatch(getStudyDecks(stateUserId))
+    }, [ dispatch, stateUserId ]);
 
 	return (
 		<div>
-			<h1 className='study-list-title'>Study List</h1>
-            {studyDeckArr.map(({ id, title, description }) => (
-            <li key={id} className="study-list-container">
-                <div className="study-list-deck">
-                    <h2 className='study-deck-title'>{title}</h2>
-                    <p>{description}</p>
-                    <DeleteModal id={id} />
-                </div>
-            </li>
-			))}
-		</div>
+			<h1 className="study-list-title">Study List</h1>
+            {stateUserId === parseInt(userId) ?
+			studyArr.map((deck) => (
+				<div key={deck.id} className="study-list-deck">
+					<Deck deck={deck} studyDecks={studyDecks} />
+				</div>
+			))
+		 :
+        <Redirect to="/" />}
+        </div>
 	);
 };
 

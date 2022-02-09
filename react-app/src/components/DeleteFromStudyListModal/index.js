@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
-import DeleteForm from './DeleteFromSLForm';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeStudyDeck } from '../../store/decks_studying';
 
-function DeleteModal({id}) {
-  const [showModal, setShowModal] = useState(false);
+function DeleteFromSLButton({deck_id, user_id}) {
+const dispatch = useDispatch();
 
+const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(removeStudyDeck(deck_id, user_id))
+}
   return (
     <>
-      <button className='delete-button' onClick={() => setShowModal(true)}>Remove From Study List</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <DeleteForm id={id} setShowModal={setShowModal} />
-        </Modal>
-      )}
+      <button className='delete-button' onClick={handleSubmit}>Remove</button>
     </>
   );
 }
 
-export default DeleteModal;
+export default DeleteFromSLButton;

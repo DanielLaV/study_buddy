@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -52,13 +52,13 @@ def one_card(id):
     one_card = Card.query.get(id)
     if request.method == 'PUT':
         form = CardForm()
-        data = request.get_json()
-        print("data", data)
         form['csrf_token'].data = request.cookies['csrf_token']
+        print("front", form.data['front'])
 
         if form.validate_on_submit():
-            data = request.get_json()
-            deck_id = data["deck_id"]
+            print("inside form.validaste", form.data['front'])
+            # data = request.get_json()
+            deck_id = form.data["deck_id"]
             front = form.data['front']
             back = form.data['back']
             one_card.front = front
@@ -66,8 +66,9 @@ def one_card(id):
             one_card.deck_id = deck_id
             db.session.add(one_card)
             db.session.commit()
-        if form.errors:
-            return form.errors
+        elif form.errors:
+            print("ERRORS", form.errors)
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return one_card.to_dict()
 
 @card_routes.route('/<int:id>', methods=['DELETE'])

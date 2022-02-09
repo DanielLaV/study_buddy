@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards";
 
-function EditCardForm({setShowModal, card}) {
+function EditCardForm({ setShowModal, card }) {
   const dispatch = useDispatch();
+  const { deckId } = useParams();
   const [front, setFront] = useState(card.front);
   const [back, setBack] = useState(card.back);
   const [errors, setErrors] = useState([]);
-  const deck_id = useSelector(state => state.decks.id);
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
     dispatch(cardActions.getOneCard(card.id))
-  }, [dispatch])
+  }, [dispatch, card.id])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,23 +21,41 @@ function EditCardForm({setShowModal, card}) {
     const payload = {
       front,
       back,
-      deck_id,
+      deck_id: +deckId,
       cardId: card.id
     }
     return dispatch(cardActions.editCard(payload))
       .then(
-        () => {
+        (response) => {
+          if (response.errors) {
+            setErrors(response.errors)
+            return
+          }
           setSuccess("Success!");
           setTimeout(() => {
             setShowModal(false);
           }, 1500);
-        }, async (response) => {
-          console.log("response", response)
-          const data = response;
-          if (data && data.errors) setErrors(data.errors);
         }
       );
   };
+
+  //   return dispatch(cardActions.editCard(payload))
+  //   .then(
+  //     (response) => {
+  //       if (response.errors) {
+  //         setErrors(data.errors)
+  //       }
+  //       setSuccess("Success!");
+  //       setTimeout(() => {
+  //         setShowModal(false);
+  //       }, 1500);
+  //     }, async (response) => {
+  //       console.log("response", response)
+  //       const data = response;
+  //       if (data && data.errors) ;
+  //     }
+  //   );
+  // };
 
   return (
     <div className="card-form">
@@ -71,10 +90,6 @@ function EditCardForm({setShowModal, card}) {
           required
           placeholder="Enter what you want to appear on the back of the card. This would be the answer or response to the prompt on the front of the card."
           className=""
-        />
-        <input
-          type="hidden"
-          value={deck_id}
         />
         <button
           type="submit"

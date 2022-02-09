@@ -95,8 +95,15 @@ export const getOneCard = (id) => async (dispatch) => {
     return card;
 }
 export const editCard = (payload) => async (dispatch) => {
+    console.log("payload", payload)
     const response = await fetch(`/api/cards/${payload.cardId}`,
-        { method: 'PUT', body: JSON.stringify(payload) });
+        {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
 
     const card = await response.json();
     if (response.ok) {
@@ -138,11 +145,8 @@ const cardsReducer = (state = {}, action) => {
         }
         case ADD_CARD: {
             const newCard = { ...state };
-            if (!state[action.card.id]) {
-                newCard[action.card.id] = action.card
-                return { ...newCard }
-            }
-            return newCard;
+            newCard[action.card.id] = action.card
+            return newCard
         }
         case DELETE_CARD: {
             const allCards = { ...state };

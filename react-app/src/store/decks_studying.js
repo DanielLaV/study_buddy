@@ -54,10 +54,14 @@ export const addOneStudyDeck = (deck_id, user_id) => async (dispatch) => {
         return response;
     }
 
-export const removeStudyDeck = (id) => async (dispatch) => {
-	const response = await fetch(`/api/user-study-decks/${id}`, {
-        method: 'DELETE'
+export const removeStudyDeck = (deck_id, user_id) => async (dispatch) => {
+    const studyDeck = {deck_id, user_id}
+	const response = await fetch(`/api/user-study-decks/${user_id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(studyDeck)
 	});
+
     const data = await response.json();
 	if (response.ok) {
 		dispatch(deleteStudyDeck(data.id));

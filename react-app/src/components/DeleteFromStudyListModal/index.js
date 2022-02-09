@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import DeleteForm from './DeleteFromSLForm';
 
-function DeleteModal({id}) {
+function DeleteModal({deck_id, user_id}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ function DeleteModal({id}) {
       <button className='delete-button' onClick={() => setShowModal(true)}>Remove From Study List</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteForm id={id} setShowModal={setShowModal} />
+          <DeleteForm deck_id={deck_id} user_id={user_id} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

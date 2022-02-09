@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { removeStudyDeck } from '../../store/decks_studying';
 import './DeleteFromSLForm.css'
 
-function DeleteForm({id, setShowModal}) {
+function DeleteForm({deck_id, user_id, setShowModal}) {
     const dispatch = useDispatch();
 
-
+    console.log('----------------------',deck_id, user_id)
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(removeStudyDeck(id))
+        dispatch(removeStudyDeck(deck_id, user_id))
         setShowModal(false)
     }
 

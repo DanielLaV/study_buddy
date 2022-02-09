@@ -24,7 +24,7 @@ def study_list(user_id):
     return all of the user's decks in study list
     """
     study_decks = UserStudyDeck.query.filter(UserStudyDeck.user_id == user_id).join(Deck).all()
-
+    print(study_decks)
     return {"study_decks": [study_deck.to_dict() for study_deck in study_decks]}
 
 @userstudydeck_routes.route('<int:user_id>', methods=['POST'])
@@ -47,14 +47,17 @@ def add_to_study_list(user_id):
         return table.to_dict()
     return {'error': 'Relationship already exists'}
 
-@userstudydeck_routes.route('<int:deck_id>', methods=['DELETE'])
+@userstudydeck_routes.route('<int:user_id>', methods=['DELETE'])
 @login_required
-def remove_from_study_list(deck_id):
+def remove_from_study_list(user_id):
     """
     DELETE route to remove a deck from the users study list
     """
-    studyDeck = UserStudyDeck.query.get(deck_id).all()
-    data = studyDeck.to_dict()
-    db.session.delete(studyDeck)
+
+    data = request.get_json()
+    print('------------------data-----------', data)
+    study_deck = UserStudyDeck.query.filter(UserStudyDeck.user_id == data['user_id'], UserStudyDeck.deck_id == data['deck_id']).first()
+    print('----------query----', study_deck)
+    db.session.delete(study_deck)
     db.session.commit()
     return data

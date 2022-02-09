@@ -25,4 +25,3 @@ class UserStudyDeck(db.Model, UserMixin):
 
     user = db.relationship("User", back_populates="user_study_deck")
     deck = db.relationship("Deck", back_populates="user_study_deck")
-

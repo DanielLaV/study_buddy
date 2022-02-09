@@ -49,12 +49,9 @@ def deck_cards(id):
     form = CardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form['csrf_token'].data:
-        print("in the route")
         deck_cards = Card.query.filter(Card.deck_id == id).all()
-        print({"cards": [card.to_dict() for card in deck_cards]})
         return {"cards": [card.to_dict() for card in deck_cards]}
     if form.errors:
-        print("errors", form.errors)
         return form.errors
     return make_response(404)
 

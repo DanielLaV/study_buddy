@@ -90,7 +90,7 @@ export const getOneCard = (id) => async (dispatch) => {
     });
     const card = await response.json();
     if (response.ok) {
-        dispatch(addOneCard(card.card));
+        dispatch(addOneCard(card));
     }
     return card;
 }
@@ -100,7 +100,7 @@ export const editCard = (payload) => async (dispatch) => {
 
     const card = await response.json();
     if (response.ok) {
-        dispatch(addOneCard(card.card));
+        dispatch(addOneCard(card));
     }
     return card;
 }

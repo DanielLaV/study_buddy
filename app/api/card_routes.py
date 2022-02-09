@@ -52,8 +52,10 @@ def one_card(id):
     one_card = Card.query.get(id)
     if request.method == 'PUT':
         form = CardForm()
-        form.data = request.get_json()
+        data = request.get_json()
+        print("data", data)
         form['csrf_token'].data = request.cookies['csrf_token']
+
         if form.validate_on_submit():
             data = request.get_json()
             deck_id = data["deck_id"]
@@ -66,7 +68,7 @@ def one_card(id):
             db.session.commit()
         if form.errors:
             return form.errors
-    return {"card": one_card.to_dict()}
+    return one_card.to_dict()
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
 def delete_card(id):

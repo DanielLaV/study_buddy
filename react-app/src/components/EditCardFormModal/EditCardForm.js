@@ -2,20 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as cardActions from "../../store/cards";
 
-function EditCardForm({ payload }) {
-  // useParams to get the cardId
-  const setShowModal = payload
+function EditCardForm({setShowModal, card}) {
   const dispatch = useDispatch();
-  // const currCard = useSelector(state => state.cards);
-  const currCard = useSelector(state => state.cards.id);
-  const [front, setFront] = useState(currCard.front);
-  const [back, setBack] = useState(currCard.back);
+  const [front, setFront] = useState(card.front);
+  const [back, setBack] = useState(card.back);
   const [errors, setErrors] = useState([]);
   const deck_id = useSelector(state => state.decks.id);
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    dispatch(cardActions.getOneCard(1))
+    dispatch(cardActions.getOneCard(card.id))
   }, [dispatch])
 
   const handleSubmit = (e) => {
@@ -24,10 +20,10 @@ function EditCardForm({ payload }) {
     const payload = {
       front,
       back,
-      deck_id: 1,
-      cardId: 1
+      deck_id,
+      cardId: card.id
     }
-    return dispatch(cardActions.createCard(payload))
+    return dispatch(cardActions.editCard(payload))
       .then(
         () => {
           setSuccess("Success!");
@@ -90,8 +86,8 @@ function EditCardForm({ payload }) {
           className=""
           onClick={(e) => {
             setShowModal(false);
-            setFront(currCard.front);
-            setBack(currCard.back);
+            setFront(card.front);
+            setBack(card.back);
           }}>
           Cancel
         </button>

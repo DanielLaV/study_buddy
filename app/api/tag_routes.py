@@ -1,7 +1,6 @@
-from flask import Blueprint, jsonify, session, request, make_response
+from flask import Blueprint, session, request, make_response
 from app.models import Tag, db, Deck
 from app.forms import TagForm, DeleteTagForm
-from flask_login import current_user, login_user, logout_user, login_required
 
 tag_routes = Blueprint('tags', __name__)
 

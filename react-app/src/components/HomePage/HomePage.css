@@ -58,6 +58,19 @@ body{
 
 }
 
+.addDeckButtonContainer {
+  /* position: absolute;   */
+  /* margin: -10px; */
+  display: flex;
+  align-items: center;
+  height: 10%;
+  margin: -5%;
+}
+
+.addDeckButton{
+  height: 50%;
+}
+
 .decksTitleContainer{
     color: black;
     font-family: Arial, Helvetica, sans-serif;

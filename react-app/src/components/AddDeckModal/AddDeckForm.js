@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as deckActions from '../../store/decks';
 import { useDispatch, useSelector } from 'react-redux';
 
-function AddDeckForm({setShowModal}) {
+function AddDeckForm({ setShowModal }) {
     const dispatch = useDispatch();
     const user_id = useSelector(state => state.session.user.id);
     const [title, setTitle] = useState('');
@@ -52,7 +52,7 @@ function AddDeckForm({setShowModal}) {
                         placeholder='Description'
                     />
                 </label>
-                <button className='addDeckSubmit'>Add New Deck</button>
+                <button className='addDeckSubmit'>Add Deck</button>
             </form>
         </div>
     )

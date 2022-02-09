@@ -26,9 +26,11 @@ def main():
     and creates a card. The created card data are returned in JSON format.
     """
     form = CardForm()
-    form.data = request.get_json()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
+    if request.method == 'GET':
+        cards = Card.query.all()
+        return {"cards": [card.to_dict() for card in cards]}
+    if form.validate_on_submit() and request.method == 'POST':
+        form.data = request.get_json()
         front = form.data['front']
         back = form.data['back']
         deck_id = form.data['deck_id']

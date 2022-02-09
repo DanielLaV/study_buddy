@@ -1,7 +1,6 @@
-from flask import Blueprint, jsonify, make_response, session, request
-from app.models import Deck, db, user
-from app.forms import LoginForm, DeckForm
-from flask_login import current_user, login_user, logout_user, login_required
+from flask import Blueprint, jsonify, session, request, make_response
+from app.models import Deck, Card, db
+from app.forms import LoginForm, DeckForm, CardForm
 
 deck_routes = Blueprint('decks', __name__)
 
@@ -42,6 +41,22 @@ def main():
     decks = Deck.query.all()
     return {"decks": [deck.to_dict() for deck in decks]}
 
+@deck_routes.route('/<int:id>/cards/')
+def deck_cards(id):
+    """
+    GET requests return all cards associated with a specific deck.
+    """
+    form = CardForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form['csrf_token'].data:
+        print("in the route")
+        deck_cards = Card.query.filter(Card.deck_id == id).all()
+        print({"cards": [card.to_dict() for card in deck_cards]})
+        return {"cards": [card.to_dict() for card in deck_cards]}
+    if form.errors:
+        print("errors", form.errors)
+        return form.errors
+    return make_response(404)
 
 @deck_routes.route('/<int:id>', methods=['GET', 'PUT'])
 def single_deck(id):
@@ -51,12 +66,10 @@ def single_deck(id):
     POST
     """
     deck = Deck.query.get(id)
-    form = DeckForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
     if request.method == "PUT":
+        form = DeckForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            print("="*20, "in the edit backend")
             data = request.get_json()
             title = form.data["title"]
             description = form.data["description"]
@@ -64,13 +77,12 @@ def single_deck(id):
             deck.title = title
             deck.description = description
             deck.user_id = user_id
-            print('DECK IS ', deck.to_dict())
-            print(data, title, description, user_id)
             db.session.add(deck)
             db.session.commit()
-
         if form.errors:
             return form.errors
+    if request.method == "GET":
+        print("DECK", deck.to_dict())
     return deck.to_dict()
 
 
@@ -79,7 +91,6 @@ def delete_deck(id):
     """
     DELETE requests delete the deck from the database
     """
-    print('in delete route')
     try:
         deck = Deck.query.get(id)
         db.session.delete(deck)

@@ -1,9 +1,9 @@
 
 
-export const LOAD_DECKS = 'LOAD_DECKS';
-export const ADD_DECK = 'ADD_DECK';
-export const EDIT_DECK = 'EDIT_DECK';
-export const DELETE_DECK = 'DELETE_DECK';
+const LOAD_DECKS = 'LOAD_DECKS';
+const ADD_DECK = 'ADD_DECK';
+const EDIT_DECK = 'EDIT_DECK';
+const DELETE_DECK = 'DELETE_DECK';
 
 
 
@@ -14,6 +14,8 @@ export const loadDecks = decks => {
         payload: decks,
     }
 };
+
+
 
 export const addNewDeck = newDeck => {
     return {
@@ -38,11 +40,22 @@ export const getDecks = () => async (dispatch) => {
     return res;
 }
 
+export const getOneDeck = (id) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${id}`, {
+        headers: { "Content-Type": "application/json" }
+    });
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(addNewDeck(data))
+    }
+    return data;
+}
+
 export const addDeck = (newDeck) => async (dispatch) => {
     // console.log('About to fetch')
     const res = await fetch('/api/decks/', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newDeck)
     })
     const data = await res.json();
@@ -55,7 +68,7 @@ export const editDeck = deck => async (dispatch) => {
     // console.log('About to fetch')
     const res = await fetch(`/api/decks/${deck.id}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(deck)
     })
     const data = await res.json();
@@ -86,7 +99,7 @@ export const deleteDeck = id => async (dispatch) => {
 
 
 /* ----- REDUCER ------ */
-const initialState = { };
+const initialState = {};
 
 const decksReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -99,7 +112,6 @@ const decksReducer = (state = initialState, action) => {
         }
         case ADD_DECK: {
             const newState = Object.assign({}, state);
-            console.log('NEW DECK PAYLOAD', action.payload);
             newState[action.payload.id] = action.payload
             return newState;
         }

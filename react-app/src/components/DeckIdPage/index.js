@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Deck from '../DecksPage/Deck';
 import { useParams } from 'react-router-dom';
 import AddCardFormModal from '../AddCardFormModal';
+import AddTagFormModal from '../AddTagsFormModal';
 
 
 
@@ -24,7 +25,11 @@ function DeckIdPage() {
         return (
             <div key={deck.id} className='deckIdPage'>
                 <Deck deck={deck} />
-                {isOwner && <AddCardFormModal />}
+                {isOwner &&
+                    <>
+                        <AddCardFormModal />
+                        <AddTagFormModal />
+                    </>}
             </div>
         )
     }

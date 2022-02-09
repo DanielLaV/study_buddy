@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Deck from '../DecksPage/Deck';
 import { useParams } from 'react-router-dom';
 import AddCardFormModal from '../AddCardFormModal';
+import CardBrowser from '../CardsBrowser';
 
 
 
@@ -21,11 +22,13 @@ function DeckIdPage() {
 
     if (deck) {
         const isOwner = user === deck.user_id;
-        return (
+        return (<>
             <div key={deck.id} className='deckIdPage'>
                 <Deck deck={deck} />
                 {isOwner && <AddCardFormModal />}
             </div>
+            <CardBrowser />
+            </>
         )
     }
     else return "DON'T LOOK AT ME! I'M HIDEOUS"

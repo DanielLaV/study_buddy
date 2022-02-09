@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CardBody from './CardBody';
-
+import Card from "./Card";
 
 
 function CardBodyModal() {

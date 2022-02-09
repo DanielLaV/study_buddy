@@ -9,8 +9,15 @@ import AddDeckFormModal from '../AddDeckModal';
 function DecksPage() {
     const decks = useSelector(state => Object.values(state.decks));
     const userId = useSelector(state => state.session.user.id)
+    const studyArr = useSelector(state => Object.values(state.studyDecks))
     const dispatch = useDispatch();
     // console.log('DECKS', decks.decks)
+
+    let studyDecks = []
+    studyArr.forEach((studyDeck) => {
+        studyDecks.push(studyDeck.id)
+        return studyDecks
+    })
 
     useEffect(() => {
         dispatch(deckActions.getDecks());
@@ -20,7 +27,7 @@ function DecksPage() {
     return (
         <div className='decksPage'>
             <AddDeckFormModal />
-            {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} /> </div>)}
+            {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} studyDecks={studyDecks}/> </div>)}
         </div>
     )
 }

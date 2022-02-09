@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, make_response
 from app.models import UserStudyDeck, Deck, db
 from flask_login import login_required
 
@@ -53,7 +53,7 @@ def remove_from_study_list(deck_id):
     """
     DELETE route to remove a deck from the users study list
     """
-    studyDeck = UserStudyDeck.query.get(deck_id)
+    studyDeck = UserStudyDeck.query.get(deck_id).all()
     data = studyDeck.to_dict()
     db.session.delete(studyDeck)
     db.session.commit()

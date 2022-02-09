@@ -8,6 +8,7 @@ import StudyList from './components/StudyList'
 import User from './components/User';
 import Splash from './components/Splash';
 import DecksPage from './components/DecksPage';
+import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
@@ -44,7 +45,7 @@ function App() {
           <DecksPage />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId' exact={true} >
-          <h1>This is the '/decks/:deckId' page that will display the specifc deck details</h1>
+          <DeckIdPage />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId/:cardId' exact={true} >
           <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>

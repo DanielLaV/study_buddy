@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import NavBar from './components/Navigation/NavBar';
+import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+import StudyList from './components/StudyList'
 import User from './components/User';
+import Splash from './components/Splash';
 import DecksPage from './components/DecksPage';
+import DeckIdPage from './components/DeckIdPage';
+import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
 function App() {
@@ -13,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -27,8 +31,11 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route exact={true} path='/'>
+          <Splash />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -38,13 +45,13 @@ function App() {
           <DecksPage />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId' exact={true} >
-          <h1>This is the '/decks/:deckId' page that will display the specifc deck details</h1>
+          <DeckIdPage />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId/:cardId' exact={true} >
           <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/user-study-deck/:deckId' exact={true} >
-          <h1>This is '/user-study-deck/:deckId' page that will display the user's Study List </h1>
+        <ProtectedRoute path='/user-study-decks/:userId' exact={true} >
+          <StudyList />
         </ProtectedRoute>
         <ProtectedRoute path='/tags/:tagId' exact={true} >
           <h1>This is '/tags/:tagId' page that will display the tag search results </h1>
@@ -55,9 +62,10 @@ function App() {
         <ProtectedRoute path='/test' exact={true} >
         </ProtectedRoute>
         <Route>
-            Page Not Found
+          Page Not Found
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import SignupForm from './SignupForm'
+import DeleteForm from './DeleteFromSLForm';
 
-function SignupFormModal() {
+function DeleteModal({id}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className='navButton' onClick={() => setShowModal(true)}>Sign Up</button>
+      <button className='delete-button' onClick={() => setShowModal(true)}>Remove From Study List</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SignupForm setShowModal={setShowModal} />
+          <DeleteForm id={id} setShowModal={setShowModal} />
         </Modal>
       )}
     </>
   );
 }
 
-export default SignupFormModal;
+export default DeleteModal;

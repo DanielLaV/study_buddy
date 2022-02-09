@@ -3,13 +3,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+import UsersList from './components/User/UsersList';
 import StudyList from './components/StudyList'
-import User from './components/User';
 import Splash from './components/Splash';
 import DecksPage from './components/DecksPage';
+import ProfilePage from './components/ProfilePage';
 import Footer from './components/Footer';
 import { authenticate } from './store/session';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,8 +38,7 @@ function App() {
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-          <h1>This is the logged in users profile page</h1>
+          <ProfilePage />
         </ProtectedRoute>
         <ProtectedRoute path='/decks' exact={true} >
           <DecksPage />

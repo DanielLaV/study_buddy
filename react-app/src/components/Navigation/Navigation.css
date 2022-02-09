@@ -21,15 +21,28 @@
   width: auto;
   height: 40px;
   margin: 15px;
-  margin: 15px;
   padding: 10px;
+  padding-right: 1px;
+  margin-right: 0px;;
 
   /* border-style: solid; */
   /* border-color: #27a9e1; */
 
-  border-color: Black;
+  /* border-color: Black; */
 
 }
+
+
+#navLogoText{
+  width: auto;
+  height: 40px;
+  margin: 15px;
+  margin-left: 0px;
+  padding: 10px;
+  padding-left: 0px;
+
+}
+
 
 #navLogo:hover {
   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -58,10 +71,54 @@
   }
 }
 
-.RightSideNav{
- margin: 65px;
+.navLinkContainer{
+display: flex;
+align-items: center;
 }
 
-.navButton{
+.RightSideNav{
+  margin: 65px;
+  
+}
+
+.navLink{
   margin-left: 5px;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 0;
+  margin-left: 15px;
+  font-size: 20px;
+  color: black;
+  border: none;
+  background: none;
+
+}
+
+.userLink{
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
+  border: none;
+  background: none;
+  background-color: #27A9E1;
+  border-radius: 9px;
+  padding: 6px;
+  margin-right: -5px;
+
+}
+
+.userLink:hover{
+  transform: scale(1.1)
+}
+
+.navLink:visited{
+  text-decoration: none;
+
+}
+
+.navLink:hover{
+  color: #27A9E1;
+  cursor: pointer;
 }

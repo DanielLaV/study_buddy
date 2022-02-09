@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,6 @@ import backgroundImage from './splashBackground.jpg'
 
 
 const Splash = () => {
-  const user = useSelector((state) => state.session.user);
 
   let sessionLinks;
 
@@ -24,7 +22,6 @@ const Splash = () => {
     return dispatch(login(email, password));
   }
 
-  if (!user) {
     sessionLinks = (
       <div className="splashBackgroundContainer">
         <div className='overlay'></div>
@@ -38,16 +35,15 @@ const Splash = () => {
 
       </div>
     );
+
+    
+    return (
+      <div>
+        {sessionLinks}
+      </div>
+    );
+
+
   }
-
-
-
-
-  return (
-    <div>
-      {sessionLinks}
-    </div>
-  );
-}
 
 export default Splash;

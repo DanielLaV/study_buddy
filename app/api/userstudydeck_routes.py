@@ -24,7 +24,7 @@ def study_list(user_id):
     return all of the user's decks in study list
     """
     study_decks = UserStudyDeck.query.filter(UserStudyDeck.user_id == user_id).join(Deck).all()
-    print(study_decks)
+    print('------------------------', study_decks)
     return {"study_decks": [study_deck.to_dict() for study_deck in study_decks]}
 
 @userstudydeck_routes.route('<int:user_id>', methods=['POST'])
@@ -53,11 +53,8 @@ def remove_from_study_list(user_id):
     """
     DELETE route to remove a deck from the users study list
     """
-
     data = request.get_json()
-    print('------------------data-----------', data)
     study_deck = UserStudyDeck.query.filter(UserStudyDeck.user_id == data['user_id'], UserStudyDeck.deck_id == data['deck_id']).first()
-    print('----------query----', study_deck)
     db.session.delete(study_deck)
     db.session.commit()
-    return data
+    return {"id":study_deck.id}

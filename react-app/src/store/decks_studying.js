@@ -59,12 +59,14 @@ export const removeStudyDeck = (deck_id, user_id) => async (dispatch) => {
 	const response = await fetch(`/api/user-study-decks/${user_id}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
+        Accept: 'application/json',
         body: JSON.stringify(studyDeck)
 	});
 
     const data = await response.json();
 	if (response.ok) {
-		dispatch(deleteStudyDeck(data.id));
+        console.log('this is data', data)
+		dispatch(deleteStudyDeck(data));
 		return null;
 	}
     else {
@@ -88,7 +90,8 @@ const studyDecksReducer = (state = {}, action) => {
         }
         case DELETE_STUDY_DECK: {
             const newState = Object.assign({}, state);
-            delete newState[action.studyDeck];
+            console.log(action.studyDecks)
+            delete newState[action.studyDeck.id];
             return newState;
         }
         default: {

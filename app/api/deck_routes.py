@@ -66,12 +66,10 @@ def single_deck(id):
     POST
     """
     deck = Deck.query.get(id)
-    form = DeckForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
     if request.method == "PUT":
+        form = DeckForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
-            print("="*20, "in the edit backend")
             data = request.get_json()
             title = form.data["title"]
             description = form.data["description"]
@@ -79,13 +77,12 @@ def single_deck(id):
             deck.title = title
             deck.description = description
             deck.user_id = user_id
-            print('DECK IS ', deck.to_dict())
-            print(data, title, description, user_id)
             db.session.add(deck)
             db.session.commit()
-
         if form.errors:
             return form.errors
+    if request.method == "GET":
+        print("DECK", deck.to_dict())
     return deck.to_dict()
 
 
@@ -94,7 +91,6 @@ def delete_deck(id):
     """
     DELETE requests delete the deck from the database
     """
-    print('in delete route')
     try:
         deck = Deck.query.get(id)
         db.session.delete(deck)

@@ -3,13 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import * as cardActions from "../../store/cards"
 import { useParams } from "react-router-dom";
 import CardBodyModal from "../CardModal";
-import Card from "./Card";
+import Card from "../Card";
 
 const CardBrowser = () => {
     const { deckId } = useParams();
     const userId = useSelector(state => state.session.user.id)
-    const decks = useSelector(state => state.decks)
-    const deck = decks[deckId]
+    const deck = useSelector(state => state.decks[deckId])
     const isOwner = userId === deck.user_id;
     const dispatch = useDispatch();
 
@@ -25,12 +24,13 @@ const CardBrowser = () => {
             <div>
                 {cards.map((card) => {
                     return (
-                        <div key={card.id}> <Card card={card} />
-                        </div>
+                        <CardBodyModal card={card} key={card.id}/>
+
                     )
                 })}
             </div>
         </div>
+
     )
 }
 

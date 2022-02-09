@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CardBody from './CardBody';
-import Card from "./Card";
+import Card from "../Card";
 
 
-function CardBodyModal() {
+function CardBodyModal({card}) {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <button className='addDeckButton' onClick={() => setShowModal(true)}>Add new Deck</button>
+            <div className='singleDeck' onClick={() => setShowModal(true)}><Card card={card} /></div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CardBody setShowModal={setShowModal} />
+                    <CardBody setShowModal={setShowModal} cardId={card.id}/>
                 </Modal>
             )}
         </>

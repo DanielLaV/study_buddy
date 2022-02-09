@@ -60,11 +60,9 @@ export const createCard = (payload) => async (dispatch) => {
 
 
 export const getDeckCards = (deckId) => async (dispatch) => {
-    console.log("get deck cards")
     const response = await fetch(`/api/decks/${deckId}/cards/`, {
         headers: { "Content-Type": "application/json" }
     });
-    console.log("response.ok")
     const cards = await response.json();
     if (response.ok) {
         dispatch(load(cards));
@@ -73,9 +71,9 @@ export const getDeckCards = (deckId) => async (dispatch) => {
 }
 
 export const getCards = () => async (dispatch) => {
-    console.log("get deck cards")
-    const response = await fetch(`/api/cards`);
-    console.log("response.ok")
+    const response = await fetch(`/api/cards`, {
+        headers: { "Content-Type": "application/json" }
+    });
     const cards = await response.json();
     if (response.ok) {
         dispatch(load(cards));

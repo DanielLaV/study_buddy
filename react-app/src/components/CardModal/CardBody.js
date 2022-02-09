@@ -1,16 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards"
+import EditCardFormModal from "../EditCardFormModal";
 
-const CardBody = ({setShowModal, cardId}) => {
-    console.log("cardId", cardId)
+const CardBody = ({ setShowModal, cardId }) => {
+    const {deckId} = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const card = useSelector(state => state.cards[cardId]);
+    const deck = useSelector(state => state.decks[deckId]);
+    console.log("deck", deck)
     useEffect(() => {
         dispatch(cardActions.getOneCard(cardId));
     }, [dispatch, cardId])
-    return <h1>{card.front}</h1>
+
+    let buttonDiv =
+        (<div className="buttons">
+            <button
+                type="button"
+                onClick={(e) => setShowModal(false)} className="">
+                Close
+            </button>
+        </div>)
+    console.log("false?", user.id === deck.user_id)
+    if (user.id === deck.user_id) {
+        buttonDiv = [
+            buttonDiv,
+            <EditCardFormModal card={card}/>
+        ]
+    }
+    return (
+        <div className="">
+            <h2>Front:</h2>
+            <h3>{card.front}</h3>
+            <h2>Back:</h2>
+            <h3>{card.back}</h3>
+            {buttonDiv}
+        </div>)
 }
 
 export default CardBody

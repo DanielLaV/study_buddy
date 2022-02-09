@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import { NavLink } from 'react-router-dom';
 import EditCardForm from './EditCardForm';
 
-function EditCardFormModal() {
+function EditCardFormModal({card}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <NavLink onClick={() => setShowModal(true)} to="#" className=''>Edit Card</NavLink>
+      <button onClick={() => setShowModal(true)} className=''>Edit Card</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditCardForm payload={setShowModal}/>
+          <EditCardForm setShowModal={setShowModal} card={card}/>
         </Modal>
       )}
     </>

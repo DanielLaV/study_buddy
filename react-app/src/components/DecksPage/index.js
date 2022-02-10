@@ -4,7 +4,10 @@ import * as deckActions from "../../store/decks";
 import * as studyDeckActions from "../../store/decks_studying";
 import { useDispatch, useSelector } from 'react-redux';
 import Deck from './Deck.js';
+import MyDecksPage from '../MyDecks'
 import AddDeckFormModal from '../AddDeckModal';
+import { NavLink } from 'react-router-dom';
+
 
 function DecksPage() {
     const decks = useSelector(state => Object.values(state.decks));
@@ -25,9 +28,29 @@ function DecksPage() {
     }, [dispatch, userId]);
 
     return (
-        <div className='decksPage'>
-            <AddDeckFormModal />
-            {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} studyDecks={studyDecks}/> </div>)}
+        <div className='browsePageContainer'>
+            <div className="browseDecks">
+                <div className="browseDecksTitleContainer">
+                    <h1 className="browseDecksTitle">Browse Decks</h1>
+                </div>
+                <div className='deckDisplay'>
+                    <div className='allDecks'>
+                        {decks?.map(deck =>
+                            <NavLink className="eachDeck" to={`/decks/${deck.id}`} key={deck.id}>
+                                <div>
+                                    <p className='title'>{deck.title}</p>
+                                </div>
+                            </NavLink>)}
+                    </div>
+                </div>
+                <div className='addDeckButtonContainer'>
+                    <AddDeckFormModal />
+                </div>
+            </div>
+
+
+
+            {/* {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} studyDecks={studyDecks}/> </div>)} */}
         </div>
     )
 }

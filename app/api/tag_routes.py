@@ -11,17 +11,20 @@ def main():
     The function returns all tags associated with that deck.
     """
     form = TagForm()
-    form.data = request.get_json()
+    data = request.get_json()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        names = form.data['names']
-        deck_id = form.data['deck_id']
+        names = data['names'].split(", ")
+        deck_id = data['deck_id']
+        response = {}
         for name in names:
             new_tag = Tag(name=name, deck_id=deck_id)
             db.session.add(new_tag)
             db.session.commit()
+            response[new_tag.id] = name
+        return response
     if form.errors:
-        return form.error
+        print(form.errors)
     deck_tags = Tag.query.filter(Tag.deck_id == deck_id).all()
     return {"tags": [tag.to_dict() for tag in deck_tags]}
 

@@ -6,6 +6,9 @@ import Deck from '../DecksPage/Deck';
 import { useParams } from 'react-router-dom';
 import AddCardFormModal from '../AddCardFormModal';
 import CardBrowser from '../CardsBrowser';
+import AddTagFormModal from '../AddTagsFormModal';
+
+
 
 function DeckIdPage() {
     const dispatch = useDispatch();
@@ -22,7 +25,11 @@ function DeckIdPage() {
         return (<>
             <div key={deck.id} className='deckIdPage'>
                 <Deck deck={deck} />
-                {isOwner && <AddCardFormModal />}
+                {isOwner &&
+                    <>
+                        <AddCardFormModal />
+                        <AddTagFormModal />
+                    </>}
             </div>
             <CardBrowser />
         </>

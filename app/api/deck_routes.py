@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request, make_response
-from app.models import Deck, Card, db
+from app.models import Deck, Card, Tag, db
 from app.forms import LoginForm, DeckForm, CardForm
 
 deck_routes = Blueprint('decks', __name__)
@@ -96,3 +96,16 @@ def delete_deck(id):
     except:
         res = make_response(404, error="Deck not found!")
         return res
+
+
+@deck_routes.route('/<int:id>/tags', methods=['GET'])
+def get_deck_tags(id):
+    """
+    GET requests to retrieve tags on a specific deck
+    """
+    # try:
+    tag = Tag.query.filter(id).all()
+    print('-----------tag------------',tag)
+    return 'Deck deleted'
+    # except:
+    #    return 'nope'

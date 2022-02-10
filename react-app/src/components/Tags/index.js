@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from 'react-redux';
 import * as tagActions from "../../store/tags";
-
+import { NavLink } from "react-router-dom";
 
 function Tags({tag, isOwner=false}) {
     const dispatch = useDispatch();
@@ -9,8 +9,10 @@ function Tags({tag, isOwner=false}) {
         dispatch(tagActions.removeTag(tag.id))
     }
     return (
-        <div>
-            <h4>{tag.name}</h4>
+        <div className='tag-div'>
+            <NavLink to={`/tags/${tag.id}`}>
+                <h4>{tag.name}</h4>
+            </NavLink>
             {isOwner &&
                 <button type="button" onClick={(e) => submitDelete()}>Delete</button>
             }

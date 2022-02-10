@@ -22,11 +22,11 @@ def main():
     """
     form = TagForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("form.validate_on_submit()", form.validate_on_submit())
+
     if form.validate_on_submit():
         names = form.data['names'].split(", ")
         deck_id = form.data['deck_id']
-        print("names", names)
+
         response = {}
         for name in names:
             new_tag = Tag(name=name, deck_id=deck_id)

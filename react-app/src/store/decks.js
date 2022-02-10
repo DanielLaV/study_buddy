@@ -34,8 +34,10 @@ export const getDecks = () => async (dispatch) => {
 
     const res = await fetch('/api/decks/');
     const data = await res.json();
-    dispatch(loadDecks(data.decks));
-    return res;
+    if (res.ok) {
+        dispatch(loadDecks(data.decks));
+        return res;
+    }
 }
 
 export const getOneDeck = (id) => async (dispatch) => {
@@ -50,16 +52,18 @@ export const getOneDeck = (id) => async (dispatch) => {
 }
 
 export const addDeck = (newDeck) => async (dispatch) => {
-    // console.log('About to fetch')
+
     const res = await fetch('/api/decks/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newDeck)
     })
     const data = await res.json();
-    // console.log("="*20, 'Data is', data)
-    dispatch(addNewDeck(data));
-    return res;
+    console.log("===================", 'Data is', data)
+    if (res.ok) {
+        return dispatch(addNewDeck(data));
+    }
+    else return data
 }
 
 export const editDeck = deck => async (dispatch) => {

@@ -8,52 +8,49 @@ import "../DecksPage/DecksPage.css"
 
 const StudyList = () => {
 	const dispatch = useDispatch();
-    const { userId } = useParams()
+	const { userId } = useParams()
 	const stateUserId = useSelector((state) => state.session.user.id);
 	const studyArr = useSelector((state) => Object.values(state.studyDecks));
 
-    let studyDecks = []
-    studyArr.forEach((studyDeck) => {
-        studyDecks.push(studyDeck.id)
-        return studyDecks
-    })
+	let studyDecks = []
+	studyArr.forEach((studyDeck) => {
+		studyDecks.push(studyDeck.id)
+		return studyDecks
+	})
 
 	useEffect(() => {
 		dispatch(getStudyDecks(stateUserId))
-    }, [ dispatch, stateUserId ]);
+	}, [dispatch, stateUserId]);
 
-    let showStudyDecks = studyArr.map((deck) => (
-        <div key={deck.id} className="study-list-deck">
-            <Deck deck={deck} studyDecks={studyDecks} />
-        </div>
-    ))
+	const noStudyDeck = () => {
+		if (studyArr.length < 1) return true;
+		else return false;
+	}
 
 	return (
 
-		<div className='browsePageContainer'> 
-        <div className="browseDecks">
-					<div className="browseDecksTitleContainer">
-						<h1 className="browseDecksTitle">Study List</h1>
+		<div className='browsePageContainer'>
+			<div className="browseDecks">
+				<div className="browseDecksTitleContainer">
+					<h1 className="browseDecksTitle">Study List</h1>
+				</div>
+				<div className='deckDisplay'>
+					<div className='allDecks'>
+
+						{stateUserId === parseInt(userId) ?
+							studyArr.map((deck) => (
+								<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id} className="eachDeck">
+									<Deck deck={deck} studyDecks={studyDecks} />
+								</NavLink>
+							))
+							:
+							<Redirect to="/" />}
 					</div>
-					<div className='deckDisplay'>
-						<div className='allDecks'>
-
-					
-
-
-
-            {stateUserId === parseInt(userId) ?
-			studyArr.map((deck) => (
-				<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id} className="eachDeck">
-					<Deck deck={deck} studyDecks={studyDecks} />
-				</NavLink>
-			))
-		 :
-        <Redirect to="/" />}
-					</div>
+					{noStudyDeck() &&
+						<h3 className='no-decks-on-list-message'>There are no decks on your Study List</h3>}
 				</div>
 			</div>
-    </div>
+		</div>
 	);
 };
 

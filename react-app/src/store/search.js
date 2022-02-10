@@ -1,5 +1,7 @@
+
+// test fetch - generates dupes --yes!
 const payload = {
-    query: "js",
+    query: "array",
     is_logged_in: true
 }
 
@@ -9,4 +11,4 @@ const response = await fetch("/api/search-results/", {
     body: JSON.stringify(payload)
 });
 
-console.log("response")
+console.log("response", response.json())

@@ -109,16 +109,17 @@ align-items: center;
 
 }
 
-.userLink:hover{
-  transform: scale(1.1)
-}
 
 .navLink:visited{
   text-decoration: none;
-
+  
 }
 
 .navLink:hover{
   color: #27A9E1;
   cursor: pointer;
+}
+
+.userLink:hover{
+  color: white;
 }

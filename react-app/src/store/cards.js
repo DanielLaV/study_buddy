@@ -123,10 +123,11 @@ export const deleteCard = (payload) => async (dispatch) => {
     if (getCurrCard.ok) {
         const delCard = await fetch(`/api/cards/${payload.card_id}`,
             {
-                method: 'DELETE',
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                method: 'DELETE',
+                body: JSON.stringify(payload)
             });
         if (delCard.ok) {
             const card = await getCurrCard.json();

@@ -15,7 +15,7 @@ function DeckIdPage() {
 
     useEffect(() => {
         dispatch(deckActions.getOneDeck(deckId));
-    }, [dispatch]);
+    }, [dispatch, deckId]);
 
     if (deck) {
         const isOwner = user === deck.user_id;

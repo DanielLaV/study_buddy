@@ -5,6 +5,7 @@ import * as cardActions from "../../store/cards";
 
 function DeleteCardForm({ setShowModal, card }) {
     const dispatch = useDispatch();
+    console.log("card", card)
     const { deckId } = useParams();
     const currUserId = useSelector(state => state.session.user.id);
     console.log(currUserId)
@@ -21,6 +22,7 @@ function DeleteCardForm({ setShowModal, card }) {
             curr_user_id: currUserId,
             deck_user_id: currUserDeckId,
         }
+        console.log("payload", payload)
         return dispatch(cardActions.deleteCard(payload))
             .then(
                 (response) => {

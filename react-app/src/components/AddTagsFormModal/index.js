@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import AddDeckForm from './AddDeckForm';
-import './AddDeckForm.css';
+import AddTagForm from './AddTagForm';
+import './AddTagForm.css';
 
 
 
-function AddDeckFormModal() {
+function AddTagFormModal() {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <button className='addDeckButton' onClick={() => setShowModal(true)}>Add Deck</button>
+            <button className='addTagButton' onClick={() => setShowModal(true)}>Add tag</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AddDeckForm setShowModal={setShowModal} />
+                    <AddTagForm setShowModal={setShowModal} />
                 </Modal>
             )}
         </>
     )
 }
 
-export default AddDeckFormModal;
+export default AddTagFormModal;

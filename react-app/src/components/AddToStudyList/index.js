@@ -1,16 +1,18 @@
 import { addOneStudyDeck } from "../../store/decks_studying";
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 function AddToStudyList({deck_id, user_id}) {
     const dispatch = useDispatch();
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         dispatch(addOneStudyDeck(deck_id, user_id))
     }
 
     return (
     <>
-        <button type="button" onClick={(e) => handleSubmit()} className="add-to-study-list">Add</button>
+        <button onClick={handleSubmit} className="add-to-study-list">+ Study List</button>
     </>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards";
@@ -12,7 +12,7 @@ function DeleteCardForm({ setShowModal, card }) {
     const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
     const [success, setSuccess] = useState("");
     const [errors, setErrors] = useState([]);
-    // const cardId = state.cards.id
+
     const submitDelete = (e) => {
         e.preventDefault();
         setErrors([]);

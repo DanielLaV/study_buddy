@@ -1,6 +1,8 @@
 from flask import Blueprint, session, request, make_response
 from app.models import db, Deck, Card
 from app.forms import SearchForm
+from functools import reduce
+import operator
 
 search_routes = Blueprint('search', __name__)
 
@@ -47,10 +49,13 @@ def main():
             card_back_results = [card.to_dict() for card in card_back_results]
         except:
             pass
-        set_deck_results = set(deck_title_results, deck_desc_results)
-        set_card_results = set(card_front_results, card_back_results)
-        if (set_deck_results or set_card_results):
-            return {"decks": {key: value for key, value in set_deck_results}, "cards": {key: value for key, value in set_card_results}}
+        all_deck_results = deck_title_results + deck_desc_results
+        print("set_deck_results)", all_deck_results)
+        all_card_results = card_front_results + card_back_results
+        print("set_card_results)", all_card_results)
+        if (all_deck_results or all_card_results):
+            print("reutrn", {"decks": all_deck_results, "cards": all_card_results})
+            return {"decks": all_deck_results, "cards": all_card_results}
         else:
             return {"errors": "No results found!"}, 404
     elif form.errors:

@@ -34,7 +34,6 @@
 
   .logoFont{
     height: 20vh;
-    margin-top: 30vh;
   }
 /* 
   .logoFont:hover{
@@ -54,25 +53,33 @@
     left:0px;
   }
 
+  .splashBackgroundMiddle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+    margin-top: -5%;
+
+  }
+
   .splashSlogan{
     color: white;
-    height:100vh;
-    width: 100vw;
-    position: absolute;
-    top: 60vh;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
+    margin: 0px;
   }
 
   .demoButton{
 
-    position: absolute;
-    top: 70vh;
-    font-size: 10px;
+    font-size: 12px;
+    width: 15%;
+    margin: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
     padding-right: 15px;
+    align-self: center;
     /* background-color: black;
     color: white; */
     /* font-weight: bold; */

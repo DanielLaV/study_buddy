@@ -85,7 +85,7 @@ def delete_card(id):
             one_card = Card.query.get(id)
             db.session.delete(one_card)
             db.session.commit()
-            return 200
+            return {}, 200
         # except:
         #     return {'errors': ["Card not found!"]}, 404
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

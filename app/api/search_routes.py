@@ -26,19 +26,17 @@ def main():
         query = form.data['query']
         # deck results:  querying title and description
         try:
-            deck_title_results = {[deck.to_dict() for deck in Deck.query.filter(Deck.title.ilike(f"%{query}%")).all]}
-            deck_title_results = [deck.to_dict() for deck in deck_title_results]
-            ("deck_title_many", deck_title_results)
-        except:
             deck_title_results = Deck.query.filter(Deck.title.ilike(f"%{query}%")).all()
             deck_title_results = [deck.to_dict() for deck in deck_title_results]
-            print("deck_one?", deck_title_results)
-            # deck_title_results =
-        try:
-            deck_desc_results = {[deck.to_dict() for deck in Deck.query.filter(Deck.description.ilike(f"%{query}%")).all]}
+            print("deck_title", deck_title_results)
         except:
-            deck_desc_one_result = Deck.query.filter(Deck.description.ilike(f"%{query}%")).all()
-            print("deck_one_desc?", deck_desc_one_result)
+            pass
+        try:
+            deck_desc_results = Deck.query.filter(Deck.description.ilike(f"%{query}%")).all()
+            deck_desc_results = [deck.to_dict() for deck in deck_desc_results]
+            print("deck_desc", deck_desc_results)
+        except:
+            pass
         # try:
         #     card_front_results = {[card.to_dict() for card in Card.query.filter(Card.front.ilike(f"%{query}%")).all]}
         # except:

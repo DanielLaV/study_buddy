@@ -1,6 +1,6 @@
 const LOAD_TAGS = 'LOAD_TAGS';
 const ADD_TAGS = 'ADD_TAGS';
-
+const DELETE_TAG = 'DELETE_TAG'
 const loadTags = (tags) => {
 	return {
 		type: LOAD_TAGS,
@@ -12,6 +12,13 @@ const addNewTags = (tags) => {
     return {
         type: ADD_TAGS,
         tags
+    }
+}
+
+const deleteTag = (tag) => {
+    return {
+        type: DELETE_TAG,
+        tag
     }
 }
 
@@ -36,11 +43,27 @@ export const addTags = (tags) => async (dispatch) => {
         body: JSON.stringify(tags)
     })
     const data = await res.json();
-    console.log('---------data from backend-------',data)
     dispatch(addNewTags(data));
     return res;
 }
 
+
+export const removeTag = (tagId) => async (dispatch) => {
+	const response = await fetch(`/api/tags/${tagId}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(tagId)
+	});
+
+    const data = await response.json();
+	if (response.ok) {
+		dispatch(deleteTag(data));
+		return null;
+	}
+    else {
+        return response
+    }
+};
 
 const tagsReducer = (state = {}, action) => {
 	switch (action.type) {
@@ -57,6 +80,11 @@ const tagsReducer = (state = {}, action) => {
             for (let key in action.tags) {
                 newState[key] = action.tags[key]
             }
+            return newState;
+        }
+        case DELETE_TAG: {
+            const newState = Object.assign({}, state);
+            delete newState[action.tag.id];
             return newState;
         }
         default: {

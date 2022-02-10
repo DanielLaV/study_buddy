@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import AddCardFormModal from '../AddCardFormModal';
 import CardBrowser from '../CardsBrowser';
 import AddTagFormModal from '../AddTagsFormModal';
-
+import Tags from '../Tags'
 
 
 function DeckIdPage() {
@@ -16,15 +16,20 @@ function DeckIdPage() {
     const user = useSelector(state => state.session.user.id)
     const { deckId } = useParams();
     const deck = useSelector(state => state.decks[deckId])
+    const allTags = useSelector(state => Object.values(state.tags))
 
     useEffect(() => {
         dispatch(deckActions.getOneDeck(deckId));
         dispatch(tagActions.getTags(deckId))
     }, [dispatch]);
 
+
     if (deck) {
         const isOwner = user === deck.user_id;
-        return (<>
+        let displayTags = allTags.map(tag => <Tags tag={tag} isOwner={isOwner}/>)
+
+        return (
+        <>
             <div key={deck.id} className='deckIdPage'>
                 <Deck deck={deck} />
                 {isOwner &&
@@ -32,6 +37,8 @@ function DeckIdPage() {
                         <AddCardFormModal />
                         <AddTagFormModal />
                     </>}
+            </div>
+            <div className='tags-container'>{displayTags}
             </div>
             <CardBrowser />
         </>

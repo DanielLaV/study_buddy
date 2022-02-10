@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, make_response
 from app.models import Tag, db, Deck
-from app.forms import TagForm, DeleteTagForm
+from app.forms import TagForm
 
 tag_routes = Blueprint('tags', __name__)
 
@@ -36,22 +36,21 @@ def one_tag(id):
 
     'DELETE' deletes the tag with pk id. Returns a status of 200.
     """
-    form = DeleteTagForm()
+
     if request.method == 'DELETE':
-        form.data = request.get_json()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            try:
-                tag = Tag.query.get(id)
-                db.session.delete(tag)
-                db.session.commit()
-                return make_response(200)
-            except:
-                response = make_response(404, error="Tag not found!")
-                return response
-        if form.errors:
-            return form.errors
+        try:
+            print('--------made it------------')
+            tag = Tag.query.get(id)
+            print('-----form data----', tag)
+            db.session.delete(tag)
+            db.session.commit()
+            return tag.to_dict()
+        except:
+            res = make_response(404, error="Tag not found!")
+            return res
+
     if request.method == 'GET':
+        form = TagForm()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             print("if conditional)")
@@ -64,3 +63,19 @@ def one_tag(id):
         tag = Tag.query.get(id)
         print(tag.to_dict())
         return tag.to_dict()
+
+
+    #     form = DeleteTagForm()
+    #     form.data = request.get_json()
+    #     form['csrf_token'].data = request.cookies['csrf_token']
+    #     if form.validate_on_submit():
+    #         try:
+    #             tag = Tag.query.get(id)
+    #             db.session.delete(tag)
+    #             db.session.commit()
+    #             return make_response(200)
+    #         except:
+    #             response = make_response(404, error="Tag not found!")
+    #             return response
+    #     if form.errors:
+    #         return form.errors

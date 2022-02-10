@@ -1,8 +1,6 @@
 from flask import Blueprint, session, request, make_response
 from app.models import db, Deck, Card
 from app.forms import SearchForm
-from functools import reduce
-import operator
 
 search_routes = Blueprint('search', __name__)
 

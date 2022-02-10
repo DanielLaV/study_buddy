@@ -39,24 +39,6 @@ function EditCardForm({ setShowModal, card }) {
       );
   };
 
-  //   return dispatch(cardActions.editCard(payload))
-  //   .then(
-  //     (response) => {
-  //       if (response.errors) {
-  //         setErrors(data.errors)
-  //       }
-  //       setSuccess("Success!");
-  //       setTimeout(() => {
-  //         setShowModal(false);
-  //       }, 1500);
-  //     }, async (response) => {
-  //       console.log("response", response)
-  //       const data = response;
-  //       if (data && data.errors) ;
-  //     }
-  //   );
-  // };
-
   return (
     <div className="card-form">
       <h2>
@@ -94,7 +76,7 @@ function EditCardForm({ setShowModal, card }) {
         <button
           type="submit"
           className="">
-          Add Card!
+          Submit Edits!
         </button>
         <button
           type="button"

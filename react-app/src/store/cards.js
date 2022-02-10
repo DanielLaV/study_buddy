@@ -48,8 +48,10 @@ const deleteOneCard = card => ({
 
 
 export const createCard = (payload) => async (dispatch) => {
-    const response = await fetch("/api/cards", {
-        method: 'POST', body: JSON.stringify(payload)
+    const response = await fetch("/api/cards/", {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
     });
     const card = await response.json();
     if (response.ok) {
@@ -95,7 +97,6 @@ export const getOneCard = (id) => async (dispatch) => {
     return card;
 }
 export const editCard = (payload) => async (dispatch) => {
-    console.log("payload", payload)
     const response = await fetch(`/api/cards/${payload.cardId}`,
         {
             method: 'PUT',
@@ -113,25 +114,28 @@ export const editCard = (payload) => async (dispatch) => {
 }
 
 
-export const deleteCard = (id) => async (dispatch) => {
-    const getCurrCard = await fetch(`/api/cards/${id}`, {
+export const deleteCard = (payload) => async (dispatch) => {
+    const getCurrCard = await fetch(`/api/cards/${payload.card_id}`, {
         headers: {
             "Content-Type": "application/json"
         }
     });
-    const currCard = getCurrCard.card
-    if (currCard.ok) {
-        const delCard = await fetch(`/api/cards/${id}`,
-            { method: 'DELETE' });
+    if (getCurrCard.ok) {
+        const delCard = await fetch(`/api/cards/${payload.card_id}`,
+            {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
         if (delCard.ok) {
-            const response = await currCard.json();
-            const card = response.card
+            const card = await getCurrCard.json();
             dispatch(deleteOneCard(card));
             return card;
         }
         else return delCard.json();
     }
-    else return currCard.json();
+    else return getCurrCard.json();
 }
 
 const cardsReducer = (state = {}, action) => {

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as cardActions from "../../store/cards";
+import { useParams } from "react-router-dom";
 
 function AddCardForm({ payload }) {
   const dispatch = useDispatch();
+  const { deckId } = useParams();
   const setShowModal = payload
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
@@ -17,24 +19,33 @@ function AddCardForm({ payload }) {
     const payload = {
       front,
       back,
-      deck_id: 1
+      deck_id: +deckId
     }
     return dispatch(cardActions.createCard(payload))
       .then(
-        () => {
+        (response) => {
+          if (response.errors) {
+            setErrors(response.errors)
+            return
+          }
           setSuccess("Success!");
           setTimeout(() => {
             setShowModal(false);
           }, 1500);
-        }, async (response) => {
-          const data = await response.json();
-          if (data && data.errors) setErrors(data.errors);
         }
       );
   };
 
   return (
     <div className="card-form">
+      <h2>
+        {success}
+      </h2>
+      <h2>Preview</h2>
+      <h3>Front:</h3>
+      <div>{front}</div>
+      <h3>Back:</h3>
+      <div>{back}</div>
       <ul className="error-list">
         {errors.map((error, idx) => (
           <li key={idx} className="errors">{error}</li>
@@ -58,12 +69,6 @@ function AddCardForm({ payload }) {
           required
           placeholder="Enter what you want to appear on the back of the card. This would be the answer or response to the prompt on the front of the card."
           className=""
-        />
-        <input
-          type="hidden"
-          id="deck_id"
-          // value={deck_id} grab from store
-          value={1}
         />
         <button
           type="submit"

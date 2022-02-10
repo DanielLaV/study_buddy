@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards"
 import EditCardFormModal from "../EditCardFormModal";
+import DeleteCardFormModal from "../DeleteCardFormModal";
 
 const CardBody = ({ setShowModal, cardId }) => {
-    const {deckId} = useParams();
+    const { deckId } = useParams();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const card = useSelector(state => state.cards[cardId]);
@@ -26,8 +27,10 @@ const CardBody = ({ setShowModal, cardId }) => {
     console.log("false?", user.id === deck.user_id)
     if (user.id === deck.user_id) {
         buttonDiv = [
-            buttonDiv,
-            <EditCardFormModal card={card}/>
+            buttonDiv, <>
+                <EditCardFormModal card={card} />
+                <DeleteCardFormModal card={card} />
+            </>
         ]
     }
     return (

@@ -45,24 +45,6 @@ function DeleteCardForm({ setShowModal, card }) {
             ))}
         </ul>
         <form onSubmit={submitDelete}>
-            <input
-                type="hidden"
-                id="deck_id"
-                // value={deck_id} get this from the store
-                value={1}
-            />
-            <input
-                type="hidden"
-                id="curr_user_id"
-                // value={session user id} get this from the store
-                value={1}
-            />
-            <input
-                type="hidden"
-                id="deck_user_id"
-                // value={deck user id} get this from the store
-                value={1}
-            />
             <button type="submit" className="dark-button">Yes</button>
             <button type="button" onClick={(e) => setShowModal(false)} className="light-button">No</button>
         </form>

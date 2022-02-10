@@ -10,7 +10,7 @@ function AddToStudyList({deck_id, user_id}) {
 
     return (
     <>
-        <button type="button" onClick={(e) => handleSubmit()} className="add-to-study-list">Add</button>
+        <button type="button" onClick={(e) => handleSubmit()} className="add-to-study-list">+ Study List</button>
     </>
     )
 }

@@ -11,7 +11,7 @@ const handleSubmit = (e) => {
 }
   return (
     <>
-      <button className='delete-button' onClick={handleSubmit}>Remove</button>
+      <button className='delete-button' onClick={handleSubmit}>- Study List</button>
     </>
   );
 }

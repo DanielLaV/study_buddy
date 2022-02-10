@@ -37,9 +37,7 @@ function DecksPage() {
                     <div className='allDecks'>
                         {decks?.map(deck =>
                             <NavLink className="eachDeck" to={`/decks/${deck.id}`} key={deck.id}>
-                                <div>
-                                    <p className='title'>{deck.title}</p>
-                                </div>
+                         		<Deck deck={deck} studyDecks={studyDecks} />
                             </NavLink>)}
                     </div>
                 </div>

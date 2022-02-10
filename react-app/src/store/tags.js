@@ -73,11 +73,11 @@ export const addTags = (tags) => async (dispatch) => {
 }
 
 
-export const removeTag = (tagId) => async (dispatch) => {
-	const response = await fetch(`/api/tags/${tagId}`, {
+export const removeTag = (payload) => async (dispatch) => {
+	const response = await fetch(`/api/tags/${payload.tag_id}`, {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(tagId)
+        body: JSON.stringify(payload)
 	});
 
     const data = await response.json();

@@ -37,20 +37,19 @@ def main():
             print("deck_desc", deck_desc_results)
         except:
             pass
-        # try:
-        #     card_front_results = {[card.to_dict() for card in Card.query.filter(Card.front.ilike(f"%{query}%")).all]}
-        # except:
-        #     card_front_one_result = Card.query.filter(Card.front.ilike(f"%{query}%")).all()
-        #     print("front_one?", card_front_one_result)
-        # try:
-        #     card_back_results = {[card.to_dict() for card in Card.query.filter(Card.back.ilike(f"%{query}%")).all]}
-        # except:
-        #     card_back_one_result = Card.query.filter(Card.back.ilike(f"%{query}%")).all()
-        # set_deck_results = set([deck.to_dict() for card in cards]deck_title_results, deck_desc_results)
-        # card_front_results = {[card.to_dict() for card in Card.query.filter(Card.front.ilike(query)).all]}
-        # card_back_results = {[card.to_dict() for card in Card.query.filter(Card.back.ilike(query)).all]}
-        # set_card_results = set(card_front_results, card_back_results)
-        # return {"decks": {key: value for key, value in set_deck_results}, "cards": {key: value for key, value in set_card_results}}
+        try:
+            card_front_results = Card.query.filter(Card.front.ilike(f"%{query}%")).all()
+            card_front_results = [card.to_dict() for card in card_front_results]
+        except:
+            pass
+        try:
+            card_back_results = Card.query.filter(Card.back.ilike(f"%{query}%")).all()
+            card_back_results = [card.to_dict() for card in card_back_results]
+        except:
+            pass
+        set_deck_results = set(deck_title_results, deck_desc_results)
+        set_card_results = set(card_front_results, card_back_results)
+        return {"decks": {key: value for key, value in set_deck_results}, "cards": {key: value for key, value in set_card_results}}
     elif form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {}, 200

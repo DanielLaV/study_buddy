@@ -49,7 +49,10 @@ def main():
             pass
         set_deck_results = set(deck_title_results, deck_desc_results)
         set_card_results = set(card_front_results, card_back_results)
-        return {"decks": {key: value for key, value in set_deck_results}, "cards": {key: value for key, value in set_card_results}}
+        if (set_deck_results or set_card_results):
+            return {"decks": {key: value for key, value in set_deck_results}, "cards": {key: value for key, value in set_card_results}}
+        else:
+            return {"errors": "No results found!"}, 404
     elif form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return {}, 200

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards";
 
-function DeleteCardForm({ payload }) {
-    const setShowModal = payload;
-    const currCard = useSelector(state => state.cards);
+function DeleteCardForm({ setShowModal, card }) {
     const dispatch = useDispatch();
+    console.log("card", card)
+    const { deckId } = useParams();
     const currUserId = useSelector(state => state.session.user.id);
-    const currDeckId = useSelector(state => state.decks.user_id); // need to change this depending on how data is presented in the store
-    const deckId = useSelector(state => state.decks.id);
+    console.log(currUserId)
+    const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
     const [success, setSuccess] = useState("");
     const [errors, setErrors] = useState([]);
     // const cardId = state.cards.id
@@ -17,25 +18,33 @@ function DeleteCardForm({ payload }) {
         setErrors([]);
         const payload = {
             deck_id: deckId,
+            card_id: card.id,
             curr_user_id: currUserId,
-            deck_user_id: currDeckId
+            deck_user_id: currUserDeckId,
         }
+        console.log("payload", payload)
         return dispatch(cardActions.deleteCard(payload))
             .then(
-                () => {
+                (response) => {
+                    if (response.errors) {
+                        setErrors(response.errors)
+                        return
+                    }
                     setSuccess("Success!");
                     setTimeout(() => {
                         setShowModal(false);
                     }, 1500);
-                }, async (response) => {
-                    const data = await response.json();
-                    if (data && data.errors) setErrors(data.errors);
                 }
             );
     };
 
-    return (<><h2>Are you sure you want to delete this image?</h2>
+    return (<><h2>Are you sure you want to delete this card?</h2>
         <h3>This cannot be undone.</h3>
+        <ul className="error-list">
+            {errors.map((error, idx) => (
+                <li key={idx} className="errors">{error}</li>
+            ))}
+        </ul>
         <form onSubmit={submitDelete}>
             <input
                 type="hidden"

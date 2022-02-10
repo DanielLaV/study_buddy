@@ -37,7 +37,7 @@ const StudyList = () => {
                     ? showStudyDecks
                     : <div>
                         <h3 className='no-decks-on-list-message'>There are no decks on your Study List</h3>
-                        <NavLink to='/decks' className='view-decks-link'>Browse Decks to Add</NavLink>
+                        <NavLink to='/decks' className='view-decks-link'>Add Decks Here</NavLink>
                       </div>)
                 : <Redirect to="/" />
             }

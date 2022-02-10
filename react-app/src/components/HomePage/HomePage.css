@@ -6,7 +6,7 @@ body{
   display: flex;
   flex-direction: row;
   height: 79.5vh;
-  background: #000000;
+  background: #fe918a;
 
 
   /* justify-content: space-between; */
@@ -14,7 +14,18 @@ body{
 }
 .user{
   margin: 25px;
+  margin-top: 7%;
   width: 20%;
+  height: 60%;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .userName{
@@ -22,7 +33,7 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 26px;
   font-weight: bold;
-  color: white;
+  color: black;
   margin-bottom: 0px;
   /* background-color: #27A9E1; */
   /* padding: 6px; */
@@ -36,7 +47,7 @@ body{
 
 
 .bio{
-  color: white;
+  color: Black;
   margin-top: 0px;
   font-size: 13px;
   font-family: Arial, Helvetica, sans-serif;
@@ -103,6 +114,7 @@ box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   z-index: 1000;
   color: white;
   background-color: black;
+  border-radius: 5px;
 
 
 }

@@ -1,0 +1,45 @@
+.Deck{
+  display: flex;
+  height: 1rem;
+  width: 40%;
+  height: 20%;
+  padding: 5px;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  border: solid;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  font-family: Arial, Helvetica, sans-serif;
+
+  /* background-color: white; */
+}
+
+.Deck:hover{
+  box-shadow: 0 30px 70px #000;
+  transform: scale3d(1.05, 1.05, 1.05);
+}
+
+.Deck:visited{
+color: black;}
+
+.title{
+  font-size: 14px;
+  text-align: center;
+}
+
+.decks{
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  padding-top: 2%;
+  padding-bottom: 2%;
+
+}

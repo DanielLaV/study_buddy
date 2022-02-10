@@ -24,7 +24,7 @@ def main():
             response[new_tag.id] = new_tag.to_dict()
         return response
     if form.errors:
-        print(form.errors)
+        print(form.errors) # cf cards
     # deck_tags = Tag.query.filter(Tag.deck_id == deck_id).all()
     # return {"tags": [tag.to_dict() for tag in deck_tags]}
 

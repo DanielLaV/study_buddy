@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -65,7 +65,7 @@ function App() {
         <ProtectedRoute path='/test' exact={true} >
         </ProtectedRoute>
         <Route>
-          Page Not Found
+          <Redirect to='/'/>
         </Route>
       </Switch>
       <Footer />

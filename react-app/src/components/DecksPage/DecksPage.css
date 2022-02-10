@@ -6,7 +6,7 @@ body{
     display: flex;
     flex-direction: row;
     height: 79.5vh;
-    /* background-color: black; */
+    background-color: #000000;
   
   
     /* justify-content: space-between; */

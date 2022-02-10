@@ -98,8 +98,10 @@ body{
 }
 
 .decksDisplay{
-  border: solid;
+  /* border: solid; */
   border-color: black;
+  background-color: #27A9E1;
+
   width: 80%;
   height: 70%;
   
@@ -137,8 +139,9 @@ body{
 }
 
 .studyListDisplay{
-  border: solid;
+  /* border: solid; */
   border-color: black;
+  background-color: #27A9E1;
   width: 80%;
   height: 70%;
   display: flex;

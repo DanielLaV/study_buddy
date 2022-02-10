@@ -21,12 +21,12 @@ def main():
             new_tag = Tag(name=name, deck_id=deck_id)
             db.session.add(new_tag)
             db.session.commit()
-            response[new_tag.id] = name
+            response[new_tag.id] = new_tag.to_dict()
         return response
     if form.errors:
         print(form.errors)
-    deck_tags = Tag.query.filter(Tag.deck_id == deck_id).all()
-    return {"tags": [tag.to_dict() for tag in deck_tags]}
+    # deck_tags = Tag.query.filter(Tag.deck_id == deck_id).all()
+    # return {"tags": [tag.to_dict() for tag in deck_tags]}
 
 @tag_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 def one_tag(id):

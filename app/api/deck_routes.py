@@ -98,14 +98,15 @@ def delete_deck(id):
         return res
 
 
-@deck_routes.route('/<int:id>/tags', methods=['GET'])
+@deck_routes.route('/<int:id>/tags/', methods=['GET'])
 def get_deck_tags(id):
     """
     GET requests to retrieve tags on a specific deck
     """
     # try:
-    tag = Tag.query.filter(id).all()
-    print('-----------tag------------',tag)
-    return 'Deck deleted'
+    print('---------------WE MADE IT-----------------')
+    tags = Tag.query.filter(Tag.deck_id == id).all()
+    print('-----------tags------------',tags)
+    return {"tags": [tag.to_dict() for tag in tags]}
     # except:
     #    return 'nope'

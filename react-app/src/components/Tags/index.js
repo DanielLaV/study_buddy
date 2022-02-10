@@ -6,9 +6,10 @@ import { NavLink } from "react-router-dom";
 function Tags({tag, isOwner=false}) {
     const dispatch = useDispatch();
     const submitDelete = () => {
+
         dispatch(tagActions.removeTag(tag.id))
     }
-    return (
+    return (<>
         <div className='tag-div'>
             <NavLink to={`/tags/${tag.id}`}>
                 {tag.name}
@@ -17,6 +18,8 @@ function Tags({tag, isOwner=false}) {
                 <button type="button" onClick={(e) => submitDelete()}>Delete</button>
             }
         </div>
+        {/* <div>{success}</div> */}
+        </>
     )
 }
 

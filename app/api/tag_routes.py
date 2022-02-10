@@ -4,6 +4,16 @@ from app.forms import TagForm
 
 tag_routes = Blueprint('tags', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{error}')
+    return errorMessages
+
 @tag_routes.route('/', methods=['POST'])
 def main():
     """
@@ -43,7 +53,7 @@ def one_tag(id):
             tag = Tag.query.get(id)
             db.session.delete(tag)
             db.session.commit()
-            return tag.to_dict()
+            return {}, 200
         except:
             res = make_response(404, error="Tag not found!")
             return res

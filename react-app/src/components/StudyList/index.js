@@ -28,10 +28,20 @@ const StudyList = () => {
         </div>
     ))
 
-	return (
+		let className='';
 
-		<div className='browsePageContainer'> 
-        <div className="browseDecks">
+		if (window.location.pathname === "/"){
+			className="homePageStudyDecks"
+		}
+
+		else{
+			className="studyDecksPage"
+		}
+
+
+
+	return (
+        <div className={className}>
 					<div className="browseDecksTitleContainer">
 						<h1 className="browseDecksTitle">Study List</h1>
 					</div>
@@ -42,18 +52,21 @@ const StudyList = () => {
 
 
 
-            {stateUserId === parseInt(userId) ?
+            {(stateUserId === parseInt(userId)) || (stateUserId && window.location.pathname === "/") ?
 			studyArr.map((deck) => (
-				<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id} className="eachDeck">
+				<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id}>
 					<Deck deck={deck} studyDecks={studyDecks} />
 				</NavLink>
+				
 			))
+			
 		 :
         <Redirect to="/" />}
 					</div>
 				</div>
+				<div className='addDeckButtonContainer'> {/* Added for layout */}
+        </div>
 			</div>
-    </div>
 	);
 };
 

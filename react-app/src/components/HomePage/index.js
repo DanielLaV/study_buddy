@@ -4,6 +4,7 @@ import "./HomePage.css"
 import Splash from '../Splash'
 import AddDeckModal from '../AddDeckModal/';
 import MyDecksPage from '../MyDecks';
+import StudyList from '../StudyList';
 
 
 
@@ -32,18 +33,10 @@ function HomePage() {
           <div className='addDeckButtonContainer'>
             <AddDeckModal />
           </div>
-
         </div>
-        <div className="studyList">
-          <div className="studyListTitleContainer">
-            <h1 className="myStudyListTitle">Study List</h1>
-          </div>
-          <div className='studyListDisplay'></div>
-
-
-        </div>
-
+            <StudyList/>
       </div>
+      
     )
   }
 

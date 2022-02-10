@@ -21,7 +21,7 @@ function DeckIdPage() {
     useEffect(() => {
         dispatch(deckActions.getOneDeck(deckId));
         dispatch(tagActions.getTags(deckId))
-    }, [dispatch]);
+    }, [dispatch, deckId]);
 
 
     if (deck) {

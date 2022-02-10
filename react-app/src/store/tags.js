@@ -1,6 +1,8 @@
+import { loadDecks } from "./decks";
 const LOAD_TAGS = 'LOAD_TAGS';
 const ADD_TAGS = 'ADD_TAGS';
 const DELETE_TAG = 'DELETE_TAG'
+
 const loadTags = (tags) => {
 	return {
 		type: LOAD_TAGS,
@@ -33,6 +35,30 @@ export const getTags = (deckId) => async (dispatch) => {
         return response
     }
 };
+
+export const getDecksByTag = (tagId) => async(dispatch) => {
+    const res = await fetch(`/api/tags/${tagId}`)
+    if (res.ok) {
+        const data = await res.json();
+        const decksStore = [];
+        data.decks.forEach((deck) => {
+            decksStore.push(deck.decks);
+        })
+        const tagsStore = [];
+        const tagsData = data.decks;
+        tagsData.forEach((tag) => {
+            delete tag.decks;
+            console.log("tag", tag);
+            tagsStore.push(tag)
+        })
+		dispatch(loadDecks(decksStore));
+        dispatch(loadTags(tagsStore))
+		return data;
+	}
+    else {
+        return res
+    }
+}
 
 
 export const addTags = (tags) => async (dispatch) => {

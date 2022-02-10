@@ -50,11 +50,8 @@ def one_tag(id):
 
     if request.method == 'GET':
         try:
-            print("if conditional)")
             tag = Tag.query.get(id)
             decks_with_tag = Tag.query.filter(Tag.name.ilike(tag.name)).join(Deck).all()
-            print("decks_with_tag", decks_with_tag)
-            print({"decks": [deck.to_dict() for deck in decks_with_tag]})
             return {"decks": [deck.to_dict() for deck in decks_with_tag]}
         except:
             print('--------made it22222222222------------')

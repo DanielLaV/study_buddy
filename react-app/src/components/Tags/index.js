@@ -11,7 +11,7 @@ function Tags({tag, isOwner=false}) {
     return (
         <div className='tag-div'>
             <NavLink to={`/tags/${tag.id}`}>
-                <h4>{tag.name}</h4>
+                {tag.name}
             </NavLink>
             {isOwner &&
                 <button type="button" onClick={(e) => submitDelete()}>Delete</button>

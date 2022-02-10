@@ -95,18 +95,6 @@ export const deleteDeck = id => async (dispatch) => {
     else return currDeck;
 }
 
-export const getDecksByTag = (tagId) => async(dispatch) => {
-    const res = await fetch(`/api/tags/${tagId}`)
-console.log('I AM IN HERE')
-    if (res.ok) {
-        const data = await res.json();
-		dispatch(loadDecks(data.decks));
-		return data;
-	}
-    else {
-        return res
-    }
-}
 
 
 /* ----- REDUCER ------ */

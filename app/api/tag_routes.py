@@ -21,11 +21,12 @@ def main():
     The function returns all tags associated with that deck.
     """
     form = TagForm()
-    data = request.get_json()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("form.validate_on_submit()", form.validate_on_submit())
     if form.validate_on_submit():
-        names = data['names'].split(", ")
-        deck_id = data['deck_id']
+        names = form.data['names'].split(", ")
+        deck_id = form.data['deck_id']
+        print("names", names)
         response = {}
         for name in names:
             new_tag = Tag(name=name, deck_id=deck_id)
@@ -34,6 +35,7 @@ def main():
             response[new_tag.id] = new_tag.to_dict()
         return response
     elif form.errors:
+        print("form.errors", form.errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @tag_routes.route('/<int:id>', methods=['GET', 'DELETE'])

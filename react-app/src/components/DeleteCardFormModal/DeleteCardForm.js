@@ -22,7 +22,6 @@ function DeleteCardForm({ setShowModal, card }) {
             curr_user_id: currUserId,
             deck_user_id: currUserDeckId,
         }
-        console.log("payload", payload)
         return dispatch(cardActions.deleteCard(payload))
             .then(
                 (response) => {

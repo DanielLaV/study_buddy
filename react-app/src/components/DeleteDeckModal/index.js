@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import DeleteDeckForm from './DeleteDeckForm';
+import './DeleteDeck.css'
 
 function DeleteDeckFormModal({ deck }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} to="#" className=''>Delete Deck</button>
+      <input type="image" className='trash' src="/trash.png" alt="text" onClick={() => setShowModal(true)} to="#" ></input>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeleteDeckForm payload={setShowModal} deck={deck} />

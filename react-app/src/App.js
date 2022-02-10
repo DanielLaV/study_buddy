@@ -6,7 +6,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import StudyList from './components/StudyList'
 import User from './components/User';
-import Splash from './components/Splash';
+import HomePage from './components/HomePage';
 import DecksPage from './components/DecksPage';
 import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
@@ -32,8 +32,11 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        {/* <ProtectedRoute exact={true} path='/'>
+          <UserPage />
+        </ProtectedRoute> */}
         <Route exact={true} path='/'>
-          <Splash />
+          <HomePage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />

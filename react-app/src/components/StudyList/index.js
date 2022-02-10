@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
 import { getStudyDecks } from '../../store/decks_studying';
 import Deck from '../DecksPage/Deck';
+import "../MyDecks/MyDecks.css"
+import { NavLink } from 'react-router-dom';
 
 
 const StudyList = () => {
@@ -22,18 +24,10 @@ const StudyList = () => {
     }, [ dispatch, stateUserId ]);
 
 	return (
-		<div>
-			<h1 className="study-list-title">Study List</h1>
-            {stateUserId === parseInt(userId) ?
-			studyArr.map((deck) => (
-				<div key={deck.id} className="study-list-deck">
-					<Deck deck={deck} studyDecks={studyDecks} />
-				</div>
-			))
-		 :
-        <Redirect to="/" />}
-        </div>
-	);
-};
+			<div className='decks'> 
+					{studyArr.map(deck => <NavLink className="Deck" to='' key={deck.id} > <Deck deck={deck} studyDecks={studyDecks} /> </NavLink>)}
+		</div>
+	)
+	}
 
 export default StudyList;

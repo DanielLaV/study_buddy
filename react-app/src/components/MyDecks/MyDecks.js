@@ -13,7 +13,13 @@ function MyDecks({ deck }) {
 
     return (
         <div>
-            <p className='title'>{deck.title}</p>
+            <h2 className='title'>{deck.title}</h2>
+            {/* <p className='deckDesc'>{deck.description}</p>
+            {isOwner &&
+                <div className='editDeleteButtons'>
+                    <EditDeckFormModal deck={deck} />
+                    <DeleteDeckFormModal deck={deck} />
+                </div>} */}
         </div>
     )
 }

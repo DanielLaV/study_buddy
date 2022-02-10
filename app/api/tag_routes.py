@@ -1,8 +1,18 @@
 from flask import Blueprint, session, request, make_response
 from app.models import Tag, db, Deck
-from app.forms import TagForm, DeleteTagForm
+from app.forms import TagForm
 
 tag_routes = Blueprint('tags', __name__)
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{error}')
+    return errorMessages
 
 @tag_routes.route('/', methods=['POST'])
 def main():
@@ -11,19 +21,22 @@ def main():
     The function returns all tags associated with that deck.
     """
     form = TagForm()
-    form.data = request.get_json()
+    data = request.get_json()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        names = form.data['names']
-        deck_id = form.data['deck_id']
+        names = data['names'].split(", ")
+        deck_id = data['deck_id']
+        response = {}
         for name in names:
             new_tag = Tag(name=name, deck_id=deck_id)
             db.session.add(new_tag)
             db.session.commit()
+            response[new_tag.id] = new_tag.to_dict()
+        return response
     if form.errors:
-        return form.error
-    deck_tags = Tag.query.filter(Tag.deck_id == deck_id).all()
-    return {"tags": [tag.to_dict() for tag in deck_tags]}
+        print(form.errors) # cf cards
+    # deck_tags = Tag.query.filter(Tag.deck_id == deck_id).all()
+    # return {"tags": [tag.to_dict() for tag in deck_tags]}
 
 @tag_routes.route('/<int:id>', methods=['GET', 'DELETE'])
 def one_tag(id):
@@ -33,31 +46,41 @@ def one_tag(id):
 
     'DELETE' deletes the tag with pk id. Returns a status of 200.
     """
-    form = DeleteTagForm()
+
     if request.method == 'DELETE':
-        form.data = request.get_json()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            try:
-                tag = Tag.query.get(id)
-                db.session.delete(tag)
-                db.session.commit()
-                return make_response(200)
-            except:
-                response = make_response(404, error="Tag not found!")
-                return response
-        if form.errors:
-            return form.errors
+        print('--------made it------------')
+        try:
+            tag = Tag.query.get(id)
+            db.session.delete(tag)
+            db.session.commit()
+            return {}, 200
+        except:
+            res = make_response(404, error="Tag not found!")
+            return res
+
     if request.method == 'GET':
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
-            print("if conditional)")
+        try:
             tag = Tag.query.get(id)
             decks_with_tag = Tag.query.filter(Tag.name.ilike(tag.name)).join(Deck).all()
-            print("decks_with_tag", decks_with_tag)
             return {"decks": [deck.to_dict() for deck in decks_with_tag]}
-        if form.errors:
-            return form.errors
-        tag = Tag.query.get(id)
-        print(tag.to_dict())
-        return tag.to_dict()
+        except:
+            print('--------made it22222222222------------')
+            tag = Tag.query.get(id)
+            print(tag.to_dict())
+            return tag.to_dict()
+
+
+    #     form = DeleteTagForm()
+    #     form.data = request.get_json()
+    #     form['csrf_token'].data = request.cookies['csrf_token']
+    #     if form.validate_on_submit():
+    #         try:
+    #             tag = Tag.query.get(id)
+    #             db.session.delete(tag)
+    #             db.session.commit()
+    #             return make_response(200)
+    #         except:
+    #             response = make_response(404, error="Tag not found!")
+    #             return response
+    #     if form.errors:
+    #         return form.errors

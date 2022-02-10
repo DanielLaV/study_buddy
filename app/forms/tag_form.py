@@ -7,9 +7,7 @@ def validate_each_tag_name(form, field):
     names = field.data.split(", ")
     for name in names:
         if len(name) < 2 or len(name) > 16:
-            raise ValidationError(f"{name} is not the right length! Tags must be at least 2 characters long and at most 16 characters long.")
-        if re.search("\W", name):
-            raise ValidationError(f"{name} can only contain letters and numbers. No special characters, please!")
+            raise ValidationError(f"{name} is not the right length! Tags must be beteen 2 and 16 characters long.")
 
 
 class TagForm(FlaskForm):

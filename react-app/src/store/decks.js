@@ -15,8 +15,6 @@ export const loadDecks = decks => {
     }
 };
 
-
-
 export const addNewDeck = newDeck => {
     return {
         type: ADD_DECK,
@@ -96,6 +94,7 @@ export const deleteDeck = id => async (dispatch) => {
     }
     else return currDeck;
 }
+
 
 
 /* ----- REDUCER ------ */

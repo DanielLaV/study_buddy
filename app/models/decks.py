@@ -23,7 +23,7 @@ class Deck(db.Model, UserMixin):
 
 
     user = db.relationship("User", back_populates="deck")
-    tag = db.relationship("Tag", back_populates="deck")
-    card = db.relationship("Card", back_populates="deck")
-    user_study_deck = db.relationship("UserStudyDeck", back_populates="deck")
-    comment = db.relationship("Comment", back_populates="deck")
+    tag = db.relationship("Tag", back_populates="deck", cascade='all, delete')
+    card = db.relationship("Card", back_populates="deck", cascade="all, delete")
+    user_study_deck = db.relationship("UserStudyDeck", back_populates="deck", cascade="all, delete")
+    comment = db.relationship("Comment", back_populates="deck", cascade="all, delete")

@@ -10,6 +10,7 @@ import HomePage from './components/HomePage';
 import DecksPage from './components/DecksPage';
 import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
+import TagPage from './components/TagPage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
           <StudyList />
         </ProtectedRoute>
         <ProtectedRoute path='/tags/:tagId' exact={true} >
-          <h1>This is '/tags/:tagId' page that will display the tag search results </h1>
+          <TagPage />
         </ProtectedRoute>
         <ProtectedRoute path='/search-results' exact={true} >
           <h1>This is '/search-results' page that will display the search results </h1>

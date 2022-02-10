@@ -16,7 +16,8 @@ class Tag(db.Model, UserMixin):
         return {
             'id': self.id,
             'name': self.name,
-            'deck_id': self.deck_id
+            'deck_id': self.deck_id,
+            'decks': self.deck.to_dict()
         }
 
 

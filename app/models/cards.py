@@ -23,4 +23,4 @@ class Card(db.Model, UserMixin):
 
 
     deck = db.relationship("Deck", back_populates="card")
-    user_study_card = db.relationship("UserStudyCard", back_populates="card")
+    user_study_card = db.relationship("UserStudyCard", back_populates="card", cascade="all, delete")

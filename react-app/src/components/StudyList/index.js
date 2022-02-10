@@ -22,7 +22,14 @@ const StudyList = () => {
 		dispatch(getStudyDecks(stateUserId))
     }, [ dispatch, stateUserId ]);
 
+    let showStudyDecks = studyArr.map((deck) => (
+        <div key={deck.id} className="study-list-deck">
+            <Deck deck={deck} studyDecks={studyDecks} />
+        </div>
+    ))
+
 	return (
+
 		<div className='browsePageContainer'> 
         <div className="browseDecks">
 					<div className="browseDecksTitleContainer">

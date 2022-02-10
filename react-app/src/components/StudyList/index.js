@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, NavLink } from 'react-router-dom';
 import { getStudyDecks } from '../../store/decks_studying';
 import Deck from '../DecksPage/Deck';
+import "../DecksPage/DecksPage.css"
 
 
 const StudyList = () => {
@@ -22,17 +23,30 @@ const StudyList = () => {
     }, [ dispatch, stateUserId ]);
 
 	return (
-		<div>
-			<h1 className="study-list-title">Study List</h1>
+		<div className='browsePageContainer'> 
+        <div className="browseDecks">
+					<div className="browseDecksTitleContainer">
+						<h1 className="browseDecksTitle">Study List</h1>
+					</div>
+					<div className='deckDisplay'>
+						<div className='allDecks'>
+
+					
+
+
+
             {stateUserId === parseInt(userId) ?
 			studyArr.map((deck) => (
-				<div key={deck.id} className="study-list-deck">
+				<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id} className="eachDeck">
 					<Deck deck={deck} studyDecks={studyDecks} />
-				</div>
+				</NavLink>
 			))
 		 :
         <Redirect to="/" />}
-        </div>
+					</div>
+				</div>
+			</div>
+    </div>
 	);
 };
 

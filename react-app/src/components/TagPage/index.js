@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import * as tagActions from '../../store/tags'
 import Deck from '../DecksPage/Deck'
-import Tags from '../Tags'
 
 function TagPage() {
     const dispatch = useDispatch()

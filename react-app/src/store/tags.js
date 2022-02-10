@@ -22,10 +22,6 @@ const deleteTag = (tag) => {
     }
 }
 
-export const getDecksByTag = (tagId) => async(dispatch) => {
-
-}
-
 export const getTags = (deckId) => async (dispatch) => {
     const response = await fetch(`/api/decks/${deckId}/tags/`)
 	if (response.ok) {

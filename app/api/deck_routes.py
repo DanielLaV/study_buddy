@@ -104,9 +104,7 @@ def get_deck_tags(id):
     GET requests to retrieve tags on a specific deck
     """
     # try:
-    print('---------------WE MADE IT-----------------')
     tags = Tag.query.filter(Tag.deck_id == id).all()
-    print('-----------tags------------',tags)
     return {"tags": [tag.to_dict() for tag in tags]}
     # except:
     #    return 'nope'

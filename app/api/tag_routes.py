@@ -38,10 +38,9 @@ def one_tag(id):
     """
 
     if request.method == 'DELETE':
+        print('--------made it------------')
         try:
-            print('--------made it------------')
             tag = Tag.query.get(id)
-            print('-----form data----', tag)
             db.session.delete(tag)
             db.session.commit()
             return tag.to_dict()
@@ -50,19 +49,18 @@ def one_tag(id):
             return res
 
     if request.method == 'GET':
-        form = TagForm()
-        form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit():
+        try:
             print("if conditional)")
             tag = Tag.query.get(id)
             decks_with_tag = Tag.query.filter(Tag.name.ilike(tag.name)).join(Deck).all()
             print("decks_with_tag", decks_with_tag)
+            print('--------made it11111------------')
             return {"decks": [deck.to_dict() for deck in decks_with_tag]}
-        if form.errors:
-            return form.errors
-        tag = Tag.query.get(id)
-        print(tag.to_dict())
-        return tag.to_dict()
+        except:
+            print('--------made it22222222222------------')
+            tag = Tag.query.get(id)
+            print(tag.to_dict())
+            return tag.to_dict()
 
 
     #     form = DeleteTagForm()

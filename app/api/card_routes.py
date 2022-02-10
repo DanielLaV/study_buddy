@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -25,21 +25,25 @@ def main():
     For 'POST' requests, this function validates the incoming data from the frontend
     and creates a card. The created card data are returned in JSON format.
     """
-    form = CardForm()
+    if request.method == 'POST':
+        print("post route post route post route")
+        form = CardForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            front = form.data['front']
+            back = form.data['back']
+            deck_id = form.data['deck_id']
+            new_card = Card(front=front, back=back, deck_id=deck_id)
+            db.session.add(new_card)
+            db.session.commit()
+        elif form.errors:
+            print("form.errors", form.errors)
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     if request.method == 'GET':
         cards = Card.query.all()
         return {"cards": [card.to_dict() for card in cards]}
-    if form.validate_on_submit() and request.method == 'POST':
-        form.data = request.get_json()
-        front = form.data['front']
-        back = form.data['back']
-        deck_id = form.data['deck_id']
-        new_card = Card(front=front, back=back, deck_id=deck_id)
-        db.session.add(new_card)
-        db.session.commit()
-    if form.errors:
-        return form.error
-    return {"card": new_card.to_dict()}
+    return new_card.to_dict()
 
 @card_routes.route('/<int:id>', methods=['GET', 'PUT'])
 def one_card(id):
@@ -52,13 +56,10 @@ def one_card(id):
     one_card = Card.query.get(id)
     if request.method == 'PUT':
         form = CardForm()
-        data = request.get_json()
-        print("data", data)
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
-            data = request.get_json()
-            deck_id = data["deck_id"]
+            deck_id = form.data["deck_id"]
             front = form.data['front']
             back = form.data['back']
             one_card.front = front
@@ -66,8 +67,8 @@ def one_card(id):
             one_card.deck_id = deck_id
             db.session.add(one_card)
             db.session.commit()
-        if form.errors:
-            return form.errors
+        elif form.errors:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return one_card.to_dict()
 
 @card_routes.route('/<int:id>', methods=['DELETE'])
@@ -78,15 +79,13 @@ def delete_card(id):
     Return response status 404 if the card wasn't found.
     """
     form = DeleteCardForm()
-    form.data = request.get_json()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        try:
+        # try:
             one_card = Card.query.get(id)
             db.session.delete(one_card)
             db.session.commit()
-            return make_response(200, )
-        except:
-            response = make_response(404, error="Card not found!")
-            return response
+            return {}, 200
+        # except:
+        #     return {'errors': ["Card not found!"]}, 404
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

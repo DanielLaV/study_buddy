@@ -3,15 +3,15 @@ import { Modal } from '../../context/Modal';
 import { NavLink } from 'react-router-dom';
 import DeleteCardForm from './DeleteCardForm';
 
-function DeleteCardFormModal() {
+function DeleteCardFormModal({card}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <NavLink onClick={() => setShowModal(true)} to="#" className=''>Delete Card</NavLink>
+      <button onClick={() => setShowModal(true)} className=''>Delete Card</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteCardForm payload={setShowModal}/>
+          <DeleteCardForm setShowModal={setShowModal} card={card}/>
         </Modal>
       )}
     </>

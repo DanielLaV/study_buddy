@@ -18,9 +18,46 @@ def seed_decks():
     lists = Deck(
         title='Lists', description='Why would we change the name of arrays?', user_id=3)
     sequelize = Deck(
-        title='Sequelize', description='The ins and the outs', user_id=3)
+        title='Sequelize', description='The ins and the outs of connecting express to sql', user_id=3)
     css = Deck(
         title='Cascading Style Sheets', description='Good luck moving an object', user_id=3)
+    tdd = Deck(
+        title='Test Driven Development', description='Always test your code', user_id=1)
+    recursion = Deck(
+        title='Recursion', description='Functions calling themselves over and over and over...', user_id=1)
+    iifes = Deck(
+        title='IIFEs', description='Function expressions that are immediately invoked', user_id=1)
+    asyncjs = Deck(
+        title='Async JS ', description='Everything you need to know about using async functions in JS', user_id=2)
+    bigO = Deck(
+        title='Big-O Notation', description='How to use and understand Big-O notation', user_id=2)
+    sorting = Deck(
+        title='Sorting', description='Sorting algorithms', user_id=2)
+    trees = Deck(
+        title='Trees', description='Not the trees you climb. Tree algorithms', user_id=3)
+    graphs = Deck(
+        title='Graphs', description='Understanding graphing algorithms in JS', user_id=3)
+    html = Deck(
+        title='HTML', description='Used to make great Myspace profile pages', user_id=3)
+    apis = Deck(
+        title='APIs', description='Practice RESTFUL APIs with express', user_id=1)
+    promises = Deck(
+        title='Promises', description='You may return the value in the future', user_id=1)
+    domManipulation = Deck(
+        title='DOM Manipulation', description='Becoming a master at manipulating the DOM', user_id=1)
+    events = Deck(
+        title='Events', description='What is an event and how to handle it', user_id=2)
+    storage = Deck(
+        title='Storage', description='All kinds of storage', user_id=2)
+    sql = Deck(
+        title='SQL', description='How to communicate with the sql database', user_id=2)
+    regex = Deck(
+        title='RegEx', description='Become a RegEx master', user_id=3)
+    express = Deck(
+        title='Express', description='Mastering Express.js basics', user_id=3)
+    pug = Deck(
+        title='Pug', description='Best HTML templating engine ever', user_id=3)
+
 
     db.session.add(thunks)
     db.session.add(memo)
@@ -31,6 +68,24 @@ def seed_decks():
     db.session.add(lists)
     db.session.add(sequelize)
     db.session.add(css)
+    db.session.add(tdd)
+    db.session.add(recursion)
+    db.session.add(iifes)
+    db.session.add(asyncjs)
+    db.session.add(bigO)
+    db.session.add(sorting)
+    db.session.add(trees)
+    db.session.add(graphs)
+    db.session.add(html)
+    db.session.add(apis)
+    db.session.add(promises)
+    db.session.add(domManipulation)
+    db.session.add(events)
+    db.session.add(storage)
+    db.session.add(sql)
+    db.session.add(regex)
+    db.session.add(express)
+    db.session.add(pug)
 
     db.session.commit()
 

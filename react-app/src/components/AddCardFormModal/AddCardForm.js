@@ -54,7 +54,7 @@ function AddCardForm({ payload }) {
           <li key={idx} className="errors">{error}</li>
         ))}
       </ul>
-      <form className='form' onSubmit={handleSubmit} className="">
+      <form className='form' onSubmit={handleSubmit}>
         <div className="text-container">
           <textarea
             id="front"

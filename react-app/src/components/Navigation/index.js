@@ -8,6 +8,7 @@ import "./Navigation.css"
 import Logo from './logo.png'
 import LogoText from '../Splash/studyBuddyFont2.png'
 import { useState } from 'react';
+import SearchForm from '../SearchForm';
 
 
 const NavBar = () => {
@@ -25,12 +26,13 @@ const NavBar = () => {
     sessionLinks = (
       <div className="navLinkContainer">
         {/* <NavLink to='/' className='userLink'> {user.username}</NavLink> */}
-          <NavLink to='/' exact={true} activeClassName='userLink' className='navLink'>Home</NavLink>
-          <NavLink to='/decks' activeClassName='userLink' className='navLink'>Browse Decks</NavLink>
-          <NavLink to={`/user-study-decks/${user.id}`} activeClassName='userLink' className='navLink'>Study List</NavLink>
-          {/* <NavLink to='/placholder' activeClassName='userLink' className='navLink'>Search...</NavLink> */}
-          <LogoutButton />
-        
+        <SearchForm />
+        <NavLink to='/' exact={true} activeClassName='userLink' className='navLink'>Home</NavLink>
+        <NavLink to='/decks' activeClassName='userLink' className='navLink'>Browse Decks</NavLink>
+        <NavLink to={`/user-study-decks/${user.id}`} activeClassName='userLink' className='navLink'>Study List</NavLink>
+        {/* <NavLink to='/placholder' activeClassName='userLink' className='navLink'>Search...</NavLink> */}
+        <LogoutButton />
+
       </div>
 
     );

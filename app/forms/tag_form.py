@@ -16,3 +16,6 @@ class TagForm(FlaskForm):
 
 class DeleteTagForm(FlaskForm):
     tag_id = IntegerField("", validators=[DataRequired()])
+    deck_id = IntegerField("", validators=[DataRequired()])
+    curr_user_id = IntegerField("", validators=[DataRequired(), EqualTo('deck_user_id', message='Error! You are not authorized to delete this card')])
+    deck_user_id = IntegerField("", validators=[DataRequired(), EqualTo('curr_user_id', message='Error! You are not authorized to delete this card')])

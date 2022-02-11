@@ -12,7 +12,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{field.capitalize()} : {error}')
     return errorMessages
 
 
@@ -22,24 +22,27 @@ def main():
     GET requests return all decks
     POST requests create a new deck in the database
     """
-    form = DeckForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
 
     if request.method == 'POST':
-        if form.validate_on_submit():
-            data = request.get_json()
-            # print('Data', data)
+        form = DeckForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
 
-            new_deck = Deck(title=data['title'], description=data['description'], user_id=data['user_id'])
-            # print('='*20, 'New Deck is ', new_deck.to_dict())
+        if form.validate_on_submit():
+            print('FORM DATA ===========', form.data)
+            title = form.data['title']
+            description = form.data['description']
+            user_id = form.data['user_id']
+
+            new_deck = Deck(title=title, description=description, user_id=user_id)
+
             db.session.add(new_deck)
             db.session.commit()
             return new_deck.to_dict()
-        if form.errors:
-            return form.errors
-
-    decks = Deck.query.all()
-    return {"decks": [deck.to_dict() for deck in decks]}
+        elif form.errors:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    elif request.method == 'GET':
+        decks = Deck.query.all()
+        return {"decks": [deck.to_dict() for deck in decks]}
 
 @deck_routes.route('/<int:id>/cards/')
 def deck_cards(id):

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards";
@@ -12,7 +12,7 @@ function DeleteCardForm({ setShowModal, card }) {
     const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
     const [success, setSuccess] = useState("");
     const [errors, setErrors] = useState([]);
-    // const cardId = state.cards.id
+
     const submitDelete = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -22,7 +22,6 @@ function DeleteCardForm({ setShowModal, card }) {
             curr_user_id: currUserId,
             deck_user_id: currUserDeckId,
         }
-        console.log("payload", payload)
         return dispatch(cardActions.deleteCard(payload))
             .then(
                 (response) => {
@@ -46,24 +45,6 @@ function DeleteCardForm({ setShowModal, card }) {
             ))}
         </ul>
         <form onSubmit={submitDelete}>
-            <input
-                type="hidden"
-                id="deck_id"
-                // value={deck_id} get this from the store
-                value={1}
-            />
-            <input
-                type="hidden"
-                id="curr_user_id"
-                // value={session user id} get this from the store
-                value={1}
-            />
-            <input
-                type="hidden"
-                id="deck_user_id"
-                // value={deck user id} get this from the store
-                value={1}
-            />
             <button type="submit" className="dark-button">Yes</button>
             <button type="button" onClick={(e) => setShowModal(false)} className="light-button">No</button>
         </form>

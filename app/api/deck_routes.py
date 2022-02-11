@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request, make_response
 from app.models import Deck, Card, Tag, db
-from app.forms import LoginForm, DeckForm, CardForm
+from app.forms import DeckForm, CardForm, DeleteDeckForm
 
 deck_routes = Blueprint('decks', __name__)
 
@@ -12,7 +12,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{field.capitalize()} : {error}')
     return errorMessages
 
 
@@ -22,24 +22,27 @@ def main():
     GET requests return all decks
     POST requests create a new deck in the database
     """
-    form = DeckForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
 
     if request.method == 'POST':
-        if form.validate_on_submit():
-            data = request.get_json()
-            # print('Data', data)
+        form = DeckForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
 
-            new_deck = Deck(title=data['title'], description=data['description'], user_id=data['user_id'])
-            # print('='*20, 'New Deck is ', new_deck.to_dict())
+        if form.validate_on_submit():
+            print('FORM DATA ===========', form.data)
+            title = form.data['title']
+            description = form.data['description']
+            user_id = form.data['user_id']
+
+            new_deck = Deck(title=title, description=description, user_id=user_id)
+
             db.session.add(new_deck)
             db.session.commit()
             return new_deck.to_dict()
-        if form.errors:
-            return form.errors
-
-    decks = Deck.query.all()
-    return {"decks": [deck.to_dict() for deck in decks]}
+        elif form.errors:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    elif request.method == 'GET':
+        decks = Deck.query.all()
+        return {"decks": [deck.to_dict() for deck in decks]}
 
 @deck_routes.route('/<int:id>/cards/')
 def deck_cards(id):
@@ -66,6 +69,7 @@ def single_deck(id):
     if request.method == "PUT":
         form = DeckForm()
         form['csrf_token'].data = request.cookies['csrf_token']
+
         if form.validate_on_submit():
             data = request.get_json()
             title = form.data["title"]
@@ -76,10 +80,8 @@ def single_deck(id):
             deck.user_id = user_id
             db.session.add(deck)
             db.session.commit()
-        if form.errors:
-            return form.errors
-    if request.method == "GET":
-        print("DECK", deck.to_dict())
+        elif form.errors:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return deck.to_dict()
 
 
@@ -88,14 +90,17 @@ def delete_deck(id):
     """
     DELETE requests delete the deck from the database
     """
-    try:
+    form = DeleteDeckForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        print('==================== IN DELTE')
         deck = Deck.query.get(id)
         db.session.delete(deck)
         db.session.commit()
-        return 'Deck deleted'
-    except:
-        res = make_response(404, error="Deck not found!")
-        return res
+        return {}, 200
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 
 @deck_routes.route('/<int:id>/tags/', methods=['GET'])

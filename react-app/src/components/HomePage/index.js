@@ -4,6 +4,8 @@ import "./HomePage.css"
 import Splash from '../Splash'
 import AddDeckModal from '../AddDeckModal/';
 import MyDecksPage from '../MyDecks';
+import StudyList from '../StudyList';
+import EditUserModal from '../EditUserModal'
 
 
 
@@ -19,8 +21,8 @@ function HomePage() {
       <div className="homePageContainer">
         <div className="user">
           <p className="userName">{user.username}</p>
-          <p className='bio'>Harvard 2022. Pre-Law</p>
-          {/* <h2 className='bio'>{user.bio}</h2> */}
+          <p className='bio'>{user.bio}</p>
+          <div><EditUserModal/></div>
         </div>
         <div className="Decks">
           <div className="decksTitleContainer">
@@ -32,18 +34,10 @@ function HomePage() {
           <div className='addDeckButtonContainer'>
             <AddDeckModal />
           </div>
-
         </div>
-        <div className="studyList">
-          <div className="studyListTitleContainer">
-            <h1 className="myStudyListTitle">Study List</h1>
-          </div>
-          <div className='studyListDisplay'></div>
-
-
-        </div>
-
+            <StudyList/>
       </div>
+
     )
   }
 

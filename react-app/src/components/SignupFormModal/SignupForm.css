@@ -1,0 +1,59 @@
+.navButton{
+    border: none;
+    background: none;
+    font-size: 20px;
+    padding: 0;
+    margin-left: 15px;
+}
+
+.navButton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #27A9E1;
+}
+
+.form-container{
+    display: flex;
+    align-items: center;
+    background-color: rgb(255,142,139);
+    color: white;
+    padding: 30px;
+    height: auto;
+}
+
+.input {
+    background-color: #EAE1DF;
+    padding: 5px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.input:focus {
+    box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) + 40%), 0.8);
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.form-button {
+    background-color: #27A9E1;
+    align-self: center;
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+    color: white;
+}
+
+.form-button-container {
+    align-self: center;
+    margin-top: 10px;
+}
+
+
+/* rgb(255,142,139) pink */
+/* #27A9E1 baby blue */
+/* #EAE1DF grey */

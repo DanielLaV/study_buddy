@@ -1,0 +1,27 @@
+.TagDisplay{
+  display: flex;
+}
+
+.tagLink{
+  text-decoration: none;
+  color:black;
+  font-size: 10px;
+  margin-right: 1px;;
+}
+
+.tagLink:visited{
+  color: black;
+
+
+}.tagDelete{
+height: 8px;
+margin-right: 5px;
+}
+
+.tag-div{
+  margin-top: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}

@@ -9,46 +9,58 @@ function AddTagForm({ setShowModal }) {
     const deck_id = useParams().deckId;
     const [names, setNames] = useState('');
     const [errors, setErrors] = useState([]);
+    const [success, setSuccess] = useState("");
 
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors([]);
-
         const newTags = {
             names,
             deck_id: +deck_id
         }
 
-        dispatch(tagActions.addTags(newTags))
-        setShowModal(false);
+        return dispatch(tagActions.addTags(newTags))
+            .then(
+                (response) => {
+                    console.log(response);
+                    console.log("response.errors", response.errors)
+                    if (response.errors) {
+                        setErrors(response.errors)
+                        return
+                    }
+                    setSuccess("Success!");
+                    setTimeout(() => {
+                        setShowModal(false);
+                    }, 1500);
+                }
+            );
     };
 
     return (
-        <div className="addTagForm">
-            <form onSubmit={handleSubmit}>
+        <div className='form-container'>
+            <h2>{success}</h2>
+            <form className="form" onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <label className='names'>
-                    Tag Names (comma, separated)
+                <label className='names'></label>
+                    Tag Names (comma, separated):
                     <input
                         type='names'
                         value={names}
-                        onChange={e => setNames(e.target.value)}
+                        onChange={(e) => setNames(e.target.value)}
                         required
-                        placeholder='Javascript, React, Redux, Thunks'
+                        className='input'
+                        placeholder='Example: Javascript, React, Pug?'
                     />
-                </label>
-                <input
-                    type='deck_id'
-                    value={deck_id}
-                    hidden
-                />
-            <button className='addTagsSubmit'>Add Tags to Deck</button>
-        </form>
+
+                <div className='form-button-container'>
+                    <button className='form-button'>Add Tags to Deck</button>
+                </div>
+            </form>
         </div >
     )
 }

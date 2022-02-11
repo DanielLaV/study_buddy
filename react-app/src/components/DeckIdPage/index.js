@@ -45,10 +45,10 @@ function DeckIdPage() {
 
                 {/* <Deck deck={deck} /> */}
                 {isOwner &&
-                    <>
-                        {/* <AddCardFormModal /> */}
-                        {/* <AddTagFormModal /> */}
-                    </>}
+                    <div className='addCardOrTag'>
+                        <AddCardFormModal />
+                        <AddTagFormModal />
+                    </div>}
             </div>
                     <CardBrowser />
             </div>

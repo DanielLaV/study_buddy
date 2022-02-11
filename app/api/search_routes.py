@@ -22,8 +22,8 @@ def main(query):
     """
     if 16 < len(query) < 2:
          return {"errors": "Query must be between 2 and 16 characters long"}, 401
-        # deck results: querying title and description
     else:
+        # deck results: querying title and description
         try:
             deck_title_results = Deck.query.filter(Deck.title.ilike(f"%{query}%")).all()
             deck_title_results = [deck.to_dict() for deck in deck_title_results]

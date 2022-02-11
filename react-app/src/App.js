@@ -70,7 +70,7 @@ function App() {
         <ProtectedRoute path='/tags/:tagId' exact={true} >
           <TagPage />
         </ProtectedRoute>
-        <ProtectedRoute path='/search-results' exact={true} >
+        <ProtectedRoute path='/search' exact={true} >
           <h1>This is '/search-results' page that will display the search results </h1>
         </ProtectedRoute>
         <ProtectedRoute path='/test' exact={true} >

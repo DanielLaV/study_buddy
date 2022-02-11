@@ -146,7 +146,7 @@ const cardsReducer = (state = {}, action) => {
             action.cards.forEach((card) => {
                 allCards[card.id] = card;
             });
-            return { ...allCards, ...state }
+            return { ...allCards }
         }
         case ADD_CARD: {
             const newCard = { ...state };

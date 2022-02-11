@@ -4,6 +4,7 @@ import * as cardActions from "../../store/cards"
 import { useParams } from "react-router-dom";
 import CardBodyModal from "../CardModal";
 import Card from "../Card";
+import './CardsBrowser.css'
 
 const CardBrowser = () => {
     const { deckId } = useParams();
@@ -20,8 +21,8 @@ const CardBrowser = () => {
     });
 
     return (
-        <div className=""><h2>Cards for {deck.title}</h2>
-            <div>
+        <div className="cardDisplay">
+            <div className="allCards">
                 {cards.map((card) => {
                     return (
                         <CardBodyModal card={card} key={card.id}/>

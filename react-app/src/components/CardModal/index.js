@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CardBody from './CardBody';
 import Card from "../Card";
+import './CardModal.css'
 
 
 function CardBodyModal({card}) {
@@ -9,7 +10,7 @@ function CardBodyModal({card}) {
 
     return (
         <>
-            <div className='singleDeck' onClick={() => setShowModal(true)}><Card card={card} /></div>
+            <div className='eachCard' onClick={() => setShowModal(true)}><Card card={card} /></div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CardBody setShowModal={setShowModal} cardId={card.id}/>

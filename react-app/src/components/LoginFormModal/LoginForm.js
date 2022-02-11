@@ -13,11 +13,16 @@ const LoginForm = ({ setShowModal }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    }
-    setShowModal(false);
+    setErrors([]);
+    return dispatch(login(email, password))
+      .then((response) => {
+        if (response.errors) {
+          console.log("response.errors", response.errors)
+          setErrors(response.errors)
+          return
+        }
+        else if (!response.errors) setShowModal(false);
+      })
   };
 
   const updateEmail = (e) => {
@@ -37,9 +42,7 @@ const LoginForm = ({ setShowModal }) => {
 
       <form className='form' onSubmit={onLogin}>
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+          <div className="error-list">{errors[0]}</div>
         </div>
         <div>
           <label htmlFor='email'>Email: </label>
@@ -63,7 +66,7 @@ const LoginForm = ({ setShowModal }) => {
             className='input'
           />
         </div>
-          <button className='form-button' type='submit'>Login</button>
+        <button className='form-button' type='submit'>Login</button>
       </form>
     </div>
   );

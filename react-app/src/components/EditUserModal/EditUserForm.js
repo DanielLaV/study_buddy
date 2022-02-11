@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { editUser } from '../../store/users';
+import { editUser } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 
 function EditUserForm({ setShowModal }) {

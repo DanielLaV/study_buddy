@@ -13,26 +13,11 @@ export const getUser = (id) => async (dispatch) => {
         headers: { "Content-Type": "application/json" }
     });
     const data = await res.json();
-    console.log('data from backend:',data)
     if (res.ok) {
         dispatch(loadUser(data))
     }
     return data;
 }
-
-export const editUser = (user) => async (dispatch) => {
-	const response = await fetch(`/api/users/${user.id}`, {
-		method: 'PUT',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(user)
-	});
-	const data = await response.json();
-	if (response.ok) {
-		dispatch(loadUser(data));
-	}
-	return data;
-}
-
 
 const usersReducer = (state = {}, action) => {
     switch (action.type) {

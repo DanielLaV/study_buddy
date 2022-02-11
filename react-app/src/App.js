@@ -12,6 +12,7 @@ import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
 import TagPage from './components/TagPage';
 import { authenticate } from './store/session';
+import StudyListPage from './components/StudyList/StudyListPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,7 +56,7 @@ function App() {
           <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>
         </ProtectedRoute>
         <ProtectedRoute path='/user-study-decks/:userId' exact={true} >
-          <StudyList />
+          <StudyListPage />
         </ProtectedRoute>
         <ProtectedRoute path='/tags/:tagId' exact={true} >
           <TagPage />

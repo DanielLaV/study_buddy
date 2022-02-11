@@ -24,7 +24,7 @@ const CardBrowser = () => {
             <div>
                 {cards.map((card) => {
                     return (
-                        <CardBodyModal card={card} key={card.id} />
+                        <CardBodyModal card={card} key={card?.id} />
                     )
                 })}
             </div>

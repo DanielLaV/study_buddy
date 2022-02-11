@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import StudyList from './components/StudyList'
-import User from './components/User';
 import HomePage from './components/HomePage';
 import DecksPage from './components/DecksPage';
 import DeckIdPage from './components/DeckIdPage';
@@ -49,7 +47,6 @@ function App() {
         <Route exact={true} path='/'>
           {/* <ChangeColor/> */}
           <HomePage />
-          <User />
           <EditUserModal />
         </Route>
         <ProtectedRoute path='/users' exact={true} >

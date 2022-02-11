@@ -14,12 +14,12 @@
 
 
 }.tagDelete{
-height: 8px;
+height: 6px;
 margin-right: 5px;
 }
 
 .tag-div{
-  margin-top: 3px;
+  margin-top: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;

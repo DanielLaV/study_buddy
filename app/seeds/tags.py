@@ -102,7 +102,7 @@ def seed_tags():
     regex = Tag(
         name='regex', deck_id=25)
     regular = Tag(
-        name='regular expression', deck_id=25)
+        name='reg expression', deck_id=25)
     express = Tag(
         name='express', deck_id=26)
     node = Tag(

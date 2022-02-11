@@ -5,7 +5,7 @@
 Study Buddy is a website where users can create, study, and share decks of cards for studying computer science topics. This website was designed as a Week 20 project as part of App Academy's 24-week Full Stack Software Engineering Bootcamp.
 
 ## Technologies Used
-[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  | [Node.js](https://nodejs.org/en/)  | [Flask](https://flask.palletsprojects.com/en/2.0.x/)   |   [Jinja](https://jinja.palletsprojects.com/en/2.11.x/templates/) |   [SQLAlchemy](https://www.sqlalchemy.org/)   |  [PostgreSQL](https://www.postgresql.org/)
+[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | [Node.js](https://nodejs.org/en/) | [Flask](https://flask.palletsprojects.com/en/2.0.x/) | [React](https://reactjs.org/) | [Redux](https://redux.js.org/) | [SQLAlchemy](https://www.sqlalchemy.org/) | [PostgreSQL](https://www.postgresql.org/)
 
 ## Launching Locally
 
@@ -21,27 +21,40 @@ Study Buddy is a website where users can create, study, and share decks of cards
 ```
 2. Install dependencies
 ```
-    npm install
+   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
 ```
 
 3.  Create a local .env file modeled after the .env.example file in the root directory
 ```
-   PORT=8080
-   DB_USERNAME=demo_user
-   DB_PASSWORD=your_unique_password
-   DB_DATABASE=study_buddy
-   DB_HOST=localhost
-   SESSION_SECRET=your_session_secret
+   FLASK_APP=app
+   FLASK_ENV=development
+   SECRET_KEY=<<YOUR-SECRET_KEY>>
+   DATABASE_URL=postgresql://study_buddy_dev:<<PASSWORD>>@localhost/study_buddy_db
 ```
-4. Migrate and seed the database
- ```
-   npx sequelize-cli db:create
-   npx sequelize-cli db:migrate
-   npx sequelize-cli db:seed:all
+4. Set up your PostgreSQL user, password, and database. Make sure that it matches your .env file!
+
+5. Access your `pipenv shell`, migrate yoru database, seed your database, and run your flask app with the following commands:
+```
+pipenv shell
+```
+```
+flask db upgrade
+```
+```
+flask seed all
+```
+```
+flask run
 ```
 
-5. Run the project with a starting script
+5. To run the React App, `cd` into the `react-app` directory, install `react-app`, and then start React:
  ```
+    cd react-app
+ ```
+  ```
+    npm install
+ ```
+  ```
     npm start
  ```
 
@@ -101,15 +114,15 @@ Users can edit and delete their cards.
 
 ### Adding and Removing Decks From Their To-Study Collection
 
-Users can mark any deck as to-be-studied and it will be added to their to-study collection.  
+Users can mark any deck as to-be-studied and it will be added to their to-study collection.
 
-Users can remove any deck from their to-study collection.  
+Users can remove any deck from their to-study collection.
 
 
 
 ### Search By Tags
 
-Each deck will have its tags visible. Users can click on the tags to do a search of all decks with that tag.  
+Each deck will have its tags visible. Users can click on the tags to do a search of all decks with that tag.
 
 ## < Add images >
 
@@ -175,12 +188,8 @@ All frontend routes are covered in detail on the [API Routes section of our proj
    validation to prevent duplicate entries within our database.
    </br>
 
-### New Features
-
-# ADD NEW FEATURES OR delete
-
 ## Contributors
-**Kreston Caldwell-McMurrin** | <a href='https://github.com/krestn'>Github</a> | <a href='https://www.linkedin.com/in/krestoncaldwell/'>LinkedIn</a></br>
-**Denise Li** | <a href='https://github.com/cat-friend'>Github</a> | <a href='https://www.linkedin.com/in/denise-li-45350320/'>LinkedIn</a></br>
 **Sophia Bui** | <a href='https://github.com/sophiebui'>Github</a> | <a href='https://www.linkedin.com/in/sophia-bui/'>LinkedIn</a></br>
+**Kreston Caldwell-McMurrin** | <a href='https://github.com/krestn'>Github</a> | <a href='https://www.linkedin.com/in/krestoncaldwell/'>LinkedIn</a></br>
 **Daniel LaVergne** | <a href='https://github.com/DanielLaV'>Github</a> | <a href='https://www.linkedin.com/in/daniel-lavergne-137772206/'>LinkedIn</a>
+**Denise Li** | <a href='https://github.com/cat-friend'>Github</a> | <a href='https://www.linkedin.com/in/denise-li-45350320/'>LinkedIn</a></br

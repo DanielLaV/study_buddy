@@ -4,6 +4,7 @@ import EditDeckFormModal from '../EditDeckModal';
 import DeleteDeckFormModal from '../DeleteDeckModal';
 import DeleteFromSLButton from '../DeleteFromStudyListModal';
 import AddToStudyList from '../AddToStudyList'
+import '../Card/card.css'
 
 function Deck({ deck, studyDecks=[] }) {
 

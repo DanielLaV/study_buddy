@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditDeckForm from './EditDeckForm';
 import './EditDeckForm.css';
+import '../Card/card.css'
 
 
 
@@ -16,6 +17,7 @@ function EditDeckFormModal({ deck }) {
 
             <input type="image" name="<Name of the image button >" className='pencil'
                 src="/pencil2.png" alt="text" onClick={() => setShowModal(true)}></input>
+                
 
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

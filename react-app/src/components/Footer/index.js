@@ -10,7 +10,7 @@ const Footer = () => {
       <div className='footerProfiles'>
         <a id="footer_names" href="https://www.linkedin.com/in/daniel-lavergne-137772206/" target="_blank" rel="noreferrer noopener">Daniel LaVergne
         </a>
-        <a href="https://www.linkedin.com/in/daniel-lavergne-137772206/" target="_blank" rel="noreferrer noopener" class='linkedinlink'>
+        <a href="https://www.linkedin.com/in/daniel-lavergne-137772206/" target="_blank" rel="noreferrer noopener" className='linkedinlink'>
           <img src="./linkedInLogo.webp" className='linkedinlogo' alt="" />
         </a>
         <a href='https://github.com/DanielLaV' className='gitlink' target="_blank" rel="noreferrer noopener" >

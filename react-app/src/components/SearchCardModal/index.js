@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import CardBody from './CardBody';
 import Card from "../Card";
-import './CardModal.css'
+import SearchCardBody from './SearchCardBody';
 
-function CardBodyModal({card}) {
+function SearchCardBodyModal({card}) {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
-            <div className='eachCard' onClick={() => setShowModal(true)}><Card card={card} /></div>
+            <div className='singleDeck' onClick={() => setShowModal(true)}><Card card={card} /></div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CardBody setShowModal={setShowModal} cardId={card.id}/>
+                    <SearchCardBody setShowModal={setShowModal} cardId={card.id}/>
                 </Modal>
             )}
         </>
     )
 }
 
-export default CardBodyModal;
+export default SearchCardBodyModal;

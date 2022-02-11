@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request, make_response
 from app.models import Deck, Card, Tag, db
-from app.forms import LoginForm, DeckForm, CardForm
+from app.forms import DeckForm, CardForm, DeleteDeckForm
 
 deck_routes = Blueprint('decks', __name__)
 
@@ -69,6 +69,7 @@ def single_deck(id):
     if request.method == "PUT":
         form = DeckForm()
         form['csrf_token'].data = request.cookies['csrf_token']
+
         if form.validate_on_submit():
             data = request.get_json()
             title = form.data["title"]
@@ -79,10 +80,8 @@ def single_deck(id):
             deck.user_id = user_id
             db.session.add(deck)
             db.session.commit()
-        if form.errors:
-            return form.errors
-    if request.method == "GET":
-        print("DECK", deck.to_dict())
+        elif form.errors:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     return deck.to_dict()
 
 
@@ -91,14 +90,17 @@ def delete_deck(id):
     """
     DELETE requests delete the deck from the database
     """
-    try:
+    form = DeleteDeckForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        print('==================== IN DELTE')
         deck = Deck.query.get(id)
         db.session.delete(deck)
         db.session.commit()
-        return 'Deck deleted'
-    except:
-        res = make_response(404, error="Deck not found!")
-        return res
+        return {}, 200
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 
 @deck_routes.route('/<int:id>/tags/', methods=['GET'])

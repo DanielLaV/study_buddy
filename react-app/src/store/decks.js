@@ -80,19 +80,25 @@ export const editDeck = deck => async (dispatch) => {
     return data;
 }
 
-export const deleteDeck = id => async (dispatch) => {
-    const currDeck = await fetch(`/api/decks/${id}`, {
+export const deleteDeck = commit => async (dispatch) => {
+    const currDeck = await fetch(`/api/decks/${commit.deck_id}`, {
         headers: {
             "Content-Type": "application/json"
         }
     });
     if (currDeck.ok) {
-        const delDeck = await fetch(`/api/decks/${id}`,
-            { method: 'DELETE' });
+        const delDeck = await fetch(`/api/decks/${commit.deck_id}`,
+            {
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                method: 'DELETE',
+                body: JSON.stringify(commit)
+            });
         if (delDeck.ok) {
             const deck = await currDeck.json();
             dispatch(deleteOneDeck(deck));
-            return;
+            return deck;
         }
         else return delDeck;
     }

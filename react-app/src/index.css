@@ -1,3 +1,4 @@
+
 body {
   background-color: var(--primary);
   color: var(--trimmings);
@@ -15,7 +16,7 @@ body {
   background-color: var(--primary);
   color: var(--trimmings);
   width: inherit;
-  
+
 
 }
 
@@ -28,6 +29,3 @@ body {
   color: var(--trimmings);
   width: inherit;
 }
-
-
-

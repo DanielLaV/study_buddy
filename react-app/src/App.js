@@ -4,15 +4,15 @@ import { useDispatch } from 'react-redux';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
-import StudyList from './components/StudyList'
-import User from './components/User';
 import HomePage from './components/HomePage';
 import DecksPage from './components/DecksPage';
 import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
 import TagPage from './components/TagPage';
+import EditUserModal from './components/EditUserModal'
 import { authenticate } from './store/session';
 import StudyListPage from './components/StudyList/StudyListPage';
+import SearchResults from './components/SearchResults';
 import './index.css'
 
 function App() {
@@ -33,26 +33,28 @@ function App() {
 
   return (
     <div className={theme}>
-    <BrowserRouter>
-      <NavBar />
-      <button className='colorButton'
+      <BrowserRouter>
+        <NavBar />
+        <button className='colorButton'
           onClick={() => theme === 'light' ? setTheme('dark') : setTheme('light')}
-          style={{position: "fixed", bottom:"40px", left: "15px", backgroundColor: "var(--trimmings)", color: "var(--primary)"}}
-          >{theme === 'light' ? "Dark Mode" : 'Light Mode'}
+          style={{ position: "fixed", bottom: "40px", left: "15px", backgroundColor: "var(--trimmings)", color: "var(--primary)" }}
+        >{theme === 'light' ? "Dark Mode" : 'Light Mode'}
         </button>
-      <Switch>
-        {/* <ProtectedRoute exact={true} path='/'>
+        <Switch>
+          {/* <ProtectedRoute exact={true} path='/'>
           <UserPage />
         </ProtectedRoute> */}
         <Route exact={true} path='/'>
           {/* <ChangeColor/> */}
           <HomePage />
+          <EditUserModal />
         </Route>
+        {/*
+        Displays a list of all Users (was part of starter code)
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
           <h1>This is the logged in users profile page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/decks' exact={true} >

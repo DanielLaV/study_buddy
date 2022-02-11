@@ -20,7 +20,6 @@ def main(query):
     'GET' searches the Card and Deck database .
     The function returns all tags associated with that deck.
     """
-    print("string route?")
     if 16 < len(query) < 2:
          return {"errors": "Query must be between 2 and 16 characters long"}, 401
     else:
@@ -49,8 +48,6 @@ def main(query):
         all_deck_results = deck_title_results + deck_desc_results
         all_card_results = card_front_results + card_back_results
         if (all_deck_results or all_card_results):
-            print("all deck results", all_deck_results)
-            print("all card results", all_card_results)
             return {"decks": all_deck_results, "cards": all_card_results}, 200
         else:
             return {"errors": ["No results found!"]}, 401

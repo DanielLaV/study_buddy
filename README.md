@@ -145,15 +145,97 @@ All frontend routes are covered in detail on the [Fronted Routes section of our 
 All frontend routes are covered in detail on the [API Routes section of our project wiki](https://github.com/DanielLaV/study_buddy/wiki/API-Documentation). API routes were designed for users to interact with a page without being redirected.
    </br>
 
-### Developmental Challenges
+## Developmental Challenges
 
-# FILL ME IN
+### Search Function
 
+The search function searches for a query in the following resources and their columns:  `deck title`, `deck description`, `card front`, `card back`. The search route needs to query the database for those four columns, return the data in a way that's easily accessible by the frontend, and, when there are no matches, return an indication that no entries in the database match the search query. Thus, the business logic for the search function requires `try ... except` blocks, concatenate matches from the `Deck` resource with each other, concatenate matches from the `Card` resource with each other, check if either of those resources exist, check for the existence of results from either resource, and return an appropriate response from the backend. The reponse from the backend should not cause issues with the `searchReducer` on the frontend if there are search results in one resource but not the other.
 
+```py
+@search_routes.route('/<string:query>', methods=['GET'])
+def main(query):
+    """
+    'GET' searches the Card and Deck database .
+    The function returns all tags associated with that deck.
+    """
+    if 16 < len(query) < 2:
+         return {"errors": "Query must be between 2 and 16 characters long"}, 401
+    else:
+        # deck results: querying title and description
+        try:
+            deck_title_results = Deck.query.filter(Deck.title.ilike(f"%{query}%")).all()
+            deck_title_results = [deck.to_dict() for deck in deck_title_results]
+        except:
+            pass
+        try:
+            deck_desc_results = Deck.query.filter(Deck.description.ilike(f"%{query}%")).all()
+            deck_desc_results = [deck.to_dict() for deck in deck_desc_results]
+        except:
+            pass
+        # card results: querying front and back
+        try:
+            card_front_results = Card.query.filter(Card.front.ilike(f"%{query}%")).all()
+            card_front_results = [card.to_dict() for card in card_front_results]
+        except:
+            pass
+        try:
+            card_back_results = Card.query.filter(Card.back.ilike(f"%{query}%")).all()
+            card_back_results = [card.to_dict() for card in card_back_results]
+        except:
+            pass
+        all_deck_results = deck_title_results + deck_desc_results
+        all_card_results = card_front_results + card_back_results
+        if (all_deck_results or all_card_results):
+            return {"decks": all_deck_results, "cards": all_card_results}, 200
+        else:
+            return {"errors": ["No results found!"]}, 401
+```
 
+The frontend then needs to parse the data incoming from the backend. If there are results from either resource, it needs to update the store appropriately:
+````JS
+export const getResults = (query) => async (dispatch) => {
+    const response = await fetch(`/api/search/${query}`, {
+        headers: { "Content-Type": "application/json" }
+    });
+    const results = await response.json();
+    console.log("results", results)
+    if (response.ok) {
+        dispatch(load(results))
+    }
+    return results
+}
+
+const searchReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LOAD: {
+            const decks = {}
+            action.results.decks.forEach((deck) => {
+                decks[deck.id] = deck
+            })
+            const cards = {}
+            action.results.cards.forEach((card) => {
+                cards[card.id] = card
+            })
+            return {decks, cards}
+        }
+        default: return state;
+    }
+}
 ````
-  ADD CODE LIKE THIS
-````
+
+If there aren't any results, it needs to receive and display the message from the backend that no results were found.
+```js
+if (query) {
+   return dispatch(getResults(query.toLowerCase())).then(
+      (response) => {
+         if (response.errors) {
+            setHasResults(false)
+            setErrors(response.errors)
+            return
+         }});
+}
+```
+
 
 
 
@@ -191,5 +273,5 @@ All frontend routes are covered in detail on the [API Routes section of our proj
 ## Contributors
 **Sophia Bui** | <a href='https://github.com/sophiebui'>Github</a> | <a href='https://www.linkedin.com/in/sophia-bui/'>LinkedIn</a></br>
 **Kreston Caldwell-McMurrin** | <a href='https://github.com/krestn'>Github</a> | <a href='https://www.linkedin.com/in/krestoncaldwell/'>LinkedIn</a></br>
-**Daniel LaVergne** | <a href='https://github.com/DanielLaV'>Github</a> | <a href='https://www.linkedin.com/in/daniel-lavergne-137772206/'>LinkedIn</a>
-**Denise Li** | <a href='https://github.com/cat-friend'>Github</a> | <a href='https://www.linkedin.com/in/denise-li-45350320/'>LinkedIn</a></br
+**Daniel LaVergne** | <a href='https://github.com/DanielLaV'>Github</a> | <a href='https://www.linkedin.com/in/daniel-lavergne-137772206/'>LinkedIn</a></br>
+**Denise Li** | <a href='https://github.com/cat-friend'>Github</a> | <a href='https://www.linkedin.com/in/denise-li-45350320/'>LinkedIn</a>

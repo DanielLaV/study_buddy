@@ -5,20 +5,6 @@ const load = results => ({
     results
 });
 
-// // test fetch - generates dupes --yes!
-// const payload = {
-//     query: "array",
-//     is_logged_in: true
-// }
-
-// const response = await fetch("/api/search", {
-//     method: 'POST',
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(payload)
-// });
-
-// console.log("response", response.json())
-
 export const getResults = (query) => async (dispatch) => {
     const response = await fetch(`/api/search/${query}`, {
         headers: { "Content-Type": "application/json" }

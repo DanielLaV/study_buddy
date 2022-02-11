@@ -15,21 +15,26 @@ function SearchResults() {
     const cards = useSelector(state => { if (state.search.cards) return Object.values(state.search.cards) })
     const [errors, setErrors] = useState([]);
     const studyArr = useSelector(state => Object.values(state.studyDecks))
+    const [hasResults, setHasResults] = useState(true)
     const query = search.slice(1)
+    console.log("search", search)
+    console.log("query", query)
     useEffect(() => {
+        setHasResults(true)
+        setErrors([]);
         dispatch(studyDeckActions.getStudyDecks(userId));
         if (query) {
             return dispatch(getResults(query.toLowerCase())).then(
                 (response) => {
-                    console.log("response.errors", response.errors)
                     if (response.errors) {
+                        setHasResults(false)
                         setErrors(response.errors)
                         return
                     }
                 }
             );
         }
-    }, [dispatch, query, userId])
+    }, [dispatch, query, userId, search])
     const studyDecks = []
     studyArr.forEach((studyDeck) => {
         studyDecks.push(studyDeck.id)
@@ -41,14 +46,19 @@ function SearchResults() {
         results = <div className="">Please use the search bar to search the database!</div>
     }
     else {
-        results = (
+        results = [results, (
             <div className="">
                 <ul className="error-list">
                     {errors.map((error, idx) => (
                         <li key={idx} className="errors">{error}</li>
                     ))}
                 </ul>
-                <div className="deckDisplay">
+            </div>)]
+    }
+    if (hasResults) {
+        results = [results, (
+            <>
+                <div className="deckDisplay" >
                     <h1 className="browseDecksTitle">Decks that Contain "{`${query}`}"</h1>
                     <div className='allDecks'>
                         {decks?.map(deck =>
@@ -56,7 +66,7 @@ function SearchResults() {
                                 <Deck deck={deck} studyDecks={studyDecks} />
                             </NavLink>)}
                     </div>
-                </div>
+                </div >
                 <div className="deckDisplay">
                     <div className='allDecks'>
                         <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
@@ -71,8 +81,8 @@ function SearchResults() {
                         </div>
                     </div>
                 </div>
-            </div >
-        )
+            </>
+        )]
 
     }
     return (<div className="">{results}</div>)

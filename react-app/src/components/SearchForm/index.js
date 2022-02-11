@@ -27,7 +27,7 @@ function SearchForm() {
             setTimeout(() => {
                 setSearchBarVis(true);
                 setErrors([]);
-            }, 750);
+            }, 500);
         }
         else {
             setSearchBarVis(false)
@@ -35,8 +35,9 @@ function SearchForm() {
             setTimeout(() => {
                 setSearchBarVis(true);
                 setSuccess("");
-            }, 750);
+            }, 500);
             history.push(`/search?${query}`)
+            setQuery("")
         }
 
         // console.log("success!")

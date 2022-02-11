@@ -3,7 +3,7 @@ import { useState } from 'react';
 import * as deckActions from '../../store/decks';
 import { useDispatch, useSelector } from 'react-redux';
 
-function EditDeckForm({setShowModal, deck}) {
+function EditDeckForm({ setShowModal, deck }) {
     const dispatch = useDispatch();
     // const user_id = useSelector(state => state.session.user.id);
     const [title, setTitle] = useState(deck.title);
@@ -30,31 +30,37 @@ function EditDeckForm({setShowModal, deck}) {
 
 
     return (
-        <div className="editDeckForm">
-            <form onSubmit={handleSubmit}>
+        <div className="form-container">
+            <form className='form' onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <label className='title'>
+                <label className='input'>
                     Title
-                    <input
-                        type='text'
-                        value={title}
-                        onChange={e => setTitle(e.target.value)}
-                        required
-                    />
                 </label>
-                <label className='description'>
+                <input
+                    type='text'
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    required
+                    className='input'
+                />
+
+                <label className='input'>
                     Description
-                    <input
-                        type='text'
-                        value={description}
-                        onChange={e => {setDescription(e.target.value); console.log(description)}}
-                    />
                 </label>
-                <button className='addDeckSubmit'>Submit</button>
+                <input
+                    type='text'
+                    value={description}
+                    className='input'
+                    onChange={e => { setDescription(e.target.value); console.log(description) }}
+                />
+
+                <div className='form-button-container'>
+                    <button className='form-button'>Submit</button>
+                </div>
             </form>
         </div>
     )

@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 function User() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
-
+  const user1 = useSelector(state => state.users)
+console.log('this is users1', user1)
   useEffect(() => {
     dispatch(getUser(user.id));
 }, [dispatch, user.id]);

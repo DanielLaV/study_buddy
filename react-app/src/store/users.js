@@ -20,28 +20,29 @@ export const getUser = (id) => async (dispatch) => {
     return data;
 }
 
-const initialState = {}
+export const editUser = (user) => async (dispatch) => {
+	const response = await fetch(`/api/users/${user.id}`, {
+		method: 'PUT',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(user)
+	});
+	const data = await response.json();
+	if (response.ok) {
+		dispatch(loadUser(data));
+	}
+	return data;
+}
 
-const usersReducer = (state = initialState, action) => {
+
+const usersReducer = (state = {}, action) => {
     switch (action.type) {
-        // case LOAD_DECKS: {
-            //     const newState = Object.assign({}, state);
-            //     action.payload.forEach((deck) => {
-                //         newState[deck.id] = deck;
-                //     })
-                //     return newState;
-                // }
+
         case LOAD_USER: {
             console.log('action:',action)
             const newState = Object.assign({}, state);
             newState[action.user.id] = action.user
             return newState;
         }
-        // case DELETE_DECK: {
-        //     const newState = Object.assign({}, state);
-        //     delete newState[action.payload.id];
-        //     return newState;
-        // }
         default: {
             return state;
         }

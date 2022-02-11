@@ -48,7 +48,6 @@ export const getDecksByTag = (tagId) => async (dispatch) => {
         const tagsData = data.decks;
         tagsData.forEach((tag) => {
             delete tag.decks;
-            console.log("tag", tag);
             tagsStore.push(tag)
         })
         dispatch(loadDecks(decksStore));
@@ -96,7 +95,6 @@ const tagsReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_TAGS: {
             const newState = Object.assign({}, state);
-            console.log(action.tags)
             action.tags.forEach((tag) => {
                 newState[tag.id] = tag;
             })

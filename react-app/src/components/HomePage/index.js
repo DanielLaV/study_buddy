@@ -21,7 +21,7 @@ function HomePage() {
     return (
       <div className="homePageContainer">
         <div className="user">
-          <p><User /></p>
+          <User />
           <p className='bio'><EditUserModal /></p>
           {/* <p className="userName">{user.username}</p> */}
           {/* <h2 className='bio'>{user.bio}</h2> */}

@@ -1,0 +1,9 @@
+.add-to-study-list{
+  color: white;
+  background-color: green;
+  border-radius: 5px;
+}
+
+.add-to-study-list:hover{
+  cursor: pointer;
+}

@@ -13,9 +13,11 @@ import Footer from './components/Footer';
 import TagPage from './components/TagPage';
 import { authenticate } from './store/session';
 import StudyListPage from './components/StudyList/StudyListPage';
+import './index.css'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [theme, setTheme] = useState('light')
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,13 +32,20 @@ function App() {
   }
 
   return (
+    <div className={theme}>
     <BrowserRouter>
       <NavBar />
+      <button className='colorButton'
+          onClick={() => theme === 'light' ? setTheme('dark') : setTheme('light')}
+          style={{position: "fixed", bottom:"40px", left: "15px", backgroundColor: "var(--trimmings)", color: "var(--primary)"}}
+          >{theme === 'light' ? "Dark Mode" : 'Light Mode'}
+        </button>
       <Switch>
         {/* <ProtectedRoute exact={true} path='/'>
           <UserPage />
         </ProtectedRoute> */}
         <Route exact={true} path='/'>
+          {/* <ChangeColor/> */}
           <HomePage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
@@ -72,6 +81,7 @@ function App() {
       </Switch>
       <Footer />
     </BrowserRouter>
+    </div>
   );
 }
 

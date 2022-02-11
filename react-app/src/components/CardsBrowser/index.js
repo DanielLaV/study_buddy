@@ -9,7 +9,7 @@ const CardBrowser = () => {
     const { deckId } = useParams();
     const userId = useSelector(state => state.session.user.id)
     const deck = useSelector(state => state.decks[deckId])
-    const isOwner = userId === deck.user_id;
+    const isOwner = userId === deck?.user_id;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -20,12 +20,11 @@ const CardBrowser = () => {
     });
 
     return (
-        <div className=""><h2>Cards for {deck.title}</h2>
+        <div className=""><h2>Cards for {deck?.title}</h2>
             <div>
                 {cards.map((card) => {
                     return (
-                        <CardBodyModal card={card} key={card.id}/>
-
+                        <CardBodyModal card={card} key={card?.id} />
                     )
                 })}
             </div>

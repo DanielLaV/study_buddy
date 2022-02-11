@@ -53,8 +53,7 @@ def main(query):
             print("all card results", all_card_results)
             return {"decks": all_deck_results, "cards": all_card_results}, 200
         else:
-            print("no results")
-            return {"errors": ["No results found!"]}, 404
+            return {"errors": ["No results found!"]}, 401
 
 # @search_routes.route('/<int:query>', methods=['GET'])
 # def int(query):

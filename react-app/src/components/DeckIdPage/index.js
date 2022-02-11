@@ -12,13 +12,17 @@ import Tags from '../Tags'
 
 
 function DeckIdPage() {
+    console.log("decksID page")
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user.id)
     const { deckId } = useParams();
     const deck = useSelector(state => state.decks[deckId])
     const allTags = useSelector(state => Object.values(state.tags))
+    console.log("deckId", deckId, typeof(deckId))
 
     useEffect(() => {
+        dispatch(deckActions.getOneDeck(deckId));
+        dispatch(tagActions.getTags(deckId))
         return () => {
             dispatch(deckActions.getOneDeck(deckId));
             dispatch(tagActions.getTags(deckId))
@@ -27,7 +31,7 @@ function DeckIdPage() {
 
 
     if (deck) {
-        const isOwner = user === deck.user_id;
+        const isOwner = user === deck?.user_id;
         let displayTags = allTags.map(tag => <Tags tag={tag} isOwner={isOwner}/>)
 
         return (

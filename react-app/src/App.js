@@ -49,9 +49,11 @@ function App() {
           <HomePage />
           <EditUserModal />
         </Route>
+        {/*
+        Displays a list of all Users (was part of starter code)
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/users/:userId' exact={true} >
           <h1>This is the logged in users profile page</h1>
         </ProtectedRoute>

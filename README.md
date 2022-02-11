@@ -86,11 +86,11 @@ Logged-in users can create a new deck with a title and a description.
 
 ## < Add images >
 
-When a new deck is added, a new card is created for the deck. All users can view the deck information. Logged in users can add a comment, view the deck, or add the deck to their to-study decks. Deck owners can edit or delete their own decks.
+All users can view the deck information. Logged in users can view the deck or add the deck to their study list. Deck owners can only edit or delete their own decks.
 
 ## < Add images >
 
-When modifying a deck, an "Edit" form will populate with the deck's current information. A user may add, edit, or delete cards, and can edit the deck title and description. If a user would like to delete the card, or discard their changes, they may do so from the edit form.
+When modifying a deck, an Edit form will populate with the deck's current information. A user may add, edit, or delete cards, and can edit the deck title and description. If a user would like to delete the card, or discard their changes, they may do so from the edit form.
 
 ## < Add images >
 
@@ -112,7 +112,7 @@ Users can edit and delete their cards.
 ## < Add images >
 
 
-### Adding and Removing Decks From Their To-Study Collection
+### Adding and Removing Decks From Their `Study List` Collection
 
 Users can mark any deck as to-be-studied and it will be added to their to-study collection.
 
@@ -126,9 +126,6 @@ Each deck will have its tags visible. Users can click on the tags to do a search
 
 ## < Add images >
 
-Users can search for a specific tag using the search bar.
-
-## < Add images >
 
 ## Technical Implementation
 ### Database Design

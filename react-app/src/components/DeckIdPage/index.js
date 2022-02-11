@@ -19,8 +19,10 @@ function DeckIdPage() {
     const allTags = useSelector(state => Object.values(state.tags))
 
     useEffect(() => {
-        dispatch(deckActions.getOneDeck(deckId));
-        dispatch(tagActions.getTags(deckId))
+        return () => {
+            dispatch(deckActions.getOneDeck(deckId));
+            dispatch(tagActions.getTags(deckId))
+        }
     }, [dispatch, deckId]);
 
 

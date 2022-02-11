@@ -8,7 +8,6 @@ function DeleteCardForm({ setShowModal, card }) {
     console.log("card", card)
     const { deckId } = useParams();
     const currUserId = useSelector(state => state.session.user.id);
-    console.log(currUserId)
     const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
     const [success, setSuccess] = useState("");
     const [errors, setErrors] = useState([]);

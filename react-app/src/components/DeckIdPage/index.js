@@ -35,19 +35,24 @@ function DeckIdPage() {
         let displayTags = allTags.map(tag => <Tags tag={tag} isOwner={isOwner}/>)
 
         return (
-        <>
+        <div className='cardPageContainer'>
             <div key={deck.id} className='deckIdPage'>
-                <Deck deck={deck} />
+                <div className='deckNameContainer'>
+                    <h1 className='deckName'>{deck.title}</h1>
+                <div className='tags-container'>
+                    {displayTags}
+                </div>
+
+                {/* <Deck deck={deck} /> */}
                 {isOwner &&
                     <>
-                        <AddCardFormModal />
-                        <AddTagFormModal />
+                        {/* <AddCardFormModal /> */}
+                        {/* <AddTagFormModal /> */}
                     </>}
             </div>
-            <div className='tags-container'>{displayTags}
+                    <CardBrowser />
             </div>
-            <CardBrowser />
-        </>
+        </div>
         )
     }
     else return "DON'T LOOK AT ME! I'M HIDEOUS"

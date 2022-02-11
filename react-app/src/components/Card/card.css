@@ -1,0 +1,39 @@
+.frontCardDisplay{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center ;
+}
+
+.deckTitle{
+  font-size: 14px;
+  text-align: center;
+  
+}
+
+.editDeleteButtons{
+  position: absolute;
+}
+
+.pencil{
+  position: absolute;
+  top: 35px;
+  left: 60px;
+  height: 10px; 
+       
+  /* -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; */
+
+
+}
+
+
+
+.trashCard{
+  position: absolute;
+  top: 35px;
+  right: 60px;
+height: 10px;     
+  
+}

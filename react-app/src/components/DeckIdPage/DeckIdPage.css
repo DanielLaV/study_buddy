@@ -48,3 +48,11 @@
   font-family: Arial, Helvetica, sans-serif;
 
 }
+
+.addCardOrTag{
+  z-index: 1;
+}
+
+.addCardOrTag:active{
+  /* z-index: 0; */
+}

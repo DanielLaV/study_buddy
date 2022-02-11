@@ -36,7 +36,7 @@ function SearchForm() {
                 setSearchBarVis(true);
                 setSuccess("");
             }, 750);
-            history.push(`/search?q=${query}`)
+            history.push(`/search?${query}`)
         }
 
         // console.log("success!")

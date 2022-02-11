@@ -69,7 +69,7 @@ function SearchForm() {
                         placeholder="SEARCH"
                         onKeyPress={(e) => enterSubmit(e)}
                     />
-                        <div class="td" id="s-cover">
+                        <div className="td" id="s-cover">
                             <button className="butt" type="submit" onClick={handleSubmit}>
                                 <div id="s-circle"></div>
                                 <span className="span"></span>

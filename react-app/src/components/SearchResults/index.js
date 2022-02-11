@@ -4,21 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import Deck from "../DecksPage/Deck";
 import * as studyDeckActions from "../../store/decks_studying";
+import CardBodyModal from "../CardModal";
+import SearchCardBodyModal from "../SearchCardModal";
 
 function SearchResults() {
     const dispatch = useDispatch();
     const { pathname, search } = useLocation()
     const userId = useSelector(state => state.session.user.id)
-    const decks = useSelector(state => Object.values(state.decks))
-    const cards = useSelector(state => Object.values(state.cards))
+    const decks = useSelector(state => { if (state.search.decks) return Object.values(state.search.decks) })
+    const cards = useSelector(state => { if (state.search.cards) return Object.values(state.search.cards) })
     const [errors, setErrors] = useState([]);
     const studyArr = useSelector(state => Object.values(state.studyDecks))
     const query = search.slice(1)
-    console.log('query', query)
     useEffect(() => {
         dispatch(studyDeckActions.getStudyDecks(userId));
         if (query) {
-            return dispatch(getResults(query)).then(
+            return dispatch(getResults(query.toLowerCase())).then(
                 (response) => {
                     console.log("response.errors", response.errors)
                     if (response.errors) {
@@ -48,6 +49,7 @@ function SearchResults() {
                     ))}
                 </ul>
                 <div className="deckDisplay">
+                    <h1 className="browseDecksTitle">Decks that Contain "{`${query}`}"</h1>
                     <div className='allDecks'>
                         {decks?.map(deck =>
                             <NavLink className="eachDeck" to={`/decks/${deck.id}`} key={deck.id}>
@@ -55,7 +57,21 @@ function SearchResults() {
                             </NavLink>)}
                     </div>
                 </div>
-            </div>
+                <div className="deckDisplay">
+                    <div className='allDecks'>
+                        <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
+                        <div>
+                            {cards?.map((card) => {
+                                return (<div className="eachDeck">
+                                    <SearchCardBodyModal card={card} key={card.id} />
+                                    {/* <CardBodyModal card={card} key={card.id} /> */}
+                                </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div >
         )
 
     }

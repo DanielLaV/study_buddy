@@ -27,30 +27,41 @@ const StudyList = () => {
 		else return false;
 	}
 
+		let className='';
+
+		if (window.location.pathname === "/"){
+			className="homePageStudyDecks"
+		}
+
+		else{
+			className="studyDecksPage"
+		}
+
+
+
 	return (
+        <div className={className}>
+					<div className="browseDecksTitleContainer">
+						<h1 className="browseDecksTitle">Study List</h1>
+					</div>
+					<div className='deckDisplay'>
+						<div className='allDecks'>
 
-		<div className='browsePageContainer'>
-			<div className="browseDecks">
-				<div className="browseDecksTitleContainer">
-					<h1 className="browseDecksTitle">Study List</h1>
-				</div>
-				<div className='deckDisplay'>
-					<div className='allDecks'>
-
-						{stateUserId === parseInt(userId) ?
-							studyArr.map((deck) => (
-								<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id} className="eachDeck">
-									<Deck deck={deck} studyDecks={studyDecks} />
-								</NavLink>
-							))
-							:
-							<Redirect to="/" />}
+            {(stateUserId === parseInt(userId)) || (stateUserId && window.location.pathname === "/") ?
+			studyArr.map((deck) => (
+				<NavLink to={`/decks/${deck.id}`} className='eachDeck' key={deck.id}>
+					<Deck deck={deck} studyDecks={studyDecks} />
+				</NavLink>
+			))		
+		 :
+        <Redirect to="/" />}
 					</div>
 					{noStudyDeck() &&
 						<h3 className='no-decks-on-list-message'>There are no decks on your Study List</h3>}
 				</div>
+				<div className='addDeckButtonContainer'> {/* Added for layout */}
+        </div>
 			</div>
-		</div>
 	);
 };
 

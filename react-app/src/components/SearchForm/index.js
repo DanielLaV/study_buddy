@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as searchActions from "../../store/cards";
 import { Link } from 'react-router-dom'
+import './Search.css'
+
 function SearchForm() {
     const dispatch = useDispatch();
     const [query, setQuery] = useState("");
@@ -52,7 +54,12 @@ function SearchForm() {
                     placeholder="SEARCH"
                     onKeyPress={(e) => enterSubmit(e)}
                 />
-                <Link to="#"><i class="fa-solid fa-magnifying-glass" onClick={handleSubmit}></i></Link>
+                  <div class="td" id="s-cover">
+                    <button className="butt" type="submit" onClick={handleSubmit}>
+                        <div id="s-circle"></div>
+                        <span className="span"></span>
+                    </button>
+                    </div>
                 </> :
                  <>{success}{errors}</>}
             </div>

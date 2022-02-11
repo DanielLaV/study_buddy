@@ -1,12 +1,9 @@
-body{
-  /* background-color: black; */
-}
+
 
 .homePageContainer{
   display: flex;
   flex-direction: row;
   height: 79.5vh;
-  background: #fe918a;
 
 
   /* justify-content: space-between; */

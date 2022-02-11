@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import CardBody from './CardBody';
 import Card from "../Card";
-
+import * as deckActions from "../../store/decks";
 
 function CardBodyModal({card}) {
     const [showModal, setShowModal] = useState(false);

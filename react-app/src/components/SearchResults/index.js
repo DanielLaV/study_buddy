@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Deck from "../DecksPage/Deck";
 import * as studyDeckActions from "../../store/decks_studying";
 import CardBodyModal from "../CardModal";
+import SearchCardBodyModal from "../SearchCardModal";
 
 function SearchResults() {
     const dispatch = useDispatch();
@@ -57,18 +58,19 @@ function SearchResults() {
                     </div>
                 </div>
                 <div className="deckDisplay">
-                <div className='allDecks'>
-                    <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
-                    <div>
-                        {cards?.map((card) => {
-                            return (<div className="eachDeck">
-                                {/* <CardBodyModal card={card} key={card.id} /> */}
-                            </div>
-                            )
-                        })}
+                    <div className='allDecks'>
+                        <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
+                        <div>
+                            {cards?.map((card) => {
+                                return (<div className="eachDeck">
+                                    <SearchCardBodyModal card={card} key={card.id} />
+                                    {/* <CardBodyModal card={card} key={card.id} /> */}
+                                </div>
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
-            </div>
             </div >
         )
 

@@ -7,7 +7,7 @@ function SearchForm() {
     const [query, setQuery] = useState("");
     const [errors, setErrors] = useState([]);
     const user = useSelector(state => state.session.user)
-    const [inputType, setInputType] = useState("search")
+    const [searchBarVis, setSearchBarVis] = useState(true)
     const [success, setSuccess] = useState("");
 
     const enterSubmit = (e) => {
@@ -24,7 +24,7 @@ function SearchForm() {
         }
         console.log("success!")
         setSuccess("Searching!")
-        setInputType("hidden")
+        setSearchBarVis(false)
         // return dispatch(cardActions.createCard(payload))
         //     .then(
         //         (response) => {
@@ -43,8 +43,9 @@ function SearchForm() {
     return (
         <>
             <div className="search">
-                <input
-                    type={inputType}
+                {searchBarVis ?
+                <><input
+                    type="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     required
@@ -52,6 +53,8 @@ function SearchForm() {
                     onKeyPress={(e) => enterSubmit(e)}
                 />
                 <Link to="#"><i class="fa-solid fa-magnifying-glass" onClick={handleSubmit}></i></Link>
+                </> :
+                 <>{success}{errors}</>}
             </div>
         </>
     )

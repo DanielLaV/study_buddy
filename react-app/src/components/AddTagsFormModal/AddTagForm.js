@@ -38,25 +38,28 @@ function AddTagForm({ setShowModal }) {
     };
 
     return (
-        <div className="addTagForm">
+        <div className='form-container'>
             <h2>{success}</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <label className='names'>
+                <label className='names'></label>
                     Tag Names (comma, separated):
                     <input
                         type='names'
                         value={names}
                         onChange={(e) => setNames(e.target.value)}
                         required
-                        placeholder='Example: Javascript, React, Redux, Thunks'
+                        className='input'
+                        placeholder='Example: Javascript, React, Pug?'
                     />
-                </label>
-                <button className='addTagsSubmit'>Add Tags to Deck</button>
+
+                <div className='form-button-container'>
+                    <button className='form-button'>Add Tags to Deck</button>
+                </div>
             </form>
         </div >
     )

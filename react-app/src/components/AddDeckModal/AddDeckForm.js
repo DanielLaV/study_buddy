@@ -41,15 +41,15 @@ function AddDeckForm({ setShowModal }) {
     };
 
     return (
-        <div className="addDeckForm">
+        <div className="form-container">
             <h2>{success}</h2>
-            <form onSubmit={handleSubmit}>
+            <form className='form' onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
-                <label className='title'>
+                <label className='form'>
                     Title
                     <input
                         type='text'
@@ -57,18 +57,23 @@ function AddDeckForm({ setShowModal }) {
                         onChange={e => setTitle(e.target.value)}
                         required
                         placeholder='Title'
+                        className='input'
                     />
                 </label>
-                <label className='description'>
+                <label>
                     Description
-                    <input
-                        type='text'
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                        placeholder='Description'
-                    />
                 </label>
-                <button className='addDeckSubmit'>Add Deck</button>
+                <input
+                    type='text'
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
+                    placeholder='Description'
+                    className='input'
+                />
+
+                <div className='form-button-container'>
+                    <button className='form-button'>Add Deck</button>
+                </div>
             </form>
         </div>
     )

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as tagActions from "../../store/tags";
 import { NavLink, useParams } from "react-router-dom";
+import './Tags.css'
 
 function Tags({tag, isOwner=false}) {
     const dispatch = useDispatch();
@@ -19,14 +20,19 @@ function Tags({tag, isOwner=false}) {
         dispatch(tagActions.removeTag(payload))
     }
     return (<>
+    <div>
+
         <div className='tag-div'>
-            <NavLink to={`/tags/${tag.id}`}>
-                {tag.name}
+            <NavLink className='tagLink' to={`/tags/${tag.id}`}>
+                {`#${tag.name}`}
             </NavLink>
             {isOwner &&
-                <button type="button" onClick={(e) => submitDelete()}>Delete</button>
+
+                <input type="image" className="tagDelete" src="/trash.png" alt="text" onClick={(e) => submitDelete()} to="#" ></input>
+
             }
         </div>
+    </div>
         {/* <div>{success}</div> */}
         </>
     )

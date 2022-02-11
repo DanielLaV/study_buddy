@@ -38,7 +38,7 @@ const CardBody = ({ setShowModal, cardId }) => {
             <h2>Front:</h2>
             <h3>{card.front}</h3>
             <h2>Back:</h2>
-            <h3>{card.back}</h3>
+            <p>{card.back}</p>
             {buttonDiv}
         </div>)
 }

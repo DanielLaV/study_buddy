@@ -22,11 +22,11 @@ def seed_tags():
     data = Tag(
          name='data types', deck_id=5)
     js3 = Tag(
-         name='js', deck_id=5)
+         name='jS', deck_id=5)
     arr = Tag(
          name='arrays', deck_id=6)
     js4 = Tag(
-         name='js', deck_id=6)
+         name='Js', deck_id=6)
     py = Tag(
          name='python', deck_id=7)
     lists = Tag(
@@ -46,7 +46,7 @@ def seed_tags():
     recursion = Tag(
         name='recursion', deck_id=11)
     bullets2 = Tag(
-        name='pewpew', deck_id=11)
+        name='pew pew', deck_id=11)
     functions = Tag(
         name='functions', deck_id=12)
     immediate = Tag(
@@ -54,7 +54,7 @@ def seed_tags():
     asyncJs = Tag(
         name='async', deck_id=13)
     js5 = Tag(
-        name='js', deck_id=13)
+        name='JS', deck_id=13)
     bigO = Tag(
         name='big-o', deck_id=14)
     timeComplexity = Tag(
@@ -70,7 +70,7 @@ def seed_tags():
     graphs = Tag(
         name='graphs', deck_id=17)
     dataStructures2 = Tag(
-        name='data structures', deck_id=17)
+        name='Data Structures', deck_id=17)
     html = Tag(
         name='HTML', deck_id=18)
     hyper = Tag(

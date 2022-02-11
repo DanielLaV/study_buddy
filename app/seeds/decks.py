@@ -18,7 +18,7 @@ def seed_decks():
     lists = Deck(
         title='Lists', description='Why would we change the name of arrays?', user_id=3)
     sequelize = Deck(
-        title='Sequelize', description='The ins and the outs', user_id=3)
+        title='Sequelize', description='The ins and the outs of connecting express to sql', user_id=3)
     css = Deck(
         title='Cascading Style Sheets', description='Good luck moving an object', user_id=3)
     tdd = Deck(
@@ -26,31 +26,31 @@ def seed_decks():
     recursion = Deck(
         title='Recursion', description='Functions calling themselves over and over and over...', user_id=1)
     iifes = Deck(
-        title='IIFEs', description='Immediately Invoked Function Expression', user_id=1)
+        title='IIFEs', description='Function expressions that are immediately invoked', user_id=1)
     asyncjs = Deck(
-        title='Async JS ', description='Everything you need to know about using asynchronous code in JS', user_id=2)
+        title='Async JS ', description='Everything you need to know about using async functions in JS', user_id=2)
     bigO = Deck(
         title='Big-O Notation', description='How to use and understand Big-O notation', user_id=2)
     sorting = Deck(
-        title='Sorting', description='Sorting algorithms ', user_id=2)
+        title='Sorting', description='Sorting algorithms', user_id=2)
     trees = Deck(
-        title='Trees', description='Not the trees you climb', user_id=3)
+        title='Trees', description='Not the trees you climb. Tree algorithms', user_id=3)
     graphs = Deck(
-        title='Graphs', description='Understanding graphs in JS', user_id=3)
+        title='Graphs', description='Understanding graphing algorithms in JS', user_id=3)
     html = Deck(
         title='HTML', description='Used to make great Myspace profile pages', user_id=3)
     apis = Deck(
-        title='APIs', description='Practice RESTFUL API', user_id=1)
+        title='APIs', description='Practice RESTFUL APIs with express', user_id=1)
     promises = Deck(
         title='Promises', description='You may return the value in the future', user_id=1)
     domManipulation = Deck(
-        title='DOM Manipulation', description='Becoming a master at manipulation the DOM', user_id=1)
+        title='DOM Manipulation', description='Becoming a master at manipulating the DOM', user_id=1)
     events = Deck(
         title='Events', description='What is an event and how to handle it', user_id=2)
     storage = Deck(
         title='Storage', description='All kinds of storage', user_id=2)
     sql = Deck(
-        title='SQL', description='How to communicate with the database', user_id=2)
+        title='SQL', description='How to communicate with the sql database', user_id=2)
     regex = Deck(
         title='RegEx', description='Become a RegEx master', user_id=3)
     express = Deck(

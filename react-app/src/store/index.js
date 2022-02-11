@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   studyDecks: studyDecksReducer,
   cards: cardsReducer,
   tags: tagsReducer,
-  search: searchReducer
+  search: searchReducer,
 });
 
 

@@ -5,6 +5,7 @@ import Splash from '../Splash'
 import AddDeckModal from '../AddDeckModal/';
 import MyDecksPage from '../MyDecks';
 import StudyList from '../StudyList';
+import EditBioFormModal from '../EditBio';
 
 
 
@@ -20,8 +21,9 @@ function HomePage() {
       <div className="homePageContainer">
         <div className="user">
           <p className="userName">{user.username}</p>
-          <p className='bio'>Harvard 2022. Pre-Law</p>
-          {/* <h2 className='bio'>{user.bio}</h2> */}
+          {/* <p className='bio'>Harvard 2022. Pre-Law</p> */}
+          <p className='bio'>{user.bio}</p>
+          <EditBioFormModal/>
         </div>
         <div className="Decks">
           <div className="decksTitleContainer">

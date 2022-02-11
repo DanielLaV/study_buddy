@@ -5,6 +5,7 @@ import decksReducer from './decks';
 import studyDecksReducer from './decks_studying';
 import cardsReducer from './cards';
 import tagsReducer from './tags';
+import userReducer from './user';
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   studyDecks: studyDecksReducer,
   cards: cardsReducer,
   tags: tagsReducer,
+  user: userReducer,
 });
 
 

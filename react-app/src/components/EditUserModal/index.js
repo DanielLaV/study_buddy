@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditUserForm from './EditUserForm';
 
-
-
 function EditUserModal() {
     const [showModal, setShowModal] = useState(false);
 

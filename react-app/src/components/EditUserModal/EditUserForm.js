@@ -4,31 +4,38 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function EditUserForm({setShowModal, deck}) {
     const dispatch = useDispatch();
-    const [title, setTitle] = useState(deck.title);
-    const [description, setDescription] = useState(deck.description);
+    const user = useSelector(state => state.session.user);
+    const [bio, setBio] = useState(user.bio);
     const [errors, setErrors] = useState([]);
-    const user_id = useSelector(state => state.session.user.id);
+    const [success, setSuccess] = useState("");
 
 
     const handleSubmit = async e => {
         e.preventDefault();
 
         setErrors([]);
-        const newDeck = {
-            id: deck.id,
-            title,
-            description,
-            user_id
+        const newBio = {
+            id: user.id,
+            bio
         }
-
-        // dispatch(deckActions.editDeck(newDeck))
-        setShowModal(false);
+        // return dispatch(editCard(newBio))
+        .then(
+          (response) => {
+            if (response.errors) {
+              setErrors(response.errors)
+              return
+            }
+            setSuccess("Success!");
+            setTimeout(() => {
+              setShowModal(false);
+            }, 1500);
+          }
+        );
     };
-
 
     return (
         <div className="edit-user-form">
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
@@ -52,7 +59,7 @@ function EditUserForm({setShowModal, deck}) {
                     />
                 </label>
                 <button className='addDeckSubmit'>Submit</button>
-            </form>
+            </form> */}
         </div>
     )
 }

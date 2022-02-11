@@ -1,17 +1,3 @@
-.navButton{
-    border: none;
-    background: none;
-    font-size: 20px;
-    padding: 0;
-    margin-left: 15px;
-}
-
-.navButton:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    color: #27A9E1;
-}
-
 .preview {
     display: flex;
     flex-direction: column;

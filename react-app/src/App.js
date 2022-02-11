@@ -11,6 +11,7 @@ import DecksPage from './components/DecksPage';
 import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
 import TagPage from './components/TagPage';
+import EditUserModal from './components/EditUserModal'
 import { authenticate } from './store/session';
 import StudyListPage from './components/StudyList/StudyListPage';
 import SearchResults from './components/SearchResults';
@@ -45,43 +46,44 @@ function App() {
           {/* <ProtectedRoute exact={true} path='/'>
           <UserPage />
         </ProtectedRoute> */}
-          <Route exact={true} path='/'>
-            {/* <ChangeColor/> */}
-            <HomePage />
-          </Route>
-          <ProtectedRoute path='/users' exact={true} >
-            <UsersList />
-          </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId' exact={true} >
-            <User />
-            <h1>This is the logged in users profile page</h1>
-          </ProtectedRoute>
-          <ProtectedRoute path='/decks' exact={true} >
-            <DecksPage />
-          </ProtectedRoute>
-          <ProtectedRoute path='/decks/:deckId' exact={true} >
-            <DeckIdPage />
-          </ProtectedRoute>
-          <ProtectedRoute path='/decks/:deckId/:cardId' exact={true} >
-            <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>
-          </ProtectedRoute>
-          <ProtectedRoute path='/user-study-decks/:userId' exact={true} >
-            <StudyListPage />
-          </ProtectedRoute>
-          <ProtectedRoute path='/tags/:tagId' exact={true} >
-            <TagPage />
-          </ProtectedRoute>
-          <ProtectedRoute path='/search'>
-            <SearchResults />
-          </ProtectedRoute>
-          <ProtectedRoute path='/test' exact={true} >
-          </ProtectedRoute>
-          <Route>
-            Page Not Found
-          </Route>
-        </Switch>
-        <Footer />
-      </BrowserRouter>
+        <Route exact={true} path='/'>
+          {/* <ChangeColor/> */}
+          <HomePage />
+          <User />
+          <EditUserModal />
+        </Route>
+        <ProtectedRoute path='/users' exact={true} >
+          <UsersList />
+        </ProtectedRoute>
+        <ProtectedRoute path='/users/:userId' exact={true} >
+          <h1>This is the logged in users profile page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks' exact={true} >
+          <DecksPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId' exact={true} >
+          <DeckIdPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId/:cardId' exact={true} >
+          <h1>This is '/decks/:deckId/:cardId' page that will display the specifc card details </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/user-study-decks/:userId' exact={true} >
+          <StudyListPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/tags/:tagId' exact={true} >
+          <TagPage />
+        </ProtectedRoute>
+        <ProtectedRoute path='/search-results' exact={true} >
+          <h1>This is '/search-results' page that will display the search results </h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/test' exact={true} >
+        </ProtectedRoute>
+        <Route>
+          Page Not Found
+        </Route>
+      </Switch>
+      <Footer />
+    </BrowserRouter>
     </div>
   );
 }

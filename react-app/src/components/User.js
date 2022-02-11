@@ -1,37 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import {getUser} from '../store/users'
+import { useDispatch, useSelector } from 'react-redux';
 
 function User() {
-  const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user)
 
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
-
-  if (!user) {
-    return null;
-  }
+    dispatch(getUser(user.id));
+}, [dispatch, user.id]);
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <div>
+        <h1>{user.username}</h1>
+        <p> {user.bio} </p>
+    </div>
   );
 }
 export default User;

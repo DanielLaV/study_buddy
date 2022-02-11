@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import * as searchActions from "../../store/cards";
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import './Search.css'
 
 function SearchForm() {
@@ -11,22 +10,38 @@ function SearchForm() {
     const user = useSelector(state => state.session.user)
     const [searchBarVis, setSearchBarVis] = useState(true)
     const [success, setSuccess] = useState("");
+    const history = useHistory()
 
     const enterSubmit = (e) => {
         const key = e.code;
-        if (key === 'Enter') {
+        console.log("key code", key)
+        if (key === 'Enter' || key === 'NumpadEnter') {
             handleSubmit();
         }
     }
     const handleSubmit = () => {
         setErrors([]);
-        const payload = {
-            query,
-            is_logged_in: Boolean(user)
+        if (query.length < 2 || query.length > 16) {
+            setSearchBarVis(false)
+            setErrors(["Query must be between 2 and 16 characters!"])
+            setTimeout(() => {
+                setSearchBarVis(true);
+                setErrors([]);
+            }, 750);
         }
-        console.log("success!")
-        setSuccess("Searching!")
-        setSearchBarVis(false)
+        else {
+            setSearchBarVis(false)
+            setSuccess("Searching...!")
+            setTimeout(() => {
+                setSearchBarVis(true);
+                setSuccess("");
+            }, 750);
+            history.push(`/search?${query}`)
+        }
+
+        // console.log("success!")
+        // setSuccess("Searching!")
+        // setSearchBarVis(false)
         // return dispatch(cardActions.createCard(payload))
         //     .then(
         //         (response) => {
@@ -46,22 +61,22 @@ function SearchForm() {
         <>
             <div className="search">
                 {searchBarVis ?
-                <><input
-                    type="search"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    required
-                    placeholder="SEARCH"
-                    onKeyPress={(e) => enterSubmit(e)}
-                />
-                  <div class="td" id="s-cover">
-                    <button className="butt" type="submit" onClick={handleSubmit}>
-                        <div id="s-circle"></div>
-                        <span className="span"></span>
-                    </button>
-                    </div>
-                </> :
-                 <>{success}{errors}</>}
+                    <><input
+                        type="search"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        required
+                        placeholder="SEARCH"
+                        onKeyPress={(e) => enterSubmit(e)}
+                    />
+                        <div className="td" id="s-cover">
+                            <button className="butt" type="submit" onClick={handleSubmit}>
+                                <div id="s-circle"></div>
+                                <span className="span"></span>
+                            </button>
+                        </div>
+                    </> :
+                    <div className="">{success}{errors}</div>}
             </div>
         </>
     )

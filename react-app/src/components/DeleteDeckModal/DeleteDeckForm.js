@@ -14,7 +14,7 @@ function DeleteDeckForm({ payload, deck }) {
     const [success, setSuccess] = useState("");
     const currUserId = useSelector(state => state.session.user.id);
     const { deckId } = useParams();
-    const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
+    const currUserDeckId = useSelector(state => state?.decks[deckId]?.user_id);
 
 
 

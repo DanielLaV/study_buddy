@@ -39,7 +39,7 @@ function AddTagForm({ setShowModal }) {
 
     return (
         <div className='form-container'>
-            <h2>{success}</h2>
+            <h2 style={{color:"green"}}>{success}</h2>
             <form className="form" onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -47,7 +47,7 @@ function AddTagForm({ setShowModal }) {
                     ))}
                 </ul>
                 <label className='names'></label>
-                    Tag Names (comma, separated):
+                    <h1>#TagNames</h1><p style={{marginTop:"-20px",fontSize:"10px"}}>(comma, separated):</p>
                     <input
                         type='names'
                         value={names}

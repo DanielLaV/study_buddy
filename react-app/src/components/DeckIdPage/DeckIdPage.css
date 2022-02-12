@@ -7,6 +7,8 @@
 .deckIdPage {
   margin: 25px;
   width: 100%;
+  border-radius: 5px;
+
   /* border: solid; */
   /* border-color: #27A9E1; */
   background-color: white;

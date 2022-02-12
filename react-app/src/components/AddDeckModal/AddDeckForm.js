@@ -42,7 +42,7 @@ function AddDeckForm({ setShowModal }) {
 
     return (
         <div className="form-container">
-            <h2>{success}</h2>
+            <h2 style={{color:"green"}}>{success}</h2>
             <form className='form' onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -50,6 +50,8 @@ function AddDeckForm({ setShowModal }) {
                     ))}
                 </ul>
                 <label className='form'>
+                <h1>Add Deck</h1>
+
                     <input
                         type='text'
                         value={title}

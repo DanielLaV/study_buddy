@@ -54,7 +54,9 @@ const SignupForm = ({ setShowModal }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className='formDisplay'>
+        <div className='signUpForm'>
+        <h1>Sign Up</h1>
+
           <label></label>
           <input
             placeholder='Username'
@@ -64,8 +66,6 @@ const SignupForm = ({ setShowModal }) => {
             value={username}
             className='input'
           ></input>
-        </div>
-        <div className='email'>
           <label></label>
           <input
           placeholder='Email'
@@ -75,8 +75,6 @@ const SignupForm = ({ setShowModal }) => {
             value={email}
             className='input'
           ></input>
-        </div>
-        <div>
           <label></label>
           <input
           placeholder='Password'
@@ -86,8 +84,6 @@ const SignupForm = ({ setShowModal }) => {
             value={password}
             className='input'
           ></input>
-        </div>
-        <div>
           <label></label>
           <input
           placeholder='Verify Password'
@@ -98,7 +94,7 @@ const SignupForm = ({ setShowModal }) => {
             required={true}
             className='input'
           ></input>
-        </div>
+          </div>
         <div className='form-button-container'>
           <button className='form-button' type='submit'>Sign Up</button>
         </div>

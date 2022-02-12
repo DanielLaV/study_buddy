@@ -1,16 +1,16 @@
 body{
     background-color: black;
-    
+
   }
-  
+
   .browsePageContainer{
     display: flex;
     flex-direction: row;
     height: 79.5vh;
-  
-  
+
+
     /* justify-content: space-between; */
-  
+
   }
 
   .StudyListPageContainer{
@@ -18,10 +18,10 @@ body{
     flex-direction: row;
     height: 79.5vh;
     /* background-color: #fe918a; */
-  
+
   }
-  
-  
+
+
   .browseDecks{
     margin: 25px;
     width: 100%;
@@ -31,24 +31,24 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 1%;
+    border-radius: 5px;
     /* -webkit-box-shadow: 0 10px 6px -6px #777;
     -moz-box-shadow: 0 10px 6px -6px #777;
      box-shadow: 0 10px 6px -6px #777;
      */
 
-     
+
      -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
- 
+
   }
 
 
   .studyDecksPage{
     margin: 25px;
     width: 100%;
-    border-radius: 1%;
+    border-radius: 5px;
 
     /* border: solid; */
     /* border-color: #27A9E1; */
@@ -61,12 +61,12 @@ body{
      box-shadow: 0 10px 6px -6px #777;
      */
 
-     
+
      -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
- 
-     
+
+
   }
 
   .homePageStudyDecks{
@@ -84,15 +84,15 @@ body{
         -moz-box-shadow: 0 10px 6px -6px #777;
          box-shadow: 0 10px 6px -6px #777;
          */
-    
+
          -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    
-    
+
+
 
   }
-  
+
   .addDeckButtonCon {
     /* position: absolute;   */
     /* margin: -10px; */
@@ -101,21 +101,21 @@ body{
     height: 10%;
     /* margin: -5%; */
   }
-  
+
   .addDeck{
     height: 50%;
     z-index: 1000;
     color: white;
     background-color: black;
-  
-  
+
+
   }
-  
+
   .addDeckButton:hover{
     transform: scale(1.1);
     cursor: pointer;
   }
-  
+
   .browseDecksTitleContainer{
       color: black;
       font-family: Arial, Helvetica, sans-serif;
@@ -123,15 +123,15 @@ body{
       align-items: center;
       height: 20%;
       /* margin: 25px; */
-    
-    
+
+
   }
   .browseDecksTitle{
     color: black;
     font-family: Arial, Helvetica, sans-serif;
-  
+
   }
-  
+
   .deckDisplay{
    /* border: solid; */
    border-color: black;
@@ -143,16 +143,16 @@ body{
    overflow-y: scroll;
    scrollbar-width: thin;
    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-   
- 
+
+
    width: 80%;
    height: 70%;
-   
+
    display: flex;
    flex-direction: column;
    /* flex-direction: row;
    flex-wrap: wrap; */
- 
+
    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -171,7 +171,7 @@ body{
   }
 
 
-  
+
   .eachDeck{
     display: flex;
     height: 1rem;
@@ -182,13 +182,13 @@ body{
     /* border: 1px solid; */
     border-radius: 5px;
     background-color: white;
-  
+
     align-items: center;
     justify-content: center;
     color: black;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
-  
+
     transform:
     rotateX(0deg)
     rotateZ(0deg);
@@ -200,11 +200,11 @@ body{
     transition:
     .4s ease-in-out transform,
     .4s ease-in-out box-shadow;
-  
-  
+
+
     /* background-color: white; */
   }
-  
+
   .eachDeck:hover{
     /* box-shadow: 0 30px 70px #000;
     transform: scale3d(1.05, 1.05, 1.05); */
@@ -217,12 +217,12 @@ body{
     /* 1px 1px 0 1px #f9f9fb, */
     10px 10px 1px 0px rgba(34, 33, 81, 0.01),
     10px 10px 5px 0px rgba(34, 33, 81, 0.15);
-  
+
   }
-  
+
   .eachDeck:visited{
   color: black;}
-  
+
   .title{
     font-size: 14px;
     font-weight: bold;
@@ -232,7 +232,7 @@ body{
     max-height: 80px;
     overflow: hidden;
   }
-  
+
   .allDecks{
     display: flex;
     justify-content: space-around;
@@ -241,13 +241,9 @@ body{
     flex-wrap: wrap;
     padding: 13px;
     border-color: #f1f1f1;
-    
-  
-  
-  
   }
-  
-  
+
+
 .allDecks::-webkit-scrollbar {
     width: 11px;
   }
@@ -265,10 +261,10 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center ; 
+    align-items: center ;
     overflow: hidden;
 
-     
+
 }
 
 .no-decks-on-list-message{

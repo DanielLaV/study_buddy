@@ -97,7 +97,7 @@ def delete_deck(id):
         deck = Deck.query.get(id)
         db.session.delete(deck)
         db.session.commit()
-        return {}, 200
+        return deck.to_dict(), 200
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

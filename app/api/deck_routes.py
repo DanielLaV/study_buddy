@@ -1,10 +1,10 @@
-from flask import Blueprint, jsonify, session, request, make_response
+from flask import Blueprint, session, request, make_response
 from app.models import Deck, Card, Tag, db
 from app.forms import DeckForm, CardForm, DeleteDeckForm
 
 deck_routes = Blueprint('decks', __name__)
 
-# ADD ERROR HANDLING
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -28,7 +28,6 @@ def main():
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
-            print('FORM DATA ===========', form.data)
             title = form.data['title']
             description = form.data['description']
             user_id = form.data['user_id']
@@ -93,12 +92,10 @@ def delete_deck(id):
     form = DeleteDeckForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print('==================== IN DELTE')
         deck = Deck.query.get(id)
         db.session.delete(deck)
         db.session.commit()
         return deck.to_dict(), 200
-
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -108,8 +105,5 @@ def get_deck_tags(id):
     """
     GET requests to retrieve tags on a specific deck
     """
-    # try:
     tags = Tag.query.filter(Tag.deck_id == id).all()
     return {"tags": [tag.to_dict() for tag in tags]}
-    # except:
-    #    return 'nope'

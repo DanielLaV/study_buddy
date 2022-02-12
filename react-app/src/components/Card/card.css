@@ -1,8 +1,8 @@
 .frontCardDisplay {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  inline-size: 100px;
+  overflow-wrap: break-word;
 }
 
 .deckTitle {

@@ -1,12 +1,11 @@
-from urllib import response
-from flask import Blueprint, jsonify, session, request, make_response
+from flask import Blueprint, session, request
 from app.models import Card, db
 from app.forms import CardForm, DeleteCardForm
-from flask_login import current_user, login_user, logout_user, login_required
+
 
 card_routes = Blueprint('cards', __name__)
 
-# CUSTOMIZE THESE
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -26,7 +25,6 @@ def main():
     and creates a card. The created card data are returned in JSON format.
     """
     if request.method == 'POST':
-        print("post route post route post route")
         form = CardForm()
         form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -81,11 +79,8 @@ def delete_card(id):
     form = DeleteCardForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # try:
         one_card = Card.query.get(id)
         db.session.delete(one_card)
         db.session.commit()
         return {}, 200
-        # except:
-        #     return {'errors': ["Card not found!"]}, 404
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

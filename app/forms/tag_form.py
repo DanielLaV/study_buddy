@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField
-from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
+from wtforms import StringField, IntegerField
+from wtforms.validators import DataRequired, EqualTo, ValidationError
 import re
 
 def validate_each_tag_name(form, field):

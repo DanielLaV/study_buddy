@@ -1,10 +1,6 @@
-
-
 const LOAD_DECKS = 'LOAD_DECKS';
 const ADD_DECK = 'ADD_DECK';
-const EDIT_DECK = 'EDIT_DECK';
 const DELETE_DECK = 'DELETE_DECK';
-
 
 
 /* ----- ACTIONS ----- */
@@ -31,7 +27,6 @@ export const deleteOneDeck = deck => {
 
 /* ----- SELECTORS / THUNKS ----- */
 export const getDecks = () => async (dispatch) => {
-
     const res = await fetch('/api/decks/');
     const data = await res.json();
     if (res.ok) {
@@ -59,7 +54,6 @@ export const addDeck = (newDeck) => async (dispatch) => {
         body: JSON.stringify(newDeck)
     })
     const data = await res.json();
-
     if (res.ok) {
         return dispatch(addNewDeck(data));
     }
@@ -103,7 +97,6 @@ export const deleteDeck = commit => async (dispatch) => {
     }
     else return currDeck;
 }
-
 
 
 /* ----- REDUCER ------ */

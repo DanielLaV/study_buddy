@@ -15,13 +15,16 @@ const SignupForm = ({ setShowModal }) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
-      }
-    }
-    setShowModal(false);
+    setErrors([])
+    return dispatch(signUp(username, email, password, repeatPassword))
+      .then((response) => {
+        if (response.errors) {
+          console.log("response.errors", response.errors)
+          setErrors(response.errors)
+          return
+        }
+        else if (!response.errors) setShowModal(false);
+      })
   };
 
   const updateUsername = (e) => {

@@ -40,54 +40,61 @@ function EditCardForm({ setShowModal, card }) {
   };
 
   return (
-    <div className="card-form">
+    <div className="form-container">
       <h2>
         {success}
       </h2>
-      <h2>Preview</h2>
-      <h3>Front:</h3>
-      <div>{front}</div>
-      <h3>Back:</h3>
-      <div>{back}</div>
+      <div className="preview">
+        <h2 className="preview-title">Preview</h2>
+        <h3>Front:</h3>
+        <div className="preview-text">{front}</div>
+        <h3>Back:</h3>
+        <div className="preview-text">{back}</div>
+      </div>
       <ul className="error-list">
         {errors.map((error, idx) => (
           <li key={idx} className="errors">{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit} className="">
-        <textarea
-          id="front"
-          type="text"
-          value={front}
-          onChange={(e) => setFront(e.target.value)}
-          required
-          placeholder="Enter what you want to appear on the front of the card. The front can be something like a question, concept, or vocabulary word."
-          className=""
-        />
-        <textarea
-          id="back"
-          type="text"
-          value={back}
-          onChange={(e) => setBack(e.target.value)}
-          required
-          placeholder="Enter what you want to appear on the back of the card. This would be the answer or response to the prompt on the front of the card."
-          className=""
-        />
-        <button
-          type="submit"
-          className="">
-          Submit Edits!
-        </button>
-        <button
-          type="button"
-          className=""
-          onClick={(e) => {
-            setShowModal(false);
-            setFront(card.front);
-            setBack(card.back);
-          }}>
-          Cancel
-        </button>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="text-container">
+          <textarea
+            id="front"
+            type="text"
+            value={front}
+            onChange={(e) => setFront(e.target.value)}
+            required
+            placeholder="Enter what you want to appear on the front of the card. The front can be something like a question, concept, or vocabulary word."
+            className="input"
+          />
+          <textarea
+            id="back"
+            type="text"
+            value={back}
+            onChange={(e) => setBack(e.target.value)}
+            required
+            placeholder="Enter what you want to appear on the back of the card. This would be the answer or response to the prompt on the front of the card."
+            className="input"
+          />
+        </div>
+        <div className="form-button-container">
+
+          <button
+            type="submit"
+            className="form-button">
+            Submit Edits!
+          </button>
+          <button
+            type="button"
+            className="form-button"
+            onClick={(e) => {
+              setShowModal(false);
+              setFront(card.front);
+              setBack(card.back);
+            }}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

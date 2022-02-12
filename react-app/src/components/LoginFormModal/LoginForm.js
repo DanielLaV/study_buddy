@@ -57,11 +57,6 @@ const LoginForm = ({ setShowModal }) => {
             onChange={updateEmail}
             className='input'
           />
-<<<<<<< HEAD
-=======
-        </div>
-        <div className='loginForm'>
->>>>>>> 74f9b44983e0c9853e1051104abd11662d7b961b
           <label htmlFor='password'></label>
           <input
           placeholder='Password'

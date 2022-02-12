@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import NavBar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
 import HomePage from './components/HomePage';
 import DecksPage from './components/DecksPage';
 import DeckIdPage from './components/DeckIdPage';

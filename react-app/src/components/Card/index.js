@@ -13,7 +13,7 @@ function Card({ card }) {
 
         return (
             <div className="frontCardDisplay">
-                <p className='deckTitle'>{card.front}</p>
+                {card.front}
             </div>
         )
     }

@@ -27,7 +27,7 @@ body {
   width: inherit;
 }
 
-.colorButton{
+.colorButton {
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -36,17 +36,17 @@ body {
   background: none;
   border-radius: 5px;
   padding: 6px;
-  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-.colorButton:hover{
+.colorButton:hover {
   cursor: pointer;
   transform: scale(1.1)
 }
 
-*.formView{
+*.formView {
   /* display: flex;
   flex-direction: row; */
 
@@ -74,53 +74,49 @@ body {
 
 }
 
-.side{
+.side {
   font-weight: bold;
   margin: 20px;
 }
 
 .preview-text {
-display: flex;
-/* height: 1rem; */
-width: 100px;
-max-width: 100px;
-height: 50px;
-height: fit-content;
-padding: 25px;
-display: flex;
-overflow: hidden;
-/* flex-direction: ;
+  /* height: 1rem; */
+  width: 100px;
+  max-width: 100px;
+  min-height: 60px;
+  max-height: 60px;
+  padding: 25px;
+  overflow: hidden;
+  /* flex-direction: ;
 margin: ; */
-margin-top: 25px;
-margin-bottom: 25px;
-/* border: 1px solid; */
-border-radius: 5px;
-background-color: white;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  /* border: 1px solid; */
+  border-radius: 5px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  transform:
+    rotateX(0deg) rotateZ(0deg);
+  transform-style: preserve-3d;
+  box-shadow:
+    /* 1px 1px 0 1px #f9f9fb, */
+    10px 10px 1px 0 rgba(34, 33, 81, 0.01),
+    10px 10px 5px 0 rgba(34, 33, 81, 0.25);
+  transition:
+    .4s ease-in-out transform,
+    .4s ease-in-out box-shadow;
+  inline-size: 100px;
+  overflow-wrap: break-word;
 
-align-items: center;
-justify-content: center;
-color: black;
-text-decoration: none;
-font-family: Arial, Helvetica, sans-serif;
-
-transform:
-rotateX(0deg)
-rotateZ(0deg);
-transform-style: preserve-3d;
-box-shadow:
-/* 1px 1px 0 1px #f9f9fb, */
-10px 10px 1px 0 rgba(34, 33, 81, 0.01),
-10px 10px 5px 0 rgba(34, 33, 81, 0.25);
-transition:
-.4s ease-in-out transform,
-.4s ease-in-out box-shadow;
-
-
-/* background-color: white; */
+  /* background-color: white; */
 
 }
 
-.texter{
+.texter {
   max-width: 100px;
   overflow-wrap: break-word;
   max-height: 80px;
@@ -131,17 +127,14 @@ transition:
 
 .preview-text:hover {
   transform:
-  scale(1.1)
-  translate3d(0px, -1px, 0px)
-  rotateX(0deg)
-  rotateZ(2deg);
-box-shadow:
-  /* 1px 1px 0 1px #f9f9fb, */
-  10px 10px 1px 0px rgba(34, 33, 81, 0.01),
-  10px 10px 5px 0px rgba(34, 33, 81, 0.15);
+    scale(1.1) translate3d(0px, -1px, 0px) rotateX(0deg) rotateZ(2deg);
+  box-shadow:
+    /* 1px 1px 0 1px #f9f9fb, */
+    10px 10px 1px 0px rgba(34, 33, 81, 0.01),
+    10px 10px 5px 0px rgba(34, 33, 81, 0.15);
 }
 
-.form-container{
+.form-container {
   box-sizing: border-box;
   display: flex;
   /* flex-direction: column; */
@@ -204,13 +197,13 @@ textarea {
   padding: 6px;
   margin: 3px;
   margin-bottom: 10px;
-  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
 }
 
-.form-button:hover{
+.form-button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
@@ -223,7 +216,7 @@ textarea {
 
 }
 
-.addCardButton{
+.addCardButton {
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -234,18 +227,18 @@ textarea {
   border-radius: 5px;
   margin-right: 2px;
   padding: 6px;
-  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
-*#front-input{
+*#front-input {
   background-color: white;
   border-radius: 5px;
 
 }
 
-.formDisplay{
+.formDisplay {
   background-color: white;
   border-radius: 5px;
 
@@ -258,33 +251,33 @@ textarea {
   font-size: 90px;
 } */
 
-.addCardButton:hover{
+.addCardButton:hover {
   cursor: pointer;
   transform: scale(1.1)
 }
 
 
 
-#modal-content{
+#modal-content {
   border-radius: 5px;
   max-width: 800px;
   /* min-width: 259px; */
   display: flex;
 }
 
-.delete{
-      background-color: #c0413f;
-      text-align: center;
-      padding:10px;
-      color: white;
-      border-radius: 5px;
+.delete {
+  background-color: #c0413f;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
 
 }
 
-.cardView{
+.cardView {
   background-color: #27a9e1;
   text-align: center;
-  padding:10px;
+  padding: 10px;
   color: white;
   border-radius: 5px;
   overflow: hidden;
@@ -293,13 +286,13 @@ textarea {
 
 }
 
-.editUserForm{
+.editUserForm {
   height: 100px;
 }
 
 
 
-#modal-background{
+#modal-background {
   /* height: 100%; */
   border-radius: 5px;
 
@@ -309,14 +302,14 @@ textarea {
 
 }
 
-.loginForm{
+.loginForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
 }
 
-.signUpForm{
+.signUpForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -324,7 +317,7 @@ textarea {
 
 }
 
-.light-button{
+.light-button {
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -335,13 +328,13 @@ textarea {
   border-radius: 5px;
   margin-right: 2px;
   padding: 6px;
-  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
 }
 
-.dark-button{
+.dark-button {
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -352,18 +345,18 @@ textarea {
   border-radius: 5px;
   margin-right: 2px;
   padding: 6px;
-  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
 }
 
-.light-button:hover{
+.light-button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
-.dark-button:hover{
+.dark-button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }

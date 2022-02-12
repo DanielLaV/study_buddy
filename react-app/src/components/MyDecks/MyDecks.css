@@ -72,3 +72,17 @@ color: black;}
 
 
   }
+
+  .decks::-webkit-scrollbar {
+    width: 11px;
+  }
+  .decks::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  .decks::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 5px;
+    border: 3px solid var(--scrollbarBG);
+  }
+
+  

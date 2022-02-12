@@ -42,8 +42,8 @@ function AddDeckForm({ setShowModal }) {
 
     return (
         <div className="form-container">
-            <h2 style={{color:"green"}}>{success}</h2>
             <form className='form' onSubmit={handleSubmit}>
+            <h2 style={{color:"green", marginBottom:"-20px"}}>{success}</h2>
                 <ul>
                     {errors.map((error, idx) => (
                         <li key={idx}>{error}</li>

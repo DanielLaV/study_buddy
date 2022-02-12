@@ -20,5 +20,12 @@ class Tag(db.Model, UserMixin):
             'decks': self.deck.to_dict()
         }
 
+    def delete_to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'deck_id': self.deck_id,
+        }
+
 
     deck = db.relationship("Deck", back_populates="tag")

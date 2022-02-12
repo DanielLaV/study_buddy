@@ -12,13 +12,10 @@ import Tags from '../Tags'
 
 
 function DeckIdPage() {
-    console.log("decksID page")
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user.id)
     const { deckId } = useParams();
     const deck = useSelector(state => state.decks[deckId])
-    const allTags = useSelector(state => Object.values(state.tags))
-    console.log("deckId", deckId, typeof(deckId))
 
     useEffect(() => {
         dispatch(deckActions.getOneDeck(deckId));
@@ -32,27 +29,24 @@ function DeckIdPage() {
 
     if (deck) {
         const isOwner = user === deck?.user_id;
-        let displayTags = allTags.map(tag => <Tags tag={tag} isOwner={isOwner}/>)
 
         return (
-        <div className='cardPageContainer'>
-            <div key={deck.id} className='deckIdPage'>
-                <div className='deckNameContainer'>
-                    <h1 className='deckName'>{deck.title}</h1>
-                <div className='tags-container'>
-                    {displayTags}
-                </div>
-
-                {/* <Deck deck={deck} /> */}
-                {isOwner &&
-                    <div className='addCardOrTag'>
-                        <AddCardFormModal />
-                        <AddTagFormModal />
-                    </div>}
-            </div>
+            <div className='cardPageContainer'>
+                <div key={deck.id} className='deckIdPage'>
+                    <div className='deckNameContainer'>
+                        <h1 className='deckName'>{deck.title}</h1>
+                        <div className='tags-container'>
+                            <Tags />
+                        </div>
+                        {isOwner &&
+                            <div className='addCardOrTag'>
+                                <AddCardFormModal />
+                                <AddTagFormModal />
+                            </div>}
+                    </div>
                     <CardBrowser />
+                </div>
             </div>
-        </div>
         )
     }
     else return "DON'T LOOK AT ME! I'M HIDEOUS"

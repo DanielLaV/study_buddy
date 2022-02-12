@@ -43,7 +43,7 @@ function AddCardForm({ payload }) {
       <div className="preview">
 
     <div className="form-container">
-      <h2>
+      <h2 style={{color:"green"}}>
         {success}
       </h2>
         <h2 className="preview-title">Preview</h2>

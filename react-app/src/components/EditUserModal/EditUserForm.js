@@ -30,17 +30,22 @@ function EditUserForm({ setShowModal }) {
 	};
 
 	return (
-		<div className="edit-user-form">
-			{success}
-			<form onSubmit={handleSubmit}>
+		<div className='form-container'>
+			<form className="form" onSubmit={handleSubmit}>
+			<h2 style={{color:"green", marginBottom:"-50px"}}>
+				{success}
+				</h2>
 				<ul>{errors.map((error, idx) => <li key={idx}>{error}</li>)}</ul>
-				<label className="title">
-					Bio
-					<input type="text" value={bio} onChange={(e) => setBio(e.target.value)} required />
-				</label>
-				<button className="addDeckSubmit">Submit</button>
-			</form>
-		</div>
+				<label className="names"></label>
+
+					<h1>Bio</h1>
+					<input className='input'type="text" place value={bio} onChange={(e) => setBio(e.target.value)} required />
+					<div className='form-button-container'>
+              <button className='form-button'>Update</button>
+          </div>			
+				</form>
+		</div >
+
 	);
 }
 

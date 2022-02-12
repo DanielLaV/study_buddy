@@ -45,7 +45,8 @@ const LoginForm = ({ setShowModal }) => {
           <div className="error-list">{errors[0]}</div>
         </div>
         <div className='loginForm'>
-          <h1>Log In</h1>
+          <h1 className>Log In</h1>
+
           <label htmlFor='email'> </label>
           <input
           placeholder='Email'
@@ -56,8 +57,6 @@ const LoginForm = ({ setShowModal }) => {
             onChange={updateEmail}
             className='input'
           />
-        </div>
-        <div>
           <label htmlFor='password'></label>
           <input
           placeholder='Password'
@@ -67,9 +66,12 @@ const LoginForm = ({ setShowModal }) => {
             value={password}
             onChange={updatePassword}
             className='input'
+
           />
-        </div>
+        </div>  
+        <div className='form-button-container'>
         <button className='form-button' type='submit'>Login</button>
+        </div>
       </form>
     </div>
   );

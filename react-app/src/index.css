@@ -50,6 +50,7 @@ body {
   /* display: flex;
   flex-direction: row; */
 
+
 }
 
 .preview {
@@ -61,6 +62,7 @@ body {
   border-radius: 5px;
 
 
+
 }
 
 .preview-title {
@@ -70,6 +72,7 @@ body {
   color: white;
   padding: 5px;
   border-radius: 5px;
+
 }
 
 .side{
@@ -94,7 +97,6 @@ margin-bottom: 25px;
 border-radius: 5px;
 background-color: white;
 
-display:flex;
 align-items: center;
 justify-content: center;
 color: black;
@@ -171,7 +173,6 @@ box-shadow:
   display: flex;
   flex-direction: column;
   overflow: auto;
-  background-color: #e2dfd6;
   border-radius: 5px;
 
 }
@@ -203,7 +204,7 @@ textarea {
   color: white;
   border: none;
   background: none;
-  background-color: #403b35;
+  background-color: #fd8a84;
   border-radius: 5px;
   padding: 6px;
   margin: 3px;
@@ -214,10 +215,17 @@ textarea {
 
 }
 
+.form-button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .form-button-container {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
 .addCardButton{
@@ -247,6 +255,7 @@ textarea {
   border-radius: 5px;
 
 
+
 }
 
 /* *.names{
@@ -259,12 +268,13 @@ textarea {
   transform: scale(1.1)
 }
 
+
+
 #modal-content{
   border-radius: 5px;
-
-
-
-
+  max-width: 800px;
+  /* min-width: 259px; */
+  display: flex;
 }
 
 .delete{
@@ -272,13 +282,32 @@ textarea {
       text-align: center;
       padding:10px;
       color: white;
-      border-radius: 1%;
+      border-radius: 5px;
 
 }
+
+.cardView{
+  background-color: #27a9e1;
+  text-align: center;
+  padding:10px;
+  color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 300px;
+
+
+}
+
+.editUserForm{
+  height: 100px;
+}
+
+
 
 #modal-background{
   /* height: 100%; */
   border-radius: 5px;
+
 
 
 
@@ -289,12 +318,15 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
 }
 
 .signUpForm{
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
+
 }
 
 .light-button{

@@ -17,10 +17,11 @@ const CardBody = ({ setShowModal, cardId }) => {
     }, [dispatch, cardId])
 
     let buttonDiv =
-        (<div className="buttons">
+        (<div>
             <button
+                className="form-button"
                 type="button"
-                onClick={(e) => setShowModal(false)} className="">
+                onClick={(e) => setShowModal(false)}>
                 Close
             </button>
         </div>)
@@ -34,11 +35,11 @@ const CardBody = ({ setShowModal, cardId }) => {
     //     ]
     // }
     return (
-        <div className="">
-            <h2>Front:</h2>
-            <h3>{card.front}</h3>
-            <h2>Back:</h2>
-            <p>{card.back}</p>
+        <div className="cardView">
+            <h1>Front:</h1>
+            <h3 style={{color:"black"}}>{card.front}</h3>
+            <h1>Back:</h1>
+            <h3 style={{color:"black"}}>{card.back}</h3>
             {buttonDiv}
         </div>)
 }

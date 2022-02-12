@@ -29,7 +29,7 @@ const SearchCardBody = ({ setShowModal, cardId }) => {
 
     return (
         <div className="">
-            <h2>Front:</h2>
+            <h2> Front:</h2>
             <h3>{card.front}</h3>
             <h2>Back:</h2>
             <h3>{card.back}</h3>

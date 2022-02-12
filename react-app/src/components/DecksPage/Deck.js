@@ -18,11 +18,11 @@ function Deck({ deck, studyDecks=[] }) {
             {!isStudying &&
             <AddToStudyList deck_id={deck.id} user_id={user}/>}
             {isStudying && <DeleteFromSLButton deck_id={deck.id} user_id={user}/>}
-            {isOwner &&
+            {/* {isOwner &&
             <div className='editDeleteButtons'>
                 <EditDeckFormModal deck={deck} />
                 <DeleteDeckFormModal deck={deck} />
-            </div>}
+            </div>} */}
         </div>
     )
 }

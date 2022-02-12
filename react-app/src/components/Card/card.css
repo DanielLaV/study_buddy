@@ -12,13 +12,11 @@
 }
 
 .editDeleteButtons{
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 10px;
 }
 
 .pencil{
-  position: absolute;
-  top: 30px;
-  left: 55px;
   height: 17px; 
   /* z-index: 1000000; */
        
@@ -36,10 +34,8 @@
 
 
 .trashCard{
-  position: absolute;
-  top: 30px;
-  right: 55px;
-height: 17px;     
+
+height: 17px;   
   
 }
 

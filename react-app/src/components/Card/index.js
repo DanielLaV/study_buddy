@@ -13,12 +13,12 @@ function Card({ card }) {
 
     return (
         <div className="frontCardDisplay">
-            <p className='deckTitle'>{card.front}</p>
-            {isOwner &&
+            <p className='texter'>{card.front}</p>
+            {/* {isOwner &&
             <div className='editDeleteButtons'>
                 <EditCardFormModal card={card} />
                 <DeleteCardFormModal card={card} />
-            </div>}
+            </div>} */}
         </div>
     )
 }}

@@ -36,8 +36,12 @@ function DeleteCardForm({ setShowModal, card }) {
             );
     };
 
-    return (<><h2>Are you sure you want to delete this card?</h2>
-        <h3>This cannot be undone.</h3>
+    return (
+    
+    <div className="delete">
+    
+    <h2  >Are you sure you want to delete this card?</h2>
+        <h3 style={{color:"black"}}>This cannot be undone.</h3>
         <ul className="error-list">
             {errors.map((error, idx) => (
                 <li key={idx} className="errors">{error}</li>
@@ -47,8 +51,8 @@ function DeleteCardForm({ setShowModal, card }) {
             <button type="submit" className="dark-button">Yes</button>
             <button type="button" onClick={(e) => setShowModal(false)} className="light-button">No</button>
         </form>
-        <h2>{success}</h2>
-    </>)
+        <h2 style={{color:"green"}}>{success}</h2>
+    </div>)
 }
 
 export default DeleteCardForm

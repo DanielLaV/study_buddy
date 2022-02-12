@@ -9,7 +9,8 @@ import AddCardFormModal from '../AddCardFormModal';
 import CardBrowser from '../CardsBrowser';
 import AddTagFormModal from '../AddTagsFormModal';
 import Tags from '../Tags'
-
+import EditDeckFormModal from '../EditDeckModal';
+import DeleteDeckFormModal from '../DeleteDeckModal';
 
 function DeckIdPage() {
     const dispatch = useDispatch();
@@ -34,7 +35,13 @@ function DeckIdPage() {
             <div className='cardPageContainer'>
                 <div key={deck.id} className='deckIdPage'>
                     <div className='deckNameContainer'>
-                        <h1 className='deckName'>{deck.title}</h1>
+                        <h1 id='deck-title'>{deck.title}
+                            {isOwner && <>
+                                <EditDeckFormModal deck={deck} />
+                                <DeleteDeckFormModal deck={deck} />
+                            </>}
+                        </h1>
+                        <h2 id="deck-desc">{deck.description}</h2>
                         <div className='tags-container'>
                             <Tags />
                         </div>
@@ -45,6 +52,7 @@ function DeckIdPage() {
                             </div>}
                     </div>
                     <CardBrowser />
+
                 </div>
             </div>
         )

@@ -11,7 +11,7 @@ function CardBodyModal({card}) {
         <>
             <div className='eachCard' onClick={() => setShowModal(true)}><Card card={card} /></div>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <Modal className="cardP" onClose={() => setShowModal(false)}>
                     <CardBody setShowModal={setShowModal} cardId={card.id}/>
                 </Modal>
             )}

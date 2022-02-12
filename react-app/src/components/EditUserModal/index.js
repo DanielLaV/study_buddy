@@ -2,14 +2,23 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditUserForm from './EditUserForm';
 import '../Card/card.css'
+import "../HomePage/HomePage.css"
+import Splash from '../Splash'
+
+
+import { useSelector } from "react-redux";
+
 
 function EditUserModal() {
     const [showModal, setShowModal] = useState(false);
+    const user = useSelector((state) => state.session.user);
+
+
+    if (user) {
 
     return (
         <>
-            <input type="image" name="<Name of the image button >" className='pencilBio'
-                src="/pencil2.png" alt="text" onClick={() => setShowModal(true)}></input>
+            <p className='bio' onClick={() => setShowModal(true)}>{user.bio}</p>
 
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
@@ -17,7 +26,13 @@ function EditUserModal() {
                 </Modal>
             )}
         </>
-    )
+    )}
+    else {
+        return (
+          <Splash></Splash>
+        )
+      }
+
 }
 
 export default EditUserModal;

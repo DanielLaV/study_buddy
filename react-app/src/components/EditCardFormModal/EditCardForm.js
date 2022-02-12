@@ -40,16 +40,24 @@ function EditCardForm({ setShowModal, card }) {
   };
 
   return (
+    <div className='formView'>
+    <div className="preview">
+
     <div className="form-container">
-      <h2>
+      <h2 style={{color:"green"}}>
         {success}
       </h2>
-      <div className="preview">
-        <h2 className="preview-title">Preview</h2>
-        <h3>Front:</h3>
-        <div className="preview-text">{front}</div>
-        <h3>Back:</h3>
-        <div className="preview-text">{back}</div>
+      <h2 className="preview-title">Preview</h2>
+        <p className="side">Front:</p>
+        <div>
+
+        <div className="preview-text"><div className="texter">{front}</div></div>
+        </div>
+        <p className="side">Back:</p>
+        <div>
+
+        <div className="preview-text"><div className="texter">{back}</div></div>
+        </div>
       </div>
       <ul className="error-list">
         {errors.map((error, idx) => (
@@ -82,7 +90,7 @@ function EditCardForm({ setShowModal, card }) {
           <button
             type="submit"
             className="form-button">
-            Submit Edits!
+            Submit
           </button>
           <button
             type="button"
@@ -97,6 +105,8 @@ function EditCardForm({ setShowModal, card }) {
         </div>
       </form>
     </div>
+    </div>
+
   );
 }
 

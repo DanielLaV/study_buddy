@@ -21,7 +21,8 @@ function HomePage() {
       <div className="homePageContainer">
         <div className="user">
           <p className="userName">{user.username}</p>
-          <p className='bio'>{user.bio}</p>
+          <img className="avatar" src="avatar.png" alt="Avatar"/>
+          {/* <p className='bio'>{user.bio} onClick={() => setShowModal(true)}</p> */}
           <div><EditUserModal/></div>
         </div>
         <div className="Decks">

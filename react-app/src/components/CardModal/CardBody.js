@@ -5,6 +5,7 @@ import * as cardActions from "../../store/cards"
 import EditCardFormModal from "../EditCardFormModal";
 import DeleteCardFormModal from "../DeleteCardFormModal";
 
+
 const CardBody = ({ setShowModal, cardId }) => {
     const { deckId } = useParams();
     const dispatch = useDispatch();
@@ -15,31 +16,32 @@ const CardBody = ({ setShowModal, cardId }) => {
     useEffect(() => {
         dispatch(cardActions.getOneCard(cardId));
     }, [dispatch, cardId])
-
-    let buttonDiv =
+    const modals = (<><EditCardFormModal card={card} />
+        <DeleteCardFormModal card={card} /></>)
+    const buttonDiv =
         (<div className="buttons">
             <button
                 type="button"
-                onClick={(e) => setShowModal(false)} className="">
+                onClick={(e) => setShowModal(false)} className="form-button">
                 Close
             </button>
+            {(user.id === deck.user_id) && modals}
         </div>)
-    console.log("false?", user.id === deck.user_id)
-    if (user.id === deck.user_id) {
-        buttonDiv = [
-            buttonDiv, <>
-                <EditCardFormModal card={card} />
-                <DeleteCardFormModal card={card} />
-            </>
-        ]
-    }
     return (
-        <div className="">
-            <h2>Front:</h2>
-            <h3>{card.front}</h3>
-            <h2>Back:</h2>
-            <p>{card.back}</p>
-            {buttonDiv}
+        <div className="preview">
+            <div className="form-container">
+                <p className="side">Front:</p>
+                <div>
+                    <div className="preview-text">{card.front}</div>
+                </div>
+                <p className="side">Back:</p>
+                <div>
+                    <div className="preview-text">{card.back}</div>
+                </div>
+            </div>
+            <div className="form-button-container">
+                {buttonDiv}
+            </div>
         </div>)
 }
 

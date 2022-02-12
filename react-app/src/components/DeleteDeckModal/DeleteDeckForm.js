@@ -42,12 +42,14 @@ function DeleteDeckForm({ payload, deck }) {
             )
     }
 
-    return (<><h2>Are you sure you want to delete this deck?</h2>
-        <h3>This cannot be undone.</h3>
+    return (
+        <div className='delete'>
+        <h2>Are you sure you want to delete this deck?</h2>
+        <h3 style={{color:"black"}} >This cannot be undone.</h3>
         <button type="button" onClick={(e) => submitDelete()} className="dark-button">Yes</button>
         <button type="button" onClick={(e) => setShowModal(false)} className="light-button">No</button>
-        <h2>{success}</h2>
-    </>)
+        <h2 style={{color:"green"}}>{success}</h2>
+    </div>)
 }
 
 export default DeleteDeckForm

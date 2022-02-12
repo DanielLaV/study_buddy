@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 function EditUserForm({ setShowModal }) {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
-	const [ bio, setBio ] = useState(user.bio);
-	const [ errors, setErrors ] = useState([]);
-	const [ success, setSuccess ] = useState('');
+	const [bio, setBio] = useState(user.bio);
+	const [errors, setErrors] = useState([]);
+	const [success, setSuccess] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -30,15 +30,17 @@ function EditUserForm({ setShowModal }) {
 	};
 
 	return (
-		<div className="edit-user-form">
+		<div className="form-container">
 			{success}
 			<form onSubmit={handleSubmit}>
 				<ul>{errors.map((error, idx) => <li key={idx}>{error}</li>)}</ul>
 				<label className="title">
 					Bio
-					<input type="text" value={bio} onChange={(e) => setBio(e.target.value)} required />
+					<input className='input' type="text" value={bio} onChange={(e) => setBio(e.target.value)} required />
 				</label>
-				<button className="addDeckSubmit">Submit</button>
+				<div className='button-container'>
+					<button className="form-button">Submit</button>
+				</div>
 			</form>
 		</div>
 	);

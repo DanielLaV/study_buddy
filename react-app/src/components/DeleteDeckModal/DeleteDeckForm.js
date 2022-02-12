@@ -13,15 +13,15 @@ function DeleteDeckForm({ payload, deck }) {
     const [errors, setErrors] = useState([]);
     const [success, setSuccess] = useState("");
     const currUserId = useSelector(state => state.session.user.id);
-    const { deckId } = useParams();
-    const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
+
+    const currUserDeckId = useSelector(state => state?.decks[deck.id]?.user_id);
 
 
 
     const submitDelete = (e) => {
         setErrors([]);
         const confirm = {
-            deck_id: deckId,
+            deck_id: deck.id,
             curr_user_id: currUserId,
             deck_user_id: currUserDeckId
         }

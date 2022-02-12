@@ -36,10 +36,16 @@ const CardBody = ({ setShowModal, cardId }) => {
     // }
     return (
         <div className="cardView">
-            <h1>Front:</h1>
+            <h1 style={{marginBottom:'-20px', color:'black'}}>Front:</h1>
+            <div className="preview-textStudy">
             <h3 style={{color:"black"}}>{card.front}</h3>
-            <h1>Back:</h1>
-            <h3 style={{color:"black"}}>{card.back}</h3>
+            </div>
+            <h1 style={{marginBottom:'-20px', color:'black'}}>Back:</h1>
+
+            <div className="preview-textStudy">
+            <p className="texterStudy" style={{color:"black"}}>{card.back}</p>
+
+            </div>
             {buttonDiv}
         </div>)
 }

@@ -3,6 +3,8 @@ import { Modal } from '../../context/Modal';
 import EditUserForm from './EditUserForm';
 import '../Card/card.css'
 import "../HomePage/HomePage.css"
+import Splash from '../Splash'
+
 
 import { useSelector } from "react-redux";
 
@@ -11,6 +13,8 @@ function EditUserModal() {
     const [showModal, setShowModal] = useState(false);
     const user = useSelector((state) => state.session.user);
 
+
+    if (user) {
 
     return (
         <>
@@ -22,7 +26,13 @@ function EditUserModal() {
                 </Modal>
             )}
         </>
-    )
+    )}
+    else {
+        return (
+          <Splash></Splash>
+        )
+      }
+
 }
 
 export default EditUserModal;

@@ -1,0 +1,9 @@
+.pageNF {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pageNotFoundLogo {
+    height: 70vh;
+}

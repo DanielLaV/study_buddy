@@ -215,6 +215,14 @@ box-shadow:
   cursor: pointer;
 }
 
+.searchScreen{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+
+}
+
 .form-container{
   display: flex;
   /* flex-direction: column; */

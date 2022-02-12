@@ -35,10 +35,10 @@ function App() {
     <div className={theme}>
       <BrowserRouter>
         <NavBar />
-        <input type='image' alt='Lights' src="/lightbulb.png" onClick={() => theme === 'light' ? setTheme('dark') : setTheme('light')}
-          style={{ position: "fixed", height: "40px", bottom: "50px", right: "25px", backgroundColor: "transparent", color: "var(--trimmings)" }}
-        >
-        </input>
+        <button type='image' className='light-button' onClick={() => theme === 'light' ? setTheme('dark') : setTheme('light')}
+          style={{ position: "fixed", height: "20px", bottom: "40px", left: "10px", backgroundColor: "var(--trimmings)", color: "var(--primary)" }}
+        >Dark Mode
+        </button>
         <Switch>
           {/* <ProtectedRoute exact={true} path='/'>
           <UserPage />

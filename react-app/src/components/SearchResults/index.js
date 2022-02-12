@@ -55,9 +55,15 @@ function SearchResults() {
     }
     if (hasResults) {
         results = [results, (
-            <>
-                <div className="deckDisplay" >
+            <div className='browsePageContainer'>
+
+            <div className="browseDecks">
+                <div className="browseDecksTitleContainer">
+
                     <h1 className="browseDecksTitle">Decks that Contain "{`${query}`}"</h1>
+                </div>
+                <div className="deckDisplay" >
+
                     <div className='allDecks'>
                         {decks?.map(deck =>
                             <NavLink className="eachDeck" to={`/decks/${deck.id}`} key={deck.id}>
@@ -65,10 +71,11 @@ function SearchResults() {
                             </NavLink>)}
                     </div>
                 </div >
+                <div className="browseDecksTitleContainer">
+                        <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
+                </div>
                 <div className="deckDisplay">
                     <div className='allDecks'>
-                        <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
-                        <div>
                             {cards?.map((card) => {
                                 return (<div className="eachDeck">
                                     <SearchCardBodyModal card={card} key={card.id} />
@@ -76,10 +83,10 @@ function SearchResults() {
                                 </div>
                                 )
                             })}
-                        </div>
                     </div>
                 </div>
-            </>
+            </div>
+            </div>
         )]
 
     }

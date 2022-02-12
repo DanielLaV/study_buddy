@@ -45,6 +45,7 @@ function DeckIdPage() {
                             </div>}
                     </div>
                     <CardBrowser />
+                    <h2>{deck.description}</h2>
                 </div>
             </div>
         )

@@ -203,6 +203,7 @@ body{
     /* box-shadow: 0 30px 70px #000;
     transform: scale3d(1.05, 1.05, 1.05); */
     transform:
+    scale(1.1)
     translate3d(0px, -1px, 0px)
     rotateX(0deg)
     rotateZ(2deg);
@@ -218,6 +219,7 @@ body{
   
   .title{
     font-size: 14px;
+    font-weight: bold;
     text-align: center;
   }
   

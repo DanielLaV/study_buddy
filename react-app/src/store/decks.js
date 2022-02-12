@@ -1,6 +1,5 @@
 const LOAD_DECKS = 'LOAD_DECKS';
 const ADD_DECK = 'ADD_DECK';
-const EDIT_DECK = 'EDIT_DECK';
 const DELETE_DECK = 'DELETE_DECK';
 
 

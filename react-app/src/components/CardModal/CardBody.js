@@ -25,14 +25,14 @@ const CardBody = ({ setShowModal, cardId }) => {
             </button>
         </div>)
     console.log("false?", user.id === deck.user_id)
-    if (user.id === deck.user_id) {
-        buttonDiv = [
-            buttonDiv, <>
-                <EditCardFormModal card={card} />
-                <DeleteCardFormModal card={card} />
-            </>
-        ]
-    }
+    // if (user.id === deck.user_id) {
+    //     buttonDiv = [
+    //         buttonDiv, <>
+    //             <EditCardFormModal card={card} />
+    //             <DeleteCardFormModal card={card} />
+    //         </>
+    //     ]
+    // }
     return (
         <div className="">
             <h2>Front:</h2>

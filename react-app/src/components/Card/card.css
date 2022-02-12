@@ -49,6 +49,9 @@ height: 17px;
 
 .pencilBio{
   height: 15px;
+  left: 235px;
+  margin-bottom: 20px;
+  margin-top: -5px;
 }
 
 .pencilBio:hover{

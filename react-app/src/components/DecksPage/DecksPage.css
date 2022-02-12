@@ -31,6 +31,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 1%;
     /* -webkit-box-shadow: 0 10px 6px -6px #777;
     -moz-box-shadow: 0 10px 6px -6px #777;
      box-shadow: 0 10px 6px -6px #777;
@@ -47,6 +48,8 @@ body{
   .studyDecksPage{
     margin: 25px;
     width: 100%;
+    border-radius: 1%;
+
     /* border: solid; */
     /* border-color: #27A9E1; */
     background-color: white;
@@ -69,6 +72,8 @@ body{
   .homePageStudyDecks{
         margin: 25px;
         width: 40%;
+        border-radius: 5px;
+
         /* border: solid; */
         /* border-color: #27A9E1; */
         background-color: white;
@@ -130,6 +135,8 @@ body{
   .deckDisplay{
    /* border: solid; */
    border-color: black;
+   border-radius: 5px;
+
    background-color: #27A9E1;
    border: 8px solid;
    border-color: #25a1d6;
@@ -176,7 +183,6 @@ body{
     border-radius: 5px;
     background-color: white;
   
-    display:flex;
     align-items: center;
     justify-content: center;
     color: black;
@@ -221,6 +227,10 @@ body{
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+    max-width: 100px;
+    overflow-wrap: break-word;
+    max-height: 80px;
+    overflow: hidden;
   }
   
   .allDecks{
@@ -255,7 +265,10 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center ;  
+    align-items: center ; 
+    overflow: hidden;
+
+     
 }
 
 .no-decks-on-list-message{

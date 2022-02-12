@@ -44,9 +44,11 @@ const LoginForm = ({ setShowModal }) => {
         <div>
           <div className="error-list">{errors[0]}</div>
         </div>
-        <div>
-          <label htmlFor='email'>Email: </label>
+        <div className='loginForm'>
+          <h1>Log In</h1>
+          <label htmlFor='email'> </label>
           <input
+          placeholder='Email'
             name='email'
             type='text'
             placeholder='Email'
@@ -56,8 +58,9 @@ const LoginForm = ({ setShowModal }) => {
           />
         </div>
         <div>
-          <label htmlFor='password'>Password: </label>
+          <label htmlFor='password'></label>
           <input
+          placeholder='Password'
             name='password'
             type='password'
             placeholder='Password'

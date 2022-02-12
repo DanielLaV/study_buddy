@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
-import './SignupForm.css';
 
 const SignupForm = ({ setShowModal }) => {
   const [errors, setErrors] = useState([]);
@@ -55,9 +54,10 @@ const SignupForm = ({ setShowModal }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
-          <label>Username:</label>
+        <div className='formDisplay'>
+          <label></label>
           <input
+            placeholder='Username'
             type='text'
             name='username'
             onChange={updateUsername}
@@ -65,9 +65,10 @@ const SignupForm = ({ setShowModal }) => {
             className='input'
           ></input>
         </div>
-        <div>
-          <label>Email:</label>
+        <div className='email'>
+          <label></label>
           <input
+          placeholder='Email'
             type='text'
             name='email'
             onChange={updateEmail}
@@ -76,8 +77,9 @@ const SignupForm = ({ setShowModal }) => {
           ></input>
         </div>
         <div>
-          <label>Password:</label>
+          <label></label>
           <input
+          placeholder='Password'
             type='password'
             name='password'
             onChange={updatePassword}
@@ -86,8 +88,9 @@ const SignupForm = ({ setShowModal }) => {
           ></input>
         </div>
         <div>
-          <label>Repeat Password:</label>
+          <label></label>
           <input
+          placeholder='Verify Password'
             type='password'
             name='repeat_password'
             onChange={updateRepeatPassword}

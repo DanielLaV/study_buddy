@@ -50,7 +50,6 @@ function AddDeckForm({ setShowModal }) {
                     ))}
                 </ul>
                 <label className='form'>
-                    Title
                     <input
                         type='text'
                         value={title}
@@ -61,7 +60,6 @@ function AddDeckForm({ setShowModal }) {
                     />
                 </label>
                 <label>
-                    Description
                 </label>
                 <input
                     type='text'

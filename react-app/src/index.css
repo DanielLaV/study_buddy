@@ -57,7 +57,6 @@ body {
   /* display: flex;
   flex-direction: column; */
   width: 100%;
-  margin-bottom: -55px;
   background-color: #27a9e1;
   border-radius: 5px;
 
@@ -86,11 +85,12 @@ display: flex;
 width: 100px;
 max-width: 100px;
 height: 50px;
+height: fit-content;
 padding: 25px;
 display: flex;
 overflow: hidden;
-flex-direction: ;
-margin: ;
+/* flex-direction: ;
+margin: ; */
 margin-top: 25px;
 margin-bottom: 25px;
 /* border: 1px solid; */
@@ -142,20 +142,15 @@ box-shadow:
 }
 
 .form-container{
+  box-sizing: border-box;
   display: flex;
   /* flex-direction: column; */
   color: black;
   padding: 0px 30px 0px 30px;
-  height: auto;
+  height: fit-content;
   overflow: visible;
   background-color: #27a9e1;
-  height: auto;
   border-radius: 5px;
-
-
-
-
-
 }
 
 .input {

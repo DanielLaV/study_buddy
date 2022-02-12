@@ -1,11 +1,10 @@
-.tags-container{
-  position: absolute;
+.tags-container {
   display: flex;
   flex-direction: row;
-  margin-top: 50px;
+  margin: 10px 0px;
 }
 
-.deckIdPage{
+.deckIdPage {
   margin: 25px;
   width: 100%;
   border-radius: 5px;
@@ -21,20 +20,21 @@
    box-shadow: 0 10px 6px -6px #777;
    */
 
-   
-   -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
 }
 
-.cardPageContainer{
+.cardPageContainer {
   display: flex;
   flex-direction: row;
   height: 79.5vh;
 
 }
-.deckNameContainer{
+
+.deckNameContainer {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -45,17 +45,18 @@
 
 }
 
-.deckName{
+#deck-title, #deck-desc {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
-
+  padding: 0;
+  margin: 0;
 }
 
-.addCardOrTag{
+#deck-title {
+  margin-top: 10px;
+}
+
+.addCardOrTag {
   z-index: 0;
-  
-}
 
-.addCardOrTag:active{
-  /* z-index: 0; */
 }

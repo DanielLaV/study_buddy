@@ -2,8 +2,9 @@
 .tagLink{
   text-decoration: none;
   color:black;
-  font-size: 10px;
+  font-size: 16px;
   margin-right: 1px;
+  padding-left: 15px;
 }
 
 .tagLink:hover{
@@ -15,7 +16,7 @@
 
 
 }.tagDelete{
-height: 6px;
+height: 12px;
 margin-right: 5px;
 }
 
@@ -25,7 +26,6 @@ margin-right: 5px;
 }
 
 .tag-div{
-  margin-top: 8px;
   display: flex;
   flex-direction: row;
   align-items: baseline;

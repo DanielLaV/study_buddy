@@ -24,16 +24,8 @@ const CardBody = ({ setShowModal, cardId }) => {
                 onClick={(e) => setShowModal(false)}>
                 Close
             </button>
+            {(user.id === deck.user_id) && modals}
         </div>)
-    console.log("false?", user.id === deck.user_id)
-    // if (user.id === deck.user_id) {
-    //     buttonDiv = [
-    //         buttonDiv, <>
-    //             <EditCardFormModal card={card} />
-    //             <DeleteCardFormModal card={card} />
-    //         </>
-    //     ]
-    // }
     return (
         <div className="cardView">
             <h1>Front:</h1>

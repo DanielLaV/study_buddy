@@ -39,6 +39,7 @@ const StudyList = () => {
 
 
 
+
 	return (
         <div className={className}>
 					<div className="browseDecksTitleContainer">
@@ -57,7 +58,13 @@ const StudyList = () => {
         <Redirect to="/" />}
 					</div>
 					{noStudyDeck() &&
-						<h3 className='no-decks-on-list-message'>There are no decks on your Study List</h3>}
+
+						<div className="noDecks">
+							<h3 className='no-decks-on-list-message'>There are no decks on your Study List</h3>
+							<NavLink to='/decks' className="browse_decks">Browse Decks</NavLink>
+
+						</div>
+					}
 				</div>
 				<div className='addDeckButtonContainer'> {/* Added for layout */}
         </div>

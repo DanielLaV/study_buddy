@@ -11,16 +11,12 @@ function Card({ card }) {
         // let displayTags = allTags.map(tag => <Tags tag={tag} isOwner={isOwner}/>)
 
 
-    return (
-        <div className="frontCardDisplay">
-            <p className='texter'>{card.front}</p>
-            {/* {isOwner &&
-            <div className='editDeleteButtons'>
-                <EditCardFormModal card={card} />
-                <DeleteCardFormModal card={card} />
-            </div>} */}
-        </div>
-    )
-}}
+        return (
+            <div className="frontCardDisplay">
+                {card.front}
+            </div>
+        )
+    }
+}
 
 export default Card;

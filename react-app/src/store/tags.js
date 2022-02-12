@@ -75,7 +75,6 @@ export const addTags = (tags) => async (dispatch) => {
 
 
 export const removeTag = (payload) => async (dispatch) => {
-    console.log("payload", payload)
     const response = await fetch(`/api/tags/${payload.tag_id}`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'DELETE',

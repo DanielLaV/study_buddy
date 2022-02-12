@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 function EditUserForm({ setShowModal }) {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.session.user);
-	const [ bio, setBio ] = useState(user.bio);
-	const [ errors, setErrors ] = useState([]);
-	const [ success, setSuccess ] = useState('');
+	const [bio, setBio] = useState(user.bio);
+	const [errors, setErrors] = useState([]);
+	const [success, setSuccess] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -30,22 +30,19 @@ function EditUserForm({ setShowModal }) {
 	};
 
 	return (
-		<div className='form-container'>
-			<form className="form" onSubmit={handleSubmit}>
-			<h2 style={{color:"green", marginBottom:"-50px"}}>
-				{success}
-				</h2>
+		<div className="form-container">
+			{success}
+			<form onSubmit={handleSubmit}>
 				<ul>{errors.map((error, idx) => <li key={idx}>{error}</li>)}</ul>
-				<label className="names"></label>
-
-					<h1>Bio</h1>
-					<input className='input'type="text" place value={bio} onChange={(e) => setBio(e.target.value)} required />
-					<div className='form-button-container'>
-              <button className='form-button'>Update</button>
-          </div>			
-				</form>
-		</div >
-
+				<label className="title">
+					Bio
+					<input className='input' type="text" value={bio} onChange={(e) => setBio(e.target.value)} required />
+				</label>
+				<div className='button-container'>
+					<button className="form-button">Submit</button>
+				</div>
+			</form>
+		</div>
 	);
 }
 

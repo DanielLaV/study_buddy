@@ -11,7 +11,10 @@ import AddTagFormModal from '../AddTagsFormModal';
 import Tags from '../Tags'
 import EditDeckFormModal from '../EditDeckModal';
 import DeleteDeckFormModal from '../DeleteDeckModal';
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 
 function DeckIdPage() {
     const dispatch = useDispatch();
@@ -36,9 +39,19 @@ function DeckIdPage() {
             <div className='cardPageContainer'>
                 <div key={deck.id} className='deckIdPage'>
                     <div className='deckNameContainer'>
+<<<<<<< HEAD
                             <h1 className='deckName'>{deck.title}</h1>
                        
             
+=======
+                        <h1 id='deck-title'>{deck.title}
+                            {isOwner && <>
+                                <EditDeckFormModal deck={deck} />
+                                <DeleteDeckFormModal deck={deck} />
+                            </>}
+                        </h1>
+                        <h2 id="deck-desc">{deck.description}</h2>
+>>>>>>> main
                         <div className='tags-container'>
                             <Tags />
                         </div>
@@ -50,12 +63,16 @@ function DeckIdPage() {
                             
                     </div>
                     <CardBrowser />
+<<<<<<< HEAD
                     {isOwner &&
             <div className='editDeleteButtons'>
                 <EditDeckFormModal deck={deck} />
                 <DeleteDeckFormModal deck={deck} />
             </div>} 
                   
+=======
+
+>>>>>>> main
                 </div>
                 
             </div>

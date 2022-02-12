@@ -54,6 +54,7 @@ function SearchResults() {
             </div>)]
     }
     if (hasResults) {
+<<<<<<< HEAD
         results = [results, (
             <div className='browsePageContainer'>
 
@@ -89,8 +90,45 @@ function SearchResults() {
             </div>
         )]
 
+=======
+        // results = [results, (
+        //     <>
+        //         <div className='cardPageContainer'>
+        //             <div className="deckIdPage">
+        //                 <div className="deckNameContainer">
+        //                     <h1 className="result-title">Decks that Contain "{`${query}`}"</h1>
+        //                     <div className="deckDisplay" >
+        //                         {/* <div className='allDecks'>
+        //                             {decks?.map(deck =>
+        //                                 <NavLink className="eachDeck" to={`/decks/${deck.id}`} key={deck.id}>
+        //                                     <Deck deck={deck} studyDecks={studyDecks}/>
+        //                                 </NavLink>)}
+        //                         </div> */}
+        //                     </div>
+        //                 </div>
+        //             </div >
+        //         </div>
+        //     </>
+        // )]
+>>>>>>> main
     }
-    return (<div className="">{results}</div>)
+    return results
 }
 
+
 export default SearchResults
+
+// <div className="deckDisplay">
+//                     <div className='allDecks'>
+//                         <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
+//                         <div>
+//                             {cards?.map((card) => {
+//                                 return (<div className="eachDeck">
+//                                     <SearchCardBodyModal card={card} key={card.id} />
+//                                     {/* <CardBodyModal card={card} key={card.id} /> */}
+//                                 </div>
+//                                 )
+//                             })}
+//                         </div>
+//                     </div>
+//                 </div>

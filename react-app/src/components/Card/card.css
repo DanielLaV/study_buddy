@@ -1,65 +1,36 @@
-.frontCardDisplay{
-  display: flex;
-  flex-direction: column;
+.frontCardDisplay {
   justify-content: center;
-  align-items: center ;
+  align-items: center;
+  inline-size: 100px;
+  overflow-wrap: break-word;
 }
 
-.deckTitle{
+.deckTitle {
   font-size: 14px;
   text-align: center;
-  
-}
-
-.editDeleteButtons{
-  /* position: absolute; */
-  margin-top: 10px;
-}
-
-.pencil{
-  height: 17px; 
-  /* z-index: 1000000; */
-       
-  /* -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; */
-
 
 }
 
-.pencil:hover{
+.editDeleteButtons {
+  position: absolute;
+}
+
+.pencil, .trashCard {
+  height: 17px;
+  padding-left: 5px;
+}
+
+.pencil:hover, .trashCard:hover {
   transform: scale(1.1);
 }
 
-
-
-.trashCard{
-
-height: 17px;   
-  
-}
-
-.trashCard:hover{
-  transform: scale(1.1);
-}
-
-.pencilBio{
+.pencilBio {
   height: 15px;
   left: 235px;
   margin-bottom: 20px;
   margin-top: -5px;
 }
 
-.pencilBio:hover{
+.pencilBio:hover {
   transform: scale(1.1);
-}
-
-
-.pencilCardEdit{
-  
-}
-
-
-.pencilCardEdit{
-  
 }

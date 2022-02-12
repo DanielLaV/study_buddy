@@ -7,7 +7,7 @@ function AddCardFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} className=''>Add Card</button>
+      <button onClick={() => setShowModal(true)} className='addCardButton'>Add Card</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddCardForm payload={setShowModal}/>

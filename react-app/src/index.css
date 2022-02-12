@@ -291,6 +291,12 @@ textarea {
   align-items: center;
 }
 
+.signUpForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .light-button{
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;

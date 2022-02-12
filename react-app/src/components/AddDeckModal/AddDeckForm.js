@@ -50,6 +50,8 @@ function AddDeckForm({ setShowModal }) {
                     ))}
                 </ul>
                 <label className='form'>
+                <h1>Add Deck</h1>
+
                     <input
                         type='text'
                         value={title}

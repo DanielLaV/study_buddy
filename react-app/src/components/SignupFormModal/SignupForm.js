@@ -54,7 +54,9 @@ const SignupForm = ({ setShowModal }) => {
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div className='formDisplay'>
+        <div className='signUpForm'>
+        <h1>Sign Up</h1>
+
           <label></label>
           <input
             placeholder='Username'

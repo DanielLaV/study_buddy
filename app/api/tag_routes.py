@@ -38,12 +38,24 @@ def main():
         print("form.errors", form.errors)
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@tag_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+@tag_routes.route('/<int:id>', methods=['GET'])
 def one_tag(id):
     """
     'GET' retrieves all decks with tags similar to tag with pk id.
     Returns decks with tag names similar to the tag with pk id.
+    """
+    if request.method == 'GET':
+        try:
+            tag = Tag.query.get(id)
+            decks_with_tag = Tag.query.filter(Tag.name.ilike(tag.name)).join(Deck).all()
+            return {"decks": [deck.to_dict() for deck in decks_with_tag]}
+        except:
+            tag = Tag.query.get(id)
+            return tag.to_dict()
 
+@tag_routes.route('/<int:id>', methods=['DELETE'])
+def delete_tag(id):
+    """
     'DELETE' deletes the tag with pk id. Returns a status of 200.
     """
 
@@ -54,21 +66,9 @@ def one_tag(id):
             tag = Tag.query.get(id)
             db.session.delete(tag)
             db.session.commit()
-            return {}, 200
+            return tag.delete_to_dict(), 200
         else:
-            print({'errors': validation_errors_to_error_messages(form.errors)})
             return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
-    if request.method == 'GET':
-        try:
-            tag = Tag.query.get(id)
-            decks_with_tag = Tag.query.filter(Tag.name.ilike(tag.name)).join(Deck).all()
-            return {"decks": [deck.to_dict() for deck in decks_with_tag]}
-        except:
-            tag = Tag.query.get(id)
-            print(tag.to_dict())
-            return tag.to_dict()
-
 
     #     form = DeleteTagForm()
     #     form.data = request.get_json()

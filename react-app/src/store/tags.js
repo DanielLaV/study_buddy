@@ -75,16 +75,16 @@ export const addTags = (tags) => async (dispatch) => {
 
 
 export const removeTag = (payload) => async (dispatch) => {
+    console.log("payload", payload)
     const response = await fetch(`/api/tags/${payload.tag_id}`, {
-        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
+        method: 'DELETE',
         body: JSON.stringify(payload)
     });
-
     const data = await response.json();
     if (response.ok) {
         dispatch(deleteTag(data));
-        return null;
+        return data;
     }
     else {
         return response
@@ -94,7 +94,7 @@ export const removeTag = (payload) => async (dispatch) => {
 const tagsReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_TAGS: {
-            const newState = Object.assign({}, state);
+            const newState = {};
             action.tags.forEach((tag) => {
                 newState[tag.id] = tag;
             })

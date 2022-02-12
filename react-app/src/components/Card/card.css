@@ -29,6 +29,10 @@
 
 }
 
+.pencil:hover{
+  transform: scale(1.1);
+}
+
 
 
 .trashCard{
@@ -39,8 +43,16 @@ height: 17px;
   
 }
 
+.trashCard:hover{
+  transform: scale(1.1);
+}
+
 .pencilBio{
   height: 15px;
+}
+
+.pencilBio:hover{
+  transform: scale(1.1);
 }
 
 

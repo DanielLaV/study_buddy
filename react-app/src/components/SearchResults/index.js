@@ -15,12 +15,9 @@ function SearchResults() {
     const cards = useSelector(state => { if (state.search.cards) return Object.values(state.search.cards) })
     const [errors, setErrors] = useState([]);
     const studyArr = useSelector(state => Object.values(state.studyDecks))
-    const [hasResults, setHasResults] = useState(true)
+    const [hasResults, setHasResults] = useState(false)
     const query = search.slice(1)
-    console.log("search", search)
-    console.log("query", query)
     useEffect(() => {
-        setHasResults(true)
         setErrors([]);
         dispatch(studyDeckActions.getStudyDecks(userId));
         if (query) {
@@ -31,6 +28,7 @@ function SearchResults() {
                         setErrors(response.errors)
                         return
                     }
+                    else setHasResults(true)
                 }
             );
         }

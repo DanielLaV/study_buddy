@@ -10,6 +10,7 @@ import DeckIdPage from './components/DeckIdPage';
 import Footer from './components/Footer';
 import TagPage from './components/TagPage';
 import EditUserModal from './components/EditUserModal'
+import PageNotFound from './components/PageNotFound';
 import { authenticate } from './store/session';
 import StudyListPage from './components/StudyList/StudyListPage';
 import SearchResults from './components/SearchResults';
@@ -63,7 +64,7 @@ function App() {
           <ProtectedRoute path='/test' exact={true} >
           </ProtectedRoute>
           <Route>
-            Page Not Found
+            <PageNotFound />
           </Route>
         </Switch>
         <Footer />

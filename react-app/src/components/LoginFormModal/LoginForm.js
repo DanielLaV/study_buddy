@@ -57,7 +57,7 @@ const LoginForm = ({ setShowModal }) => {
             className='input'
           />
         </div>
-        <div>
+        <div className='loginForm'>
           <label htmlFor='password'></label>
           <input
           placeholder='Password'

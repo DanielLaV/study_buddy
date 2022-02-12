@@ -57,7 +57,7 @@ function SearchResults() {
         results = [results, (
             <div className='browsePageContainer'>
 
-            <div className="browseDecks">
+            <div className="browseDecks" > 
                 <div className="browseDecksTitleContainer">
 
                     <h1 className="browseDecksTitle">Decks that Contain "{`${query}`}"</h1>
@@ -74,7 +74,7 @@ function SearchResults() {
                 <div className="browseDecksTitleContainer">
                         <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
                 </div>
-                <div className="deckDisplay">
+                <div className="deckDisplay" style={{marginBottom:'55px'}}>
                     <div className='allDecks'>
                             {cards?.map((card) => {
                                 return (<div className="eachDeck">

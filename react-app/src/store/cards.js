@@ -19,33 +19,6 @@ const deleteOneCard = card => ({
     card
 });
 
-// const deleteAllDeckCards = cards => ({
-//     type: DELETE_DECK_CARDS,
-//     cards
-// });
-
-
-
-// export const deleteDeckCards = (deckId) => async (dispatch) => {
-//     const currCards = await fetch(`api/decks/${deckId}/cards`)
-//     if (currCards.ok) {
-//         const delCards = await fetch(`api/decks/${deckId}/cards`,
-//             {
-//                 headers: {
-//                     "Content-Type": "application/json"
-//                 },
-//                 method: 'DELETE'
-//             });
-//         if (delCards.ok) {
-//             const cards = await currCards.json();
-//             dispatch(deleteAllDeckCards(cards));
-//             return cards;
-//         }
-//         else return delCards.json();
-//     }
-//     else return currCards.json();
-// }
-
 
 export const createCard = (payload) => async (dispatch) => {
     const response = await fetch("/api/cards/", {

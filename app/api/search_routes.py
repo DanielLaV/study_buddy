@@ -1,5 +1,5 @@
-from flask import Blueprint, session, request, make_response
-from app.models import db, Deck, Card
+from flask import Blueprint, session
+from app.models import Deck, Card
 
 search_routes = Blueprint('search', __name__)
 

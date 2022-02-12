@@ -17,9 +17,9 @@
 
 .pencil{
   position: absolute;
-  top: 35px;
-  left: 60px;
-  height: 10px; 
+  top: 30px;
+  left: 55px;
+  height: 17px; 
   /* z-index: 1000000; */
        
   /* -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -33,9 +33,9 @@
 
 .trashCard{
   position: absolute;
-  top: 35px;
-  right: 60px;
-height: 10px;     
+  top: 30px;
+  right: 55px;
+height: 17px;     
   
 }
 

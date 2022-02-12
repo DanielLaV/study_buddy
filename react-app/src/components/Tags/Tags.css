@@ -1,12 +1,13 @@
-.TagDisplay{
-  display: flex;
-}
 
 .tagLink{
   text-decoration: none;
   color:black;
   font-size: 10px;
-  margin-right: 1px;;
+  margin-right: 1px;
+}
+
+.tagLink:hover{
+  transform: scale(1.1)
 }
 
 .tagLink:visited{
@@ -18,10 +19,16 @@ height: 6px;
 margin-right: 5px;
 }
 
+.tagDelete:hover{
+  transform: scale(1.1)
+
+}
+
 .tag-div{
   margin-top: 8px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
+  justify-content: center;
 
 }

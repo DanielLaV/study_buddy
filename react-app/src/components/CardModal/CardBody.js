@@ -21,18 +21,27 @@ const CardBody = ({ setShowModal, cardId }) => {
         (<div className="buttons">
             <button
                 type="button"
-                onClick={(e) => setShowModal(false)} className="">
+                onClick={(e) => setShowModal(false)} className="form-button">
                 Close
             </button>
             {(user.id === deck.user_id) && modals}
         </div>)
     return (
-        <div className="">
-            <h2>Front:</h2>
-            <h3>{card.front}</h3>
-            <h2>Back:</h2>
-            <p>{card.back}</p>
-            {buttonDiv}
+        <div className="preview">
+            <div className="form-container">
+                <p className="side">Front:</p>
+                <div>
+                    <div className="preview-text"><div className="texter">{card.front}</div></div>
+                </div>
+                <p className="side">Back:</p>
+                <div>
+
+                    <div className="preview-text"><div className="texter">{card.back}</div></div>
+                </div>
+            </div>
+            <div className="form-button-container">
+                {buttonDiv}
+            </div>
         </div>)
 }
 

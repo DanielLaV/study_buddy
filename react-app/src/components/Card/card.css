@@ -1,27 +1,25 @@
-.frontCardDisplay{
+.frontCardDisplay {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center ;
+  align-items: center;
 }
 
-.deckTitle{
+.deckTitle {
   font-size: 14px;
   text-align: center;
-  
+
 }
 
-.editDeleteButtons{
+.editDeleteButtons {
   position: absolute;
 }
 
-.pencil{
-  position: absolute;
-  top: 30px;
-  left: 55px;
-  height: 17px; 
+.pencil, .trashCard {
+  height: 17px;
+  padding-left: 5px;
   /* z-index: 1000000; */
-       
+
   /* -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; */
@@ -29,41 +27,23 @@
 
 }
 
-.pencil:hover{
+.pencil:hover, .trashCard:hover {
   transform: scale(1.1);
 }
 
-
-
-.trashCard{
-  position: absolute;
-  top: 30px;
-  right: 55px;
-height: 17px;     
-  
-}
-
-.trashCard:hover{
-  transform: scale(1.1);
-}
-
-.pencilBio{
+.pencilBio {
   height: 15px;
   left: 235px;
   margin-bottom: 20px;
   margin-top: -5px;
 }
 
-.pencilBio:hover{
+.pencilBio:hover {
   transform: scale(1.1);
 }
 
 
-.pencilCardEdit{
-  
-}
+.pencilCardEdit {}
 
 
-.pencilCardEdit{
-  
-}
+.pencilCardEdit {}

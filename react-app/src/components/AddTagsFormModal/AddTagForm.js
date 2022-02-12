@@ -23,8 +23,6 @@ function AddTagForm({ setShowModal }) {
         return dispatch(tagActions.addTags(newTags))
             .then(
                 (response) => {
-                    console.log(response);
-                    console.log("response.errors", response.errors)
                     if (response.errors) {
                         setErrors(response.errors)
                         return

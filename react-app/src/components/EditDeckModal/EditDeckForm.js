@@ -23,7 +23,6 @@ function EditDeckForm({ setShowModal, deck }) {
             user_id
         }
 
-        // console.log("Deck is", newDeck);
         dispatch(deckActions.editDeck(newDeck))
         setShowModal(false);
     };
@@ -55,7 +54,7 @@ function EditDeckForm({ setShowModal, deck }) {
                     type='text'
                     value={description}
                     className='input'
-                    onChange={e => { setDescription(e.target.value); console.log(description) }}
+                    onChange={e => setDescription(e.target.value)}
                 />
 
                 <div className='form-button-container'>

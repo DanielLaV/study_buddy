@@ -6,7 +6,6 @@
   padding: 25px;
   margin: 2%;
   margin-bottom: 25px;
-  /* border: 1px solid; */
   border-radius: 5px;
   background-color: white;
 
@@ -22,27 +21,22 @@
   rotateZ(0deg);
   transform-style: preserve-3d;
   box-shadow:
-  /* 1px 1px 0 1px #f9f9fb, */
+
   10px 10px 1px 0 rgba(34, 33, 81, 0.01),
   10px 10px 5px 0 rgba(34, 33, 81, 0.25);
   transition:
   .4s ease-in-out transform,
   .4s ease-in-out box-shadow;
-
-
-  /* background-color: white; */
 }
 
 .Deck:hover{
-  /* box-shadow: 0 30px 70px #000;
-  transform: scale3d(1.05, 1.05, 1.05); */
   transform:
   scale(1.1)
   translate3d(0px, -1px, 0px)
   rotateX(0deg)
   rotateZ(2deg);
 box-shadow:
-  /* 1px 1px 0 1px #f9f9fb, */
+
   10px 10px 1px 0px rgba(34, 33, 81, 0.01),
   10px 10px 5px 0px rgba(34, 33, 81, 0.15);
 
@@ -67,8 +61,5 @@ color: black;}
   flex-direction: row;
   flex-wrap: wrap;
   padding: 13px;
-  /* margin: 5px; */
   border-color: #f1f1f1;
-
-
   }

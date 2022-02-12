@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import './Search.css'
 
 function SearchForm() {
-    const dispatch = useDispatch();
     const [query, setQuery] = useState("");
     const [errors, setErrors] = useState([]);
-    const user = useSelector(state => state.session.user)
     const [searchBarVis, setSearchBarVis] = useState(true)
     const [success, setSuccess] = useState("");
     const history = useHistory()
 
     const enterSubmit = (e) => {
         const key = e.code;
-        console.log("key code", key)
+
         if (key === 'Enter' || key === 'NumpadEnter') {
             handleSubmit();
         }
@@ -39,25 +36,8 @@ function SearchForm() {
             history.push(`/search?${query}`)
             setQuery("")
         }
-
-        // console.log("success!")
-        // setSuccess("Searching!")
-        // setSearchBarVis(false)
-        // return dispatch(cardActions.createCard(payload))
-        //     .then(
-        //         (response) => {
-        //             if (response.errors) {
-        //                 setErrors(response.errors)
-        //                 return
-        //             }
-        //             setShowSearchForm(false)
-        //             setSuccess("Searching!");
-        //             setTimeout(() => {
-        //                 // setShowModal(false); history.push?
-        //             }, 1500);
-        //         }
-        //     );
     };
+
     return (
         <>
             <div className="search">

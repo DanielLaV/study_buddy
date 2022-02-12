@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as cardActions from "../../store/cards";
 import { useParams } from "react-router-dom";
 import './AddCardForm.css';
@@ -12,7 +12,7 @@ function AddCardForm({ payload }) {
   const [back, setBack] = useState("");
   const [errors, setErrors] = useState([]);
   const [success, setSuccess] = useState("");
-  // const deck_id = useSelector(state => state.decks.id)
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

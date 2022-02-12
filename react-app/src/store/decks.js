@@ -59,7 +59,7 @@ export const addDeck = (newDeck) => async (dispatch) => {
         body: JSON.stringify(newDeck)
     })
     const data = await res.json();
-    console.log("===================", 'Data is', data)
+
     if (res.ok) {
         return dispatch(addNewDeck(data));
     }
@@ -67,7 +67,6 @@ export const addDeck = (newDeck) => async (dispatch) => {
 }
 
 export const editDeck = deck => async (dispatch) => {
-    // console.log('About to fetch')
     const res = await fetch(`/api/decks/${deck.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

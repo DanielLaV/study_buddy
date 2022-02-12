@@ -5,6 +5,7 @@ import * as cardActions from "../../store/cards"
 import EditCardFormModal from "../EditCardFormModal";
 import DeleteCardFormModal from "../DeleteCardFormModal";
 
+
 const CardBody = ({ setShowModal, cardId }) => {
     const { deckId } = useParams();
     const dispatch = useDispatch();
@@ -31,12 +32,11 @@ const CardBody = ({ setShowModal, cardId }) => {
             <div className="form-container">
                 <p className="side">Front:</p>
                 <div>
-                    <div className="preview-text"><div className="texter">{card.front}</div></div>
+                    <div className="preview-text">{card.front}</div>
                 </div>
                 <p className="side">Back:</p>
                 <div>
-
-                    <div className="preview-text"><div className="texter">{card.back}</div></div>
+                    <div className="preview-text">{card.back}</div>
                 </div>
             </div>
             <div className="form-button-container">

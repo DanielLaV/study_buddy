@@ -157,33 +157,8 @@ margin: ; */
     10px 10px 5px 0px rgba(34, 33, 81, 0.15);
 }
 
-<<<<<<< HEAD
-.preview-textStudy:hover {
-  transform:
-  scale(1.1)
-  translate3d(0px, -1px, 0px)
-  rotateX(0deg)
-  rotateZ(2deg);
-box-shadow:
-  /* 1px 1px 0 1px #f9f9fb, */
-  10px 10px 1px 0px rgba(34, 33, 81, 0.01),
-  10px 10px 5px 0px rgba(34, 33, 81, 0.15);
-  cursor: pointer;
-}
-
-.searchScreen{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-
-}
-
-.form-container{
-=======
 .form-container {
   box-sizing: border-box;
->>>>>>> main
   display: flex;
   /* flex-direction: column; */
   color: black;

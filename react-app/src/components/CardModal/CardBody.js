@@ -35,11 +35,11 @@ const CardBody = ({ setShowModal, cardId }) => {
             <div className="form-container">
                 <p className="side">Front:</p>
                 <div>
-                    <div className="preview-text">{card.front}</div>
+                    <div className="preview-text"><div className="texter">{card.front}</div></div>
                 </div>
                 <p className="side">Back:</p>
                 <div>
-                    <div className="preview-text">{card.back}</div>
+                    <div className="preview-text"><div className="texter">{card.back}</div></div>
                 </div>
             </div>
             <div className="form-button-container">

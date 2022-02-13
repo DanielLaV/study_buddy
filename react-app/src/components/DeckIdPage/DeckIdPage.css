@@ -34,15 +34,14 @@
   height: 20%;
 }
 
-#deck-title, #deck-desc {
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 0;
-  margin: 0;
+.deck-title {
+    margin: 20px 0px 6px 0px;
+
 }
 
-#deck-title {
-  margin-top: 10px;
+.deck-description {
+    margin: -3px 0px -6px 0px;
+    font-style: italic;
 }
 
 .addCardOrTag {

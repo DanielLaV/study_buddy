@@ -76,7 +76,7 @@ export const removeStudyDeck = (deck_id, user_id) => async (dispatch) => {
 const studyDecksReducer = (state = {}, action) => {
 	switch (action.type) {
 		case LOAD_STUDY_DECKS: {
-			const newState = Object.assign({}, state);
+			const newState = {};
 			action.studyDecks.study_decks.forEach((studyDeck) => {
 				newState[studyDeck.id] = studyDeck.decks;
 			});

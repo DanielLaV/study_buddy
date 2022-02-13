@@ -28,7 +28,7 @@ function Tags() {
     return (<>
         <div className='tag-div'>
             {tags.map((tag) => {
-                return (<div className="">
+                return (<div key={tag.id}>
                     <NavLink className='tagLink' to={`/tags/${tag.id}`}>
                         {`#${tag.name}`}
                     </NavLink>

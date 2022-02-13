@@ -17,11 +17,11 @@ const SignupForm = ({ setShowModal }) => {
     setErrors([])
     return dispatch(signUp(username, email, password, repeatPassword))
       .then((response) => {
-        if (response.errors) {
+        if (response?.errors) {
           setErrors(response.errors)
           return
         }
-        else if (!response.errors) setShowModal(false);
+        else if (!response?.errors) setShowModal(false);
       })
   };
 

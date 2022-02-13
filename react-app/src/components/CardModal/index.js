@@ -9,7 +9,7 @@ function CardBodyModal({card}) {
 
     return (
         <>
-            <div className='eachCard' onClick={() => setShowModal(true)}><Card card={card} /></div>
+            <div className='eachCard' onClick={() => setShowModal(true)}><div className='texter'><Card card={card} /></div></div>
             {showModal && (
                 <Modal className="cardP" onClose={() => setShowModal(false)}>
                     <CardBody setShowModal={setShowModal} cardId={card.id}/>

@@ -12,52 +12,54 @@ import EditDeckFormModal from '../EditDeckModal';
 import DeleteDeckFormModal from '../DeleteDeckModal';
 
 function DeckIdPage() {
-	const dispatch = useDispatch();
-	const user = useSelector((state) => state.session.user.id);
-	const { deckId } = useParams();
-	const deck = useSelector((state) => state.decks[deckId]);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.session.user.id);
+    const { deckId } = useParams();
+    const deck = useSelector((state) => state.decks[deckId]);
 
-	useEffect(
-		() => {
-			dispatch(deckActions.getOneDeck(deckId));
-			dispatch(tagActions.getTags(deckId));
-			return () => {
-				dispatch(deckActions.getOneDeck(deckId));
-				dispatch(tagActions.getTags(deckId));
-			};
-		},
-		[ dispatch, deckId ]
-	);
+    useEffect(
+        () => {
+            dispatch(deckActions.getOneDeck(deckId));
+            dispatch(tagActions.getTags(deckId));
+            return () => {
+                dispatch(deckActions.getOneDeck(deckId));
+                dispatch(tagActions.getTags(deckId));
+            };
+        },
+        [dispatch, deckId]
+    );
 
-	if (deck) {
-		const isOwner = user === deck?.user_id;
-		return (
-			<div className="cardPageContainer">
-				<div key={deck.id} className="deckIdPage">
-					<div className="deckNameContainer">
-						<h1 className="deck-title">{deck.title}</h1>
-						<div className="deck-description">{deck.description}</div>
-						<div className="tags-container">
-							<Tags />
-						</div>
-						{isOwner && (
-							<div className="addCardOrTag">
-								<AddCardFormModal />
-								<AddTagFormModal />
-							</div>
-						)}
-					</div>
-					<CardBrowser />
-					{isOwner && (
-						<div className="editDeleteButtons">
-							<EditDeckFormModal deck={deck} />
-							<DeleteDeckFormModal deck={deck} />
-						</div>
-					)}
-				</div>
-			</div>
-		);
-	} else return 'Error: This deck does not exist';
+    if (deck) {
+        const isOwner = user === deck?.user_id;
+        return (
+            <div className="cardPageContainer">
+                <div key={deck.id} className="deckIdPage">
+                    <div className="deckNameContainer">
+                        <h1 className="deck-title">{deck.title}
+                            {isOwner && (
+                                <>
+                                    <EditDeckFormModal deck={deck} />
+                                    <DeleteDeckFormModal deck={deck} />
+                                </>
+                            )}
+                        </h1>
+                        <div className="deck-description">{deck.description}</div>
+                        <div className="tags-container">
+                            <Tags />
+                        </div>
+                        {isOwner && (
+                            <div className="addCardOrTag">
+                                <AddCardFormModal />
+                                <AddTagFormModal />
+                            </div>
+                        )}
+                    </div>
+                    <CardBrowser />
+
+                </div>
+            </div>
+        );
+    } else return 'Error: This deck does not exist';
 }
 
 export default DeckIdPage;

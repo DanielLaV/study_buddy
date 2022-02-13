@@ -59,7 +59,7 @@ function DeckIdPage() {
             </div>
         )
     }
-    else return "DON'T LOOK AT ME! I'M HIDEOUS"
+    else return "This deck does not exist"
 }
 
 export default DeckIdPage;

@@ -6,6 +6,7 @@ import AddDeckModal from '../AddDeckModal/';
 import MyDecksPage from '../MyDecks';
 import StudyList from '../StudyList';
 import EditUserModal from '../EditUserModal'
+import Avatar from '../../assets/avatar.png'
 
 
 
@@ -19,7 +20,7 @@ function HomePage() {
       <div className="homePageContainer">
         <div className="user">
           <p className="userName">{user.username}</p>
-          <img className="avatar" src="/avatar.png" alt="Avatar" />
+          <img className="avatar" src={Avatar} alt="Avatar" />
           <div><EditUserModal /></div>
         </div>
         <div className="Decks">

@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal';
 import EditDeckForm from './EditDeckForm';
 import './EditDeckForm.css';
 import '../Card/card.css'
+import Pencil from '../../assets/pencil2.png'
 
 
 
@@ -13,11 +14,11 @@ function EditDeckFormModal({ deck }) {
     return (
         <>
             {/* <button className='editDeckButton' onClick={() => setShowModal(true)}>Edit Deck</button> */}
-            
+
 
             <input type="image" name="<Name of the image button >" className='pencil'
-                src="/pencil2.png" alt="text" onClick={() => setShowModal(true)}></input>
-                
+                src={Pencil} alt="text" onClick={() => setShowModal(true)}></input>
+
 
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

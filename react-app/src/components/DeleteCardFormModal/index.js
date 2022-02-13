@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import DeleteCardForm from './DeleteCardForm';
 import '../Card/card.css'
+import Trash from '../../assets/trash.png'
 
 function DeleteCardFormModal({card}) {
   const [showModal, setShowModal] = useState(false);
@@ -13,7 +14,7 @@ function DeleteCardFormModal({card}) {
 
   return (
     <>
-      <input type="image" className='trashCard' src="/trash.png" alt="text" onClick={onSubmit} to="#" ></input>
+      <input type="image" className='trashCard' src={Trash} alt="text" onClick={onSubmit} to="#" ></input>
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

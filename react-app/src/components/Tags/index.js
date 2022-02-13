@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as tagActions from "../../store/tags";
 import { NavLink, useParams } from "react-router-dom";
 import './Tags.css'
+import Trash from '../../assets/trash.png'
 
 function Tags() {
     const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function Tags() {
                     {(currentUserId === deckUserId) &&
                         (<input type="image"
                             className="tagDelete"
-                            src="/trash.png"
+                            src={Trash}
                             alt="text"
                             onClick={(e) => {
                                 submitDelete(e.target.value)

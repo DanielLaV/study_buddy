@@ -1,48 +1,32 @@
 body{
     background-color: black;
-
   }
 
   .browsePageContainer{
     display: flex;
     flex-direction: row;
     height: 79.5vh;
-
-
-    /* justify-content: space-between; */
-
   }
 
   .StudyListPageContainer{
     display: flex;
     flex-direction: row;
     height: 79.5vh;
-    /* background-color: #fe918a; */
-
   }
 
 
   .browseDecks{
     margin: 25px;
     width: 100%;
-    /* margin-bottom: 50px; */
-    /* border: solid; */
-    /* border-color: #27A9E1; */
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px;
-    /* -webkit-box-shadow: 0 10px 6px -6px #777;
-    -moz-box-shadow: 0 10px 6px -6px #777;
-     box-shadow: 0 10px 6px -6px #777;
-     */
-
 
      -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-
   }
 
 
@@ -50,18 +34,10 @@ body{
     margin: 25px;
     width: 100%;
     border-radius: 5px;
-
-    /* border: solid; */
-    /* border-color: #27A9E1; */
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* -webkit-box-shadow: 0 10px 6px -6px #777;
-    -moz-box-shadow: 0 10px 6px -6px #777;
-     box-shadow: 0 10px 6px -6px #777;
-     */
-
 
      -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -70,37 +46,27 @@ body{
 
   }
 
-  .homePageStudyDecks{
-        margin: 25px;
-        width: 40%;
-        border-radius: 5px;
+.homePageStudyDecks{
+  margin: 25px;
+  width: 40%;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-        /* border: solid; */
-        /* border-color: #27A9E1; */
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* -webkit-box-shadow: 0 10px 6px -6px #777;
-        -moz-box-shadow: 0 10px 6px -6px #777;
-         box-shadow: 0 10px 6px -6px #777;
-         */
-
-         -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
 
 
-  }
+}
 
   .addDeckButtonCon {
-    /* position: absolute;   */
-    /* margin: -10px; */
     display: flex;
     align-items: center;
     height: 10%;
-    /* margin: -5%; */
   }
 
   .addDeck{
@@ -108,8 +74,6 @@ body{
     z-index: 1000;
     color: white;
     background-color: black;
-
-
   }
 
   .addDeckButton:hover{
@@ -123,18 +87,14 @@ body{
       display: flex;
       align-items: center;
       height: 20%;
-      /* margin: 25px; */
-
-
   }
+
   .browseDecksTitle{
     color: black;
     font-family: Arial, Helvetica, sans-serif;
-
   }
 
   .deckDisplay{
-   /* border: solid; */
    border-color: black;
    border-radius: 5px;
    background-color: #27A9E1;
@@ -150,8 +110,6 @@ body{
 
    display: flex;
    flex-direction: column;
-   /* flex-direction: row;
-   flex-wrap: wrap; */
 
    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -161,16 +119,16 @@ body{
  .deckDisplay::-webkit-scrollbar {
     width: 11px;
   }
+
   .deckDisplay::-webkit-scrollbar-track {
     background: var(--scrollbarBG);
   }
+
   .deckDisplay::-webkit-scrollbar-thumb {
     background-color: var(--thumbBG) ;
     border-radius: 5px;
     border: 3px solid var(--scrollbarBG);
   }
-
-
 
   .eachDeck{
     display: flex;
@@ -179,8 +137,6 @@ body{
     height: 50px;
     padding: 25px;
     margin: 2%;
-    margin-bottom: 25px;
-    /* border: 1px solid; */
     border-radius: 5px;
     background-color: white;
     align-items: center;
@@ -194,30 +150,22 @@ body{
     rotateZ(0deg);
     transform-style: preserve-3d;
     box-shadow:
-    /* 1px 1px 0 1px #f9f9fb, */
     10px 10px 1px 0 rgba(34, 33, 81, 0.01),
     10px 10px 5px 0 rgba(34, 33, 81, 0.25);
     transition:
     .4s ease-in-out transform,
     .4s ease-in-out box-shadow;
-
-
-    /* background-color: white; */
   }
 
   .eachDeck:hover{
-    /* box-shadow: 0 30px 70px #000;
-    transform: scale3d(1.05, 1.05, 1.05); */
     transform:
     scale(1.1)
     translate3d(0px, -1px, 0px)
     rotateX(0deg)
     rotateZ(2deg);
-  box-shadow:
-    /* 1px 1px 0 1px #f9f9fb, */
+    box-shadow:
     10px 10px 1px 0px rgba(34, 33, 81, 0.01),
     10px 10px 5px 0px rgba(34, 33, 81, 0.15);
-
   }
 
   .eachDeck:visited{
@@ -256,15 +204,12 @@ body{
     border: 3px solid var(--scrollbarBG);
   }
 
-
   .frontOfDeck{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center ;
     overflow: hidden;
-
-
 }
 
 .no-decks-on-list-message{

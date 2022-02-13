@@ -116,49 +116,7 @@ margin: ; */
 
 }
 
-<<<<<<< HEAD
-.preview-textStudy {
-  display: flex;
-  /* height: 1rem; */
-  width: 200px;
-  max-width: 200px;
-  height: 100px;
-  padding: 25px;
-  display: flex;
-  overflow: hidden;
-  flex-direction: ;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  /* border: 1px solid; */
-  border-radius: 5px;
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-  
-  transform:
-  rotateX(0deg)
-  rotateZ(0deg);
-  transform-style: preserve-3d;
-  box-shadow:
-  /* 1px 1px 0 1px #f9f9fb, */
-  10px 10px 1px 0 rgba(34, 33, 81, 0.01),
-  10px 10px 5px 0 rgba(34, 33, 81, 0.25);
-  transition:
-  .4s ease-in-out transform,
-  .4s ease-in-out box-shadow;
-  
-  
-  /* background-color: white; */
-  
-  }
-
-.texter{
-=======
 .texter {
->>>>>>> main
   max-width: 100px;
   overflow-wrap: break-word;
   overflow-y: scroll;

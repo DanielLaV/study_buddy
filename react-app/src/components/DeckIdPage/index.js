@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import * as deckActions from "../../store/decks";
 import * as tagActions from "../../store/tags";
 import { useDispatch, useSelector } from 'react-redux';
-import Deck from '../DecksPage/Deck';
 import { useParams } from 'react-router-dom';
 import AddCardFormModal from '../AddCardFormModal';
 import CardBrowser from '../CardsBrowser';

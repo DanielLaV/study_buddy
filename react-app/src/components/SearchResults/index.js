@@ -1,18 +1,13 @@
 import { getResults } from "../../store/search";
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import Deck from "../DecksPage/Deck";
 import * as studyDeckActions from "../../store/decks_studying";
-import CardBodyModal from "../CardModal";
-import SearchCardBodyModal from "../SearchCardModal";
 
 function SearchResults() {
     const dispatch = useDispatch();
     const { pathname, search } = useLocation()
     const userId = useSelector(state => state.session.user.id)
-    const decks = useSelector(state => { if (state.search.decks) return Object.values(state.search.decks) })
-    const cards = useSelector(state => { if (state.search.cards) return Object.values(state.search.cards) })
     const [errors, setErrors] = useState([]);
     const studyArr = useSelector(state => Object.values(state.studyDecks))
     const [hasResults, setHasResults] = useState(false)
@@ -54,11 +49,10 @@ function SearchResults() {
             </div>)]
     }
     if (hasResults) {
-<<<<<<< HEAD
         results = [results, (
             <div className='browsePageContainer'>
 
-            <div className="browseDecks" > 
+            <div className="browseDecks" >
                 <div className="browseDecksTitleContainer">
 
                     <h1 className="browseDecksTitle">Decks that Contain "{`${query}`}"</h1>
@@ -89,46 +83,9 @@ function SearchResults() {
             </div>
             </div>
         )]
-
-=======
-        // results = [results, (
-        //     <>
-        //         <div className='cardPageContainer'>
-        //             <div className="deckIdPage">
-        //                 <div className="deckNameContainer">
-        //                     <h1 className="result-title">Decks that Contain "{`${query}`}"</h1>
-        //                     <div className="deckDisplay" >
-        //                         {/* <div className='allDecks'>
-        //                             {decks?.map(deck =>
-        //                                 <NavLink className="eachDeck" to={`/decks/${deck.id}`} key={deck.id}>
-        //                                     <Deck deck={deck} studyDecks={studyDecks}/>
-        //                                 </NavLink>)}
-        //                         </div> */}
-        //                     </div>
-        //                 </div>
-        //             </div >
-        //         </div>
-        //     </>
-        // )]
->>>>>>> main
     }
     return results
 }
 
 
 export default SearchResults
-
-// <div className="deckDisplay">
-//                     <div className='allDecks'>
-//                         <h1 className="browseDecksTitle">Cards that Contain "{`${query}`}"</h1>
-//                         <div>
-//                             {cards?.map((card) => {
-//                                 return (<div className="eachDeck">
-//                                     <SearchCardBodyModal card={card} key={card.id} />
-//                                     {/* <CardBodyModal card={card} key={card.id} /> */}
-//                                 </div>
-//                                 )
-//                             })}
-//                         </div>
-//                     </div>
-//                 </div>

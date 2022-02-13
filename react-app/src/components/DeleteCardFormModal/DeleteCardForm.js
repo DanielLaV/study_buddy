@@ -5,7 +5,7 @@ import * as cardActions from "../../store/cards";
 
 function DeleteCardForm({ setShowModal, card }) {
     const dispatch = useDispatch();
-    console.log("card", card)
+
     const { deckId } = useParams();
     const currUserId = useSelector(state => state.session.user.id);
     const currUserDeckId = useSelector(state => state.decks[deckId].user_id);
@@ -37,9 +37,9 @@ function DeleteCardForm({ setShowModal, card }) {
     };
 
     return (
-    
+
     <div className="delete">
-    
+
     <h2  >Are you sure you want to delete this card?</h2>
         <h3 style={{color:"black"}}>This cannot be undone.</h3>
         <ul className="error-list">

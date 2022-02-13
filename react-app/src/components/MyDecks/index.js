@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import * as deckActions from "../../store/decks";
 import { useDispatch, useSelector } from 'react-redux';
 import MyDecks from './MyDecks.js';
-import Deck from '../DecksPage/Deck.js'
 import { NavLink } from 'react-router-dom';
 
 function MyDecksPage() {
@@ -11,7 +10,6 @@ function MyDecksPage() {
     const userId = useSelector((state) => state.session.user.id);
 
     const dispatch = useDispatch();
-    // console.log('DECKS', decks.decks)
 
     useEffect(() => {
         dispatch(deckActions.getDecks());

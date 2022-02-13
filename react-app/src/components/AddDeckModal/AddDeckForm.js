@@ -1,4 +1,3 @@
-import './AddDeckForm.css';
 import { useState } from 'react';
 import * as deckActions from '../../store/decks';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,12 +21,10 @@ function AddDeckForm({ setShowModal }) {
             description,
             user_id
         }
-        // console.log('newdeck', newDeck)
+
         return dispatch(deckActions.addDeck(newDeck))
             .then(
                 (response) => {
-                    console.log(response);
-                    console.log("response.errors", response.errors)
                     if (response.errors) {
                         setErrors(response.errors)
                         return

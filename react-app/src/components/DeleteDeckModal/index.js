@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import DeleteDeckForm from './DeleteDeckForm';
-import './DeleteDeck.css'
 import '../Card/card.css'
 
 function DeleteDeckFormModal({ deck }) {

@@ -3,7 +3,7 @@
    10% { opacity: .80}
    20% { opacity: .85 }
    30% { opacity: .90 }
-   40% { opacity: .95 } 
+   40% { opacity: .95 }
    50% { opacity: 1.0}
    60% { opacity: .95}
    70% { opacity: .90}
@@ -17,7 +17,7 @@
      10% { opacity: .80}
      20% { opacity: .85 }
      30% { opacity: .90 }
-     40% { opacity: .95 } 
+     40% { opacity: .95 }
      50% { opacity: 1.0}
      60% { opacity: .95}
      70% { opacity: .90}
@@ -63,11 +63,6 @@
   .logoFont{
     height: 20vh;
   }
-/* 
-  .logoFont:hover{
-    transform: scale(1.1); 
-    cursor: pointer;
-  } */
 
   .overlay{
     background: rgba(0, 0, 0, 0.75);
@@ -130,7 +125,6 @@
   .demoButton:hover{
     transform: scale(1.1);
     cursor: pointer;
-
   }
 
 html, body {margin: 0; height: 100%; overflow: hidden}

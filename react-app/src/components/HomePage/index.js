@@ -13,30 +13,27 @@ function HomePage() {
 
   const user = useSelector((state) => state.session.user);
 
-  // let sessionLinks;
-
   if (user) {
 
     return (
       <div className="homePageContainer">
         <div className="user">
           <p className="userName">{user.username}</p>
-          <img className="avatar" src="avatar.png" alt="Avatar"/>
-          {/* <p className='bio'>{user.bio} onClick={() => setShowModal(true)}</p> */}
-          <div><EditUserModal/></div>
+          <img className="avatar" src="avatar.png" alt="Avatar" />
+          <div><EditUserModal /></div>
         </div>
         <div className="Decks">
           <div className="decksTitleContainer">
             <h1 className="myDecksTitle">My Decks</h1>
           </div>
           <div className='decksDisplay'>
-            <MyDecksPage/>
+            <MyDecksPage />
           </div>
           <div className='addDeckButtonContainer'>
             <AddDeckModal />
           </div>
         </div>
-            <StudyList/>
+        <StudyList />
       </div>
 
     )

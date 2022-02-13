@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as cardActions from "../../store/cards"
@@ -12,12 +12,14 @@ const CardBody = ({ setShowModal, cardId }) => {
     const user = useSelector(state => state.session.user)
     const card = useSelector(state => state.cards[cardId]);
     const deck = useSelector(state => state.decks[deckId]);
-    console.log("deck", deck)
+
     useEffect(() => {
         dispatch(cardActions.getOneCard(cardId));
     }, [dispatch, cardId])
+
     const modals = (<><EditCardFormModal card={card} />
         <DeleteCardFormModal card={card} /></>)
+
     const buttonDiv =
         (<div className="buttons">
             <button
@@ -27,6 +29,7 @@ const CardBody = ({ setShowModal, cardId }) => {
             </button>
             {(user.id === deck.user_id) && modals}
         </div>)
+
     return (
         <div className="preview">
             <div className="form-container">

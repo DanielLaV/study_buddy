@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as deckActions from "../../store/decks";
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -10,7 +10,7 @@ function DeleteDeckForm({ payload, deck }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const setShowModal = payload;
-    const [errors, setErrors] = useState([]);
+    const [ , setErrors] = useState([]);
     const [success, setSuccess] = useState("");
     const currUserId = useSelector(state => state.session.user.id);
 

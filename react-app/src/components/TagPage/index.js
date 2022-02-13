@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import * as tagActions from '../../store/tags'
 import Deck from '../DecksPage/Deck'
 import * as studyDeckActions from "../../store/decks_studying";
-import AddDeckFormModal from '../AddDeckModal';
 import { NavLink } from 'react-router-dom';
 
 function TagPage() {
@@ -42,17 +41,9 @@ function TagPage() {
                             </NavLink>)}
                     </div>
                 </div>
-
             </div>
-
-
-
-            {/* {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} studyDecks={studyDecks}/> </div>)} */}
         </div>
     )
-
-
-
 }
 
 export default TagPage;

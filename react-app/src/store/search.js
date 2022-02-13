@@ -10,6 +10,7 @@ export const getResults = (query) => async (dispatch) => {
         headers: { "Content-Type": "application/json" }
     });
     const results = await response.json();
+
     if (response.ok) {
         dispatch(load(results))
     }

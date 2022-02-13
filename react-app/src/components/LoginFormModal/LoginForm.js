@@ -17,7 +17,6 @@ const LoginForm = ({ setShowModal }) => {
     return dispatch(login(email, password))
       .then((response) => {
         if (response.errors) {
-          console.log("response.errors", response.errors)
           setErrors(response.errors)
           return
         }
@@ -49,28 +48,26 @@ const LoginForm = ({ setShowModal }) => {
 
           <label htmlFor='email'> </label>
           <input
-          placeholder='Email'
+            placeholder='Email'
             name='email'
             type='text'
-            placeholder='Email'
             value={email}
             onChange={updateEmail}
             className='input'
           />
           <label htmlFor='password'></label>
           <input
-          placeholder='Password'
+            placeholder='Password'
             name='password'
             type='password'
-            placeholder='Password'
             value={password}
             onChange={updatePassword}
             className='input'
 
           />
-        </div>  
+        </div>
         <div className='form-button-container'>
-        <button className='form-button' type='submit'>Login</button>
+          <button className='form-button' type='submit'>Login</button>
         </div>
       </form>
     </div>

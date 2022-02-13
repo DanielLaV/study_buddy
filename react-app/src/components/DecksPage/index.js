@@ -4,7 +4,6 @@ import * as deckActions from "../../store/decks";
 import * as studyDeckActions from "../../store/decks_studying";
 import { useDispatch, useSelector } from 'react-redux';
 import Deck from './Deck.js';
-import MyDecksPage from '../MyDecks'
 import AddDeckFormModal from '../AddDeckModal';
 import { NavLink } from 'react-router-dom';
 
@@ -14,7 +13,6 @@ function DecksPage() {
     const userId = useSelector(state => state.session.user.id)
     const studyArr = useSelector(state => Object.values(state.studyDecks))
     const dispatch = useDispatch();
-    // console.log('DECKS', decks.decks)
 
     let studyDecks = []
     studyArr.forEach((studyDeck) => {
@@ -45,10 +43,6 @@ function DecksPage() {
                     <AddDeckFormModal />
                 </div>
             </div>
-
-
-
-            {/* {decks?.map(deck => <div key={deck.id}> <Deck deck={deck} studyDecks={studyDecks}/> </div>)} */}
         </div>
     )
 }

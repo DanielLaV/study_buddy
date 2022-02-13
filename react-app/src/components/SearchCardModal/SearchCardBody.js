@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import * as cardActions from "../../store/cards"
-import EditCardFormModal from "../EditCardFormModal";
-import DeleteCardFormModal from "../DeleteCardFormModal";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const SearchCardBody = ({ setShowModal, cardId }) => {
     const history = useHistory();
-    // const dispatch = useDispatch();
-    // const user = useSelector(state => state.session.user)
     const card = useSelector(state => state.search.cards[cardId]);
     const deckId = card?.deck_id
 

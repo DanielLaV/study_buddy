@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import './AddToStudyList.css'
 
-function AddToStudyList({deck_id, user_id}) {
+function AddToStudyList({ deck_id, user_id }) {
     const dispatch = useDispatch();
 
     const handleSubmit = (e) => {
@@ -12,13 +12,9 @@ function AddToStudyList({deck_id, user_id}) {
     }
 
     return (
-    <>
-        <button onClick={handleSubmit} className="add-to-study-list">+ Study List</button>
-
-        
-
-
-    </>
+        <>
+            <button onClick={handleSubmit} className="add-to-study-list">+ Study List</button>
+        </>
     )
 }
 

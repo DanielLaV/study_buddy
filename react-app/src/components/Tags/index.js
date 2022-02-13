@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as tagActions from "../../store/tags";
 import { NavLink, useParams } from "react-router-dom";
@@ -10,7 +10,6 @@ function Tags() {
     const currentUserId = useSelector((state) => state.session.user.id);
     const deckUserId = useSelector((state) => state.decks[deckId].user_id);
     const tags = useSelector((state) => Object.values(state.tags));
-    const [tagId, setTagId] = useState("")
 
 
     useEffect(() => {
@@ -29,7 +28,6 @@ function Tags() {
     return (<>
         <div className='tag-div'>
             {tags.map((tag) => {
-                console.log("tag", tag, "\ntagId:  ", tag.id)
                 return (<div className="">
                     <NavLink className='tagLink' to={`/tags/${tag.id}`}>
                         {`#${tag.name}`}

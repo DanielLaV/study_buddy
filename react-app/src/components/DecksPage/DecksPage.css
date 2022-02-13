@@ -97,7 +97,6 @@ body{
   .deckDisplay{
    border-color: black;
    border-radius: 5px;
-
    background-color: #27A9E1;
    border: 8px solid;
    border-color: #25a1d6;
@@ -140,7 +139,6 @@ body{
     margin: 2%;
     border-radius: 5px;
     background-color: white;
-
     align-items: center;
     justify-content: center;
     color: black;

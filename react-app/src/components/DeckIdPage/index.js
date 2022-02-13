@@ -59,7 +59,7 @@ function DeckIdPage() {
             </div>
         )
     }
-    else return "This deck does not exist"
+    else return "Error: This deck does not exist"
 }
 
 export default DeckIdPage;

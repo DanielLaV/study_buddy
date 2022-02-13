@@ -19,7 +19,7 @@ function HomePage() {
       <div className="homePageContainer">
         <div className="user">
           <p className="userName">{user.username}</p>
-          <img className="avatar" src="avatar.png" alt="Avatar" />
+          <img className="avatar" src="/avatar.png" alt="Avatar" />
           <div><EditUserModal /></div>
         </div>
         <div className="Decks">

@@ -1,6 +1,6 @@
 # Study Buddy
 
-<a href="google.com">Live Site</a>  |  <a href="https://github.com/DanielLaV/study_buddy/wiki"> Project Wiki</a> | <a href="https://github.com/DanielLaV/study_buddy/issue">Report Bug</a>
+<a href="https://flask-study-buddy-app.herokuapp.com">Live Site</a>  |  <a href="https://github.com/DanielLaV/study_buddy/wiki"> Project Wiki</a> | <a href="https://github.com/DanielLaV/study_buddy/issue">Report Bug</a>
 
 Study Buddy is a website where users can create, study, and share decks of cards for studying computer science topics. This website was designed as a Week 20 project as part of App Academy's 24-week Full Stack Software Engineering Bootcamp.
 

@@ -32,7 +32,7 @@ Study Buddy is a website where users can create, study, and share decks of cards
 ```
 4. Set up your PostgreSQL user, password, and database. Make sure that it matches your .env file!
 
-5. Access your `pipenv shell`, migrate yoru database, seed your database, and run your flask app with the following commands:
+5. Access your `pipenv shell`, migrate your database, seed your database, and run your flask app with the following commands:
 ```
 pipenv shell
 ```
